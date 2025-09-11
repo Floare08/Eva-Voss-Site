@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="eva-voss">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Eva Voss — AI Fantasy Experience</title>
+  <meta name="description" content="Eva Voss: premium AI companion. Text, voice, image & video on demand. Realistic, elegant, optimized for mobile and desktop." />
+  <link rel="canonical" href="https://evavoss.example/en/" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Eva Voss — AI Fantasy Experience" />
+  <meta property="og:description" content="Premium AI girl — chat, voice, images & video. Elegant. Realistic. Instant." />
+  <meta property="og:image" content="/images/og-eva.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Eva Voss — AI Fantasy Experience" />
+  <meta name="twitter:description" content="Premium AI girl — chat, voice, images & video. Elegant. Realistic. Instant." />
+  <meta name="twitter:image" content="/images/og-eva.jpg" />
+  <link rel="alternate" hreflang="ro" href="/" />
+  <link rel="alternate" hreflang="en" href="/en/" />
+
+  <!-- Icons -->
+  <link rel="icon" href="/images/favicon.ico" />
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
+  <meta name="theme-color" content="#2b0a3d" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <link rel="preload" as="image" href="/images/logo-eva.png" />
+  <link rel="preload" as="video" href="/videos/hero-bg.mp4" />
+
+  <style>/* keep same CSS from RO version */</style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="/en/" aria-label="Eva Voss Home">
+        <img src="/images/logo-eva.png" alt="Eva Voss Logo" height="36" />
+        <span class="t">Eva Voss</span>
+      </a>
+      <nav class="actions">
+        <a class="pill ghost" href="#features">Caracteristici</a>
+        <a class="pill ghost" href="#pricing">Prețuri</a>
+        <a class="pill primary" href="https://gumroad.com" target="_blank" rel="noopener" aria-label="Începe acum pe Gumroad">Începe acum</a>
+        <a class="pill ghost" href="/en/" aria-label="English version">EN</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <video id="heroVideo" autoplay muted loop playsinline preload="auto">
+      <source src="/videos/hero-bg.mp4" type="video/mp4" />
+    </video>
+    <div class="overlay"></div>
+    <div class="content wrap">
+      <span class="eyebrow">Premium AI • voice + image + video</span>
+      <h1>Eva Voss — <span style="color:var(--gold)">AI Fantasy</span> Experience</h1>
+      <p class="lead">Natural conversations, seductive voice, instant images and clips. Elegant, realistic, available on phone, PC and web.</p>
+      <div class="cta">
+        <a class="pill primary" href="#pricing">See Plans</a>
+        <a class="pill ghost" href="#demo">Watch Demo</a>
+      </div>
+      <div class="badges">
+        <span class="dot"></span>
+        <span>Online now • &lt;1s response time</span>
+        <span>•</span>
+        <span>No real NSFW — generative AI only</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="wrap">
+      <div class="grid cols-3">
+        <div class="feature card">
+          <div class="ico">🎙️</div>
+          <div>
+            <h3>Realistic Voice</h3>
+            <p>Instant audio replies with subtle breathing and human intonation. Perfect with headphones.</p>
+          </div>
+        </div>
+        <div class="feature card">
+          <div class="ico">🖼️</div>
+          <div>
+            <h3>Images & Clips</h3>
+            <p>Fast generation of pictures and short clips, in premium royal purple + gold style.</p>
+          </div>
+        </div>
+        <div class="feature card">
+          <div class="ico">🧠</div>
+          <div>
+            <h3>Refined Personality</h3>
+            <p>Optional memory, safe limits, contextual answers. Elegant, playful, respectful.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="demo">
+    <div class="wrap">
+      <div class="showcase">
+        <img src="/images/showcase.jpg" alt="Eva Voss Interface" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing" class="pricing">
+    <div class="wrap">
+      <div class="grid cols-3">
+        <div class="card">
+          <h3>Starter</h3>
+          <div class="price">€9<small>/month</small></div>
+          <ul class="incl">
+            <li><span class="tick">✔</span> Unlimited text chat</li>
+            <li><span class="tick">✔</span> 50 images/month</li>
+            <li><span class="tick">✔</span> 10 minutes voice</li>
+          </ul>
+          <a class="pill primary" href="https://gumroad.com" target="_blank">Choose Starter</a>
+        </div>
+        <div class="card" style="outline:2px solid rgba(215,184,111,.35)">
+          <h3>Premium</h3>
+          <div class="price">€29<small>/month</small></div>
+          <ul class="incl">
+            <li><span class="tick">✔</span> Unlimited chat (text + voice)</li>
+            <li><span class="tick">✔</span> 400 images/month</li>
+            <li><span class="tick">✔</span> 60 minutes AI video</li>
+            <li><span class="tick">✔</span> Priority generation</li>
+          </ul>
+          <a class="pill primary" href="https://gumroad.com" target="_blank">Choose Premium</a>
+        </div>
+        <div class="card">
+          <h3>Elite</h3>
+          <div class="price">€79<small>/month</small></div>
+          <ul class="incl">
+            <li><span class="tick">✔</span> Everything in Premium</li>
+            <li><span class="tick">✔</span> 1:1 custom scenes</li>
+            <li><span class="tick">✔</span> Access to exclusive models</li>
+            <li><span class="tick">✔</span> Priority support</li>
+          </ul>
+          <a class="pill primary" href="https://gumroad.com" target="_blank">Choose Elite</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <div class="grid cols-2">
+        <div class="card"><h3>Is the content real?</h3><p>No. Eva is 100% AI. We respect safety limits and platform terms. No private real content.</p></div>
+        <div class="card"><h3>Can I request custom scenes?</h3><p>Yes, in Premium/Elite plans. You specify style, outfit, atmosphere — Eva generates it.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap">
+      <div><strong>Eva Voss</strong> — AI Fantasy Experience<br/>© <span id="y"></span> Eva Voss. All rights reserved.</div>
+      <div style="display:flex;gap:14px">
+        <a href="#faq">FAQ</a>
+        <a href="#pricing">Pricing</a>
+        <a href="mailto:hello@evavoss.example">Contact</a>
+        <a href="/en/privacy.html">Privacy</a>
+        <a href="/en/terms.html">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+
+<!-- ========================= -->
+<!--        en/index.html      -->
+<!-- ========================= -->
+<!-- Create a new file at path: en/index.html -->
+<!DOCTYPE html>
+<html lang="en" data-theme="eva-voss">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Eva Voss — AI Fantasy Experience</title>
+  <meta name="description" content="Eva Voss: premium AI companion. Text, voice, image & video on demand. Elegant and realistic — mobile & desktop ready." />
+  <link rel="canonical" href="https://evavoss.example/en/" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Eva Voss — AI Fantasy Experience" />
+  <meta property="og:description" content="Premium AI girl — conversations, voice, images & video. Elegant. Realistic. Fast." />
+  <meta property="og:image" content="/images/og-eva.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Eva Voss — AI Fantasy Experience" />
+  <meta name="twitter:description" content="Premium AI girl — conversations, voice, images & video. Elegant. Realistic. Fast." />
+  <meta name="twitter:image" content="/images/og-eva.jpg" />
+  <link rel="alternate" hreflang="ro" href="/" />
+  <link rel="alternate" hreflang="en" href="/en/" />
+
+  <!-- Icons -->
+  <link rel="icon" href="/images/favicon.ico" />
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
+  <meta name="theme-color" content="#2b0a3d" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Preload critical assets -->
+  <link rel="preload" as="image" href="/images/logo-eva.png" />
+  <link rel="preload" as="video" href="/videos/hero-bg.mp4" />
+
+  <style>
+    :root{--bg:#0b0611;--ink:#f7f2ff;--muted:#cdbde6;--gold:#d7b86f;--royal:#6d22d3;--royal-2:#2b0a3d;--card:#130a1d;--ok:#6fe3a1;--danger:#ff7a7a;--shadow:0 20px 60px rgba(0,0,0,.45);--radius:18px;--radius-lg:28px}
+    html,body{height:100%}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:radial-gradient(1200px 600px at 80% 20%, rgba(109,34,211,.35), transparent 60%),radial-gradient(800px 400px at 10% 80%, rgba(215,184,111,.18), transparent 60%),var(--bg);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    .wrap{max-width:1150px;margin:0 auto;padding:0 20px}
+    header{position:sticky;top:0;z-index:40;backdrop-filter:blur(10px)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+    .brand img{height:36px;width:auto;display:block;filter:drop-shadow(0 4px 16px rgba(215,184,111,.35))}
+    .brand .t{font-weight:800;letter-spacing:.3px;font-size:18px}
+    .pill{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;text-decoration:none;font-weight:700}
+    .pill.primary{background:linear-gradient(120deg,var(--royal),#9b59ff);color:#fff;box-shadow:var(--shadow)}
+    .pill.ghost{border:1px solid rgba(255,255,255,.12);color:var(--ink)}
+    .pill small{opacity:.8;font-weight:600}
+    .hero{position:relative;min-height:86vh;display:grid;place-items:center;overflow:hidden;border-bottom:1px solid rgba(255,255,255,.06)}
+    .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(1.2) contrast(1.02)}
+    .hero .overlay{position:absolute;inset:0;background:radial-gradient(1000px 500px at 80% 20%, rgba(109,34,211,.45), transparent 50%),linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.65) 60%, rgba(0,0,0,.85))}
+    .hero .content{position:relative;z-index:2;text-align:center;padding:80px 0}
+    .eyebrow{display:inline-block;padding:8px 14px;border:1px solid rgba(255,255,255,.12);border-radius:999px;font-size:12px;letter-spacing:.5px;color:var(--muted)}
+    h1{font-family:"Playfair Display",serif;font-weight:700;font-size:clamp(38px,6vw,76px);line-height:1.05;margin:18px 0}
+    .lead{max-width:760px;margin:0 auto 26px;color:#efe7ff;font-size:clamp(16px,1.5vw,20px)}
+    .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+    .badges{display:flex;gap:14px;justify-content:center;align-items:center;margin-top:22px;color:var(--muted);font-size:13px}
+    .dot{width:6px;height:6px;border-radius:50%;background:var(--ok);display:inline-block;box-shadow:0 0 0 4px rgba(111,227,161,.12)}
+    section{padding:80px 0}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .grid{display:grid;gap:18px}
+    .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+    .grid.cols-2{grid-template-columns:repeat(2,1fr)}
+    @media (max-width:900px){.grid.cols-3{grid-template-columns:1fr 1fr}}
+    @media (max-width:640px){.grid.cols-3,.grid.cols-2{grid-template-columns:1fr}}
+    .feature{padding:22px;display:flex;gap:16px;align-items:flex-start}
+    .ico{flex:0 0 48px;height:48px;width:48px;border-radius:14px;display:grid;place-items:center;background:radial-gradient(120px 120px at 30% 30%, rgba(215,184,111,.35), rgba(109,34,211,.35));border:1px solid rgba(255,255,255,.14)}
+    .feature h3{margin:2px 0 6px;font-size:18px}
+    .feature p{margin:0;color:var(--muted)}
+    .showcase{position:relative;overflow:hidden;border-radius:var(--radius-lg);border:1px solid rgba(255,255,255,.08)}
+    .showcase img{width:100%;display:block}
+    .pricing .card{padding:26px}
+    .price{font-size:36px;font-weight:900}
+    .price small{font-size:14px;color:var(--muted);font-weight:600}
+    .incl{margin:16px 0 0;padding:0;list-style:none}
+    .incl li{margin:10px 0;display:flex;gap:10px;align-items:flex-start;color:#efe7ff}
+    .incl li .tick{color:var(--ok);font-weight:900}
+    footer{padding:40px 0 60px;color:var(--muted);font-size:14px}
+    footer a{color:var(--ink);text-decoration:none}
+    ::-webkit-scrollbar{height:12px;width:12px}
+    ::-webkit-scrollbar-track{background:#130a1d}
+    ::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--royal),#9b59ff);border-radius:8px}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="/en/" aria-label="Eva Voss Home">
+        <img src="/images/logo-eva.png" alt="Eva Voss Logo" height="36" />
+        <span class="t">Eva Voss</span>
+      </a>
+      <nav class="actions">
+        <a class="pill ghost" href="#features">Features</a>
+        <a class="pill ghost" href="#pricing">Pricing</a>
+        <a class="pill primary" href="https://gumroad.com" target="_blank" rel="noopener" aria-label="Start on Gumroad">Start now</a>
+        <a class="pill ghost" href="/" aria-label="Română">RO</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" aria-label="Hero video">
+    <video id="heroVideoEn" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+      <source src="/videos/hero-bg.mp4" type="video/mp4" />
+    </video>
+    <div class="overlay" aria-hidden="true"></div>
+    <div class="content wrap">
+      <span class="eyebrow">Premium AI • voice + image + video</span>
+      <h1>Eva Voss — <span style="color:var(--gold)">AI Fantasy</span> Experience</h1>
+      <p class="lead">Natural chats, alluring voice, instant images & short clips. Elegant, realistic, on phone, PC and web.</p>
+      <div class="cta">
+        <a class="pill primary" href="#pricing" aria-label="See plans">See plans</a>
+        <a class="pill ghost" href="#demo" aria-label="Watch demo">Watch demo</a>
+      </div>
+      <div class="badges">
+        <span class="dot" aria-hidden="true"></span>
+        <span>Online now • response &lt; 1s</span>
+        <span>•</span>
+        <span>No real-person NSFW — generative AI</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="wrap">
+      <div class="grid cols-3">
+        <div class="feature card">
+          <div class="ico">🎙️</div>
+          <div>
+            <h3>Realistic voice</h3>
+            <p>Instant audio replies with subtle breaths and human-like tone. Great on mobile headphones.</p>
+          </div>
+        </div>
+        <div class="feature card">
+          <div class="ico">🖼️</div>
+          <div>
+            <h3>Images & clips</h3>
+            <p>Fast image generation and short videos with a premium royal purple + gold style.</p>
+          </div>
+        </div>
+        <div class="feature card">
+          <div class="ico">🧠</div>
+          <div>
+            <h3>Refined personality</h3>
+            <p>Optional memory, safe limits, contextual responses. Elegant, playful, respectful.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="demo">
+    <div class="wrap">
+      <div class="showcase">
+        <img src="/images/showcase.jpg" alt="Eva Voss interface screenshot" loading="lazy" width="1200" height="675" />
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing" class="pricing">
+    <div class="wrap">
+      <div class="grid cols-3">
+        <div class="card">
+          <h3>Starter</h3>
+          <div class="price">€9<small>/mo</small></div>
+          <ul class="incl">
+            <li><span class="tick">✔</span> Unlimited text chat</li>
+            <li><span class="tick">✔</span> 50 images / month</li>
+            <li><span class="tick">✔</span> 10 minutes voice</li>
+          </ul>
+          <div style="margin-top:18px">
+            <a class="pill primary" href="https://gumroad.com" target="_blank" rel="noopener">Choose Starter</a>
+          </div>
+        </div>
+        <div class="card" style="outline:2px solid rgba(215,184,111,.35)">
+          <h3>Premium</h3>
+          <div class="price">€29<small>/mo</small></div>
+          <ul class="incl">
+            <li><span class="tick">✔</span> Unlimited chat (text + voice)</li>
+            <li><span class="tick">✔</span> 400 images / month</li>
+            <li><span class="tick">✔</span> 60 minutes AI video</li>
+            <li><span class="tick">✔</span> Priority generation</li>
+          </ul>
+          <div style="margin-top:18px">
+            <a class="pill primary" href="https://gumroad.com" target="_blank" rel="noopener">Choose Premium</a>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Elite</h3>
+          <div class="price">€79<small>/mo</small></div>
+          <ul class="incl">
+            <li><span class="tick">✔</span> Everything in Premium</li>
+            <li><span class="tick">✔</span> 1:1 custom scenes</li>
+            <li><span class="tick">✔</span> Access to exclusive models</li>
+            <li><span class="tick">✔</span> Priority support</li>
+          </ul>
+          <div style="margin-top:18px">
+            <a class="pill primary" href="https://gumroad.com" target="_blank" rel="noopener">Choose Elite</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <div class="grid cols-2">
+        <div class="card" style="padding:22px">
+          <h3>Is the content real?</h3>
+          <p style="color:var(--muted)">No. Eva is 100% AI. We follow platform safety rules. No private real-person content.</p>
+        </div>
+        <div class="card" style="padding:22px">
+          <h3>Can I request custom scenes?</h3>
+          <p style="color:var(--muted)">Yes, in Premium/Elite plans. Tell the style, outfit, mood — Eva generates.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap" style="display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap">
+      <div>
+        <strong>Eva Voss</strong> — AI Fantasy Experience<br/>
+        <span>© <span id="yEn"></span> Eva Voss. All rights reserved.</span>
+      </div>
+      <div style="display:flex;gap:14px">
+        <a href="#faq">FAQ</a>
+        <a href="#pricing">Pricing</a>
+        <a href="mailto:hello@evavoss.example">Contact</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('yEn').textContent = new Date().getFullYear();
+    const v=document.getElementById('heroVideoEn');const tryPlay=()=>v&&v.play().catch(()=>{});document.addEventListener('visibilitychange',tryPlay,{passive:true});window.addEventListener('pointerdown',tryPlay,{once:true,passive:true});
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const id=a.getAttribute('href').slice(1);const el=document.getElementById(id);if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});}})});
+  </script>
+</body>
+</html>
+
+<!-- ========================= -->
+<!--      privacy-en.html      -->
+<!-- ========================= -->
+<!-- Create a new file at path: en/privacy.html OR reuse /privacy.html with EN below. We'll create en/privacy.html for clarity. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy Policy — Eva Voss</title>
+  <meta name="description" content="Privacy policy for the Eva Voss website and services." />
+  <link rel="icon" href="/images/favicon.ico" />
+  <style>
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;background:#0b0611;color:#f7f2ff;line-height:1.6}
+    .wrap{max-width:900px;margin:0 auto;padding:40px 20px}
+    h1,h2{color:#d7b86f}
+    a{color:#f7f2ff}
+    .muted{color:#cdbde6}
+    hr{border:0;border-top:1px solid rgba(255,255,255,.1);margin:24px 0}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <h1>Privacy Policy</h1>
+    <p class="muted">Last updated: <span id="pyEn"></span></p>
+    <p>We respect the privacy of visitors and users of the <strong>Eva Voss</strong> service. This policy explains what data we collect, why, how we use it, and your rights.</p>
+
+    <h2>Data we collect</h2>
+    <ul>
+      <li>Technical data (IP, device type, pages visited) for analytics and security.</li>
+      <li>Account and transaction data if you purchase via third parties (e.g., Gumroad) — handled by those platforms.</li>
+      <li>User-generated content (prompts, preferences) to provide the AI service.</li>
+    </ul>
+
+    <h2>Legal basis</h2>
+    <p>We process data under <em>legitimate interest</em> (security, service improvement) and/or <em>contract performance</em> (delivering purchased services). For marketing, we rely on <em>consent</em>.</p>
+
+    <h2>Sharing</h2>
+    <ul>
+      <li>Hosting/analytics/security providers (e.g., Netlify, analytics provider).</li>
+      <li>Payment/sales processors (e.g., Gumroad) with their own policies.</li>
+      <li>We do not sell your data or share it for unjustified purposes.</li>
+    </ul>
+
+    <h2>Storage & security</h2>
+    <p>We apply reasonable technical and organizational measures. Data is kept as long as necessary for the purposes above or by law.</p>
+
+    <h2>Your rights</h2>
+    <ul>
+      <li>Access, rectification, erasure, restriction, portability, objection.</li>
+      <li>You can withdraw consent for marketing at any time.</li>
+      <li>Contact us at <a href="mailto:hello@evavoss.example">hello@evavoss.example</a>.</li>
+    </ul>
+
+    <h2>Cookies</h2>
+    <p>We use strictly necessary cookies and, optionally, analytics/performance cookies. You can control preferences in your browser or via the consent banner (if enabled).</p>
+
+    <h2>Third parties</h2>
+    <p>Links to third parties (e.g., Gumroad) have their own policies. Please review them separately.</p>
+
+    <h2>Updates</h2>
+    <p>We may update this policy periodically. The date of the latest version is show above.</p>
+
+    <hr/>
+    <p><a href="/en/">← Back to home</a></p>
+  </main>
+  <script>document.getElementById('pyEn').textContent = new Date().toLocaleDateString('en-GB');</script>
+</body>
+</html>
+
+<!-- ========================= -->
+<!--       terms-en.html       -->
+<!-- ========================= -->
+<!-- Create a new file at path: en/terms.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Terms & Conditions — Eva Voss</title>
+  <meta name="description" content="Terms of use for the Eva Voss services." />
+  <link rel="icon" href="/images/favicon.ico" />
+  <style>
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;background:#0b0611;color:#f7f2ff;line-height:1.6}
+    .wrap{max-width:900px;margin:0 auto;padding:40px 20px}
+    h1,h2{color:#d7b86f}
+    a{color:#f7f2ff}
+    .muted{color:#cdbde6}
+    hr{border:0;border-top:1px solid rgba(255,255,255,.1);margin:24px 0}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <h1>Terms & Conditions</h1>
+    <p class="muted">Last updated: <span id="tyEn"></span></p>
+
+    <h2>1. Service</h2>
+    <p><strong>Eva Voss</strong> provides AI experiences (text, voice, image, video). Generated content is fictional and for entertainment. Do not use it for illegal activities or to infringe on others' rights.</p>
+
+    <h2>2. Eligibility</h2>
+    <p>You must be of legal age in your country and have legal capacity to enter into contracts.</p>
+
+    <h2>3. Accounts & payments</h2>
+    <p>Payments and delivery are handled by third-party platforms (e.g., Gumroad). Their policies apply to transactions. Subscriptions can be canceled per the platform's rules.</p>
+
+    <h2>4. Conduct</h2>
+    <p>Do not upload or request content that violates the law, copyrights, or our safety policies. We may suspend access in case of abuse.</p>
+
+    <h2>5. Intellectual property</h2>
+    <p>The brand, logos, and site materials are our property. AI-generated content may be used personally and within your plan limits.</p>
+
+    <h2>6. Liability</h2>
+    <p>The service is provided "as is", without warranties. We are not liable for indirect or consequential losses.</p>
+
+    <h2>7. Termination</h2>
+    <p>We may terminate access if you breach these terms. You may stop using the service at any time.</p>
+
+    <h2>8. Contact</h2>
+    <p>For questions: <a href="mailto:hello@evavoss.example">hello@evavoss.example</a>.</p>
+
+    <hr/>
+    <p><a href="/en/">← Back to home</a></p>
+  </main>
+  <script>document.getElementById('tyEn').textContent = new Date().toLocaleDateString('en-GB');</script>
+</body>
+</html>
