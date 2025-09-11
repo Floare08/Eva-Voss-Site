@@ -1,298 +1,68 @@
 <!DOCTYPE html>
-<html lang="ro" data-theme="eva-voss">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Eva Voss — AI Fantasy Experience</title>
-  <meta name="description" content="Eva Voss: fata AI premium. Text, voce, imagine și video generate la comandă. Experiență realistă și elegantă — optimizat pentru mobil și desktop." />
-  <link rel="canonical" href="https://evavoss.example/" />
+<div class="grid cols-3">
+<div class="card">
+<h3>Starter</h3>
+<div class="price">€9<small>/month</small></div>
+<ul class="incl">
+<li><span class="tick">✔</span> Unlimited text chat</li>
+<li><span class="tick">✔</span> 50 images/month</li>
+<li><span class="tick">✔</span> 10 minutes voice</li>
+</ul>
+<a class="pill primary" href="https://gumroad.com" target="_blank">Choose Starter</a>
+</div>
+<div class="card" style="outline:2px solid rgba(215,184,111,.35)">
+<h3>Premium</h3>
+<div class="price">€29<small>/month</small></div>
+<ul class="incl">
+<li><span class="tick">✔</span> Unlimited chat (text + voice)</li>
+<li><span class="tick">✔</span> 400 images/month</li>
+<li><span class="tick">✔</span> 60 minutes AI video</li>
+<li><span class="tick">✔</span> Priority generation</li>
+</ul>
+<a class="pill primary" href="https://gumroad.com" target="_blank">Choose Premium</a>
+</div>
+<div class="card">
+<h3>Elite</h3>
+<div class="price">€79<small>/month</small></div>
+<ul class="incl">
+<li><span class="tick">✔</span> Everything in Premium</li>
+<li><span class="tick">✔</span> 1:1 custom scenes</li>
+<li><span class="tick">✔</span> Access to exclusive models</li>
+<li><span class="tick">✔</span> Priority support</li>
+</ul>
+<a class="pill primary" href="https://gumroad.com" target="_blank">Choose Elite</a>
+</div>
+</div>
+</div>
+</section>
 
-  <!-- Open Graph / Twitter -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Eva Voss — AI Fantasy Experience" />
-  <meta property="og:description" content="Fată AI premium — conversații, voce, imagini & video. Elegant. Realist. Rapid." />
-  <meta property="og:image" content="/assets/og-eva.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Eva Voss — AI Fantasy Experience" />
-  <meta name="twitter:description" content="Fată AI premium — conversații, voce, imagini & video. Elegant. Realist. Rapid." />
-  <meta name="twitter:image" content="/assets/og-eva.jpg" />
 
-  <!-- Icons -->
-  <link rel="icon" href="/assets/favicon.ico" />
-  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
-  <meta name="theme-color" content="#2b0a3d" />
+<section id="faq">
+<div class="wrap">
+<div class="grid cols-2">
+<div class="card"><h3>Is the content real?</h3><p>No. Eva is 100% AI. We respect safety limits and platform terms. No private real content.</p></div>
+<div class="card"><h3>Can I request custom scenes?</h3><p>Yes, in Premium/Elite plans. You specify style, outfit, atmosphere — Eva generates it.</p></div>
+</div>
+</div>
+</section>
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
-  <!-- Preload critical assets -->
-  <link rel="preload" as="image" href="/assets/logo-eva.png" />
-  <link rel="preload" as="video" href="/assets/hero-bg.mp4" />
+<footer>
+<div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap">
+<div><strong>Eva Voss</strong> — AI Fantasy Experience<br/>© <span id="y"></span> Eva Voss. All rights reserved.</div>
+<div style="display:flex;gap:14px">
+<a href="#faq">FAQ</a>
+<a href="#pricing">Pricing</a>
+<a href="mailto:hello@evavoss.example">Contact</a>
+<a href="/en/privacy.html">Privacy</a>
+<a href="/en/terms.html">Terms</a>
+</div>
+</div>
+</footer>
 
-  <style>
-    :root{
-      --bg:#0b0611;           /* fundal deep */
-      --ink:#f7f2ff;          /* text principal */
-      --muted:#cdbde6;        /* text secundar */
-      --gold:#d7b86f;         /* accent auriu lichid */
-      --royal:#6d22d3;        /* mov regal */
-      --royal-2:#2b0a3d;      /* mov închis */
-      --card:#130a1d;         /* panouri */
-      --ok:#6fe3a1;           /* verde accent */
-      --danger:#ff7a7a;       /* roșu accent */
-      --shadow: 0 20px 60px rgba(0,0,0,.45);
-      --radius: 18px;
-      --radius-lg: 28px;
-    }
-    html,body{height:100%}
-    body{
-      margin:0; font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-      background: radial-gradient(1200px 600px at 80% 20%, rgba(109,34,211,.35), transparent 60%),
-                  radial-gradient(800px 400px at 10% 80%, rgba(215,184,111,.18), transparent 60%),
-                  var(--bg);
-      color:var(--ink); line-height:1.5; -webkit-font-smoothing:antialiased; overflow-x:hidden;
-    }
-    .wrap{max-width:1150px; margin:0 auto; padding:0 20px}
 
-    /* Header */
-    header{position:sticky; top:0; z-index:40; backdrop-filter: blur(10px);}
-    .nav{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 0}
-    .brand{display:flex; align-items:center; gap:12px; text-decoration:none}
-    .brand img{height:36px; width:auto; display:block; filter: drop-shadow(0 4px 16px rgba(215,184,111,.35));}
-    .brand .t{font-weight:800; letter-spacing:.3px; font-size:18px}
-    .pill{display:inline-flex; align-items:center; gap:8px; padding:10px 16px; border-radius:999px; text-decoration:none; font-weight:700}
-    .pill.primary{background:linear-gradient(120deg,var(--royal),#9b59ff); color:white; box-shadow:var(--shadow)}
-    .pill.ghost{border:1px solid rgba(255,255,255,.12); color:var(--ink)}
-    .pill small{opacity:.8; font-weight:600}
-
-    /* Hero */
-    .hero{position:relative; min-height:86vh; display:grid; place-items:center; overflow:hidden; border-bottom:1px solid rgba(255,255,255,.06)}
-    .hero video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter: saturate(1.2) contrast(1.02)}
-    .hero .overlay{position:absolute; inset:0; background: radial-gradient(1000px 500px at 80% 20%, rgba(109,34,211,.45), transparent 50%),
-                                         linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.65) 60%, rgba(0,0,0,.85));}
-    .hero .content{position:relative; z-index:2; text-align:center; padding:80px 0}
-    .eyebrow{display:inline-block; padding:8px 14px; border:1px solid rgba(255,255,255,.12); border-radius:999px; font-size:12px; letter-spacing:.5px; color:var(--muted)}
-    h1{font-family:"Playfair Display",serif; font-weight:700; font-size: clamp(38px, 6vw, 76px); line-height:1.05; margin:18px 0}
-    .lead{max-width:760px; margin:0 auto 26px; color:#efe7ff; font-size: clamp(16px, 1.5vw, 20px)}
-    .cta{display:flex; gap:12px; justify-content:center; flex-wrap:wrap}
-
-    .badges{display:flex; gap:14px; justify-content:center; align-items:center; margin-top:22px; color:var(--muted); font-size:13px}
-    .dot{width:6px; height:6px; border-radius:50%; background:var(--ok); display:inline-block; box-shadow:0 0 0 4px rgba(111,227,161,.12)}
-
-    /* Sections */
-    section{padding:80px 0}
-    .card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); box-shadow:var(--shadow)}
-
-    /* Features grid */
-    .grid{display:grid; gap:18px}
-    .grid.cols-3{grid-template-columns:repeat(3,1fr)}
-    .grid.cols-2{grid-template-columns:repeat(2,1fr)}
-    @media (max-width:900px){.grid.cols-3{grid-template-columns:1fr 1fr}}
-    @media (max-width:640px){.grid.cols-3,.grid.cols-2{grid-template-columns:1fr}}
-
-    .feature{padding:22px; display:flex; gap:16px; align-items:flex-start}
-    .ico{flex:0 0 48px; height:48px; width:48px; border-radius:14px; display:grid; place-items:center; background: radial-gradient(120px 120px at 30% 30%, rgba(215,184,111,.35), rgba(109,34,211,.35)); border:1px solid rgba(255,255,255,.14)}
-    .feature h3{margin:2px 0 6px; font-size:18px}
-    .feature p{margin:0; color:var(--muted)}
-
-    /* Showcase */
-    .showcase{position:relative; overflow:hidden; border-radius:var(--radius-lg); border:1px solid rgba(255,255,255,.08)}
-    .showcase img{width:100%; display:block}
-
-    /* Pricing */
-    .pricing .card{padding:26px}
-    .price{font-size:36px; font-weight:900}
-    .price small{font-size:14px; color:var(--muted); font-weight:600}
-    .incl{margin:16px 0 0; padding:0; list-style:none}
-    .incl li{margin:10px 0; display:flex; gap:10px; align-items:flex-start; color:#efe7ff}
-    .incl li .tick{color:var(--ok); font-weight:900}
-
-    /* Footer */
-    footer{padding:40px 0 60px; color:var(--muted); font-size:14px}
-    footer a{color:var(--ink); text-decoration:none}
-
-    /* Nice scroll */
-    ::-webkit-scrollbar{height:12px;width:12px}
-    ::-webkit-scrollbar-track{background:#130a1d}
-    ::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--royal),#9b59ff); border-radius:8px}
-  </style>
-</head>
-<body>
-  <!-- Header -->
-  <header>
-    <div class="wrap nav">
-      <a class="brand" href="#" aria-label="Eva Voss Home">
-        <img src="/assets/logo-eva.png" alt="Logo Eva Voss" height="36" />
-        <span class="t">Eva Voss</span>
-      </a>
-      <nav class="actions">
-        <a class="pill ghost" href="#features">Caracteristici</a>
-        <a class="pill ghost" href="#pricing">Prețuri</a>
-        <a class="pill primary" href="https://gumroad.com" target="_blank" rel="noopener" aria-label="Începe acum pe Gumroad">Începe acum</a>
-      </nav>
-    </div>
-  </header>
-
-  <!-- Hero -->
-  <section class="hero" aria-label="Hero video">
-    <video id="heroVideo" autoplay muted loop playsinline preload="auto" aria-hidden="true">
-      <source src="/assets/hero-bg.mp4" type="video/mp4" />
-    </video>
-    <div class="overlay" aria-hidden="true"></div>
-    <div class="content wrap">
-      <span class="eyebrow">AI premium • voce + imagine + video</span>
-      <h1>Eva Voss — <span style="color:var(--gold)">AI Fantasy</span> Experience</h1>
-      <p class="lead">Conversații naturale, voce seducătoare, imagini și clipuri generate instant. Elegantă, realistă, disponibilă pe telefon, PC și web.</p>
-      <div class="cta">
-        <a class="pill primary" href="#pricing" aria-label="Vezi planurile">Vezi planurile</a>
-        <a class="pill ghost" href="#demo" aria-label="Vezi demo video">Vezi demo</a>
-      </div>
-      <div class="badges">
-        <span class="dot" aria-hidden="true"></span>
-        <span>Online acum • timp răspuns &lt; 1s</span>
-        <span>•</span>
-        <span>Fără NSFW real — AI generativ</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- Features -->
-  <section id="features">
-    <div class="wrap">
-      <div class="grid cols-3">
-        <div class="feature card">
-          <div class="ico">🎙️</div>
-          <div>
-            <h3>Voce realistă</h3>
-            <p>Răspuns audio instant, respirație subtilă și intonație umană. Perfect pentru căști pe telefon.</p>
-          </div>
-        </div>
-        <div class="feature card">
-          <div class="ico">🖼️</div>
-          <div>
-            <h3>Imagini & clipuri</h3>
-            <p>Generare rapidă de imagini și scurte clipuri, cu stil premium (mov regal + auriu).</p>
-          </div>
-        </div>
-        <div class="feature card">
-          <div class="ico">🧠</div>
-          <div>
-            <h3>Personalitate fină</h3>
-            <p>Memorie opțională, limite sigure, răspunsuri contextuale. Elegantă, jucăușă, respectuoasă.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Showcase / Demo -->
-  <section id="demo">
-    <div class="wrap">
-      <div class="showcase">
-        <img src="/assets/showcase.jpg" alt="Captură interfață Eva Voss" loading="lazy" width="1200" height="675" />
-      </div>
-    </div>
-  </section>
-
-  <!-- Pricing -->
-  <section id="pricing" class="pricing">
-    <div class="wrap">
-      <div class="grid cols-3">
-        <div class="card">
-          <h3>Starter</h3>
-          <div class="price">€9<small>/lună</small></div>
-          <ul class="incl">
-            <li><span class="tick">✔</span> Chat text nelimitat</li>
-            <li><span class="tick">✔</span> 50 imagini/lună</li>
-            <li><span class="tick">✔</span> 10 minute voce</li>
-          </ul>
-          <div style="margin-top:18px">
-            <a class="pill primary" href="https://gumroad.com" target="_blank" rel="noopener">Alege Starter</a>
-          </div>
-        </div>
-        <div class="card" style="outline:2px solid rgba(215,184,111,.35)">
-          <h3>Premium</h3>
-          <div class="price">€29<small>/lună</small></div>
-          <ul class="incl">
-            <li><span class="tick">✔</span> Chat nelimitat (text + voce)</li>
-            <li><span class="tick">✔</span> 400 imagini/lună</li>
-            <li><span class="tick">✔</span> 60 minute video AI</li>
-            <li><span class="tick">✔</span> Prioritate la generare</li>
-          </ul>
-          <div style="margin-top:18px">
-            <a class="pill primary" href="https://gumroad.com" target="_blank" rel="noopener">Alege Premium</a>
-          </div>
-        </div>
-        <div class="card">
-          <h3>Elite</h3>
-          <div class="price">€79<small>/lună</small></div>
-          <ul class="incl">
-            <li><span class="tick">✔</span> Tot din Premium</li>
-            <li><span class="tick">✔</span> 1:1 scene personalizate</li>
-            <li><span class="tick">✔</span> Acces la modele exclusive</li>
-            <li><span class="tick">✔</span> Suport prioritar</li>
-          </ul>
-          <div style="margin-top:18px">
-            <a class="pill primary" href="https://gumroad.com" target="_blank" rel="noopener">Alege Elite</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section id="faq">
-    <div class="wrap">
-      <div class="grid cols-2">
-        <div class="card" style="padding:22px">
-          <h3>Este conținut real?</h3>
-          <p style="color:var(--muted)">Nu. Eva este 100% AI. Respectăm limitele de siguranță și termenele platformelor. Fără conținut real privat.</p>
-        </div>
-        <div class="card" style="padding:22px">
-          <h3>Pot cere scene personalizate?</h3>
-          <p style="color:var(--muted)">Da, în planurile Premium/Elite. Spui stilul, ținuta, atmosfera — Eva generează.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <div class="wrap" style="display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap">
-      <div>
-        <strong>Eva Voss</strong> — AI Fantasy Experience<br/>
-        <span>© <span id="y"></span> Eva Voss. Toate drepturile rezervate.</span>
-      </div>
-      <div style="display:flex; gap:14px">
-        <a href="#faq">FAQ</a>
-        <a href="#pricing">Prețuri</a>
-        <a href="mailto:hello@evavoss.example">Contact</a>
-        <a href="/privacy.html">Privacy</a>
-        <a href="/terms.html">Terms</a>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    // Year
-    document.getElementById('y').textContent = new Date().getFullYear();
-
-    // Autoplay fix for some mobile browsers (ensure play after interaction/visibility)
-    const v = document.getElementById('heroVideo');
-    const tryPlay = () => v && v.play().catch(()=>{});
-    document.addEventListener('visibilitychange', tryPlay, {passive:true});
-    window.addEventListener('pointerdown', tryPlay, {once:true, passive:true});
-
-    // Smooth scroll for hash links
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', e=>{
-        const id = a.getAttribute('href').slice(1);
-        const el = document.getElementById(id);
-        if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); }
-      });
-    });
-  </script>
+<script>
+document.getElementById('y').textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
