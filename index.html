@@ -4,46 +4,48 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Eva Voss — AI Fantasy Experience</title>
-  <meta name="description" content="Eva Voss: fată AI premium. Text, voce, imagine & video generate instant. Elegantă, realistă, rapidă — optimizată pentru mobil și desktop." />
+  <meta name="description" content="Eva Voss: fată AI premium. Conversații, voce, imagini & clipuri generate instant. Elegantă, realistă, rapidă — optimizată pentru mobil şi desktop." />
   <meta name="theme-color" content="#2b0a3d" />
   <link rel="canonical" href="/" />
 
   <!-- Open Graph / Twitter -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Eva Voss — AI Fantasy Experience" />
-  <meta property="og:description" content="Conversații, voce, imagini & clipuri AI. Elegant. Realist. Rapid." />
-  <meta property="og:image" content="images/og-eva.jpg" />
+  <meta property="og:description" content="Premium AI — voice, images & short clips. Elegant. Realistic. Fast." />
+  <meta property="og:image" content="og-eva.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Eva Voss — AI Fantasy Experience" />
-  <meta name="twitter:description" content="Conversații, voce, imagini & clipuri AI. Elegant. Realist. Rapid." />
-  <meta name="twitter:image" content="images/og-eva.jpg" />
+  <meta name="twitter:description" content="Premium AI — voice, images & short clips. Elegant. Realistic. Fast." />
+  <meta name="twitter:image" content="og-eva.jpg" />
 
-  <!-- Icons (opțional) -->
-  <link rel="icon" href="images/favicon.ico" />
-  <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+  <!-- Icons (optional) -->
+  <link rel="icon" href="favicon.ico" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 
+  <!-- Preload critical -->
+  <link rel="preload" as="image" href="logo-eva.png" />
+  <link rel="preload" as="video" href="hero-bg.mp4" />
+
   <style>
-    :root{
-      --bg:#0b0611;--ink:#f7f2ff;--muted:#cdbde6;--gold:#d7b86f;--royal:#6d22d3;--card:#130a1d;--ok:#6fe3a1;--warn:#ffd36b;--shadow:0 20px 60px rgba(0,0,0,.45);--r:18px;--R:28px
-    }
+    :root{--bg:#0b0611;--ink:#f7f2ff;--muted:#cdbde6;--gold:#d7b86f;--royal:#6d22d3;--card:#130a1d;--ok:#6fe3a1;--shadow:0 20px 60px rgba(0,0,0,.45);--r:18px;--R:28px}
     html,body{height:100%}
     body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:
       radial-gradient(1200px 600px at 80% 20%, rgba(109,34,211,.35), transparent 60%),
       radial-gradient(800px 400px at 10% 80%, rgba(215,184,111,.18), transparent 60%),var(--bg);
-      color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-    .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+      color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    .wrap{max-width:1200px;margin:0 auto;padding:0 20px}
 
     /* Header */
     header{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px)}
     .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}
     .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
-    .brand .t{font-weight:900;letter-spacing:.3px;font-size:18px}
     .brand img{height:36px;display:block;filter:drop-shadow(0 4px 16px rgba(215,184,111,.35))}
+    .brand .t{font-weight:900;letter-spacing:.3px;font-size:18px}
     .pill{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;text-decoration:none;font-weight:700}
     .pill.primary{background:linear-gradient(120deg,var(--royal),#9b59ff);color:#fff;box-shadow:var(--shadow)}
     .pill.ghost{border:1px solid rgba(255,255,255,.14);color:var(--ink)}
@@ -52,14 +54,14 @@
     .lang button[aria-pressed="true"]{background:rgba(255,255,255,.08)}
 
     /* Hero */
-    .hero{position:relative;min-height:90vh;display:grid;place-items:center;overflow:hidden;border-bottom:1px solid rgba(255,255,255,.06)}
+    .hero{position:relative;min-height:92vh;display:grid;place-items:center;overflow:hidden;border-bottom:1px solid rgba(255,255,255,.06)}
     .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(1.1) contrast(1.02)}
     .overlay{position:absolute;inset:0;background:
       radial-gradient(1000px 500px at 80% 20%, rgba(109,34,211,.45), transparent 50%),
       linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.65) 60%, rgba(0,0,0,.85))}
-    .hero .content{position:relative;z-index:2;text-align:center;padding:90px 0}
+    .hero .content{position:relative;z-index:2;text-align:center;padding:100px 0}
     .eyebrow{display:inline-block;padding:8px 14px;border:1px solid rgba(255,255,255,.12);border-radius:999px;font-size:12px;letter-spacing:.5px;color:var(--muted)}
-    h1{font-family:"Playfair Display",serif;font-weight:700;font-size:clamp(38px,6vw,80px);line-height:1.05;margin:18px 0}
+    h1{font-family:"Playfair Display",serif;font-weight:700;font-size:clamp(40px,6vw,84px);line-height:1.05;margin:18px 0}
     .lead{max-width:780px;margin:0 auto 26px;color:#efe7ff;font-size:clamp(16px,1.5vw,20px)}
     .badges{display:flex;gap:14px;justify-content:center;align-items:center;margin-top:22px;color:var(--muted);font-size:13px}
     .dot{width:6px;height:6px;border-radius:50%;background:var(--ok);display:inline-block;box-shadow:0 0 0 4px rgba(111,227,161,.12)}
@@ -73,7 +75,7 @@
     .grid.cols-2{grid-template-columns:repeat(2,1fr)}
     @media (max-width:1000px){.grid.cols-4{grid-template-columns:repeat(2,1fr)}}
     @media (max-width:900px){.grid.cols-3{grid-template-columns:1fr 1fr}}
-    @media (max-width:640px){.grid.cols-3,.grid.cols-4,.grid.cols-2{grid-template-columns:1fr}}
+    @media (max-width:640px){.grid.cols-3,.grid.cols-4,.cols-2{grid-template-columns:1fr}}
 
     .feature{padding:22px;display:flex;gap:16px;align-items:flex-start}
     .ico{flex:0 0 48px;height:48px;width:48px;border-radius:14px;display:grid;place-items:center;background:
@@ -100,13 +102,17 @@
     footer{padding:40px 0 60px;color:var(--muted);font-size:14px}
     footer a{color:var(--ink);text-decoration:none}
 
-    /* Apare frumos la scroll */
+    /* Smooth in */
     .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease, transform .6s ease}
     .reveal.in{opacity:1;transform:none}
 
     /* Fallback dacă nu există video */
     .no-video .hero{background:radial-gradient(1200px 600px at 80% 20%, rgba(109,34,211,.35), transparent 60%),var(--bg)}
     .no-video .hero video{display:none}
+
+    /* Modal */
+    dialog{border:0;border-radius:16px;padding:0;background:#140b1f;color:var(--ink);box-shadow:var(--shadow)}
+    dialog::backdrop{background:rgba(0,0,0,.6)}
   </style>
 </head>
 <body>
@@ -114,14 +120,14 @@
   <header>
     <div class="wrap nav">
       <a class="brand" href="#" aria-label="Eva Voss Home">
-        <img id="logoImg" alt="Eva Voss" height="36" />
+        <img id="logoImg" src="logo-eva.png" alt="Eva Voss" height="36" />
         <span class="t">Eva Voss</span>
       </a>
       <nav class="actions" aria-label="Primary">
         <a class="pill ghost" href="#features" data-i18n="nav.features">Caracteristici</a>
         <a class="pill ghost" href="#pricing" data-i18n="nav.pricing">Prețuri</a>
+        <a class="pill ghost" href="#og" title="OG Generator">OG</a>
         <a class="pill primary" href="#join" data-i18n="nav.cta">Începe acum</a>
-        <a class="pill ghost" href="#og">OG</a>
         <span class="lang" role="group" aria-label="Language switcher">
           <button type="button" id="btnRO" aria-pressed="true">RO</button>
           <button type="button" id="btnEN" aria-pressed="false">EN</button>
@@ -132,8 +138,8 @@
 
   <!-- Hero -->
   <section class="hero" aria-label="Hero">
-    <video id="heroVideo" autoplay muted loop playsinline preload="auto">
-      <source id="heroSource" src="videos/hero-bg.mp4" type="video/mp4" />
+    <video id="heroVideo" autoplay muted loop playsinline preload="auto" poster="showcase.jpg">
+      <source id="heroSource" src="hero-bg.mp4" type="video/mp4" />
     </video>
     <div class="overlay" aria-hidden="true"></div>
     <div class="content wrap">
@@ -142,7 +148,7 @@
       <p class="lead" data-i18n="hero.lead">Conversații naturale, voce seducătoare, imagini și clipuri generate instant. Elegantă, realistă, disponibilă pe telefon, PC și web.</p>
       <div class="cta">
         <a class="pill primary" href="#pricing" data-i18n="hero.seePlans">Vezi planurile</a>
-        <a class="pill ghost" href="#demo" data-i18n="hero.watchDemo">Vezi demo</a>
+        <button class="pill ghost" id="openDemo" type="button" data-i18n="hero.watchDemo">Vezi demo</button>
       </div>
       <div class="badges">
         <span class="dot" aria-hidden="true"></span>
@@ -182,35 +188,21 @@
     </div>
   </section>
 
-  <!-- Demo -->
-  <section id="demo">
-    <div class="wrap">
-      <div class="showcase reveal">
-        <img src="images/showcase.jpg" alt="Captură interfață Eva Voss" loading="lazy" width="1200" height="675" />
-      </div>
-    </div>
-  </section>
+  <!-- Demo modal -->
+  <dialog id="demoModal" aria-label="Demo video">
+    <video controls playsinline style="width:clamp(280px,80vw,960px);height:auto;border-radius:16px;display:block">
+      <source src="hero-bg.mp4" type="video/mp4" />
+    </video>
+  </dialog>
 
   <!-- Social Proof / Highlights -->
   <section id="proof">
     <div class="wrap">
       <div class="grid cols-4 reveal">
-        <div class="card" style="padding:20px;text-align:center">
-          <div style="font-size:28px;font-weight:900">1s</div>
-          <div style="color:var(--muted)" data-i18n="proof.latency">Timp mediu de răspuns</div>
-        </div>
-        <div class="card" style="padding:20px;text-align:center">
-          <div style="font-size:28px;font-weight:900">4K</div>
-          <div style="color:var(--muted)" data-i18n="proof.images">Imagini/lună în planul Premium</div>
-        </div>
-        <div class="card" style="padding:20px;text-align:center">
-          <div style="font-size:28px;font-weight:900">60m</div>
-          <div style="color:var(--muted)" data-i18n="proof.video">Minute video AI / lună</div>
-        </div>
-        <div class="card" style="padding:20px;text-align:center">
-          <div style="font-size:28px;font-weight:900">24/7</div>
-          <div style="color:var(--muted)" data-i18n="proof.avail">Disponibilitate globală</div>
-        </div>
+        <div class="card" style="padding:20px;text-align:center"><div style="font-size:28px;font-weight:900">1s</div><div style="color:var(--muted)" data-i18n="proof.latency">Timp mediu de răspuns</div></div>
+        <div class="card" style="padding:20px;text-align:center"><div style="font-size:28px;font-weight:900">4K</div><div style="color:var(--muted)" data-i18n="proof.images">Imagini/lună în planul Premium</div></div>
+        <div class="card" style="padding:20px;text-align:center"><div style="font-size:28px;font-weight:900">60m</div><div style="color:var(--muted)" data-i18n="proof.video">Minute video AI / lună</div></div>
+        <div class="card" style="padding:20px;text-align:center"><div style="font-size:28px;font-weight:900">24/7</div><div style="color:var(--muted)" data-i18n="proof.avail">Disponibilitate globală</div></div>
       </div>
     </div>
   </section>
@@ -218,44 +210,45 @@
   <!-- Pricing -->
   <section id="pricing" class="pricing">
     <div class="wrap">
+      <div style="display:flex;justify-content:flex-end;gap:10px;margin-bottom:12px">
+        <span style="color:var(--muted)">Plată:</span>
+        <div class="lang" role="group" aria-label="Billing switch">
+          <button type="button" id="billMo" aria-pressed="true">Lunar</button>
+          <button type="button" id="billYr" aria-pressed="false">Anual <span style="opacity:.8">(-15%)</span></button>
+        </div>
+      </div>
       <div class="grid cols-3 reveal">
         <div class="card">
           <h3 data-i18n="pricing.s">Starter</h3>
-          <div class="price">€9<small data-i18n="pricing.mo">/lună</small></div>
+          <div class="price"><span class="p" data-price-month="9" data-price-year="92">€9</span><small data-i18n="pricing.mo">/lună</small></div>
           <ul class="incl">
             <li><span class="tick">✔</span> <span data-i18n="pricing.s1">Chat text nelimitat</span></li>
             <li><span class="tick">✔</span> <span data-i18n="pricing.s2">50 imagini/lună</span></li>
             <li><span class="tick">✔</span> <span data-i18n="pricing.s3">10 minute voce</span></li>
           </ul>
-          <div style="margin-top:18px">
-            <a class="pill primary" href="#join" data-i18n="pricing.chooseS">Alege Starter</a>
-          </div>
+          <div style="margin-top:18px"><a class="pill primary" href="#join" data-i18n="pricing.chooseS">Alege Starter</a></div>
         </div>
         <div class="card" style="outline:2px solid rgba(215,184,111,.35)">
           <h3 data-i18n="pricing.p">Premium</h3>
-          <div class="price">€29<small data-i18n="pricing.mo">/lună</small></div>
+          <div class="price"><span class="p" data-price-month="29" data-price-year="295">€29</span><small data-i18n="pricing.mo">/lună</small></div>
           <ul class="incl">
             <li><span class="tick">✔</span> <span data-i18n="pricing.p1">Chat nelimitat (text + voce)</span></li>
             <li><span class="tick">✔</span> <span data-i18n="pricing.p2">400 imagini/lună</span></li>
             <li><span class="tick">✔</span> <span data-i18n="pricing.p3">60 minute video AI</span></li>
             <li><span class="tick">✔</span> <span data-i18n="pricing.p4">Prioritate la generare</span></li>
           </ul>
-          <div style="margin-top:18px">
-            <a class="pill primary" href="#join" data-i18n="pricing.chooseP">Alege Premium</a>
-          </div>
+          <div style="margin-top:18px"><a class="pill primary" href="#join" data-i18n="pricing.chooseP">Alege Premium</a></div>
         </div>
         <div class="card">
           <h3 data-i18n="pricing.e">Elite</h3>
-          <div class="price">€79<small data-i18n="pricing.mo">/lună</small></div>
+          <div class="price"><span class="p" data-price-month="79" data-price-year="800">€79</span><small data-i18n="pricing.mo">/lună</small></div>
           <ul class="incl">
             <li><span class="tick">✔</span> <span data-i18n="pricing.e1">Tot din Premium</span></li>
             <li><span class="tick">✔</span> <span data-i18n="pricing.e2">1:1 scene personalizate</span></li>
             <li><span class="tick">✔</span> <span data-i18n="pricing.e3">Modele exclusive</span></li>
             <li><span class="tick">✔</span> <span data-i18n="pricing.e4">Suport prioritar</span></li>
           </ul>
-          <div style="margin-top:18px">
-            <a class="pill primary" href="#join" data-i18n="pricing.chooseE">Alege Elite</a>
-          </div>
+          <div style="margin-top:18px"><a class="pill primary" href="#join" data-i18n="pricing.chooseE">Alege Elite</a></div>
         </div>
       </div>
     </div>
@@ -265,18 +258,9 @@
   <section class="testi">
     <div class="wrap">
       <div class="grid cols-3 reveal">
-        <div class="card">
-          <div class="who"><div class="avatar"></div><div><strong>Alex</strong><div style="color:var(--muted)">Berlin</div></div></div>
-          <p style="margin:12px 0 0">„<span data-i18n="testi.t1">Pare reală. Vocea m-a surprins: caldă, naturală.</span>”</p>
-        </div>
-        <div class="card">
-          <div class="who"><div class="avatar"></div><div><strong>Mara</strong><div style="color:var(--muted)">Cluj</div></div></div>
-          <p style="margin:12px 0 0">„<span data-i18n="testi.t2">Imaginile ies premium. Mi-a generat un set în 30s.</span>”</p>
-        </div>
-        <div class="card">
-          <div class="who"><div class="avatar"></div><div><strong>Dan</strong><div style="color:var(--muted)">Timișoara</div></div></div>
-          <p style="margin:12px 0 0">„<span data-i18n="testi.t3">Răspunde politicos și ține minte preferințele mele.</span>”</p>
-        </div>
+        <div class="card"><div class="who"><div class="avatar"></div><div><strong>Alex</strong><div style="color:var(--muted)">Berlin</div></div></div><p style="margin:12px 0 0">„<span data-i18n="testi.t1">Pare reală. Vocea m-a surprins: caldă, naturală.</span>”</p></div>
+        <div class="card"><div class="who"><div class="avatar"></div><div><strong>Mara</strong><div style="color:var(--muted)">Cluj</div></div></div><p style="margin:12px 0 0">„<span data-i18n="testi.t2">Imaginile ies premium. Mi-a generat un set în 30s.</span>”</p></div>
+        <div class="card"><div class="who"><div class="avatar"></div><div><strong>Dan</strong><div style="color:var(--muted)">Timișoara</div></div></div><p style="margin:12px 0 0">„<span data-i18n="testi.t3">Răspunde politicos și ține minte preferințele mele.</span>”</p></div>
       </div>
     </div>
   </section>
@@ -300,28 +284,20 @@
         </div>
         <div class="card" style="padding:24px">
           <h3 data-i18n="faq.title">Întrebări rapide</h3>
-          <details>
-            <summary data-i18n="faq.q1">Este conținut real?</summary>
-            <p style="color:var(--muted)" data-i18n="faq.a1">Nu. Eva este 100% AI. Respectăm limitele de siguranță și regulile platformelor.</p>
-          </details>
-          <details>
-            <summary data-i18n="faq.q2">Pot cere scene personalizate?</summary>
-            <p style="color:var(--muted)" data-i18n="faq.a2">Da, în planurile Premium/Elite. Spui stilul, ținuta, atmosfera — Eva generează.</p>
-          </details>
-          <details>
-            <summary data-i18n="faq.q3">Cum anulez?</summary>
-            <p style="color:var(--muted)" data-i18n="faq.a3">Poți anula oricând din contul tău de pe platforma de plată.</p>
-          </details>
+          <details><summary data-i18n="faq.q1">Este conținut real?</summary><p style="color:var(--muted)" data-i18n="faq.a1">Nu. Eva este 100% AI. Respectăm limitele de siguranță și regulile platformelor.</p></details>
+          <details><summary data-i18n="faq.q2">Pot cere scene personalizate?</summary><p style="color:var(--muted)" data-i18n="faq.a2">Da, în planurile Premium/Elite. Spui stilul, ținuta, atmosfera — Eva generează.</p></details>
+          <details><summary data-i18n="faq.q3">Cum anulez?</summary><p style="color:var(--muted)" data-i18n="faq.a3">Poți anula oricând din contul tău de pe platforma de plată.</p></details>
         </div>
       </div>
     </div>
   </section>
-  <!-- OG Image Generator -->
+
+  <!-- OG Image Generator (improved) -->
   <section id="og" aria-label="OG Image Generator">
     <div class="wrap">
       <div class="card" style="padding:24px">
-        <h3 style="margin-top:0">Generator imagine OG (1200×630)</h3>
-        <p style="color:var(--muted);margin-top:6px">Generează rapid <code>og-eva.jpg</code> pentru share pe rețele & SEO. După descărcare, urcă fișierul în <strong>/images/og-eva.jpg</strong> în repo.</p>
+        <h3 style="margin-top:0">Generator imagine OG 1200×630 (v2)</h3>
+        <p style="color:var(--muted);margin-top:6px">Generează <code>og-eva.jpg</code> premium. Poți urca un fundal propriu și un logo custom. După descărcare, pune fișierul în <strong>/og-eva.jpg</strong> (root).</p>
         <div style="display:grid;gap:12px;grid-template-columns:1fr 1fr;align-items:start;margin-top:12px">
           <div style="display:grid;gap:10px">
             <label>Titlu
@@ -329,6 +305,12 @@
             </label>
             <label>Subtitlu
               <input id="ogSub" type="text" value="Premium AI • voice · image · video" style="width:100%;border-radius:10px;padding:10px 12px;border:1px solid rgba(255,255,255,.16);background:rgba(0,0,0,.2);color:var(--ink)" />
+            </label>
+            <label>Fundal (opțional)
+              <input id="ogBg" type="file" accept="image/*" />
+            </label>
+            <label>Logo (opțional)
+              <input id="ogLogo" type="file" accept="image/*" />
             </label>
             <label>Stil
               <select id="ogStyle" style="width:100%;border-radius:10px;padding:10px 12px;border:1px solid rgba(255,255,255,.16);background:rgba(0,0,0,.2);color:var(--ink)">
@@ -339,9 +321,11 @@
             </label>
             <div style="display:flex;gap:10px;flex-wrap:wrap">
               <button id="ogMake" class="pill primary" type="button">Generează</button>
-              <a id="ogDownload" class="pill ghost" href="#" download="og-eva.jpg">Descarcă JPG</a>
+              <a id="ogDownloadJpg" class="pill ghost" href="#" download="og-eva.jpg">Descarcă JPG</a>
+              <a id="ogDownloadPng" class="pill ghost" href="#" download="og-eva.png">Descarcă PNG</a>
+              <button id="ogCopyMeta" class="pill ghost" type="button">Copiază meta OG</button>
             </div>
-            <small style="color:var(--muted)">Sfaturi: text scurt (max 2 rânduri titlu). Video/imagini nu apar în OG — doar această grafică.</small>
+            <small style="color:var(--muted)">Sfat: păstrează titlul pe 1–2 rânduri. Poți folosi și emoji 😈✨</small>
           </div>
           <div>
             <div style="background:#0003;border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:8px">
@@ -354,71 +338,10 @@
     </div>
   </section>
 
-  <script>
-  (function(){
-    const W=1200,H=630;
-    const c=document.getElementById('ogc');
-    if(!c) return;
-    const ctx=c.getContext('2d');
-    const $=id=>document.getElementById(id);
-    c.width=W; c.height=H;
-
-    function wrapText(ctx, textStr, x, y, maxWidth, lineHeight){
-      const words=(textStr||'').split(' '); let line='';
-      for(let n=0;n<words.length;n++){
-        const test=line+words[n]+' ';
-        if(ctx.measureText(test).width>maxWidth && n>0){ ctx.fillText(line,x,y); line=words[n]+' '; y+=lineHeight; }
-        else line=test;
-      }
-      ctx.fillText(line,x,y);
-    }
-
-    async function loadFirstImage(paths){
-      for(const p of paths){
-        try{ await new Promise((res,rej)=>{ const i=new Image(); i.onload=()=>res(i); i.onerror=rej; i.src=p; }); return await new Promise(r=>{ const im=new Image(); im.onload=()=>r(im); im.src=p; }); }catch(e){}
-      }
-      return null;
-    }
-
-    function paintBG(style){
-      const g=ctx.createLinearGradient(0,0,W,H);
-      if(style==='royal'){ g.addColorStop(0,'#1a0826'); g.addColorStop(.6,'#6d22d3'); g.addColorStop(1,'#d7b86f'); }
-      else if(style==='noir'){ g.addColorStop(0,'#0b0611'); g.addColorStop(1,'#2b0a3d'); }
-      else { g.addColorStop(0,'#2b0a3d'); g.addColorStop(1,'#9b59ff'); }
-      ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
-      ctx.globalAlpha=.22; ctx.fillStyle:'#6d22d3'; ctx.beginPath(); ctx.arc(W*.8,H*.25,280,0,Math.PI*2); ctx.fill(); ctx.fillStyle='#d7b86f'; ctx.beginPath(); ctx.arc(W*.15,H*.8,220,0,Math.PI*2); ctx.fill(); ctx.globalAlpha=1;
-    }
-
-    async function draw(){
-      const title=$('ogTitle').value||'Eva Voss — AI Fantasy';
-      const sub=$('ogSub').value||'Premium AI • voice · image · video';
-      const style=$('ogStyle').value;
-      ctx.clearRect(0,0,W,H);
-      paintBG(style);
-      // logo optional
-      const logo=await loadFirstImage(['images/logo-eva.png','images/logo-eva.jpg']);
-      if(logo){ const lw=220; const lh=logo.height*(lw/logo.width); ctx.drawImage(logo,W-80-lw,60,lw,lh); }
-      // text
-      ctx.fillStyle='#f7f2ff'; ctx.shadowColor='rgba(0,0,0,.35)'; ctx.shadowBlur=24; ctx.shadowOffsetY=6;
-      ctx.font='700 84px Playfair Display, serif'; ctx.fillText(title,80,300,W-160);
-      ctx.shadowBlur=0; ctx.shadowOffsetY=0; ctx.fillStyle='#cdbde6'; ctx.font='800 28px Inter, system-ui';
-      wrapText(ctx, sub, 80, 360, W-160, 36);
-      // preview & download
-      const dataURL=c.toDataURL('image/jpeg', .92); $('ogPreview').src=dataURL; const dl=$('ogDownload'); dl.href=dataURL; dl.download='og-eva.jpg';
-    }
-
-    $('ogMake').addEventListener('click', draw);
-    draw();
-  })();
-  </script>
-
   <!-- Footer -->
   <footer>
     <div class="wrap" style="display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap">
-      <div>
-        <strong>Eva Voss</strong> — AI Fantasy Experience<br/>
-        <span>© <span id="y"></span> Eva Voss. Toate drepturile rezervate.</span>
-      </div>
+      <div><strong>Eva Voss</strong> — AI Fantasy Experience<br/>© <span id="y"></span> Eva Voss. Toate drepturile rezervate.</div>
       <div style="display:flex;gap:14px;flex-wrap:wrap">
         <a href="privacy.html">Privacy</a>
         <a href="terms.html">Terms</a>
@@ -440,7 +363,7 @@
   const io = new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('in')), {threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-  // -------- Smooth scroll for hash links --------
+  // -------- Smooth scroll --------
   document.querySelectorAll('a[href^="#"]').forEach(a=>{
     a.addEventListener('click', e=>{
       const id = a.getAttribute('href').slice(1);
@@ -449,39 +372,38 @@
     });
   });
 
-  // -------- Asset autodetect (logo + video) --------
-  (async () => {
-    const headCheck = async (url) => {
-      try { const r = await fetch(url, {method:'HEAD', cache:'no-store'}); return r.ok; } catch { return false; }
+  // -------- Video fallback --------
+  (function(){
+    const v=document.getElementById('heroVideo');
+    if(!v) return;
+    const ensure=()=>v.play&&v.play().catch(()=>{ document.body.classList.add('no-video'); });
+    v.addEventListener('error',()=>document.body.classList.add('no-video'));
+    document.addEventListener('visibilitychange',ensure,{passive:true});
+    window.addEventListener('pointerdown',ensure,{once:true,passive:true});
+    setTimeout(ensure,400);
+  })();
+
+  // -------- Demo modal --------
+  (function(){
+    const m=document.getElementById('demoModal');
+    document.getElementById('openDemo').addEventListener('click',()=>{ m.showModal(); });
+    m.addEventListener('click',e=>{ const r=m.getBoundingClientRect(); if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom) m.close();});
+  })();
+
+  // -------- Billing switch (month/year) --------
+  (function(){
+    const mo=document.getElementById('billMo'); const yr=document.getElementById('billYr');
+    const set=(year)=>{
+      mo.setAttribute('aria-pressed',!year); yr.setAttribute('aria-pressed',year);
+      document.querySelectorAll('.price .p').forEach(el=>{
+        const m=el.getAttribute('data-price-month'); const y=el.getAttribute('data-price-year');
+        el.textContent = '€'+(year?y:m);
+        el.nextElementSibling && (el.nextElementSibling.textContent = year?'/an':'/lună');
+      });
     };
-    const pick = async (cands) => { for (const u of cands) if (await headCheck(u)) return u; return null; };
-
-    // Logo: încercăm mai multe variante comune
-    const logoUrl = await pick([
-      'images/logo-eva.png','images/logo-eva.jpg','images/logo.png','images/logo.jpg','images/Logo-Eva.png','images/Logo-Eva.jpg'
-    ]);
-    const logoImg = document.getElementById('logoImg');
-    if (logoUrl && logoImg) { logoImg.src = logoUrl; }
-    else if (logoImg) {
-      // fallback SVG inline dacă nu găsește imaginea
-      logoImg.replaceWith(Object.assign(document.createElement('div'), {
-        innerHTML:`<svg width="120" height="28" viewBox="0 0 240 56" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#6d22d3"/><stop offset="100%" stop-color="#d7b86f"/></linearGradient></defs><text x="0" y="38" font-family="Inter, Arial" font-weight="900" font-size="36" fill="url(#g)">Eva Voss</text></svg>`
-      }));
-    }
-
-    // Video: încercăm nume posibile + fallback dacă nu e compatibil
-    const videoCands = ['videos/hero-bg.mp4','videos/hero_bg.mp4','videos/eva-voss-loop.mp4','videos/Hero-BG.mp4'];
-    const videoUrl = await pick(videoCands);
-    const v = document.getElementById('heroVideo');
-    const s = document.getElementById('heroSource');
-
-    if (videoUrl && v && s) {
-      s.src = videoUrl; v.load();
-      const played = v.play ? await v.play().catch(()=>false) : false;
-      if (played === false) document.body.classList.add('no-video');
-    } else {
-      document.body.classList.add('no-video');
-    }
+    mo.addEventListener('click',()=>set(false));
+    yr.addEventListener('click',()=>set(true));
+    set(false);
   })();
 
   // -------- Bilingual (RO/EN) --------
@@ -499,7 +421,7 @@
     },
     en:{
       'nav.features':'Features','nav.pricing':'Pricing','nav.cta':'Start now',
-      'hero.eyebrow':'Premium AI • voice + image + video','hero.title':'Eva Voss — <span style="color:var(--gold)">AI Fantasy</span> Experience','hero.lead':'Natural chats, alluring voice, instant images and short clips. Elegant, realistic, available on phone, PC and web.','hero.seePlans':'See plans','hero.watchDemo':'Watch demo','hero.badge1':'Online now • response < 1s','hero.badge2':'No real-person NSFW — generative AI',
+      'hero.eyebrow':'Premium AI • voice + image + video','hero.title':'Eva Voss — <span style=\"color:var(--gold)\">AI Fantasy</span> Experience','hero.lead':'Natural chats, alluring voice, instant images and short clips. Elegant, realistic, available on phone, PC and web.','hero.seePlans':'See plans','hero.watchDemo':'Watch demo','hero.badge1':'Online now • response < 1s','hero.badge2':'No real-person NSFW — generative AI',
       'features.v':'Realistic voice','features.vd':'Instant audio replies with subtle breaths and human-like tone. Great with headphones.','features.i':'Images & clips','features.id':'Fast image generation and short clips with a royal purple + gold premium style.','features.p':'Refined personality','features.pd':'Optional memory, safe limits, contextual responses. Elegant, playful, respectful.',
       'proof.latency':'Average response time','proof.images':'Images/month in Premium','proof.video':'AI video minutes / month','proof.avail':'Global availability',
       'pricing.s':'Starter','pricing.p':'Premium','pricing.e':'Elite','pricing.mo':'/mo','pricing.s1':'Unlimited text chat','pricing.s2':'50 images / month','pricing.s3':'10 minutes voice','pricing.p1':'Unlimited chat (text + voice)','pricing.p2':'400 images / month','pricing.p3':'60 minutes AI video','pricing.p4':'Priority generation','pricing.e1':'Everything in Premium','pricing.e2':'1:1 custom scenes','pricing.e3':'Exclusive models','pricing.e4':'Priority support','pricing.chooseS':'Choose Starter','pricing.chooseP':'Choose Premium','pricing.chooseE':'Choose Elite',
@@ -519,6 +441,71 @@
   document.getElementById('btnRO').addEventListener('click',()=>setLang('ro'));
   document.getElementById('btnEN').addEventListener('click',()=>setLang('en'));
   setLang(localStorage.getItem('eva_lang')||'ro');
+
+  // -------- OG Generator (v2) --------
+  (function(){
+    const W=1200,H=630; const c=document.getElementById('ogc'); if(!c) return; const ctx=c.getContext('2d'); const $=id=>document.getElementById(id);
+    c.width=W; c.height=H;
+    function wrapText(textStr,x,y,maxWidth,lineHeight,font){
+      ctx.font=font; const words=(textStr||'').split(' '); let line='';
+      for(let n=0;n<words.length;n++){
+        const test=line+words[n]+' ';
+        if(ctx.measureText(test).width>maxWidth && n>0){ ctx.fillText(line,x,y); line=words[n]+' '; y+=lineHeight; } else line=test;
+      }
+      ctx.fillText(line,x,y);
+    }
+    const imgFromFile=(file)=>new Promise((res,rej)=>{const r=new FileReader(); r.onload=()=>{const i=new Image(); i.onload=()=>res(i); i.onerror=rej; i.src=r.result;}; r.onerror=rej; r.readAsDataURL(file);});
+    const load = async (fileInput, fallbacks=[])=>{
+      if(fileInput.files && fileInput.files[0]) return await imgFromFile(fileInput.files[0]);
+      for(const p of fallbacks){ try{ await new Promise((r,j)=>{ const i=new Image(); i.onload=()=>r(i); i.onerror=j; i.src=p; }); const im=new Image(); im.src=p; await new Promise(r=>im.onload=r); return im; }catch(e){} }
+      return null;
+    };
+    function paintBG(style){
+      const g=ctx.createLinearGradient(0,0,W,H);
+      if(style==='royal'){ g.addColorStop(0,'#1a0826'); g.addColorStop(.55,'#6d22d3'); g.addColorStop(1,'#d7b86f'); }
+      else if(style==='noir'){ g.addColorStop(0,'#0b0611'); g.addColorStop(1,'#2b0a3d'); }
+      else { g.addColorStop(0,'#2b0a3d'); g.addColorStop(1,'#9b59ff'); }
+      ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
+      // soft glow orbs
+      ctx.globalAlpha=.20; ctx.fillStyle='#6d22d3'; ctx.beginPath(); ctx.arc(W*.8,H*.25,260,0,Math.PI*2); ctx.fill(); ctx.fillStyle='#d7b86f'; ctx.beginPath(); ctx.arc(W*.15,H*.8,200,0,Math.PI*2); ctx.fill(); ctx.globalAlpha=1;
+      // subtle noise
+      const noise=ctx.createLinearGradient(0,0,0,H); noise.addColorStop(0,'rgba(255,255,255,.03)'); noise.addColorStop(1,'rgba(0,0,0,.03)'); ctx.fillStyle=noise; ctx.fillRect(0,0,W,H);
+    }
+    async function draw(){
+      const title=$('ogTitle').value||'Eva Voss — AI Fantasy';
+      const sub=$('ogSub').value||'Premium AI • voice · image · video';
+      const style=$('ogStyle').value;
+      ctx.clearRect(0,0,W,H); paintBG(style);
+      // background image (optional, cover)
+      const bg=await load($('ogBg'), ['showcase.jpg']);
+      if(bg){
+        const r=Math.max(W/bg.width, H/bg.height);
+        const bw=bg.width*r, bh=bg.height*r; const bx=(W-bw)/2, by=(H-bh)/2;
+        ctx.globalAlpha=.28; ctx.drawImage(bg,bx,by,bw,bh); ctx.globalAlpha=1;
+      }
+      // brand stripe
+      ctx.fillStyle='rgba(0,0,0,.25)'; ctx.fillRect(0,H-84,W,84);
+      // logo (optional)
+      const logo=await load($('ogLogo'), ['logo-eva.png','logo-eva.jpg']);
+      if(logo){ const lw=220; const lh=logo.height*(lw/logo.width); ctx.drawImage(logo, W-80-lw, 36, lw, lh); }
+      // title & subtitle
+      ctx.shadowColor='rgba(0,0,0,.35)'; ctx.shadowBlur=24; ctx.shadowOffsetY=6; ctx.fillStyle='#f7f2ff';
+      ctx.font='700 84px Playfair Display, serif'; wrapText(title, 80, 300, W-160-260, 88, '700 84px Playfair Display, serif');
+      ctx.shadowBlur=0; ctx.shadowOffsetY=0; ctx.fillStyle='#cdbde6'; ctx.font='800 28px Inter, system-ui'; wrapText(sub, 80, 360, W-160, 36, '800 28px Inter, system-ui');
+      // export
+      const jpg=c.toDataURL('image/jpeg', .92); const png=c.toDataURL('image/png');
+      document.getElementById('ogPreview').src=jpg;
+      document.getElementById('ogDownloadJpg').href=jpg;
+      document.getElementById('ogDownloadPng').href=png;
+    }
+    document.getElementById('ogMake').addEventListener('click', draw);
+    // first render
+    draw();
+    document.getElementById('ogCopyMeta').addEventListener('click', async ()=>{
+      const meta=`<meta property="og:image" content="og-eva.jpg" />\n<meta name=\"twitter:image\" content=\"og-eva.jpg\" />`;
+      try{ await navigator.clipboard.writeText(meta); alert('Meta OG copiat în clipboard. Urcă og-eva.jpg în root.'); }catch{ alert('Nu am putut copia. Copiază manual:\n'+meta); }
+    });
+  })();
   </script>
 </body>
 </html>
