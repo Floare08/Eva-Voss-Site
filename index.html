@@ -1,20 +1,21 @@
-`<!doctype html>
-<html lang="ro">
+<!doctype html>
+<html lang="ro" data-theme="eva-voss">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Eva Voss — AI Fantasy Experience</title>
-  <meta name="description" content="Eva Voss: fată AI premium. Text, voce, imagine și video la cerere. Elegant, realist, rapid." />
+  <meta name="description" content="Eva Voss: fată AI premium. Text, voce, imagine & video generate instant. Elegantă, realistă, rapidă — optimizată pentru mobil și desktop." />
   <meta name="theme-color" content="#2b0a3d" />
+  <link rel="canonical" href="/" />
 
-  <!-- Open Graph / Twitter (opțional) -->
+  <!-- Open Graph / Twitter -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Eva Voss — AI Fantasy Experience" />
-  <meta property="og:description" content="Conversații, voce, imagini & video. Elegant. Realist. Rapid." />
+  <meta property="og:description" content="Conversații, voce, imagini & clipuri AI. Elegant. Realist. Rapid." />
   <meta property="og:image" content="images/og-eva.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Eva Voss — AI Fantasy Experience" />
-  <meta name="twitter:description" content="Conversații, voce, imagini & video. Elegant. Realist. Rapid." />
+  <meta name="twitter:description" content="Conversații, voce, imagini & clipuri AI. Elegant. Realist. Rapid." />
   <meta name="twitter:image" content="images/og-eva.jpg" />
 
   <!-- Icons (opțional) -->
@@ -27,167 +28,497 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 
   <style>
-    :root{--bg:#0b0611;--ink:#f7f2ff;--muted:#cdbde6;--gold:#d7b86f;--royal:#6d22d3;--card:#130a1d;--ok:#6fe3a1;--shadow:0 20px 60px rgba(0,0,0,.45);--r:18px;--R:28px}
+    :root{
+      --bg:#0b0611;--ink:#f7f2ff;--muted:#cdbde6;--gold:#d7b86f;--royal:#6d22d3;--card:#130a1d;--ok:#6fe3a1;--warn:#ffd36b;--shadow:0 20px 60px rgba(0,0,0,.45);--r:18px;--R:28px
+    }
     html,body{height:100%}
     body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:
       radial-gradient(1200px 600px at 80% 20%, rgba(109,34,211,.35), transparent 60%),
       radial-gradient(800px 400px at 10% 80%, rgba(215,184,111,.18), transparent 60%),var(--bg);
       color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-    .wrap{max-width:1150px;margin:0 auto;padding:0 20px}
-    header{position:sticky;top:0;z-index:40;backdrop-filter:blur(10px)}
+    .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+
+    /* Header */
+    header{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px)}
     .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}
     .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
-    .brand img{height:36px;width:auto;display:block;filter:drop-shadow(0 4px 16px rgba(215,184,111,.35))}
-    .brand .t{font-weight:800;letter-spacing:.3px;font-size:18px}
+    .brand .t{font-weight:900;letter-spacing:.3px;font-size:18px}
+    .brand img{height:36px;display:block;filter:drop-shadow(0 4px 16px rgba(215,184,111,.35))}
     .pill{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;text-decoration:none;font-weight:700}
     .pill.primary{background:linear-gradient(120deg,var(--royal),#9b59ff);color:#fff;box-shadow:var(--shadow)}
-    .pill.ghost{border:1px solid rgba(255,255,255,.12);color:var(--ink)}
-    .hero{position:relative;min-height:86vh;display:grid;place-items:center;overflow:hidden;border-bottom:1px solid rgba(255,255,255,.06)}
-    .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(1.2) contrast(1.02)}
+    .pill.ghost{border:1px solid rgba(255,255,255,.14);color:var(--ink)}
+    .lang{display:inline-flex;border:1px solid rgba(255,255,255,.14);border-radius:999px;overflow:hidden}
+    .lang button{background:transparent;color:var(--ink);padding:8px 12px;border:0;cursor:pointer}
+    .lang button[aria-pressed="true"]{background:rgba(255,255,255,.08)}
+
+    /* Hero */
+    .hero{position:relative;min-height:90vh;display:grid;place-items:center;overflow:hidden;border-bottom:1px solid rgba(255,255,255,.06)}
+    .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(1.1) contrast(1.02)}
     .overlay{position:absolute;inset:0;background:
       radial-gradient(1000px 500px at 80% 20%, rgba(109,34,211,.45), transparent 50%),
       linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.65) 60%, rgba(0,0,0,.85))}
-    .hero .content{position:relative;z-index:2;text-align:center;padding:80px 0}
+    .hero .content{position:relative;z-index:2;text-align:center;padding:90px 0}
     .eyebrow{display:inline-block;padding:8px 14px;border:1px solid rgba(255,255,255,.12);border-radius:999px;font-size:12px;letter-spacing:.5px;color:var(--muted)}
-    h1{font-family:"Playfair Display",serif;font-weight:700;font-size:clamp(38px,6vw,76px);line-height:1.05;margin:18px 0}
-    .lead{max-width:760px;margin:0 auto 26px;color:#efe7ff;font-size:clamp(16px,1.5vw,20px)}
-    .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+    h1{font-family:"Playfair Display",serif;font-weight:700;font-size:clamp(38px,6vw,80px);line-height:1.05;margin:18px 0}
+    .lead{max-width:780px;margin:0 auto 26px;color:#efe7ff;font-size:clamp(16px,1.5vw,20px)}
+    .badges{display:flex;gap:14px;justify-content:center;align-items:center;margin-top:22px;color:var(--muted);font-size:13px}
+    .dot{width:6px;height:6px;border-radius:50%;background:var(--ok);display:inline-block;box-shadow:0 0 0 4px rgba(111,227,161,.12)}
+
+    /* Sections */
     section{padding:80px 0}
     .card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.08);border-radius:var(--r);box-shadow:var(--shadow)}
     .grid{display:grid;gap:18px}
     .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+    .grid.cols-4{grid-template-columns:repeat(4,1fr)}
+    .grid.cols-2{grid-template-columns:repeat(2,1fr)}
+    @media (max-width:1000px){.grid.cols-4{grid-template-columns:repeat(2,1fr)}}
     @media (max-width:900px){.grid.cols-3{grid-template-columns:1fr 1fr}}
-    @media (max-width:640px){.grid.cols-3{grid-template-columns:1fr}}
+    @media (max-width:640px){.grid.cols-3,.grid.cols-4,.grid.cols-2{grid-template-columns:1fr}}
+
     .feature{padding:22px;display:flex;gap:16px;align-items:flex-start}
     .ico{flex:0 0 48px;height:48px;width:48px;border-radius:14px;display:grid;place-items:center;background:
-      radial-gradient(120px 120px at 30% 30%, rgba(215,184,111,.35), rgba(109,34,211,.35));
-      border:1px solid rgba(255,255,255,.14)}
+      radial-gradient(120px 120px at 30% 30%, rgba(215,184,111,.35), rgba(109,34,211,.35));border:1px solid rgba(255,255,255,.14)}
     .feature h3{margin:2px 0 6px;font-size:18px}
     .feature p{margin:0;color:var(--muted)}
+
     .showcase{position:relative;overflow:hidden;border-radius:var(--R);border:1px solid rgba(255,255,255,.08)}
     .showcase img{width:100%;display:block}
+
     .pricing .card{padding:26px}
     .price{font-size:36px;font-weight:900}
     .price small{font-size:14px;color:var(--muted);font-weight:600}
     .incl{margin:16px 0 0;padding:0;list-style:none}
     .incl li{margin:10px 0;display:flex;gap:10px;align-items:flex-start;color:#efe7ff}
     .incl li .tick{color:var(--ok);font-weight:900}
+
+    .testi .card{padding:20px}
+    .testi .who{display:flex;align-items:center;gap:12px}
+    .avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(120deg,var(--royal),#9b59ff)}
+
+    .cta-sticky{position:fixed;right:16px;bottom:16px;z-index:60}
+
     footer{padding:40px 0 60px;color:var(--muted);font-size:14px}
     footer a{color:var(--ink);text-decoration:none}
+
+    /* Apare frumos la scroll */
+    .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease, transform .6s ease}
+    .reveal.in{opacity:1;transform:none}
+
+    /* Fallback dacă nu există video */
+    .no-video .hero{background:radial-gradient(1200px 600px at 80% 20%, rgba(109,34,211,.35), transparent 60%),var(--bg)}
+    .no-video .hero video{display:none}
   </style>
 </head>
 <body>
+  <!-- Header -->
   <header>
     <div class="wrap nav">
-      <a class="brand" href="/" aria-label="Eva Voss Home">
-        <img alt="Logo Eva Voss" height="36" />
+      <a class="brand" href="#" aria-label="Eva Voss Home">
+        <img id="logoImg" alt="Eva Voss" height="36" />
         <span class="t">Eva Voss</span>
       </a>
-      <nav class="actions">
-        <a class="pill ghost" href="#features">Caracteristici</a>
-        <a class="pill ghost" href="#pricing">Prețuri</a>
-        <a class="pill primary" href="https://gumroad.com" target="_blank" rel="noopener">Începe acum</a>
+      <nav class="actions" aria-label="Primary">
+        <a class="pill ghost" href="#features" data-i18n="nav.features">Caracteristici</a>
+        <a class="pill ghost" href="#pricing" data-i18n="nav.pricing">Prețuri</a>
+        <a class="pill primary" href="#join" data-i18n="nav.cta">Începe acum</a>
+        <a class="pill ghost" href="#og">OG</a>
+        <span class="lang" role="group" aria-label="Language switcher">
+          <button type="button" id="btnRO" aria-pressed="true">RO</button>
+          <button type="button" id="btnEN" aria-pressed="false">EN</button>
+        </span>
       </nav>
     </div>
   </header>
 
-  <section class="hero" aria-label="Hero video">
-    <video id="heroVideo" autoplay muted loop playsinline preload="auto" aria-hidden="true">
-      <source src="videos/hero-bg.mp4" type="video/mp4" />
+  <!-- Hero -->
+  <section class="hero" aria-label="Hero">
+    <video id="heroVideo" autoplay muted loop playsinline preload="auto">
+      <source id="heroSource" src="videos/hero-bg.mp4" type="video/mp4" />
     </video>
     <div class="overlay" aria-hidden="true"></div>
     <div class="content wrap">
-      <span class="eyebrow">AI premium • voce + imagine + video</span>
-      <h1>Eva Voss — <span style="color:var(--gold)">AI Fantasy</span> Experience</h1>
-      <p class="lead">Conversații naturale, voce seducătoare, imagini și clipuri generate instant. Elegantă, realistă, disponibilă pe telefon, PC și web.</p>
+      <span class="eyebrow" data-i18n="hero.eyebrow">AI premium • voce + imagine + video</span>
+      <h1 data-i18n="hero.title">Eva Voss — <span style="color:var(--gold)">AI Fantasy</span> Experience</h1>
+      <p class="lead" data-i18n="hero.lead">Conversații naturale, voce seducătoare, imagini și clipuri generate instant. Elegantă, realistă, disponibilă pe telefon, PC și web.</p>
       <div class="cta">
-        <a class="pill primary" href="#pricing">Vezi planurile</a>
-        <a class="pill ghost" href="#demo">Vezi demo</a>
+        <a class="pill primary" href="#pricing" data-i18n="hero.seePlans">Vezi planurile</a>
+        <a class="pill ghost" href="#demo" data-i18n="hero.watchDemo">Vezi demo</a>
+      </div>
+      <div class="badges">
+        <span class="dot" aria-hidden="true"></span>
+        <span data-i18n="hero.badge1">Online acum • răspuns &lt; 1s</span>
+        <span>•</span>
+        <span data-i18n="hero.badge2">Fără NSFW real — AI generativ</span>
       </div>
     </div>
   </section>
 
+  <!-- Features -->
   <section id="features">
     <div class="wrap">
-      <div class="grid cols-3">
-        <div class="feature card"><div class="ico">🎙️</div><div><h3>Voce realistă</h3><p>Răspuns audio instant, intonație umană. Perfect pe telefon.</p></div></div>
-        <div class="feature card"><div class="ico">🖼️</div><div><h3>Imagini & clipuri</h3><p>Generare rapidă de imagini și scurte clipuri, stil premium.</p></div></div>
-        <div class="feature card"><div class="ico">🧠</div><div><h3>Personalitate fină</h3><p>Memorie opțională, limite sigure, răspunsuri contextuale.</p></div></div>
+      <div class="grid cols-3 reveal">
+        <div class="feature card">
+          <div class="ico">🎙️</div>
+          <div>
+            <h3 data-i18n="features.v">Voce realistă</h3>
+            <p data-i18n="features.vd">Răspuns audio instant, respirație subtilă și intonație umană. Perfect pentru căști.</p>
+          </div>
+        </div>
+        <div class="feature card">
+          <div class="ico">🖼️</div>
+          <div>
+            <h3 data-i18n="features.i">Imagini & clipuri</h3>
+            <p data-i18n="features.id">Generare rapidă de imagini și scurte clipuri, cu stil premium (mov regal + auriu).</p>
+          </div>
+        </div>
+        <div class="feature card">
+          <div class="ico">🧠</div>
+          <div>
+            <h3 data-i18n="features.p">Personalitate fină</h3>
+            <p data-i18n="features.pd">Memorie opțională, limite sigure, răspunsuri contextuale. Elegantă, jucăușă, respectuoasă.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- Demo -->
   <section id="demo">
     <div class="wrap">
-      <div class="showcase">
+      <div class="showcase reveal">
         <img src="images/showcase.jpg" alt="Captură interfață Eva Voss" loading="lazy" width="1200" height="675" />
       </div>
     </div>
   </section>
 
-  <section id="pricing" class="pricing">
+  <!-- Social Proof / Highlights -->
+  <section id="proof">
     <div class="wrap">
-      <div class="grid cols-3">
-        <div class="card">
-          <h3>Starter</h3>
-          <div class="price">€9<small>/lună</small></div>
-          <ul class="incl">
-            <li><span class="tick">✔</span> Chat text nelimitat</li>
-            <li><span class="tick">✔</span> 50 imagini/lună</li>
-            <li><span class="tick">✔</span> 10 minute voce</li>
-          </ul>
-          <div style="margin-top:18px"><a class="pill primary" href="https://gumroad.com" target="_blank" rel="noopener">Alege Starter</a></div>
+      <div class="grid cols-4 reveal">
+        <div class="card" style="padding:20px;text-align:center">
+          <div style="font-size:28px;font-weight:900">1s</div>
+          <div style="color:var(--muted)" data-i18n="proof.latency">Timp mediu de răspuns</div>
         </div>
-        <div class="card" style="outline:2px solid rgba(215,184,111,.35)">
-          <h3>Premium</h3>
-          <div class="price">€29<small>/lună</small></div>
-          <ul class="incl">
-            <li><span class="tick">✔</span> Chat nelimitat (text + voce)</li>
-            <li><span class="tick">✔</span> 400 imagini/lună</li>
-            <li><span class="tick">✔</span> 60 minute video AI</li>
-            <li><span class="tick">✔</span> Prioritate la generare</li>
-          </ul>
-          <div style="margin-top:18px"><a class="pill primary" href="https://gumroad.com" target="_blank" rel="noopener">Alege Premium</a></div>
+        <div class="card" style="padding:20px;text-align:center">
+          <div style="font-size:28px;font-weight:900">4K</div>
+          <div style="color:var(--muted)" data-i18n="proof.images">Imagini/lună în planul Premium</div>
         </div>
-        <div class="card">
-          <h3>Elite</h3>
-          <div class="price">€79<small>/lună</small></div>
-          <ul class="incl">
-            <li><span class="tick">✔</span> Tot din Premium</li>
-            <li><span class="tick">✔</span> 1:1 scene personalizate</li>
-            <li><span class="tick">✔</span> Acces la modele exclusive</li>
-            <li><span class="tick">✔</span> Suport prioritar</li>
-          </ul>
-          <div style="margin-top:18px"><a class="pill primary" href="https://gumroad.com" target="_blank" rel="noopener">Alege Elite</a></div>
+        <div class="card" style="padding:20px;text-align:center">
+          <div style="font-size:28px;font-weight:900">60m</div>
+          <div style="color:var(--muted)" data-i18n="proof.video">Minute video AI / lună</div>
+        </div>
+        <div class="card" style="padding:20px;text-align:center">
+          <div style="font-size:28px;font-weight:900">24/7</div>
+          <div style="color:var(--muted)" data-i18n="proof.avail">Disponibilitate globală</div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Pricing -->
+  <section id="pricing" class="pricing">
+    <div class="wrap">
+      <div class="grid cols-3 reveal">
+        <div class="card">
+          <h3 data-i18n="pricing.s">Starter</h3>
+          <div class="price">€9<small data-i18n="pricing.mo">/lună</small></div>
+          <ul class="incl">
+            <li><span class="tick">✔</span> <span data-i18n="pricing.s1">Chat text nelimitat</span></li>
+            <li><span class="tick">✔</span> <span data-i18n="pricing.s2">50 imagini/lună</span></li>
+            <li><span class="tick">✔</span> <span data-i18n="pricing.s3">10 minute voce</span></li>
+          </ul>
+          <div style="margin-top:18px">
+            <a class="pill primary" href="#join" data-i18n="pricing.chooseS">Alege Starter</a>
+          </div>
+        </div>
+        <div class="card" style="outline:2px solid rgba(215,184,111,.35)">
+          <h3 data-i18n="pricing.p">Premium</h3>
+          <div class="price">€29<small data-i18n="pricing.mo">/lună</small></div>
+          <ul class="incl">
+            <li><span class="tick">✔</span> <span data-i18n="pricing.p1">Chat nelimitat (text + voce)</span></li>
+            <li><span class="tick">✔</span> <span data-i18n="pricing.p2">400 imagini/lună</span></li>
+            <li><span class="tick">✔</span> <span data-i18n="pricing.p3">60 minute video AI</span></li>
+            <li><span class="tick">✔</span> <span data-i18n="pricing.p4">Prioritate la generare</span></li>
+          </ul>
+          <div style="margin-top:18px">
+            <a class="pill primary" href="#join" data-i18n="pricing.chooseP">Alege Premium</a>
+          </div>
+        </div>
+        <div class="card">
+          <h3 data-i18n="pricing.e">Elite</h3>
+          <div class="price">€79<small data-i18n="pricing.mo">/lună</small></div>
+          <ul class="incl">
+            <li><span class="tick">✔</span> <span data-i18n="pricing.e1">Tot din Premium</span></li>
+            <li><span class="tick">✔</span> <span data-i18n="pricing.e2">1:1 scene personalizate</span></li>
+            <li><span class="tick">✔</span> <span data-i18n="pricing.e3">Modele exclusive</span></li>
+            <li><span class="tick">✔</span> <span data-i18n="pricing.e4">Suport prioritar</span></li>
+          </ul>
+          <div style="margin-top:18px">
+            <a class="pill primary" href="#join" data-i18n="pricing.chooseE">Alege Elite</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testi">
+    <div class="wrap">
+      <div class="grid cols-3 reveal">
+        <div class="card">
+          <div class="who"><div class="avatar"></div><div><strong>Alex</strong><div style="color:var(--muted)">Berlin</div></div></div>
+          <p style="margin:12px 0 0">„<span data-i18n="testi.t1">Pare reală. Vocea m-a surprins: caldă, naturală.</span>”</p>
+        </div>
+        <div class="card">
+          <div class="who"><div class="avatar"></div><div><strong>Mara</strong><div style="color:var(--muted)">Cluj</div></div></div>
+          <p style="margin:12px 0 0">„<span data-i18n="testi.t2">Imaginile ies premium. Mi-a generat un set în 30s.</span>”</p>
+        </div>
+        <div class="card">
+          <div class="who"><div class="avatar"></div><div><strong>Dan</strong><div style="color:var(--muted)">Timișoara</div></div></div>
+          <p style="margin:12px 0 0">„<span data-i18n="testi.t3">Răspunde politicos și ține minte preferințele mele.</span>”</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Join / Subscribe (Netlify Forms) -->
+  <section id="join">
+    <div class="wrap">
+      <div class="grid cols-2 reveal">
+        <div class="card" style="padding:24px">
+          <h3 data-i18n="join.title">Intră pe listă & primește acces</h3>
+          <p style="color:var(--muted)" data-i18n="join.desc">Primești link-ul de acces + 5 imagini bonus la activare.</p>
+          <form name="subscribe" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="subscribe" />
+            <p style="display:none"><label>Don’t fill this out: <input name="bot-field" /></label></p>
+            <div style="display:grid;gap:10px;grid-template-columns:1fr auto">
+              <input name="email" type="email" required placeholder="email@exemplu.com" aria-label="Email" style="border-radius:999px;padding:12px 14px;border:1px solid rgba(255,255,255,.16);background:rgba(0,0,0,.2);color:var(--ink)" />
+              <button class="pill primary" type="submit" data-i18n="join.btn">Mă înscriu</button>
+            </div>
+            <small style="display:block;margin-top:10px;color:var(--muted)" data-i18n="join.note">Respectăm confidențialitatea. Te poți dezabona oricând.</small>
+          </form>
+        </div>
+        <div class="card" style="padding:24px">
+          <h3 data-i18n="faq.title">Întrebări rapide</h3>
+          <details>
+            <summary data-i18n="faq.q1">Este conținut real?</summary>
+            <p style="color:var(--muted)" data-i18n="faq.a1">Nu. Eva este 100% AI. Respectăm limitele de siguranță și regulile platformelor.</p>
+          </details>
+          <details>
+            <summary data-i18n="faq.q2">Pot cere scene personalizate?</summary>
+            <p style="color:var(--muted)" data-i18n="faq.a2">Da, în planurile Premium/Elite. Spui stilul, ținuta, atmosfera — Eva generează.</p>
+          </details>
+          <details>
+            <summary data-i18n="faq.q3">Cum anulez?</summary>
+            <p style="color:var(--muted)" data-i18n="faq.a3">Poți anula oricând din contul tău de pe platforma de plată.</p>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- OG Image Generator -->
+  <section id="og" aria-label="OG Image Generator">
+    <div class="wrap">
+      <div class="card" style="padding:24px">
+        <h3 style="margin-top:0">Generator imagine OG (1200×630)</h3>
+        <p style="color:var(--muted);margin-top:6px">Generează rapid <code>og-eva.jpg</code> pentru share pe rețele & SEO. După descărcare, urcă fișierul în <strong>/images/og-eva.jpg</strong> în repo.</p>
+        <div style="display:grid;gap:12px;grid-template-columns:1fr 1fr;align-items:start;margin-top:12px">
+          <div style="display:grid;gap:10px">
+            <label>Titlu
+              <input id="ogTitle" type="text" value="Eva Voss — AI Fantasy" style="width:100%;border-radius:10px;padding:10px 12px;border:1px solid rgba(255,255,255,.16);background:rgba(0,0,0,.2);color:var(--ink)" />
+            </label>
+            <label>Subtitlu
+              <input id="ogSub" type="text" value="Premium AI • voice · image · video" style="width:100%;border-radius:10px;padding:10px 12px;border:1px solid rgba(255,255,255,.16);background:rgba(0,0,0,.2);color:var(--ink)" />
+            </label>
+            <label>Stil
+              <select id="ogStyle" style="width:100%;border-radius:10px;padding:10px 12px;border:1px solid rgba(255,255,255,.16);background:rgba(0,0,0,.2);color:var(--ink)">
+                <option value="royal" selected>Royal (mov + auriu)</option>
+                <option value="noir">Noir (mov închis)</option>
+                <option value="vivid">Vivid (mov saturat)</option>
+              </select>
+            </label>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <button id="ogMake" class="pill primary" type="button">Generează</button>
+              <a id="ogDownload" class="pill ghost" href="#" download="og-eva.jpg">Descarcă JPG</a>
+            </div>
+            <small style="color:var(--muted)">Sfaturi: text scurt (max 2 rânduri titlu). Video/imagini nu apar în OG — doar această grafică.</small>
+          </div>
+          <div>
+            <div style="background:#0003;border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:8px">
+              <img id="ogPreview" alt="Previzualizare OG" style="width:100%;border-radius:8px;display:block" />
+            </div>
+          </div>
+        </div>
+        <canvas id="ogc" width="1200" height="630" style="display:none"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <script>
+  (function(){
+    const W=1200,H=630;
+    const c=document.getElementById('ogc');
+    if(!c) return;
+    const ctx=c.getContext('2d');
+    const $=id=>document.getElementById(id);
+    c.width=W; c.height=H;
+
+    function wrapText(ctx, textStr, x, y, maxWidth, lineHeight){
+      const words=(textStr||'').split(' '); let line='';
+      for(let n=0;n<words.length;n++){
+        const test=line+words[n]+' ';
+        if(ctx.measureText(test).width>maxWidth && n>0){ ctx.fillText(line,x,y); line=words[n]+' '; y+=lineHeight; }
+        else line=test;
+      }
+      ctx.fillText(line,x,y);
+    }
+
+    async function loadFirstImage(paths){
+      for(const p of paths){
+        try{ await new Promise((res,rej)=>{ const i=new Image(); i.onload=()=>res(i); i.onerror=rej; i.src=p; }); return await new Promise(r=>{ const im=new Image(); im.onload=()=>r(im); im.src=p; }); }catch(e){}
+      }
+      return null;
+    }
+
+    function paintBG(style){
+      const g=ctx.createLinearGradient(0,0,W,H);
+      if(style==='royal'){ g.addColorStop(0,'#1a0826'); g.addColorStop(.6,'#6d22d3'); g.addColorStop(1,'#d7b86f'); }
+      else if(style==='noir'){ g.addColorStop(0,'#0b0611'); g.addColorStop(1,'#2b0a3d'); }
+      else { g.addColorStop(0,'#2b0a3d'); g.addColorStop(1,'#9b59ff'); }
+      ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
+      ctx.globalAlpha=.22; ctx.fillStyle:'#6d22d3'; ctx.beginPath(); ctx.arc(W*.8,H*.25,280,0,Math.PI*2); ctx.fill(); ctx.fillStyle='#d7b86f'; ctx.beginPath(); ctx.arc(W*.15,H*.8,220,0,Math.PI*2); ctx.fill(); ctx.globalAlpha=1;
+    }
+
+    async function draw(){
+      const title=$('ogTitle').value||'Eva Voss — AI Fantasy';
+      const sub=$('ogSub').value||'Premium AI • voice · image · video';
+      const style=$('ogStyle').value;
+      ctx.clearRect(0,0,W,H);
+      paintBG(style);
+      // logo optional
+      const logo=await loadFirstImage(['images/logo-eva.png','images/logo-eva.jpg']);
+      if(logo){ const lw=220; const lh=logo.height*(lw/logo.width); ctx.drawImage(logo,W-80-lw,60,lw,lh); }
+      // text
+      ctx.fillStyle='#f7f2ff'; ctx.shadowColor='rgba(0,0,0,.35)'; ctx.shadowBlur=24; ctx.shadowOffsetY=6;
+      ctx.font='700 84px Playfair Display, serif'; ctx.fillText(title,80,300,W-160);
+      ctx.shadowBlur=0; ctx.shadowOffsetY=0; ctx.fillStyle='#cdbde6'; ctx.font='800 28px Inter, system-ui';
+      wrapText(ctx, sub, 80, 360, W-160, 36);
+      // preview & download
+      const dataURL=c.toDataURL('image/jpeg', .92); $('ogPreview').src=dataURL; const dl=$('ogDownload'); dl.href=dataURL; dl.download='og-eva.jpg';
+    }
+
+    $('ogMake').addEventListener('click', draw);
+    draw();
+  })();
+  </script>
+
+  <!-- Footer -->
   <footer>
     <div class="wrap" style="display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap">
-      <div><strong>Eva Voss</strong> — AI Fantasy Experience<br/>© <span id="y"></span> Eva Voss. Toate drepturile rezervate.</div>
-      <div style="display:flex;gap:14px">
+      <div>
+        <strong>Eva Voss</strong> — AI Fantasy Experience<br/>
+        <span>© <span id="y"></span> Eva Voss. Toate drepturile rezervate.</span>
+      </div>
+      <div style="display:flex;gap:14px;flex-wrap:wrap">
         <a href="privacy.html">Privacy</a>
         <a href="terms.html">Terms</a>
+        <a href="#join" class="pill ghost" data-i18n="footer.join">Înscrie-te</a>
       </div>
     </div>
   </footer>
 
+  <!-- Floating CTA -->
+  <div class="cta-sticky">
+    <a class="pill primary" href="#join" aria-label="Join">✨ <span data-i18n="float.cta">Acces rapid</span></a>
+  </div>
+
   <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-    const v=document.getElementById('heroVideo');
-    const tryPlay=()=>v&&v.play&&v.play().catch(()=>{});
-    document.addEventListener('visibilitychange',tryPlay,{passive:true});
-    window.addEventListener('pointerdown',tryPlay,{once:true,passive:true});
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click',e=>{
-        const id=a.getAttribute('href').slice(1);
-        const el=document.getElementById(id);
-        if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});}
-      });
+  // -------- Year --------
+  document.getElementById('y').textContent = new Date().getFullYear();
+
+  // -------- Reveal on scroll --------
+  const io = new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('in')), {threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // -------- Smooth scroll for hash links --------
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', e=>{
+      const id = a.getAttribute('href').slice(1);
+      const el = document.getElementById(id) || document.querySelector(`[id='${id}']`) || document.querySelector(`[name='${id}']`);
+      if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); }
     });
+  });
+
+  // -------- Asset autodetect (logo + video) --------
+  (async () => {
+    const headCheck = async (url) => {
+      try { const r = await fetch(url, {method:'HEAD', cache:'no-store'}); return r.ok; } catch { return false; }
+    };
+    const pick = async (cands) => { for (const u of cands) if (await headCheck(u)) return u; return null; };
+
+    // Logo: încercăm mai multe variante comune
+    const logoUrl = await pick([
+      'images/logo-eva.png','images/logo-eva.jpg','images/logo.png','images/logo.jpg','images/Logo-Eva.png','images/Logo-Eva.jpg'
+    ]);
+    const logoImg = document.getElementById('logoImg');
+    if (logoUrl && logoImg) { logoImg.src = logoUrl; }
+    else if (logoImg) {
+      // fallback SVG inline dacă nu găsește imaginea
+      logoImg.replaceWith(Object.assign(document.createElement('div'), {
+        innerHTML:`<svg width="120" height="28" viewBox="0 0 240 56" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#6d22d3"/><stop offset="100%" stop-color="#d7b86f"/></linearGradient></defs><text x="0" y="38" font-family="Inter, Arial" font-weight="900" font-size="36" fill="url(#g)">Eva Voss</text></svg>`
+      }));
+    }
+
+    // Video: încercăm nume posibile + fallback dacă nu e compatibil
+    const videoCands = ['videos/hero-bg.mp4','videos/hero_bg.mp4','videos/eva-voss-loop.mp4','videos/Hero-BG.mp4'];
+    const videoUrl = await pick(videoCands);
+    const v = document.getElementById('heroVideo');
+    const s = document.getElementById('heroSource');
+
+    if (videoUrl && v && s) {
+      s.src = videoUrl; v.load();
+      const played = v.play ? await v.play().catch(()=>false) : false;
+      if (played === false) document.body.classList.add('no-video');
+    } else {
+      document.body.classList.add('no-video');
+    }
+  })();
+
+  // -------- Bilingual (RO/EN) --------
+  const T = {
+    ro:{
+      'nav.features':'Caracteristici','nav.pricing':'Prețuri','nav.cta':'Începe acum',
+      'hero.eyebrow':'AI premium • voce + imagine + video','hero.title':'Eva Voss — <span style="color:var(--gold)">AI Fantasy</span> Experience','hero.lead':'Conversații naturale, voce seducătoare, imagini și clipuri generate instant. Elegantă, realistă, disponibilă pe telefon, PC și web.','hero.seePlans':'Vezi planurile','hero.watchDemo':'Vezi demo','hero.badge1':'Online acum • răspuns < 1s','hero.badge2':'Fără NSFW real — AI generativ',
+      'features.v':'Voce realistă','features.vd':'Răspuns audio instant, respirație subtilă și intonație umană. Perfect pentru căști.','features.i':'Imagini & clipuri','features.id':'Generare rapidă de imagini și scurte clipuri, cu stil premium (mov regal + auriu).','features.p':'Personalitate fină','features.pd':'Memorie opțională, limite sigure, răspunsuri contextuale. Elegantă, jucăușă, respectuoasă.',
+      'proof.latency':'Timp mediu de răspuns','proof.images':'Imagini/lună în planul Premium','proof.video':'Minute video AI / lună','proof.avail':'Disponibilitate globală',
+      'pricing.s':'Starter','pricing.p':'Premium','pricing.e':'Elite','pricing.mo':'/lună','pricing.s1':'Chat text nelimitat','pricing.s2':'50 imagini/lună','pricing.s3':'10 minute voce','pricing.p1':'Chat nelimitat (text + voce)','pricing.p2':'400 imagini/lună','pricing.p3':'60 minute video AI','pricing.p4':'Prioritate la generare','pricing.e1':'Tot din Premium','pricing.e2':'1:1 scene personalizate','pricing.e3':'Modele exclusive','pricing.e4':'Suport prioritar','pricing.chooseS':'Alege Starter','pricing.chooseP':'Alege Premium','pricing.chooseE':'Alege Elite',
+      'testi.t1':'Pare reală. Vocea m-a surprins: caldă, naturală.','testi.t2':'Imaginile ies premium. Mi-a generat un set în 30s.','testi.t3':'Răspunde politicos și ține minte preferințele mele.',
+      'join.title':'Intră pe listă & primește acces','join.desc':'Primești link-ul de acces + 5 imagini bonus la activare.','join.btn':'Mă înscriu','join.note':'Respectăm confidențialitatea. Te poți dezabona oricând.',
+      'faq.title':'Întrebări rapide','faq.q1':'Este conținut real?','faq.a1':'Nu. Eva este 100% AI. Respectăm limitele de siguranță și regulile platformelor.','faq.q2':'Pot cere scene personalizate?','faq.a2':'Da, în planurile Premium/Elite. Spui stilul, ținuta, atmosfera — Eva generează.','faq.q3':'Cum anulez?','faq.a3':'Poți anula oricând din contul tău de pe platforma de plată.',
+      'footer.join':'Înscrie-te','float.cta':'Acces rapid'
+    },
+    en:{
+      'nav.features':'Features','nav.pricing':'Pricing','nav.cta':'Start now',
+      'hero.eyebrow':'Premium AI • voice + image + video','hero.title':'Eva Voss — <span style="color:var(--gold)">AI Fantasy</span> Experience','hero.lead':'Natural chats, alluring voice, instant images and short clips. Elegant, realistic, available on phone, PC and web.','hero.seePlans':'See plans','hero.watchDemo':'Watch demo','hero.badge1':'Online now • response < 1s','hero.badge2':'No real-person NSFW — generative AI',
+      'features.v':'Realistic voice','features.vd':'Instant audio replies with subtle breaths and human-like tone. Great with headphones.','features.i':'Images & clips','features.id':'Fast image generation and short clips with a royal purple + gold premium style.','features.p':'Refined personality','features.pd':'Optional memory, safe limits, contextual responses. Elegant, playful, respectful.',
+      'proof.latency':'Average response time','proof.images':'Images/month in Premium','proof.video':'AI video minutes / month','proof.avail':'Global availability',
+      'pricing.s':'Starter','pricing.p':'Premium','pricing.e':'Elite','pricing.mo':'/mo','pricing.s1':'Unlimited text chat','pricing.s2':'50 images / month','pricing.s3':'10 minutes voice','pricing.p1':'Unlimited chat (text + voice)','pricing.p2':'400 images / month','pricing.p3':'60 minutes AI video','pricing.p4':'Priority generation','pricing.e1':'Everything in Premium','pricing.e2':'1:1 custom scenes','pricing.e3':'Exclusive models','pricing.e4':'Priority support','pricing.chooseS':'Choose Starter','pricing.chooseP':'Choose Premium','pricing.chooseE':'Choose Elite',
+      'testi.t1':'Feels real. The voice surprised me: warm, natural.','testi.t2':'Images look premium. Generated a set in 30s.','testi.t3':'Polite responses and it remembers my preferences.',
+      'join.title':'Join the list & get access','join.desc':'Get your access link + 5 bonus images on activation.','join.btn':'Join now','join.note':'We respect privacy. Unsubscribe anytime.',
+      'faq.title':'Quick questions','faq.q1':'Is the content real?','faq.a1':'No. Eva is 100% AI. We follow safety rules and platform policies.','faq.q2':'Can I request custom scenes?','faq.a2':'Yes, in Premium/Elite. Tell the style, outfit, mood — Eva generates.','faq.q3':'How do I cancel?','faq.a3':'Cancel anytime from your payment platform account.',
+      'footer.join':'Join','float.cta':'Quick access'
+    }
+  };
+  function setLang(lang){
+    const dict = T[lang]||T.ro; localStorage.setItem('eva_lang', lang);
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(el=>{ const k=el.getAttribute('data-i18n'); if(dict[k]) el.innerHTML = dict[k]; });
+    document.getElementById('btnRO').setAttribute('aria-pressed', lang==='ro');
+    document.getElementById('btnEN').setAttribute('aria-pressed', lang==='en');
+  }
+  document.getElementById('btnRO').addEventListener('click',()=>setLang('ro'));
+  document.getElementById('btnEN').addEventListener('click',()=>setLang('en'));
+  setLang(localStorage.getItem('eva_lang')||'ro');
   </script>
 </body>
 </html>
-
