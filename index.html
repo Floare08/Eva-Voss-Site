@@ -1,65 +1,72 @@
 <!DOCTYPE html>
-<div class="price">€9<small>/month</small></div>
-<ul class="incl">
-<li><span class="tick">✔</span> Unlimited text chat</li>
-<li><span class="tick">✔</span> 50 images/month</li>
-<li><span class="tick">✔</span> 10 minutes voice</li>
-</ul>
-<a class="pill primary" href="https://gumroad.com" target="_blank">Choose Starter</a>
+</nav>
 </div>
-<div class="card" style="outline:2px solid rgba(215,184,111,.35)">
-<h3>Premium</h3>
-<div class="price">€29<small>/month</small></div>
-<ul class="incl">
-<li><span class="tick">✔</span> Unlimited chat (text + voice)</li>
-<li><span class="tick">✔</span> 400 images/month</li>
-<li><span class="tick">✔</span> 60 minutes AI video</li>
-<li><span class="tick">✔</span> Priority generation</li>
-</ul>
-<a class="pill primary" href="https://gumroad.com" target="_blank">Choose Premium</a>
-</div>
-<div class="card">
-<h3>Elite</h3>
-<div class="price">€79<small>/month</small></div>
-<ul class="incl">
-<li><span class="tick">✔</span> Everything in Premium</li>
-<li><span class="tick">✔</span> 1:1 custom scenes</li>
-<li><span class="tick">✔</span> Access to exclusive models</li>
-<li><span class="tick">✔</span> Priority support</li>
-</ul>
-<a class="pill primary" href="https://gumroad.com" target="_blank">Choose Elite</a>
-</div>
+</header>
+
+
+<section class="hero" aria-label="Hero video">
+<video id="heroVideo" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+<source src="videos/hero-bg.mp4" type="video/mp4" />
+</video>
+<div class="overlay" aria-hidden="true"></div>
+<div class="content wrap">
+<span class="eyebrow">AI premium • voce + imagine + video</span>
+<h1>Eva Voss — <span style="color:var(--gold)">AI Fantasy</span> Experience</h1>
+<p class="lead">Conversații naturale, voce seducătoare, imagini și clipuri generate instant. Elegantă, realistă, disponibilă pe telefon, PC și web.</p>
+<div class="cta">
+<a class="pill primary" href="#pricing">Vezi planurile</a>
+<a class="pill ghost" href="#demo">Vezi demo</a>
 </div>
 </div>
 </section>
 
 
-<section id="faq">
+<section id="features">
 <div class="wrap">
-<div class="grid cols-2">
-<div class="card"><h3>Is the content real?</h3><p>No. Eva is 100% AI. We respect safety limits and platform terms. No private real content.</p></div>
-<div class="card"><h3>Can I request custom scenes?</h3><p>Yes, in Premium/Elite plans. You specify style, outfit, atmosphere — Eva generates it.</p></div>
+<div class="grid cols-3">
+<div class="feature card"><div class="ico">🎙️</div><div><h3>Voce realistă</h3><p>Răspuns audio instant, intonație umană. Perfect pe telefon.</p></div></div>
+<div class="feature card"><div class="ico">🖼️</div><div><h3>Imagini & clipuri</h3><p>Generare rapidă de imagini și scurte clipuri, stil premium.</p></div></div>
+<div class="feature card"><div class="ico">🧠</div><div><h3>Personalitate fină</h3><p>Memorie opțională, limite sigure, răspunsuri contextuale.</p></div></div>
+</div>
+</div>
+</section>
+
+
+<section id="demo">
+<div class="wrap">
+<div class="showcase">
+<img src="images/showcase.jpg" alt="Captură interfață Eva Voss" loading="lazy" width="1200" height="675" />
+</div>
+</div>
+</section>
+
+
+<section id="pricing" class="pricing">
+<div class="wrap">
+<div class="grid cols-3">
+<div class="card"><h3>Starter</h3><div class="price">€9<small>/lună</small></div><ul class="incl"><li><span class="tick">✔</span> Chat text nelimitat</li><li><span class="tick">✔</span> 50 imagini/lună</li><li><span class="tick">✔</span> 10 minute voce</li></ul><div style="margin-top:18px"><a class="pill primary" href="https://gumroad.com" target="_blank" rel="noopener">Alege Starter</a></div></div>
+<div class="card" style="outline:2px solid rgba(215,184,111,.35)"><h3>Premium</h3><div class="price">€29<small>/lună</small></div><ul class="incl"><li><span class="tick">✔</span> Chat nelimitat (text + voce)</li><li><span class="tick">✔</span> 400 imagini/lună</li><li><span class="tick">✔</span> 60 minute video AI</li><li><span class="tick">✔</span> Prioritate la generare</li></ul><div style="margin-top:18px"><a class="pill primary" href="https://gumroad.com" target="_blank" rel="noopener">Alege Premium</a></div></div>
+<div class="card"><h3>Elite</h3><div class="price">€79<small>/lună</small></div><ul class="incl"><li><span class="tick">✔</span> Tot din Premium</li><li><span class="tick">✔</span> 1:1 scene personalizate</li><li><span class="tick">✔</span> Acces la modele exclusive</li><li><span class="tick">✔</span> Suport prioritar</li></ul><div style="margin-top:18px"><a class="pill primary" href="https://gumroad.com" target="_blank" rel="noopener">Alege Elite</a></div></div>
 </div>
 </div>
 </section>
 
 
 <footer>
-<div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap">
-<div><strong>Eva Voss</strong> — AI Fantasy Experience<br/>© <span id="y"></span> Eva Voss. All rights reserved.</div>
-<div style="display:flex;gap:14px">
-<a href="#faq">FAQ</a>
-<a href="#pricing">Pricing</a>
-<a href="mailto:hello@evavoss.example">Contact</a>
-<a href="/en/privacy.html">Privacy</a>
-<a href="/en/terms.html">Terms</a>
-</div>
+<div class="wrap" style="display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap">
+<div><strong>Eva Voss</strong> — AI Fantasy Experience<br/>© <span id="y"></span> Eva Voss. Toate drepturile rezervate.</div>
+<div style="display:flex;gap:14px"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div>
 </div>
 </footer>
 
 
 <script>
 document.getElementById('y').textContent = new Date().getFullYear();
+const v=document.getElementById('heroVideo');
+const tryPlay=()=>v&&v.play&&v.play().catch(()=>{});
+document.addEventListener('visibilitychange',tryPlay,{passive:true});
+window.addEventListener('pointerdown',tryPlay,{once:true,passive:true});
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const id=a.getAttribute('href').slice(1);const el=document.getElementById(id);if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});}})});
 </script>
 </body>
 </html>
