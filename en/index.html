@@ -1,31 +1,9 @@
-<!DOCTYPE html>
-<li><span class="tick">✔</span> Unlimited text chat</li>
-<li><span class="tick">✔</span> 50 images/month</li>
-<li><span class="tick">✔</span> 10 minutes voice</li>
-</ul>
-<a class="pill primary" href="https://gumroad.com" target="_blank">Choose Starter</a>
-</div>
-<div class="card" style="outline:2px solid rgba(215,184,111,.35)">
-<h3>Premium</h3>
-<div class="price">€29<small>/month</small></div>
-<ul class="incl">
-<li><span class="tick">✔</span> Unlimited chat (text + voice)</li>
-<li><span class="tick">✔</span> 400 images/month</li>
-<li><span class="tick">✔</span> 60 minutes AI video</li>
-<li><span class="tick">✔</span> Priority generation</li>
-</ul>
-<a class="pill primary" href="https://gumroad.com" target="_blank">Choose Premium</a>
-</div>
-<div class="card">
-<h3>Elite</h3>
-<div class="price">€79<small>/month</small></div>
-<ul class="incl">
-<li><span class="tick">✔</span> Everything in Premium</li>
-<li><span class="tick">✔</span> 1:1 custom scenes</li>
-<li><span class="tick">✔</span> Access to exclusive models</li>
+<!-- ========================= -->
 <li><span class="tick">✔</span> Priority support</li>
 </ul>
-<a class="pill primary" href="https://gumroad.com" target="_blank">Choose Elite</a>
+<div style="margin-top:18px">
+<a class="pill primary" href="https://gumroad.com" target="_blank" rel="noopener">Choose Elite</a>
+</div>
 </div>
 </div>
 </div>
@@ -35,29 +13,40 @@
 <section id="faq">
 <div class="wrap">
 <div class="grid cols-2">
-<div class="card"><h3>Is the content real?</h3><p>No. Eva is 100% AI. We respect safety limits and platform terms. No private real content.</p></div>
-<div class="card"><h3>Can I request custom scenes?</h3><p>Yes, in Premium/Elite plans. You specify style, outfit, atmosphere — Eva generates it.</p></div>
+<div class="card" style="padding:22px">
+<h3>Is the content real?</h3>
+<p style="color:var(--muted)">No. Eva is 100% AI. We follow platform safety rules. No private real-person content.</p>
+</div>
+<div class="card" style="padding:22px">
+<h3>Can I request custom scenes?</h3>
+<p style="color:var(--muted)">Yes, in Premium/Elite plans. Tell the style, outfit, mood — Eva generates.</p>
+</div>
 </div>
 </div>
 </section>
 
 
 <footer>
-<div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap">
-<div><strong>Eva Voss</strong> — AI Fantasy Experience<br/>© <span id="y"></span> Eva Voss. All rights reserved.</div>
+<div class="wrap" style="display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap">
+<div>
+<strong>Eva Voss</strong> — AI Fantasy Experience<br/>
+<span>© <span id="yEn"></span> Eva Voss. All rights reserved.</span>
+</div>
 <div style="display:flex;gap:14px">
 <a href="#faq">FAQ</a>
 <a href="#pricing">Pricing</a>
 <a href="mailto:hello@evavoss.example">Contact</a>
-<a href="/en/privacy.html">Privacy</a>
-<a href="/en/terms.html">Terms</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/terms.html">Terms</a>
 </div>
 </div>
 </footer>
 
 
 <script>
-document.getElementById('y').textContent = new Date().getFullYear();
+document.getElementById('yEn').textContent = new Date().getFullYear();
+const v=document.getElementById('heroVideoEn');const tryPlay=()=>v&&v.play().catch(()=>{});document.addEventListener('visibilitychange',tryPlay,{passive:true});window.addEventListener('pointerdown',tryPlay,{once:true,passive:true});
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const id=a.getAttribute('href').slice(1);const el=document.getElementById(id);if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});}})});
 </script>
 </body>
 </html>
