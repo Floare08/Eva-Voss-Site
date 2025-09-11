@@ -1,203 +1,298 @@
 <!DOCTYPE html>
-<html lang="ro" data-lang="ro">
+<html lang="ro" data-theme="eva-voss">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Eva Voss — Experiența care transcende realul</title>
-  <meta name="description" content="Eva Voss: experiență AI cinematică — voce, text și prezență care depășește realul. Intră acum în universul Eva Voss." />
+  <title>Eva Voss — AI Fantasy Experience</title>
+  <meta name="description" content="Eva Voss: fata AI premium. Text, voce, imagine și video generate la comandă. Experiență realistă și elegantă — optimizat pentru mobil și desktop." />
   <link rel="canonical" href="https://evavoss.example/" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Eva Voss — AI Fantasy Experience" />
+  <meta property="og:description" content="Fată AI premium — conversații, voce, imagini & video. Elegant. Realist. Rapid." />
+  <meta property="og:image" content="/assets/og-eva.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Eva Voss — AI Fantasy Experience" />
+  <meta name="twitter:description" content="Fată AI premium — conversații, voce, imagini & video. Elegant. Realist. Rapid." />
+  <meta name="twitter:image" content="/assets/og-eva.jpg" />
+
+  <!-- Icons -->
+  <link rel="icon" href="/assets/favicon.ico" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+  <meta name="theme-color" content="#2b0a3d" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-
-  <!-- Open Graph / Twitter -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Eva Voss — Experiența care transcende realul" />
-  <meta property="og:description" content="Eva Voss: prezență AI cinematică. Intră acum în univers." />
-  <meta property="og:image" content="/assets/og-image.jpg" />
-  <meta property="og:url" content="https://evavoss.example/" />
-  <meta name="twitter:card" content="summary_large_image" />
-
-  <!-- Favicon (opțional) -->
-  <link rel="icon" href="/assets/favicon.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
   <!-- Preload critical assets -->
   <link rel="preload" as="image" href="/assets/logo-eva.png" />
-  <link rel="preload" as="image" href="/assets/hero-fallback.webp" />
   <link rel="preload" as="video" href="/assets/hero-bg.mp4" />
 
   <style>
     :root{
-      --bg:#0b0a10; /* night */
-      --ink:#e9e7f1; /* warm light */
-      --muted:#bdb9cc;
-      --gold: linear-gradient(135deg,#f3d38b 0%,#e8b14b 35%,#c5882b 65%,#9e6d1a 100%);
-      --royal: linear-gradient(135deg,#5a2ea6 0%, #8127c9 50%, #a43dff 100%);
-      --card: rgba(255,255,255,0.06);
-      --stroke: rgba(255,255,255,0.12);
+      --bg:#0b0611;           /* fundal deep */
+      --ink:#f7f2ff;          /* text principal */
+      --muted:#cdbde6;        /* text secundar */
+      --gold:#d7b86f;         /* accent auriu lichid */
+      --royal:#6d22d3;        /* mov regal */
+      --royal-2:#2b0a3d;      /* mov închis */
+      --card:#130a1d;         /* panouri */
+      --ok:#6fe3a1;           /* verde accent */
+      --danger:#ff7a7a;       /* roșu accent */
+      --shadow: 0 20px 60px rgba(0,0,0,.45);
+      --radius: 18px;
+      --radius-lg: 28px;
     }
-    *{box-sizing:border-box}
     html,body{height:100%}
     body{
-      margin:0; background: var(--bg); color: var(--ink);
-      font-family: Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,'Helvetica Neue',Arial,'Noto Sans',sans-serif;
-      line-height:1.6;
-      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+      margin:0; font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      background: radial-gradient(1200px 600px at 80% 20%, rgba(109,34,211,.35), transparent 60%),
+                  radial-gradient(800px 400px at 10% 80%, rgba(215,184,111,.18), transparent 60%),
+                  var(--bg);
+      color:var(--ink); line-height:1.5; -webkit-font-smoothing:antialiased; overflow-x:hidden;
     }
-    a{color:inherit;text-decoration:none}
-    .wrap{position:relative;min-height:100dvh;display:flex;flex-direction:column}
+    .wrap{max-width:1150px; margin:0 auto; padding:0 20px}
 
-    /* Background video */
-    .bg{
-      position:fixed; inset:0; z-index:-2; overflow:hidden; pointer-events:none;
-    }
-    .bg video{
-      width:100%; height:100%; object-fit:cover; filter:brightness(.55) contrast(1.02) saturate(1.05);
-    }
-    .bg::after{ /* subtle royal overlay */
-      content:""; position:absolute; inset:0; z-index:1; mix-blend:overlay; opacity:.5;
-      background: radial-gradient(60% 60% at 80% 30%, rgba(164,61,255,.35) 0%, transparent 60%),
-                  radial-gradient(55% 55% at 20% 70%, rgba(243,211,139,.25) 0%, transparent 60%);
-    }
+    /* Header */
+    header{position:sticky; top:0; z-index:40; backdrop-filter: blur(10px);}
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 0}
+    .brand{display:flex; align-items:center; gap:12px; text-decoration:none}
+    .brand img{height:36px; width:auto; display:block; filter: drop-shadow(0 4px 16px rgba(215,184,111,.35));}
+    .brand .t{font-weight:800; letter-spacing:.3px; font-size:18px}
+    .pill{display:inline-flex; align-items:center; gap:8px; padding:10px 16px; border-radius:999px; text-decoration:none; font-weight:700}
+    .pill.primary{background:linear-gradient(120deg,var(--royal),#9b59ff); color:white; box-shadow:var(--shadow)}
+    .pill.ghost{border:1px solid rgba(255,255,255,.12); color:var(--ink)}
+    .pill small{opacity:.8; font-weight:600}
 
-    /* Subtle grid texture */
-    .grid{position:fixed; inset:0; z-index:-1; opacity:.12; background-image:linear-gradient(to right,rgba(255,255,255,.08) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,.08) 1px,transparent 1px); background-size:48px 48px; mask-image:radial-gradient(70% 60% at 50% 40%, #000 55%, transparent 100%)}
+    /* Hero */
+    .hero{position:relative; min-height:86vh; display:grid; place-items:center; overflow:hidden; border-bottom:1px solid rgba(255,255,255,.06)}
+    .hero video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter: saturate(1.2) contrast(1.02)}
+    .hero .overlay{position:absolute; inset:0; background: radial-gradient(1000px 500px at 80% 20%, rgba(109,34,211,.45), transparent 50%),
+                                         linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.65) 60%, rgba(0,0,0,.85));}
+    .hero .content{position:relative; z-index:2; text-align:center; padding:80px 0}
+    .eyebrow{display:inline-block; padding:8px 14px; border:1px solid rgba(255,255,255,.12); border-radius:999px; font-size:12px; letter-spacing:.5px; color:var(--muted)}
+    h1{font-family:"Playfair Display",serif; font-weight:700; font-size: clamp(38px, 6vw, 76px); line-height:1.05; margin:18px 0}
+    .lead{max-width:760px; margin:0 auto 26px; color:#efe7ff; font-size: clamp(16px, 1.5vw, 20px)}
+    .cta{display:flex; gap:12px; justify-content:center; flex-wrap:wrap}
 
-    header{
-      width:100%; max-width:1200px; margin:0 auto; padding:20px clamp(16px,3vw,28px); display:flex; align-items:center; justify-content:space-between;
-    }
-    .brand{display:flex; align-items:center; gap:14px}
-    .logo{height:38px; width:auto; display:block; filter:drop-shadow(0 8px 24px rgba(164,61,255,.25))}
-    .badge{font-size:12px; letter-spacing:.2em; text-transform:uppercase; padding:6px 10px; border:1px solid var(--stroke); border-radius:999px; background:rgba(255,255,255,.04)}
+    .badges{display:flex; gap:14px; justify-content:center; align-items:center; margin-top:22px; color:var(--muted); font-size:13px}
+    .dot{width:6px; height:6px; border-radius:50%; background:var(--ok); display:inline-block; box-shadow:0 0 0 4px rgba(111,227,161,.12)}
 
-    .cta-nav{display:flex; align-items:center; gap:10px}
-    .btn{position:relative; display:inline-flex; align-items:center; justify-content:center; gap:10px; padding:12px 18px; border-radius:16px; border:1px solid transparent; font-weight:700; letter-spacing:.02em; cursor:pointer; transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease; will-change:transform}
-    .btn:focus{outline:2px solid transparent; box-shadow:0 0 0 3px rgba(129,39,201,.35)}
-    .btn-primary{background:var(--gold); color:#1b1205}
-    .btn-primary:hover{transform:translateY(-1px); box-shadow:0 12px 30px rgba(233,191,112,.25)}
-    .btn-ghost{background:rgba(255,255,255,.06); border-color:var(--stroke)}
-    .btn-ghost:hover{transform:translateY(-1px); box-shadow:0 10px 24px rgba(0,0,0,.3)}
+    /* Sections */
+    section{padding:80px 0}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); box-shadow:var(--shadow)}
 
-    .hero{display:grid; grid-template-columns:1fr; align-items:center; padding:clamp(24px, 5vw, 60px); gap:28px; width:100%; max-width:1200px; margin:0 auto;}
-    .kicker{display:inline-flex; align-items:center; gap:10px; padding:8px 12px; border-radius:999px; border:1px solid var(--stroke); background:rgba(255,255,255,.05); font-size:12px; letter-spacing:.08em; text-transform:uppercase}
-    .k-dot{width:8px; height:8px; border-radius:999px; background:linear-gradient(135deg,#a43dff,#f3d38b)}
-    h1{font-family: "Playfair Display", serif; font-size: clamp(32px, 4.6vw, 64px); line-height:1.1; margin:10px 0 14px; letter-spacing:.2px}
-    .lede{font-size: clamp(16px, 1.4vw, 20px); color:var(--muted); max-width:72ch}
+    /* Features grid */
+    .grid{display:grid; gap:18px}
+    .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+    .grid.cols-2{grid-template-columns:repeat(2,1fr)}
+    @media (max-width:900px){.grid.cols-3{grid-template-columns:1fr 1fr}}
+    @media (max-width:640px){.grid.cols-3,.grid.cols-2{grid-template-columns:1fr}}
 
-    .actions{display:flex; flex-wrap:wrap; gap:12px; margin-top:22px}
+    .feature{padding:22px; display:flex; gap:16px; align-items:flex-start}
+    .ico{flex:0 0 48px; height:48px; width:48px; border-radius:14px; display:grid; place-items:center; background: radial-gradient(120px 120px at 30% 30%, rgba(215,184,111,.35), rgba(109,34,211,.35)); border:1px solid rgba(255,255,255,.14)}
+    .feature h3{margin:2px 0 6px; font-size:18px}
+    .feature p{margin:0; color:var(--muted)}
 
-    /* Feature cards */
-    .features{display:grid; grid-template-columns:repeat(12,1fr); gap:16px; width:100%; max-width:1200px; margin:10px auto 60px; padding:0 clamp(16px,3vw,28px)}
-    .card{grid-column: span 12; background:var(--card); border:1px solid var(--stroke); border-radius:22px; padding:20px; backdrop-filter: blur(6px);}
-    .card h3{margin:0 0 6px; font-size:18px}
-    .card p{margin:0; color:var(--muted)}
-    .card::before{content:""; display:block; width:100%; height:3px; border-radius:2px; margin-bottom:12px; background:var(--royal)}
+    /* Showcase */
+    .showcase{position:relative; overflow:hidden; border-radius:var(--radius-lg); border:1px solid rgba(255,255,255,.08)}
+    .showcase img{width:100%; display:block}
 
-    @media (min-width:768px){
-      .hero{grid-template-columns:1.2fr .8fr}
-      .card{grid-column: span 4}
-    }
+    /* Pricing */
+    .pricing .card{padding:26px}
+    .price{font-size:36px; font-weight:900}
+    .price small{font-size:14px; color:var(--muted); font-weight:600}
+    .incl{margin:16px 0 0; padding:0; list-style:none}
+    .incl li{margin:10px 0; display:flex; gap:10px; align-items:flex-start; color:#efe7ff}
+    .incl li .tick{color:var(--ok); font-weight:900}
 
-    footer{
-      border-top:1px solid var(--stroke); background:rgba(0,0,0,.35);
-      margin-top:auto; backdrop-filter: blur(6px);
-    }
-    .foot-wrap{max-width:1200px; margin:0 auto; padding:18px clamp(16px,3vw,28px); display:flex; align-items:center; justify-content:space-between; gap:14px; font-size:14px; color:var(--muted)}
-    .social{display:flex; gap:12px}
-    .social a{padding:8px 10px; border:1px solid var(--stroke); border-radius:10px; background:rgba(255,255,255,.04)}
+    /* Footer */
+    footer{padding:40px 0 60px; color:var(--muted); font-size:14px}
+    footer a{color:var(--ink); text-decoration:none}
 
-    /* Safe area for iOS */
-    @supports(padding:max(0px)){
-      header, .hero, .features, .foot-wrap{padding-left:max(16px, env(safe-area-inset-left)); padding-right:max(16px, env(safe-area-inset-right));}
-    }
+    /* Nice scroll */
+    ::-webkit-scrollbar{height:12px;width:12px}
+    ::-webkit-scrollbar-track{background:#130a1d}
+    ::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--royal),#9b59ff); border-radius:8px}
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <!-- Background video -->
-    <div class="bg" aria-hidden="true">
-      <video id="bgvideo" autoplay muted playsinline loop preload="auto" poster="/assets/hero-fallback.webp">
-        <source src="/assets/hero-bg.mp4" type="video/mp4" />
-        <img src="/assets/hero-fallback.webp" alt="Fundal cinematic violet-auriu" />
-      </video>
-    </div>
-    <div class="grid" aria-hidden="true"></div>
-
-    <!-- Header -->
-    <header>
-      <div class="brand">
-        <img src="/assets/logo-eva.png" class="logo" width="180" height="48" alt="Logo Eva Voss" />
-        <span class="badge" aria-label="Status">Cinematic AI</span>
-      </div>
-      <nav class="cta-nav">
-        <a class="btn btn-ghost" href="#preview" aria-label="Previzualizare live">Previzualizare</a>
-        <a class="btn btn-primary" href="#intră" aria-label="Intră în experiență">Intră în experiență</a>
+  <!-- Header -->
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#" aria-label="Eva Voss Home">
+        <img src="/assets/logo-eva.png" alt="Logo Eva Voss" height="36" />
+        <span class="t">Eva Voss</span>
+      </a>
+      <nav class="actions">
+        <a class="pill ghost" href="#features">Caracteristici</a>
+        <a class="pill ghost" href="#pricing">Prețuri</a>
+        <a class="pill primary" href="https://gumroad.com" target="_blank" rel="noopener" aria-label="Începe acum pe Gumroad">Începe acum</a>
       </nav>
-    </header>
+    </div>
+  </header>
 
-    <!-- Hero -->
-    <main class="hero">
-      <section>
-        <span class="kicker"><span class="k-dot" aria-hidden="true"></span> Experiență AI live</span>
-        <h1>Eva Voss —<br/> experiența care transcende realul</h1>
-        <p class="lede">Voce care te simte, text care te citește, ritm care te prinde. Eva e o prezență AI creată pentru conexiune reală, cu o estetică <em>purple & gold</em> și o energie cinematică.</p>
-        <div class="actions">
-          <a class="btn btn-primary" href="https://gum.co/evavoss" target="_blank" rel="noopener" aria-label="Intră acum în experiență">Intră acum</a>
-          <a class="btn btn-ghost" href="#demo" aria-label="Vezi demo">Vezi demo</a>
-        </div>
-      </section>
-      <aside id="preview" aria-label="Previzualizare">
-        <!-- Preview card -->
-        <div class="card" role="group" aria-label="Live preview">
-          <h3>Live Preview</h3>
-          <p>Streaming voce + răspunsuri în timp real. Low-latency. Mod nocturn implicit.</p>
-        </div>
-        <div class="card" role="group" aria-label="Caracteristici">
-          <h3>Caracteristici</h3>
-          <p>Voce neurală, memorie contextuală, stil cinematic, răspunsuri naturale.</p>
-        </div>
-        <div class="card" role="group" aria-label="Confidențialitate">
-          <h3>Confidențialitate</h3>
-          <p>Datele sunt procesate pentru experiență. Nicio vânzare către terți.</p>
-        </div>
-      </aside>
-    </main>
+  <!-- Hero -->
+  <section class="hero" aria-label="Hero video">
+    <video id="heroVideo" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+      <source src="/assets/hero-bg.mp4" type="video/mp4" />
+    </video>
+    <div class="overlay" aria-hidden="true"></div>
+    <div class="content wrap">
+      <span class="eyebrow">AI premium • voce + imagine + video</span>
+      <h1>Eva Voss — <span style="color:var(--gold)">AI Fantasy</span> Experience</h1>
+      <p class="lead">Conversații naturale, voce seducătoare, imagini și clipuri generate instant. Elegantă, realistă, disponibilă pe telefon, PC și web.</p>
+      <div class="cta">
+        <a class="pill primary" href="#pricing" aria-label="Vezi planurile">Vezi planurile</a>
+        <a class="pill ghost" href="#demo" aria-label="Vezi demo video">Vezi demo</a>
+      </div>
+      <div class="badges">
+        <span class="dot" aria-hidden="true"></span>
+        <span>Online acum • timp răspuns &lt; 1s</span>
+        <span>•</span>
+        <span>Fără NSFW real — AI generativ</span>
+      </div>
+    </div>
+  </section>
 
-    <!-- Features row -->
-    <section class="features" id="demo">
-      <div class="card"><h3>Voce</h3><p>Calibrată pentru proximitate și căldură, cu timbru recognoscibil.</p></div>
-      <div class="card"><h3>Imersiune</h3><p>Video background + sound design subtil pentru prezență reală.</p></div>
-      <div class="card"><h3>Control</h3><p>Comenzi rapide și răspunsuri în română/engleză, fără lag.</p></div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-      <div class="foot-wrap">
-        <span>© <span id="y"></span> Eva Voss. Toate drepturile rezervate.</span>
-        <div class="social">
-          <a href="https://instagram.com/evavoss" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
-          <a href="mailto:contact@evavoss.ai" aria-label="Email">Email</a>
-          <a href="#" aria-label="Termeni">Termeni</a>
+  <!-- Features -->
+  <section id="features">
+    <div class="wrap">
+      <div class="grid cols-3">
+        <div class="feature card">
+          <div class="ico">🎙️</div>
+          <div>
+            <h3>Voce realistă</h3>
+            <p>Răspuns audio instant, respirație subtilă și intonație umană. Perfect pentru căști pe telefon.</p>
+          </div>
+        </div>
+        <div class="feature card">
+          <div class="ico">🖼️</div>
+          <div>
+            <h3>Imagini & clipuri</h3>
+            <p>Generare rapidă de imagini și scurte clipuri, cu stil premium (mov regal + auriu).</p>
+          </div>
+        </div>
+        <div class="feature card">
+          <div class="ico">🧠</div>
+          <div>
+            <h3>Personalitate fină</h3>
+            <p>Memorie opțională, limite sigure, răspunsuri contextuale. Elegantă, jucăușă, respectuoasă.</p>
+          </div>
         </div>
       </div>
-    </footer>
-  </div>
+    </div>
+  </section>
+
+  <!-- Showcase / Demo -->
+  <section id="demo">
+    <div class="wrap">
+      <div class="showcase">
+        <img src="/assets/showcase.jpg" alt="Captură interfață Eva Voss" loading="lazy" width="1200" height="675" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="pricing">
+    <div class="wrap">
+      <div class="grid cols-3">
+        <div class="card">
+          <h3>Starter</h3>
+          <div class="price">€9<small>/lună</small></div>
+          <ul class="incl">
+            <li><span class="tick">✔</span> Chat text nelimitat</li>
+            <li><span class="tick">✔</span> 50 imagini/lună</li>
+            <li><span class="tick">✔</span> 10 minute voce</li>
+          </ul>
+          <div style="margin-top:18px">
+            <a class="pill primary" href="https://gumroad.com" target="_blank" rel="noopener">Alege Starter</a>
+          </div>
+        </div>
+        <div class="card" style="outline:2px solid rgba(215,184,111,.35)">
+          <h3>Premium</h3>
+          <div class="price">€29<small>/lună</small></div>
+          <ul class="incl">
+            <li><span class="tick">✔</span> Chat nelimitat (text + voce)</li>
+            <li><span class="tick">✔</span> 400 imagini/lună</li>
+            <li><span class="tick">✔</span> 60 minute video AI</li>
+            <li><span class="tick">✔</span> Prioritate la generare</li>
+          </ul>
+          <div style="margin-top:18px">
+            <a class="pill primary" href="https://gumroad.com" target="_blank" rel="noopener">Alege Premium</a>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Elite</h3>
+          <div class="price">€79<small>/lună</small></div>
+          <ul class="incl">
+            <li><span class="tick">✔</span> Tot din Premium</li>
+            <li><span class="tick">✔</span> 1:1 scene personalizate</li>
+            <li><span class="tick">✔</span> Acces la modele exclusive</li>
+            <li><span class="tick">✔</span> Suport prioritar</li>
+          </ul>
+          <div style="margin-top:18px">
+            <a class="pill primary" href="https://gumroad.com" target="_blank" rel="noopener">Alege Elite</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="grid cols-2">
+        <div class="card" style="padding:22px">
+          <h3>Este conținut real?</h3>
+          <p style="color:var(--muted)">Nu. Eva este 100% AI. Respectăm limitele de siguranță și termenele platformelor. Fără conținut real privat.</p>
+        </div>
+        <div class="card" style="padding:22px">
+          <h3>Pot cere scene personalizate?</h3>
+          <p style="color:var(--muted)">Da, în planurile Premium/Elite. Spui stilul, ținuta, atmosfera — Eva generează.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="wrap" style="display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap">
+      <div>
+        <strong>Eva Voss</strong> — AI Fantasy Experience<br/>
+        <span>© <span id="y"></span> Eva Voss. Toate drepturile rezervate.</span>
+      </div>
+      <div style="display:flex; gap:14px">
+        <a href="#faq">FAQ</a>
+        <a href="#pricing">Prețuri</a>
+        <a href="mailto:hello@evavoss.example">Contact</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+      </div>
+    </div>
+  </footer>
 
   <script>
-    // Set current year
+    // Year
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // iOS autoplay fix: nudge play on visibility
-    const v = document.getElementById('bgvideo');
-    const kick = ()=>{ if(v && v.paused){ v.muted = true; v.play().catch(()=>{}); } };
-    document.addEventListener('visibilitychange', kick, {passive:true});
-    window.addEventListener('load', kick, {once:true, passive:true});
+    // Autoplay fix for some mobile browsers (ensure play after interaction/visibility)
+    const v = document.getElementById('heroVideo');
+    const tryPlay = () => v && v.play().catch(()=>{});
+    document.addEventListener('visibilitychange', tryPlay, {passive:true});
+    window.addEventListener('pointerdown', tryPlay, {once:true, passive:true});
 
-    // Reduce Motion respect
-    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-    if (mq.matches && v) { v.removeAttribute('autoplay'); v.pause(); }
+    // Smooth scroll for hash links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); }
+      });
+    });
   </script>
 </body>
 </html>
