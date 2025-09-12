@@ -68,8 +68,8 @@
       linear-gradient(135deg, rgba(19,10,29,.85), rgba(19,10,29,.65)) padding-box,
       conic-gradient(from var(--rot,180deg) at 50% 50%, #d7b86f, #9b59ff, #6d22d3, #d7b86f) border-box;
     }
-    .pill::after{content:"";position:absolute;inset:0;border-radius:999px;background:linear-gradient(120deg, rgba(255,255,255,.16), transparent 62%);transform:translateX(-120%);transition:transform .5s}
-    .pill:hover{transform:translateY(-1px);--rot:360deg;box-shadow:0 8px 26px rgba(155,89,255,.25), 0 2px 10px rgba(215,184,111,.18)}
+    .pill::after{display:none}
+    .pill:hover{transform:translateY(-1px);box-shadow:0 8px 26px rgba(155,89,255,.25), 0 2px 10px rgba(215,184,111,.18)}
     .pill:hover::after{transform:translateX(0%)}
     .pill:active{transform:translateY(0)}
     .pill.primary{color:#fff;background:
@@ -105,8 +105,7 @@
     .fx-tint{mix-blend-mode:soft-light;opacity:.55;background:
       radial-gradient(1000px 600px at 78% 22%, rgba(109,34,211,.45), transparent 50%),
       radial-gradient(800px 400px at 12% 82%, rgba(215,184,111,.24), transparent 58%)}
-    .fx-sheen::before{content:"";position:absolute;inset:-20% -40%;background:linear-gradient(115deg, transparent 42%, rgba(255,255,255,.22) 50%, transparent 58%);
-      mix-blend-mode:screen;filter:blur(14px);transform:translateX(-120%);animation:sweep 9.5s cubic-bezier(.22,.61,.36,1) infinite;opacity:.28}
+    .fx-sheen::before{display:none}
     @keyframes sweep{0%{transform:translateX(-120%) skewX(-8deg)}55%{transform:translateX(20%) skewX(-8deg)}100%{transform:translateX(140%) skewX(-8deg)}}
     #fxParticles{display:block;width:100%;height:100%;pointer-events:none}
 
@@ -187,6 +186,21 @@
     .history .item{padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03)}
     .hint{color:var(--muted);font-size:13px}
 
+  /* --- Advanced image generator styles --- */
+    .adv{border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:12px;background:rgba(255,255,255,.02)}
+    .adv summary{cursor:pointer;font-weight:700}
+    .adv-grid{display:grid;gap:10px;grid-template-columns:repeat(3,1fr)}
+    @media (max-width:900px){.adv-grid{grid-template-columns:1fr 1fr}}
+    @media (max-width:600px){.adv-grid{grid-template-columns:1fr}}
+    .switch{display:flex;align-items:center;gap:8px}
+    .progress{height:6px;background:rgba(255,255,255,.12);border-radius:999px;overflow:hidden;margin-top:8px}
+    .progress span{display:block;height:100%;width:100%;transform:translateX(-100%);animation:load 1.8s ease-in-out infinite;background:linear-gradient(90deg,var(--gold),#9b59ff)}
+    @keyframes load{0%{transform:translateX(-100%)}50%{transform:translateX(-10%)}100%{transform:translateX(100%)}}
+    .imggrid{display:grid;gap:10px;grid-template-columns:repeat(2,1fr)}
+    @media (max-width:700px){.imggrid{grid-template-columns:1fr}}
+    .imgcard{position:relative;border:1px solid rgba(255,255,255,.12);border-radius:12px;overflow:hidden;background:rgba(255,255,255,.02)}
+    .imgcard a.dl{position:absolute;right:8px;bottom:8px}
+    .adv-upload{margin-top:10px;padding:12px;border:1px dashed rgba(255,255,255,.18);border-radius:12px}
   </style>
 </head>
 <body>
@@ -340,19 +354,50 @@
               <div class="gen">
                 <div class="control">
                   <label for="iPrompt">Descriere imagine</label>
-                  <textarea id="iPrompt" placeholder="Ex: portret premium, lumină aurie, violet regal...">portret premium, lumină aurie, violet regal, bokeh</textarea>
+                  <textarea id="iPrompt" placeholder="Ex: portret premium, lumină aurie, violet regal, bokeh">portret premium, lumină aurie, violet regal, bokeh</textarea>
                 </div>
-                <div class="control" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-                  <label>Seed
-                    <input id="iSeed" type="text" placeholder="random" />
-                  </label>
-                  <label>Raport
-                    <select id="iAR"><option>1:1</option><option>3:4</option><option>4:5</option><option>9:16</option></select>
-                  </label>
-                </div>
+                <details class="adv">
+                  <summary>Opțiuni avansate</summary>
+                  <div class="adv-grid">
+                    <label>Negative prompt
+                      <input id="iNeg" type="text" placeholder="ce NU vrei să apară (blur, noise, etc.)" />
+                    </label>
+                    <label>Preset stil
+                      <select id="iStyle"><option value="glamour">Glamour</option><option value="studio">Studio</option><option value="cinematic" selected>Cinematic</option><option value="noir">Noir</option><option value="vivid">Vivid</option></select>
+                    </label>
+                    <label>Model
+                      <select id="iModel"><option value="eva-v1" selected>Eva-v1</option><option value="eva-v1-hq">Eva-v1 HQ</option><option value="custom">Custom (adapter)</option></select>
+                    </label>
+                    <label>Raport
+                      <select id="iAR"><option>1:1</option><option>3:4</option><option>4:5</option><option selected>9:16</option></select>
+                    </label>
+                    <label>Număr imagini
+                      <select id="iCount"><option>1</option><option>2</option><option selected>4</option></select>
+                    </label>
+                    <label>Creativitate (CFG)
+                      <input id="iCfg" type="range" min="1" max="15" value="7" />
+                    </label>
+                    <label>Calitate (pași)
+                      <input id="iSteps" type="range" min="10" max="60" value="30" />
+                    </label>
+                    <label>Seed
+                      <input id="iSeed" type="text" placeholder="random" />
+                    </label>
+                    <label class="switch"><input id="iUpscale" type="checkbox" /> Upscale 2×</label>
+                    <label class="switch"><input id="iFace" type="checkbox" checked /> Corecție față</label>
+                    <label class="switch"><input id="iBG" type="checkbox" /> Remove BG</label>
+                  </div>
+                  <div class="adv-upload" id="iDrop">
+                    <input id="iRef" type="file" accept="image/*" hidden />
+                    <button class="pill ghost" type="button" id="btnRef">Încarcă imagine de referință</button>
+                    <small class="hint">Poți trage & plasa o imagine aici pentru a o folosi ca referință.</small>
+                  </div>
+                </details>
                 <div style="display:flex;gap:10px;flex-wrap:wrap">
-                  <button class="pill primary" id="btnGenImage" data-event="generate_image">Generează imagine</button>
-                  <a class="pill" data-variant="aurum" id="btnDlImage" download="eva-image.png">Descarcă</a>
+                  <button class="pill primary" id="btnGenImage" data-event="generate_image">Generează</button>
+                  <button class="pill" data-variant="aurum" id="btnVarImage" type="button">Variații</button>
+                  <button class="pill ghost" data-variant="glass" id="btnReroll" type="button">Reroll</button>
+                  <a class="pill ghost" data-variant="glass" id="btnDlImage" download="eva-image.png">Descarcă (prima)</a>
                 </div>
               </div>
             </div>
@@ -647,37 +692,38 @@
     function renderHist(){ histEl.innerHTML=''; history.forEach(h=>{ const d=new Date(h.t).toLocaleString(); const div=document.createElement('div'); div.className='item'; div.textContent=`[${d}] ${h.type}: ${h.summary}`; histEl.appendChild(div); }); }
     renderHist();
 
-    // hooks (replace with real back-end calls later)
     window.onGenerate = async (type, payload)=>{
       track('generate_'+type);
       preview.textContent='Generare în curs…';
-      await new Promise(r=>setTimeout(r, 700));
+      await new Promise(r=>setTimeout(r, 350));
       if(type==='text'){
         const out=`[${payload.tone}/${payload.length}] ${payload.prompt}`;
         preview.textContent=out;
         const blob=new Blob([out],{type:'text/plain'}); document.getElementById('btnDlText').href=URL.createObjectURL(blob);
         pushHistory({type:'text', summary: out.slice(0,60)+'…'});
+        return;
       }
       if(type==='voice'){
         const ctx=new (window.AudioContext||window.webkitAudioContext)(); const o=ctx.createOscillator(); const g=ctx.createGain(); o.type='sine'; o.frequency.value=440; o.connect(g); g.connect(ctx.destination); g.gain.value=0.001; o.start(); setTimeout(()=>{o.stop();},300);
         preview.textContent='Previzualizare audio (beep demo)';
-        // fake file
         const blob=new Blob(['VOICE DEMO '+payload.prompt],{type:'text/plain'}); document.getElementById('btnDlVoice').href=URL.createObjectURL(blob);
         pushHistory({type:'voice', summary: payload.prompt.slice(0,40)+'…'});
+        return;
       }
       if(type==='image'){
-        const cn=document.createElement('canvas'); const ar=payload.ar||'1:1'; let W=512,H=512; if(ar==='3:4'){W=768;H=1024;} if(ar==='4:5'){W=800;H=1000;} if(ar==='9:16'){W=720;H=1280;}
-        cn.width=W; cn.height=H; const cxn=cn.getContext('2d'); const grd=cxn.createLinearGradient(0,0,W,H); grd.addColorStop(0,'#2b0a3d'); grd.addColorStop(1,'#9b59ff'); cxn.fillStyle=grd; cxn.fillRect(0,0,W,H); cxn.fillStyle='rgba(215,184,111,.35)'; cxn.beginPath(); cxn.arc(W*0.78,H*0.22,Math.min(W,H)*0.28,0,Math.PI*2); cxn.fill(); cxn.fillStyle='#f7f2ff'; cxn.font='bold 28px Inter, sans-serif'; cxn.fillText('Eva — DEMO', 24, 48); cxn.font='16px Inter, sans-serif'; wrap(cxn, payload.prompt||'', 24, 80, W-48, 22);
-        function wrap(ctx, text, x, y, maxWidth, lh){ const words=text.split(' '); let line=''; for(let n=0;n<words.length;n++){ const test=line+words[n]+' '; if(ctx.measureText(test).width>maxWidth && n>0){ ctx.fillText(line,x,y); line=words[n]+' '; y+=lh; } else line=test; } ctx.fillText(line,x,y); }
-        const url=cn.toDataURL('image/png'); preview.innerHTML=`<img src="${url}" alt="Preview" style="width:100%;border-radius:10px" loading="lazy" decoding="async"/>`;
-        const a=document.getElementById('btnDlImage'); a.href=url;
-        pushHistory({type:'image', summary: (payload.prompt||'img').slice(0,40)+'…'});
+        const opts={ prompt: document.getElementById('iPrompt').value, negative: document.getElementById('iNeg')?.value||'', ar: document.getElementById('iAR').value, count: parseInt(document.getElementById('iCount').value,10)||1, cfg: parseInt(document.getElementById('iCfg').value,10)||7, steps: parseInt(document.getElementById('iSteps').value,10)||30, seed: document.getElementById('iSeed').value||null, style: document.getElementById('iStyle').value, model: document.getElementById('iModel').value, upscale: document.getElementById('iUpscale').checked, face: document.getElementById('iFace').checked, bg: document.getElementById('iBG').checked, ref: window.__eva_refImage||null };
+        preview.innerHTML = '<div class="hint">Generez '+opts.count+' imagini…</div><div class="progress"><span></span></div>';
+        const res = (window.imageProvider && window.imageProvider.generate) ? await window.imageProvider.generate(opts) : await mockGenerateImages(opts);
+        renderImages(res);
+        if(res[0]){ fetch(res[0]).then(r=>r.blob()).then(b=>{ document.getElementById('btnDlImage').href = URL.createObjectURL(b); }); }
+        pushHistory({type:'image', summary: (opts.prompt||'img').slice(0,60)+'…'});
+        return;
       }
       if(type==='video'){
         preview.innerHTML = '<video src="hero-bg.mp4" playsinline controls style="width:100%;border-radius:10px"></video>';
-        // fake file link
         const blob=new Blob(['VIDEO DEMO '+JSON.stringify(payload)],{type:'text/plain'}); document.getElementById('btnDlVideo').href=URL.createObjectURL(blob);
         pushHistory({type:'video', summary: (payload.prompt||'clip').slice(0,40)+'…'});
+        return;
       }
     };
 
@@ -688,36 +734,66 @@
     document.getElementById('btnGenVoice').addEventListener('click',()=>{
       onGenerate('voice', { prompt: document.getElementById('vPrompt').value, timbre: document.getElementById('vTimbre').value, speed: document.getElementById('vSpeed').value });
     });
-    document.getElementById('btnGenImage').addEventListener('click',()=>{
-      onGenerate('image', { prompt: document.getElementById('iPrompt').value, seed: document.getElementById('iSeed').value, ar: document.getElementById('iAR').value });
-    });
-    document.getElementById('btnGenVideo').addEventListener('click',()=>{
-      onGenerate('video', { prompt: document.getElementById('mvPrompt').value, dur: document.getElementById('mvDur').value, style: document.getElementById('mvStyle').value });
-    });
+    document.getElementById('btnGenImage').addEventListener('click',()=>{ onGenerate('image', {}); });
+    document.getElementById('btnVarImage').addEventListener('click',()=>{ onGenerate('image', {variation:true}); });
+    document.getElementById('btnReroll').addEventListener('click',()=>{ document.getElementById('iSeed').value=''; onGenerate('image', {reroll:true}); });
 
-    // presets & history controls
-    document.getElementById('btnSavePreset').addEventListener('click',()=>{
-      const tab=document.querySelector('.panel.active')?.id||'tab-text';
-      const preset={
-        tab,
-        data:{
-          txt:{p:txtPrompt.value, tone:txtTone.value, len:txtLen.value},
-          v:{p:vPrompt.value, timbre:vTimbre.value, speed:vSpeed.value},
-          img:{p:iPrompt.value, seed:iSeed.value, ar:iAR.value},
-          mv:{p:mvPrompt.value, dur:mvDur.value, style:mvStyle.value}
-        }
-      };
-      const PKEY='eva_presets_v1';
-      const arr=JSON.parse(localStorage.getItem(PKEY)||'[]');
-      arr.unshift(preset); localStorage.setItem(PKEY, JSON.stringify(arr.slice(0,10)));
-      alert('Preset salvat.');
-    });
-    document.getElementById('btnClearHistory').addEventListener('click',()=>{ history=[]; localStorage.setItem(HIST_KEY,'[]'); renderHist(); });
+    // reference image
+    const refBtn=document.getElementById('btnRef'); const refInput=document.getElementById('iRef'); const drop=document.getElementById('iDrop');
+    function setRef(file){ if(!file) return; const r=new FileReader(); r.onload=()=>{ window.__eva_refImage=r.result; drop.style.borderColor='rgba(111,227,161,.6)'; drop.style.background='rgba(111,227,161,.06)'; }; r.readAsDataURL(file); }
+    refBtn?.addEventListener('click',()=>refInput.click());
+    refInput?.addEventListener('change',()=>setRef(refInput.files[0]));
+    drop?.addEventListener('dragover',e=>{ e.preventDefault(); drop.style.borderColor='rgba(215,184,111,.6)'; });
+    drop?.addEventListener('dragleave',()=>{ drop.style.borderColor='rgba(255,255,255,.18)'; });
+    drop?.addEventListener('drop',e=>{ e.preventDefault(); setRef(e.dataTransfer.files[0]); });
+
+    // helpers
+    function renderImages(urls){
+      if(!urls||!urls.length){ preview.textContent='Nimic generat.'; return; }
+      const grid=document.createElement('div'); grid.className='imggrid';
+      urls.forEach((u,i)=>{
+        const card=document.createElement('div'); card.className='imgcard';
+        const im=document.createElement('img'); im.src=u; im.alt='Eva image '+(i+1); im.style.width='100%'; im.loading='lazy'; im.decoding='async';
+        const a=document.createElement('a'); a.className='pill ghost dl'; a.textContent='Descarcă'; a.href=u; a.download='eva-'+(i+1)+'.png';
+        card.appendChild(im); card.appendChild(a); grid.appendChild(card);
+      });
+      preview.innerHTML=''; preview.appendChild(grid);
+    }
+
+    async function mockGenerateImages(opts){
+      const n=opts.count||1; const out=[]; const seed=opts.seed||Math.random().toString(36).slice(2);
+      const size=(()=>{ switch(opts.ar){ case '3:4': return [768,1024]; case '4:5': return [800,1000]; case '9:16': return [720,1280]; default: return [1024,1024]; } })();
+      for(let i=0;i<n;i++){
+        const [W,H]=size; const cn=document.createElement('canvas'); cn.width=W*(opts.upscale?2:1); cn.height=H*(opts.upscale?2:1); const cxn=cn.getContext('2d');
+        // bg
+        const grd=cxn.createLinearGradient(0,0,cn.width,cn.height); grd.addColorStop(0,'#2b0a3d'); grd.addColorStop(1,'#9b59ff'); cxn.fillStyle=grd; cxn.fillRect(0,0,cn.width,cn.height);
+        // rings
+        cxn.globalAlpha=.35; cxn.strokeStyle='rgba(215,184,111,.45)'; cxn.lineWidth=3; for(let r=140;r<Math.min(W,H)/1.5;r+=80){ cxn.beginPath(); cxn.arc(cn.width*0.78,cn.height*0.24,r,0,Math.PI*2); cxn.stroke(); }
+        cxn.globalAlpha=1;
+        // title
+        cxn.fillStyle='#f7f2ff'; cxn.font=(opts.upscale?'bold 56px':'bold 28px')+' Inter, sans-serif'; cxn.fillText('Eva — DEMO', 24*(opts.upscale?2:1)/2, 48*(opts.upscale?2:1)/2);
+        // prompt wrap
+        cxn.font=(opts.upscale?'28px':'16px')+' Inter, sans-serif';
+        wrap(cxn, (opts.prompt||'')+(opts.negative?`\n- ${opts.negative}`:''), 24*(opts.upscale?2:1)/2, 80*(opts.upscale?2:1)/2, cn.width-48, (opts.upscale?44:22));
+        // reference image thumb
+        if(opts.ref){ const im=new Image(); await new Promise((res)=>{ im.onload=res; im.src=opts.ref; }); const rw=Math.min(240*(opts.upscale?2:1), im.width); const rh=im.height*(rw/im.width); cxn.globalAlpha=.85; cxn.drawImage(im, cn.width-rw-24, cn.height-rh-24, rw, rh); cxn.globalAlpha=1; }
+        out.push(cn.toDataURL('image/png'));
+      }
+      return out;
+      function wrap(ctx, text, x, y, maxWidth, lh){ const words=(text||'').split(' '); let line=''; for(let n=0;n<words.length;n++){ const test=line+words[n]+' '; if(ctx.measureText(test).width>maxWidth && n>0){ ctx.fillText(line,x,y); line=words[n]+' '; y+=lh; } else line=test; } ctx.fillText(line,x,y); }
+    }
+
+    // public adapter example (plug your API)
+    window.imageProvider = window.imageProvider || {
+      // async generate(opts){
+      //   // TODO: call your backend / Leonardo / OpenAI images endpoint
+      //   // return array of data URLs
+      //   return await mockGenerateImages(opts);
+      // }
+    };
   })();
 
-  // -------- OG Generator (v2) --------
-  (function(){
-    const W=1200,H=630; const c=document.getElementById('ogc'); if(!c) return; const ctx=c.getContext('2d'); const $=id=>document.getElementById(id); c.width=W; c.height=H;
+  // -------- OG Generator (v2) --------) return; const ctx=c.getContext('2d'); const $=id=>document.getElementById(id); c.width=W; c.height=H;
     function wrapText(textStr,x,y,maxWidth,lineHeight,font){ ctx.font=font; const words=(textStr||'').split(' '); let line=''; for(let n=0;n<words.length;n++){ const test=line+words[n]+' '; if(ctx.measureText(test).width>maxWidth && n>0){ ctx.fillText(line,x,y); line=words[n]+' '; y+=lineHeight; } else line=test; } ctx.fillText(line,x,y); }
     const imgFromFile=(file)=>new Promise((res,rej)=>{const r=new FileReader(); r.onload=()=>{const i=new Image(); i.onload=()=>res(i); i.onerror=rej; i.src=r.result;}; r.onerror=rej; r.readAsDataURL(file);});
     const load=async(fi,fb=[])=>{ if(fi && fi.files && fi.files[0]) return await imgFromFile(fi.files[0]); for(const p of fb){ try{ await new Promise((r,j)=>{const i=new Image(); i.onload=()=>r(i); i.onerror=j; i.src=p;}); const im=new Image(); im.src=p; await new Promise(r=>im.onload=r); return im; }catch(e){} } return null; };
