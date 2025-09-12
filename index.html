@@ -41,14 +41,20 @@
     .wrap{max-width:1200px;margin:0 auto;padding:0 20px}
 
     /* Header */
-    header{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px)}
+    header{position:sticky;top:0;z-index:60;backdrop-filter:blur(10px)}
     .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}
     .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
     .brand img{height:36px;display:block;filter:drop-shadow(0 4px 16px rgba(215,184,111,.35))}
     .brand .t{font-weight:900;letter-spacing:.3px;font-size:18px}
-    .pill{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;text-decoration:none;font-weight:700}
-    .pill.primary{background:linear-gradient(120deg,var(--royal),#9b59ff);color:#fff;box-shadow:var(--shadow)}
-    .pill.ghost{border:1px solid rgba(255,255,255,.14);color:var(--ink)}
+
+    /* Premium buttons */
+    .pill{position:relative;display:inline-flex;align-items:center;gap:10px;padding:11px 18px;border-radius:999px;text-decoration:none;font-weight:800;letter-spacing:.2px;line-height:1;border:1px solid rgba(255,255,255,.14);overflow:hidden}
+    .pill .ico{font-size:16px;opacity:.9}
+    .pill::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg, rgba(255,255,255,.16), transparent 60%);transform:translateX(-120%);transition:transform .5s}
+    .pill:hover::after{transform:translateX(0%)}
+    .pill.primary{background:linear-gradient(120deg,var(--royal),#9b59ff);color:#fff;box-shadow:var(--shadow);border-color:transparent}
+    .pill.ghost{backdrop-filter:blur(8px);color:var(--ink)}
+
     .lang{display:inline-flex;border:1px solid rgba(255,255,255,.14);border-radius:999px;overflow:hidden}
     .lang button{background:transparent;color:var(--ink);padding:8px 12px;border:0;cursor:pointer}
     .lang button[aria-pressed="true"]{background:rgba(255,255,255,.08)}
@@ -59,7 +65,27 @@
     .overlay{position:absolute;inset:0;background:
       radial-gradient(1000px 500px at 80% 20%, rgba(109,34,211,.45), transparent 50%),
       linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.65) 60%, rgba(0,0,0,.85))}
+
+    /* FX layers over video */
+    .hero canvas, .fx-tint, .fx-sheen, .overlay, .intro-tools{position:absolute;inset:0}
+    .fx-tint{mix-blend-mode:soft-light;opacity:.55;background:
+      radial-gradient(1000px 600px at 78% 22%, rgba(109,34,211,.45), transparent 50%),
+      radial-gradient(800px 400px at 12% 82%, rgba(215,184,111,.24), transparent 58%)}
+    .fx-sheen::before{content:"";position:absolute;inset:-20% -40%;background:linear-gradient(115deg, transparent 42%, rgba(255,255,255,.22) 50%, transparent 58%);
+      mix-blend-mode:screen;filter:blur(14px);transform:translateX(-120%);animation:sweep 9.5s cubic-bezier(.22,.61,.36,1) infinite;opacity:.28}
+    @keyframes sweep{0%{transform:translateX(-120%) skewX(-8deg)}55%{transform:translateX(20%) skewX(-8deg)}100%{transform:translateX(140%) skewX(-8deg)}}
+    #fxParticles{display:block;width:100%;height:100%;pointer-events:none}
+
+    /* Intro tools (progress + skip) */
+    .intro-tools{pointer-events:none}
+    .intro-tools .intro-progress{position:absolute;top:0;left:0;height:3px;width:100%;background:rgba(255,255,255,.12)}
+    .intro-tools .intro-progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),#9b59ff);box-shadow:0 0 12px rgba(215,184,111,.45)}
+    .intro-tools .skip-intro{position:absolute;right:16px;bottom:16px;pointer-events:auto}
+
     .hero .content{position:relative;z-index:2;text-align:center;padding:100px 0}
+    .hero .content.hidden{opacity:0;transform:translateY(12px);transition:opacity .7s ease, transform .7s ease}
+    .hero .content.reveal{opacity:1;transform:none}
+
     .eyebrow{display:inline-block;padding:8px 14px;border:1px solid rgba(255,255,255,.12);border-radius:999px;font-size:12px;letter-spacing:.5px;color:var(--muted)}
     h1{font-family:"Playfair Display",serif;font-weight:700;font-size:clamp(40px,6vw,84px);line-height:1.05;margin:18px 0}
     .lead{max-width:780px;margin:0 auto 26px;color:#efe7ff;font-size:clamp(16px,1.5vw,20px)}
@@ -113,6 +139,10 @@
     /* Modal */
     dialog{border:0;border-radius:16px;padding:0;background:#140b1f;color:var(--ink);box-shadow:var(--shadow)}
     dialog::backdrop{background:rgba(0,0,0,.6)}
+
+    @media (prefers-reduced-motion: reduce){
+      .fx-sheen::before{animation:none;opacity:.18}
+    }
   </style>
 </head>
 <body>
@@ -124,10 +154,10 @@
         <span class="t">Eva Voss</span>
       </a>
       <nav class="actions" aria-label="Primary">
-        <a class="pill ghost" href="#features" data-i18n="nav.features">Caracteristici</a>
-        <a class="pill ghost" href="#pricing" data-i18n="nav.pricing">Prețuri</a>
-        <a class="pill ghost" href="#og" title="OG Generator">OG</a>
-        <a class="pill primary" href="#join" data-i18n="nav.cta">Începe acum</a>
+        <a class="pill ghost" href="#features" data-i18n="nav.features"><span class="ico">✨</span>Caracteristici</a>
+        <a class="pill ghost" href="#pricing" data-i18n="nav.pricing"><span class="ico">💎</span>Prețuri</a>
+        <a class="pill ghost" href="#og" title="OG Generator">🖼️ OG</a>
+        <a class="pill primary" href="#join" data-i18n="nav.cta"><span class="ico">⚡</span>Începe acum</a>
         <span class="lang" role="group" aria-label="Language switcher">
           <button type="button" id="btnRO" aria-pressed="true">RO</button>
           <button type="button" id="btnEN" aria-pressed="false">EN</button>
@@ -136,19 +166,33 @@
     </div>
   </header>
 
-  <!-- Hero -->
+  <!-- Hero (non-loop intro; text appears at end) -->
   <section class="hero" aria-label="Hero">
-    <video id="heroVideo" autoplay muted loop playsinline preload="auto" poster="showcase.jpg">
+    <video id="heroVideo" autoplay muted playsinline preload="auto" poster="showcase.jpg">
       <source id="heroSource" src="hero-bg.mp4" type="video/mp4" />
     </video>
+
+    <!-- FX layers -->
+    <canvas id="fxParticles" aria-hidden="true"></canvas>
+    <div class="fx-tint" aria-hidden="true"></div>
+    <div class="fx-sheen" aria-hidden="true"></div>
+
+    <!-- Intro tools: progress + skip -->
+    <div class="intro-tools" aria-hidden="true">
+      <div class="intro-progress"><span></span></div>
+      <button class="pill ghost skip-intro" id="skipIntro" type="button" data-i18n="hero.skip">Sari introducerea</button>
+    </div>
+
     <div class="overlay" aria-hidden="true"></div>
-    <div class="content wrap">
+
+    <div class="content wrap hidden">
       <span class="eyebrow" data-i18n="hero.eyebrow">AI premium • voce + imagine + video</span>
       <h1 data-i18n="hero.title">Eva Voss — <span style="color:var(--gold)">AI Fantasy</span> Experience</h1>
       <p class="lead" data-i18n="hero.lead">Conversații naturale, voce seducătoare, imagini și clipuri generate instant. Elegantă, realistă, disponibilă pe telefon, PC și web.</p>
-      <div class="cta">
-        <a class="pill primary" href="#pricing" data-i18n="hero.seePlans">Vezi planurile</a>
-        <button class="pill ghost" id="openDemo" type="button" data-i18n="hero.watchDemo">Vezi demo</button>
+      <div class="cta" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <a class="pill primary" href="#pricing" data-i18n="hero.seePlans"><span class="ico">💳</span>Vezi planurile</a>
+        <button class="pill ghost" id="openDemo" type="button" data-i18n="hero.watchDemo"><span class="ico">▶️</span>Vezi demo</button>
+        <a class="pill ghost" href="#join"><span class="ico">📩</span>Înscrie-te</a>
       </div>
       <div class="badges">
         <span class="dot" aria-hidden="true"></span>
@@ -163,27 +207,9 @@
   <section id="features">
     <div class="wrap">
       <div class="grid cols-3 reveal">
-        <div class="feature card">
-          <div class="ico">🎙️</div>
-          <div>
-            <h3 data-i18n="features.v">Voce realistă</h3>
-            <p data-i18n="features.vd">Răspuns audio instant, respirație subtilă și intonație umană. Perfect pentru căști.</p>
-          </div>
-        </div>
-        <div class="feature card">
-          <div class="ico">🖼️</div>
-          <div>
-            <h3 data-i18n="features.i">Imagini & clipuri</h3>
-            <p data-i18n="features.id">Generare rapidă de imagini și scurte clipuri, cu stil premium (mov regal + auriu).</p>
-          </div>
-        </div>
-        <div class="feature card">
-          <div class="ico">🧠</div>
-          <div>
-            <h3 data-i18n="features.p">Personalitate fină</h3>
-            <p data-i18n="features.pd">Memorie opțională, limite sigure, răspunsuri contextuale. Elegantă, jucăușă, respectuoasă.</p>
-          </div>
-        </div>
+        <div class="feature card"><div class="ico">🎙️</div><div><h3 data-i18n="features.v">Voce realistă</h3><p data-i18n="features.vd">Răspuns audio instant, respirație subtilă și intonație umană. Perfect pentru căști.</p></div></div>
+        <div class="feature card"><div class="ico">🖼️</div><div><h3 data-i18n="features.i">Imagini & clipuri</h3><p data-i18n="features.id">Generare rapidă de imagini și scurte clipuri, cu stil premium (mov regal + auriu).</p></div></div>
+        <div class="feature card"><div class="ico">🧠</div><div><h3 data-i18n="features.p">Personalitate fină</h3><p data-i18n="features.pd">Memorie opțională, limite sigure, răspunsuri contextuale. Elegantă, jucăușă, respectuoasă.</p></div></div>
       </div>
     </div>
   </section>
@@ -210,46 +236,11 @@
   <!-- Pricing -->
   <section id="pricing" class="pricing">
     <div class="wrap">
-      <div style="display:flex;justify-content:flex-end;gap:10px;margin-bottom:12px">
-        <span style="color:var(--muted)">Plată:</span>
-        <div class="lang" role="group" aria-label="Billing switch">
-          <button type="button" id="billMo" aria-pressed="true">Lunar</button>
-          <button type="button" id="billYr" aria-pressed="false">Anual <span style="opacity:.8">(-15%)</span></button>
-        </div>
-      </div>
+      <div style="display:flex;justify-content:flex-end;gap:10px;margin-bottom:12px"><span style="color:var(--muted)">Plată:</span><div class="lang" role="group" aria-label="Billing switch"><button type="button" id="billMo" aria-pressed="true">Lunar</button><button type="button" id="billYr" aria-pressed="false">Anual <span style="opacity:.8">(-15%)</span></button></div></div>
       <div class="grid cols-3 reveal">
-        <div class="card">
-          <h3 data-i18n="pricing.s">Starter</h3>
-          <div class="price"><span class="p" data-price-month="9" data-price-year="92">€9</span><small data-i18n="pricing.mo">/lună</small></div>
-          <ul class="incl">
-            <li><span class="tick">✔</span> <span data-i18n="pricing.s1">Chat text nelimitat</span></li>
-            <li><span class="tick">✔</span> <span data-i18n="pricing.s2">50 imagini/lună</span></li>
-            <li><span class="tick">✔</span> <span data-i18n="pricing.s3">10 minute voce</span></li>
-          </ul>
-          <div style="margin-top:18px"><a class="pill primary" href="#join" data-i18n="pricing.chooseS">Alege Starter</a></div>
-        </div>
-        <div class="card" style="outline:2px solid rgba(215,184,111,.35)">
-          <h3 data-i18n="pricing.p">Premium</h3>
-          <div class="price"><span class="p" data-price-month="29" data-price-year="295">€29</span><small data-i18n="pricing.mo">/lună</small></div>
-          <ul class="incl">
-            <li><span class="tick">✔</span> <span data-i18n="pricing.p1">Chat nelimitat (text + voce)</span></li>
-            <li><span class="tick">✔</span> <span data-i18n="pricing.p2">400 imagini/lună</span></li>
-            <li><span class="tick">✔</span> <span data-i18n="pricing.p3">60 minute video AI</span></li>
-            <li><span class="tick">✔</span> <span data-i18n="pricing.p4">Prioritate la generare</span></li>
-          </ul>
-          <div style="margin-top:18px"><a class="pill primary" href="#join" data-i18n="pricing.chooseP">Alege Premium</a></div>
-        </div>
-        <div class="card">
-          <h3 data-i18n="pricing.e">Elite</h3>
-          <div class="price"><span class="p" data-price-month="79" data-price-year="800">€79</span><small data-i18n="pricing.mo">/lună</small></div>
-          <ul class="incl">
-            <li><span class="tick">✔</span> <span data-i18n="pricing.e1">Tot din Premium</span></li>
-            <li><span class="tick">✔</span> <span data-i18n="pricing.e2">1:1 scene personalizate</span></li>
-            <li><span class="tick">✔</span> <span data-i18n="pricing.e3">Modele exclusive</span></li>
-            <li><span class="tick">✔</span> <span data-i18n="pricing.e4">Suport prioritar</span></li>
-          </ul>
-          <div style="margin-top:18px"><a class="pill primary" href="#join" data-i18n="pricing.chooseE">Alege Elite</a></div>
-        </div>
+        <div class="card"><h3 data-i18n="pricing.s">Starter</h3><div class="price"><span class="p" data-price-month="9" data-price-year="92">€9</span><small data-i18n="pricing.mo">/lună</small></div><ul class="incl"><li><span class="tick">✔</span> <span data-i18n="pricing.s1">Chat text nelimitat</span></li><li><span class="tick">✔</span> <span data-i18n="pricing.s2">50 imagini/lună</span></li><li><span class="tick">✔</span> <span data-i18n="pricing.s3">10 minute voce</span></li></ul><div style="margin-top:18px"><a class="pill primary" href="#join" data-i18n="pricing.chooseS">Alege Starter</a></div></div>
+        <div class="card" style="outline:2px solid rgba(215,184,111,.35)"><h3 data-i18n="pricing.p">Premium</h3><div class="price"><span class="p" data-price-month="29" data-price-year="295">€29</span><small data-i18n="pricing.mo">/lună</small></div><ul class="incl"><li><span class="tick">✔</span> <span data-i18n="pricing.p1">Chat nelimitat (text + voce)</span></li><li><span class="tick">✔</span> <span data-i18n="pricing.p2">400 imagini/lună</span></li><li><span class="tick">✔</span> <span data-i18n="pricing.p3">60 minute video AI</span></li><li><span class="tick">✔</span> <span data-i18n="pricing.p4">Prioritate la generare</span></li></ul><div style="margin-top:18px"><a class="pill primary" href="#join" data-i18n="pricing.chooseP">Alege Premium</a></div></div>
+        <div class="card"><h3 data-i18n="pricing.e">Elite</h3><div class="price"><span class="p" data-price-month="79" data-price-year="800">€79</span><small data-i18n="pricing.mo">/lună</small></div><ul class="incl"><li><span class="tick">✔</span> <span data-i18n="pricing.e1">Tot din Premium</span></li><li><span class="tick">✔</span> <span data-i18n="pricing.e2">1:1 scene personalizate</span></li><li><span class="tick">✔</span> <span data-i18n="pricing.e3">Modele exclusive</span></li><li><span class="tick">✔</span> <span data-i18n="pricing.e4">Suport prioritar</span></li></ul><div style="margin-top:18px"><a class="pill primary" href="#join" data-i18n="pricing.chooseE">Alege Elite</a></div></div>
       </div>
     </div>
   </section>
@@ -269,15 +260,13 @@
   <section id="join">
     <div class="wrap">
       <div class="grid cols-2 reveal">
-        <div class="card" style="padding:24px">
-          <h3 data-i18n="join.title">Intră pe listă & primește acces</h3>
-          <p style="color:var(--muted)" data-i18n="join.desc">Primești link-ul de acces + 5 imagini bonus la activare.</p>
+        <div class="card" style="padding:24px"><h3 data-i18n="join.title">Intră pe listă & primește acces</h3><p style="color:var(--muted)" data-i18n="join.desc">Primești link-ul de acces + 5 imagini bonus la activare.</p>
           <form name="subscribe" method="POST" data-netlify="true" netlify-honeypot="bot-field">
             <input type="hidden" name="form-name" value="subscribe" />
             <p style="display:none"><label>Don’t fill this out: <input name="bot-field" /></label></p>
             <div style="display:grid;gap:10px;grid-template-columns:1fr auto">
               <input name="email" type="email" required placeholder="email@exemplu.com" aria-label="Email" style="border-radius:999px;padding:12px 14px;border:1px solid rgba(255,255,255,.16);background:rgba(0,0,0,.2);color:var(--ink)" />
-              <button class="pill primary" type="submit" data-i18n="join.btn">Mă înscriu</button>
+              <button class="pill primary" type="submit" data-i18n="join.btn"><span class="ico">🚀</span>Mă înscriu</button>
             </div>
             <small style="display:block;margin-top:10px;color:var(--muted)" data-i18n="join.note">Respectăm confidențialitatea. Te poți dezabona oricând.</small>
           </form>
@@ -292,7 +281,7 @@
     </div>
   </section>
 
-  <!-- OG Image Generator (improved) -->
+  <!-- OG Image Generator (v2) -->
   <section id="og" aria-label="OG Image Generator">
     <div class="wrap">
       <div class="card" style="padding:24px">
@@ -372,139 +361,83 @@
     });
   });
 
-  // -------- Video fallback --------
+  // -------- Non-loop intro logic (progress + reveal at end) --------
   (function(){
     const v=document.getElementById('heroVideo');
-    if(!v) return;
-    const ensure=()=>v.play&&v.play().catch(()=>{ document.body.classList.add('no-video'); });
-    v.addEventListener('error',()=>document.body.classList.add('no-video'));
+    const content=document.querySelector('.hero .content');
+    const tools=document.querySelector('.intro-tools');
+    const bar=document.querySelector('.intro-progress span');
+    const skip=document.getElementById('skipIntro');
+    if(!v||!content) return;
+
+    // Ensure autoplay
+    const ensure=()=>v.play&&v.play().catch(()=>{});
     document.addEventListener('visibilitychange',ensure,{passive:true});
     window.addEventListener('pointerdown',ensure,{once:true,passive:true});
-    setTimeout(ensure,400);
+    setTimeout(ensure,300);
+
+    let revealed=false;
+    const reveal=()=>{
+      if(revealed) return; revealed=true;
+      content.classList.remove('hidden');
+      content.classList.add('reveal');
+      tools && (tools.style.display='none');
+    };
+
+    v.addEventListener('timeupdate',()=>{
+      if(v.duration) bar && (bar.style.width=((v.currentTime/v.duration)*100).toFixed(2)+'%');
+      if(v.duration && v.duration - v.currentTime < 0.08){ v.pause(); reveal(); }
+    });
+    v.addEventListener('ended', reveal);
+    v.addEventListener('error',()=>{ document.body.classList.add('no-video'); reveal(); });
+    skip && skip.addEventListener('click',()=>{ if(v.duration) v.currentTime=Math.max(0,v.duration-0.05); reveal(); });
   })();
 
   // -------- Demo modal --------
   (function(){
     const m=document.getElementById('demoModal');
-    document.getElementById('openDemo').addEventListener('click',()=>{ m.showModal(); });
+    const btn=document.getElementById('openDemo');
+    if(!m||!btn) return;
+    btn.addEventListener('click',()=>{ m.showModal(); });
     m.addEventListener('click',e=>{ const r=m.getBoundingClientRect(); if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom) m.close();});
   })();
 
   // -------- Billing switch (month/year) --------
   (function(){
     const mo=document.getElementById('billMo'); const yr=document.getElementById('billYr');
-    const set=(year)=>{
-      mo.setAttribute('aria-pressed',!year); yr.setAttribute('aria-pressed',year);
-      document.querySelectorAll('.price .p').forEach(el=>{
-        const m=el.getAttribute('data-price-month'); const y=el.getAttribute('data-price-year');
-        el.textContent = '€'+(year?y:m);
-        el.nextElementSibling && (el.nextElementSibling.textContent = year?'/an':'/lună');
-      });
-    };
-    mo.addEventListener('click',()=>set(false));
-    yr.addEventListener('click',()=>set(true));
+    const set=(year)=>{ mo.setAttribute('aria-pressed',!year); yr.setAttribute('aria-pressed',year);
+      document.querySelectorAll('.price .p').forEach(el=>{ const m=el.getAttribute('data-price-month'); const y=el.getAttribute('data-price-year'); el.textContent='€'+(year?y:m); el.nextElementSibling&&(el.nextElementSibling.textContent=year?'/an':'/lună'); }); };
+    mo&&mo.addEventListener('click',()=>set(false));
+    yr&&yr.addEventListener('click',()=>set(true));
     set(false);
   })();
 
   // -------- Bilingual (RO/EN) --------
-  const T = {
-    ro:{
-      'nav.features':'Caracteristici','nav.pricing':'Prețuri','nav.cta':'Începe acum',
-      'hero.eyebrow':'AI premium • voce + imagine + video','hero.title':'Eva Voss — <span style="color:var(--gold)">AI Fantasy</span> Experience','hero.lead':'Conversații naturale, voce seducătoare, imagini și clipuri generate instant. Elegantă, realistă, disponibilă pe telefon, PC și web.','hero.seePlans':'Vezi planurile','hero.watchDemo':'Vezi demo','hero.badge1':'Online acum • răspuns < 1s','hero.badge2':'Fără NSFW real — AI generativ',
-      'features.v':'Voce realistă','features.vd':'Răspuns audio instant, respirație subtilă și intonație umană. Perfect pentru căști.','features.i':'Imagini & clipuri','features.id':'Generare rapidă de imagini și scurte clipuri, cu stil premium (mov regal + auriu).','features.p':'Personalitate fină','features.pd':'Memorie opțională, limite sigure, răspunsuri contextuale. Elegantă, jucăușă, respectuoasă.',
-      'proof.latency':'Timp mediu de răspuns','proof.images':'Imagini/lună în planul Premium','proof.video':'Minute video AI / lună','proof.avail':'Disponibilitate globală',
-      'pricing.s':'Starter','pricing.p':'Premium','pricing.e':'Elite','pricing.mo':'/lună','pricing.s1':'Chat text nelimitat','pricing.s2':'50 imagini/lună','pricing.s3':'10 minute voce','pricing.p1':'Chat nelimitat (text + voce)','pricing.p2':'400 imagini/lună','pricing.p3':'60 minute video AI','pricing.p4':'Prioritate la generare','pricing.e1':'Tot din Premium','pricing.e2':'1:1 scene personalizate','pricing.e3':'Modele exclusive','pricing.e4':'Suport prioritar','pricing.chooseS':'Alege Starter','pricing.chooseP':'Alege Premium','pricing.chooseE':'Alege Elite',
-      'testi.t1':'Pare reală. Vocea m-a surprins: caldă, naturală.','testi.t2':'Imaginile ies premium. Mi-a generat un set în 30s.','testi.t3':'Răspunde politicos și ține minte preferințele mele.',
-      'join.title':'Intră pe listă & primește acces','join.desc':'Primești link-ul de acces + 5 imagini bonus la activare.','join.btn':'Mă înscriu','join.note':'Respectăm confidențialitatea. Te poți dezabona oricând.',
-      'faq.title':'Întrebări rapide','faq.q1':'Este conținut real?','faq.a1':'Nu. Eva este 100% AI. Respectăm limitele de siguranță și regulile platformelor.','faq.q2':'Pot cere scene personalizate?','faq.a2':'Da, în planurile Premium/Elite. Spui stilul, ținuta, atmosfera — Eva generează.','faq.q3':'Cum anulez?','faq.a3':'Poți anula oricând din contul tău de pe platforma de plată.',
-      'footer.join':'Înscrie-te','float.cta':'Acces rapid'
-    },
-    en:{
-      'nav.features':'Features','nav.pricing':'Pricing','nav.cta':'Start now',
-      'hero.eyebrow':'Premium AI • voice + image + video','hero.title':'Eva Voss — <span style=\"color:var(--gold)\">AI Fantasy</span> Experience','hero.lead':'Natural chats, alluring voice, instant images and short clips. Elegant, realistic, available on phone, PC and web.','hero.seePlans':'See plans','hero.watchDemo':'Watch demo','hero.badge1':'Online now • response < 1s','hero.badge2':'No real-person NSFW — generative AI',
-      'features.v':'Realistic voice','features.vd':'Instant audio replies with subtle breaths and human-like tone. Great with headphones.','features.i':'Images & clips','features.id':'Fast image generation and short clips with a royal purple + gold premium style.','features.p':'Refined personality','features.pd':'Optional memory, safe limits, contextual responses. Elegant, playful, respectful.',
-      'proof.latency':'Average response time','proof.images':'Images/month in Premium','proof.video':'AI video minutes / month','proof.avail':'Global availability',
-      'pricing.s':'Starter','pricing.p':'Premium','pricing.e':'Elite','pricing.mo':'/mo','pricing.s1':'Unlimited text chat','pricing.s2':'50 images / month','pricing.s3':'10 minutes voice','pricing.p1':'Unlimited chat (text + voice)','pricing.p2':'400 images / month','pricing.p3':'60 minutes AI video','pricing.p4':'Priority generation','pricing.e1':'Everything in Premium','pricing.e2':'1:1 custom scenes','pricing.e3':'Exclusive models','pricing.e4':'Priority support','pricing.chooseS':'Choose Starter','pricing.chooseP':'Choose Premium','pricing.chooseE':'Choose Elite',
-      'testi.t1':'Feels real. The voice surprised me: warm, natural.','testi.t2':'Images look premium. Generated a set in 30s.','testi.t3':'Polite responses and it remembers my preferences.',
-      'join.title':'Join the list & get access','join.desc':'Get your access link + 5 bonus images on activation.','join.btn':'Join now','join.note':'We respect privacy. Unsubscribe anytime.',
-      'faq.title':'Quick questions','faq.q1':'Is the content real?','faq.a1':'No. Eva is 100% AI. We follow safety rules and platform policies.','faq.q2':'Can I request custom scenes?','faq.a2':'Yes, in Premium/Elite. Tell the style, outfit, mood — Eva generates.','faq.q3':'How do I cancel?','faq.a3':'Cancel anytime from your payment platform account.',
-      'footer.join':'Join','float.cta':'Quick access'
-    }
-  };
-  function setLang(lang){
-    const dict = T[lang]||T.ro; localStorage.setItem('eva_lang', lang);
-    document.documentElement.lang = lang;
-    document.querySelectorAll('[data-i18n]').forEach(el=>{ const k=el.getAttribute('data-i18n'); if(dict[k]) el.innerHTML = dict[k]; });
-    document.getElementById('btnRO').setAttribute('aria-pressed', lang==='ro');
-    document.getElementById('btnEN').setAttribute('aria-pressed', lang==='en');
-  }
+  const T = { ro:{ 'nav.features':'Caracteristici','nav.pricing':'Prețuri','nav.cta':'Începe acum', 'hero.eyebrow':'AI premium • voce + imagine + video','hero.title':'Eva Voss — <span style="color:var(--gold)">AI Fantasy</span> Experience','hero.lead':'Conversații naturale, voce seducătoare, imagini și clipuri generate instant. Elegantă, realistă, disponibilă pe telefon, PC și web.','hero.seePlans':'Vezi planurile','hero.watchDemo':'Vezi demo','hero.badge1':'Online acum • răspuns < 1s','hero.badge2':'Fără NSFW real — AI generativ','hero.skip':'Sari introducerea', 'features.v':'Voce realistă','features.vd':'Răspuns audio instant, respirație subtilă și intonație umană. Perfect pentru căști.','features.i':'Imagini & clipuri','features.id':'Generare rapidă de imagini și scurte clipuri, cu stil premium (mov regal + auriu).','features.p':'Personalitate fină','features.pd':'Memorie opțională, limite sigure, răspunsuri contextuale. Elegantă, jucăușă, respectuoasă.', 'proof.latency':'Timp mediu de răspuns','proof.images':'Imagini/lună în planul Premium','proof.video':'Minute video AI / lună','proof.avail':'Disponibilitate globală', 'pricing.s':'Starter','pricing.p':'Premium','pricing.e':'Elite','pricing.mo':'/lună','pricing.s1':'Chat text nelimitat','pricing.s2':'50 imagini/lună','pricing.s3':'10 minute voce','pricing.p1':'Chat nelimitat (text + voce)','pricing.p2':'400 imagini/lună','pricing.p3':'60 minute video AI','pricing.p4':'Prioritate la generare','pricing.e1':'Tot din Premium','pricing.e2':'1:1 scene personalizate','pricing.e3':'Modele exclusive','pricing.e4':'Suport prioritar','pricing.chooseS':'Alege Starter','pricing.chooseP':'Alege Premium','pricing.chooseE':'Alege Elite', 'testi.t1':'Pare reală. Vocea m-a surprins: caldă, naturală.','testi.t2':'Imaginile ies premium. Mi-a generat un set în 30s.','testi.t3':'Răspunde politicos și ține minte preferințele mele.', 'join.title':'Intră pe listă & primește acces','join.desc':'Primești link-ul de acces + 5 imagini bonus la activare.','join.btn':'Mă înscriu','join.note':'Respectăm confidențialitatea. Te poți dezabona oricând.', 'faq.title':'Întrebări rapide','faq.q1':'Este conținut real?','faq.a1':'Nu. Eva este 100% AI. Respectăm limitele de siguranță și regulile platformelor.','faq.q2':'Pot cere scene personalizate?','faq.a2':'Da, în planurile Premium/Elite. Spui stilul, ținuta, atmosfera — Eva generează.','faq.q3':'Cum anulez?','faq.a3':'Poți anula oricând din contul tău de pe platforma de plată.', 'footer.join':'Înscrie-te','float.cta':'Acces rapid' }, en:{ 'nav.features':'Features','nav.pricing':'Pricing','nav.cta':'Start now', 'hero.eyebrow':'Premium AI • voice + image + video','hero.title':'Eva Voss — <span style="color:var(--gold)">AI Fantasy</span> Experience','hero.lead':'Natural chats, alluring voice, instant images and short clips. Elegant, realistic, available on phone, PC and web.','hero.seePlans':'See plans','hero.watchDemo':'Watch demo','hero.badge1':'Online now • response < 1s','hero.badge2':'No real-person NSFW — generative AI','hero.skip':'Skip intro', 'features.v':'Realistic voice','features.vd':'Instant audio replies with subtle breaths and human-like tone. Great with headphones.','features.i':'Images & clips','features.id':'Fast image generation and short clips with a royal purple + gold premium style.','features.p':'Refined personality','features.pd':'Optional memory, safe limits, contextual responses. Elegant, playful, respectful.', 'proof.latency':'Average response time','proof.images':'Images/month in Premium','proof.video':'AI video minutes / month','proof.avail':'Global availability', 'pricing.s':'Starter','pricing.p':'Premium','pricing.e':'Elite','pricing.mo':'/mo','pricing.s1':'Unlimited text chat','pricing.s2':'50 images / month','pricing.s3':'10 minutes voice','pricing.p1':'Unlimited chat (text + voice)','pricing.p2':'400 images / month','pricing.p3':'60 minutes AI video','pricing.p4':'Priority generation','pricing.e1':'Everything in Premium','pricing.e2':'1:1 custom scenes','pricing.e3':'Exclusive models','pricing.e4':'Priority support','pricing.chooseS':'Choose Starter','pricing.chooseP':'Choose Premium','pricing.chooseE':'Choose Elite', 'testi.t1':'Feels real. The voice surprised me: warm, natural.','testi.t2':'Images look premium. Generated a set in 30s.','testi.t3':'Polite responses and it remembers my preferences.', 'join.title':'Join the list & get access','join.desc':'Get your access link + 5 bonus images on activation.','join.btn':'Join now','join.note':'We respect privacy. Unsubscribe anytime.', 'faq.title':'Quick questions','faq.q1':'Is the content real?','faq.a1':'No. Eva is 100% AI. We follow safety rules and platform policies.','faq.q2':'Can I request custom scenes?','faq.a2':'Yes, in Premium/Elite. Tell the style, outfit, mood — Eva generates.','faq.q3':'How do I cancel?','faq.a3':'Cancel anytime from your payment platform account.', 'footer.join':'Join','float.cta':'Quick access' } };
+  function setLang(lang){ const dict=T[lang]||T.ro; localStorage.setItem('eva_lang',lang); document.documentElement.lang=lang; document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n'); if(dict[k]) el.innerHTML=dict[k];}); document.getElementById('btnRO').setAttribute('aria-pressed',lang==='ro'); document.getElementById('btnEN').setAttribute('aria-pressed',lang==='en'); }
   document.getElementById('btnRO').addEventListener('click',()=>setLang('ro'));
   document.getElementById('btnEN').addEventListener('click',()=>setLang('en'));
   setLang(localStorage.getItem('eva_lang')||'ro');
 
+  // -------- FX particles (gold bokeh) --------
+  (function(){
+    const c=document.getElementById('fxParticles'); if(!c) return; const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches; const dpr=Math.min(devicePixelRatio||1,1.5); const ctx=c.getContext('2d',{alpha:true}); let W=0,H=0,raf=0; const COUNT=reduce?12:26; const particles=Array.from({length:COUNT},()=>({ a:Math.random()*Math.PI*2, r:120+Math.random()*Math.max(220,innerWidth*0.18), s:0.18+Math.random()*0.65, size:10+Math.random()*22 }));
+    const resize=()=>{const r=c.getBoundingClientRect(); W=Math.max(1,(r.width*dpr)|0); H=Math.max(1,(r.height*dpr)|0); c.width=W; c.height=H;}; resize(); addEventListener('resize',resize);
+    const draw=()=>{ ctx.clearRect(0,0,W,H); ctx.save(); ctx.globalCompositeOperation='lighter'; for(const p of particles){ p.a+=0.0009*(reduce?0.4:1)+0.0006*p.s; const cx=W/2+Math.cos(p.a)*p.r; const cy=H/2+Math.sin(p.a*1.07)*p.r*0.55; const g=ctx.createRadialGradient(cx,cy,0,cx,cy,p.size*3); g.addColorStop(0,'hsla(46,85%,65%,.22)'); g.addColorStop(.6,'hsla(270,70%,70%,.10)'); g.addColorStop(1,'rgba(0,0,0,0)'); ctx.fillStyle=g; ctx.beginPath(); ctx.arc(cx,cy,p.size*2.2,0,Math.PI*2); ctx.fill(); } ctx.restore(); raf=requestAnimationFrame(draw); };
+    const start=()=>{ if(!reduce){ cancelAnimationFrame(raf); raf=requestAnimationFrame(draw);} };
+    const stop=()=>cancelAnimationFrame(raf);
+    document.addEventListener('visibilitychange',()=>document.hidden?stop():start(),{passive:true}); start();
+  })();
+
   // -------- OG Generator (v2) --------
   (function(){
-    const W=1200,H=630; const c=document.getElementById('ogc'); if(!c) return; const ctx=c.getContext('2d'); const $=id=>document.getElementById(id);
-    c.width=W; c.height=H;
-    function wrapText(textStr,x,y,maxWidth,lineHeight,font){
-      ctx.font=font; const words=(textStr||'').split(' '); let line='';
-      for(let n=0;n<words.length;n++){
-        const test=line+words[n]+' ';
-        if(ctx.measureText(test).width>maxWidth && n>0){ ctx.fillText(line,x,y); line=words[n]+' '; y+=lineHeight; } else line=test;
-      }
-      ctx.fillText(line,x,y);
-    }
+    const W=1200,H=630; const c=document.getElementById('ogc'); if(!c) return; const ctx=c.getContext('2d'); const $=id=>document.getElementById(id); c.width=W; c.height=H;
+    function wrapText(textStr,x,y,maxWidth,lineHeight,font){ ctx.font=font; const words=(textStr||'').split(' '); let line=''; for(let n=0;n<words.length;n++){ const test=line+words[n]+' '; if(ctx.measureText(test).width>maxWidth && n>0){ ctx.fillText(line,x,y); line=words[n]+' '; y+=lineHeight; } else line=test; } ctx.fillText(line,x,y); }
     const imgFromFile=(file)=>new Promise((res,rej)=>{const r=new FileReader(); r.onload=()=>{const i=new Image(); i.onload=()=>res(i); i.onerror=rej; i.src=r.result;}; r.onerror=rej; r.readAsDataURL(file);});
-    const load = async (fileInput, fallbacks=[])=>{
-      if(fileInput.files && fileInput.files[0]) return await imgFromFile(fileInput.files[0]);
-      for(const p of fallbacks){ try{ await new Promise((r,j)=>{ const i=new Image(); i.onload=()=>r(i); i.onerror=j; i.src=p; }); const im=new Image(); im.src=p; await new Promise(r=>im.onload=r); return im; }catch(e){} }
-      return null;
-    };
-    function paintBG(style){
-      const g=ctx.createLinearGradient(0,0,W,H);
-      if(style==='royal'){ g.addColorStop(0,'#1a0826'); g.addColorStop(.55,'#6d22d3'); g.addColorStop(1,'#d7b86f'); }
-      else if(style==='noir'){ g.addColorStop(0,'#0b0611'); g.addColorStop(1,'#2b0a3d'); }
-      else { g.addColorStop(0,'#2b0a3d'); g.addColorStop(1,'#9b59ff'); }
-      ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
-      // soft glow orbs
-      ctx.globalAlpha=.20; ctx.fillStyle='#6d22d3'; ctx.beginPath(); ctx.arc(W*.8,H*.25,260,0,Math.PI*2); ctx.fill(); ctx.fillStyle='#d7b86f'; ctx.beginPath(); ctx.arc(W*.15,H*.8,200,0,Math.PI*2); ctx.fill(); ctx.globalAlpha=1;
-      // subtle noise
-      const noise=ctx.createLinearGradient(0,0,0,H); noise.addColorStop(0,'rgba(255,255,255,.03)'); noise.addColorStop(1,'rgba(0,0,0,.03)'); ctx.fillStyle=noise; ctx.fillRect(0,0,W,H);
-    }
-    async function draw(){
-      const title=$('ogTitle').value||'Eva Voss — AI Fantasy';
-      const sub=$('ogSub').value||'Premium AI • voice · image · video';
-      const style=$('ogStyle').value;
-      ctx.clearRect(0,0,W,H); paintBG(style);
-      // background image (optional, cover)
-      const bg=await load($('ogBg'), ['showcase.jpg']);
-      if(bg){
-        const r=Math.max(W/bg.width, H/bg.height);
-        const bw=bg.width*r, bh=bg.height*r; const bx=(W-bw)/2, by=(H-bh)/2;
-        ctx.globalAlpha=.28; ctx.drawImage(bg,bx,by,bw,bh); ctx.globalAlpha=1;
-      }
-      // brand stripe
-      ctx.fillStyle='rgba(0,0,0,.25)'; ctx.fillRect(0,H-84,W,84);
-      // logo (optional)
-      const logo=await load($('ogLogo'), ['logo-eva.png','logo-eva.jpg']);
-      if(logo){ const lw=220; const lh=logo.height*(lw/logo.width); ctx.drawImage(logo, W-80-lw, 36, lw, lh); }
-      // title & subtitle
-      ctx.shadowColor='rgba(0,0,0,.35)'; ctx.shadowBlur=24; ctx.shadowOffsetY=6; ctx.fillStyle='#f7f2ff';
-      ctx.font='700 84px Playfair Display, serif'; wrapText(title, 80, 300, W-160-260, 88, '700 84px Playfair Display, serif');
-      ctx.shadowBlur=0; ctx.shadowOffsetY=0; ctx.fillStyle='#cdbde6'; ctx.font='800 28px Inter, system-ui'; wrapText(sub, 80, 360, W-160, 36, '800 28px Inter, system-ui');
-      // export
-      const jpg=c.toDataURL('image/jpeg', .92); const png=c.toDataURL('image/png');
-      document.getElementById('ogPreview').src=jpg;
-      document.getElementById('ogDownloadJpg').href=jpg;
-      document.getElementById('ogDownloadPng').href=png;
-    }
-    document.getElementById('ogMake').addEventListener('click', draw);
-    // first render
-    draw();
-    document.getElementById('ogCopyMeta').addEventListener('click', async ()=>{
-      const meta=`<meta property="og:image" content="og-eva.jpg" />\n<meta name=\"twitter:image\" content=\"og-eva.jpg\" />`;
-      try{ await navigator.clipboard.writeText(meta); alert('Meta OG copiat în clipboard. Urcă og-eva.jpg în root.'); }catch{ alert('Nu am putut copia. Copiază manual:\n'+meta); }
-    });
+    const load=async(fi,fb=[])=>{ if(fi.files&&fi.files[0]) return await imgFromFile(fi.files[0]); for(const p of fb){ try{ await new Promise((r,j)=>{const i=new Image(); i.onload=()=>r(i); i.onerror=j; i.src=p;}); const im=new Image(); im.src=p; await new Promise(r=>im.onload=r); return im; }catch(e){} } return null; };
+    function paintBG(style){ const g=ctx.createLinearGradient(0,0,W,H); if(style==='royal'){ g.addColorStop(0,'#1a0826'); g.addColorStop(.55,'#6d22d3'); g.addColorStop(1,'#d7b86f'); } else if(style==='noir'){ g.addColorStop(0,'#0b0611'); g.addColorStop(1,'#2b0a3d'); } else { g.addColorStop(0,'#2b0a3d'); g.addColorStop(1,'#9b59ff'); } ctx.fillStyle=g; ctx.fillRect(0,0,W,H); ctx.globalAlpha=.20; ctx.fillStyle='#6d22d3'; ctx.beginPath(); ctx.arc(W*.8,H*.25,260,0,Math.PI*2); ctx.fill(); ctx.fillStyle='#d7b86f'; ctx.beginPath(); ctx.arc(W*.15,H*.8,200,0,Math.PI*2); ctx.fill(); ctx.globalAlpha=1; const noise=ctx.createLinearGradient(0,0,0,H); noise.addColorStop(0,'rgba(255,255,255,.03)'); noise.addColorStop(1,'rgba(0,0,0,.03)'); ctx.fillStyle=noise; ctx.fillRect(0,0,W,H); }
+    async function draw(){ const title=$('ogTitle').value||'Eva Voss — AI Fantasy'; const sub=$('ogSub').value||'Premium AI • voice · image · video'; const style=$('ogStyle').value; ctx.clearRect(0,0,W,H); paintBG(style); const bg=await load($('ogBg'),['showcase.jpg']); if(bg){ const r=Math.max(W/bg.width,H/bg.height); const bw=bg.width*r,bh=bg.height*r; const bx=(W-bw)/2,by=(H-bh)/2; ctx.globalAlpha=.28; ctx.drawImage(bg,bx,by,bw,bh); ctx.globalAlpha=1; } ctx.fillStyle='rgba(0,0,0,.25)'; ctx.fillRect(0,H-84,W,84); const logo=await load($('ogLogo'),['logo-eva.png','logo-eva.jpg']); if(logo){ const lw=220, lh=logo.height*(lw/logo.width); ctx.drawImage(logo,W-80-lw,36,lw,lh); } ctx.shadowColor='rgba(0,0,0,.35)'; ctx.shadowBlur=24; ctx.shadowOffsetY=6; ctx.fillStyle='#f7f2ff'; ctx.font='700 84px Playfair Display, serif'; wrapText(title,80,300,W-160-260,88,'700 84px Playfair Display, serif'); ctx.shadowBlur=0; ctx.shadowOffsetY=0; ctx.fillStyle='#cdbde6'; ctx.font='800 28px Inter, system-ui'; wrapText(sub,80,360,W-160,36,'800 28px Inter, system-ui'); const jpg=c.toDataURL('image/jpeg',.92); const png=c.toDataURL('image/png'); $('ogPreview').src=jpg; $('ogDownloadJpg').href=jpg; $('ogDownloadPng').href=png; }
+    document.getElementById('ogMake').addEventListener('click',draw); draw(); document.getElementById('ogCopyMeta').addEventListener('click', async ()=>{ const meta=`<meta property="og:image" content="og-eva.jpg" />\n<meta name=\"twitter:image\" content=\"og-eva.jpg\" />`; try{ await navigator.clipboard.writeText(meta); alert('Meta OG copiat. Urcă og-eva.jpg în root.'); }catch{ alert('Copiază manual:\n'+meta); } });
   })();
   </script>
 </body>
