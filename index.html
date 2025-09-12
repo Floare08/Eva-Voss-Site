@@ -201,6 +201,22 @@
     .imgcard{position:relative;border:1px solid rgba(255,255,255,.12);border-radius:12px;overflow:hidden;background:rgba(255,255,255,.02)}
     .imgcard a.dl{position:absolute;right:8px;bottom:8px}
     .adv-upload{margin-top:10px;padding:12px;border:1px dashed rgba(255,255,255,.18);border-radius:12px}
+  /* --- Minimal Premium (2025) overrides for buttons & nav --- */
+    .pill{position:relative;display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:12px;text-decoration:none;font-weight:600;font-size:14px;letter-spacing:0;line-height:1;border:1px solid rgba(255,255,255,.14);cursor:pointer;user-select:none;background:rgba(255,255,255,.03);transition:background .18s ease,border-color .18s ease,transform .12s ease,box-shadow .18s ease}
+    .pill .ico{font-size:14px;opacity:.85}
+    .pill:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.24);box-shadow:0 6px 18px rgba(0,0,0,.22)}
+    .pill:active{transform:translateY(1px)}
+    .pill.primary{color:#fff;background:#6d22d3;border-color:transparent}
+    .pill.ghost{background:transparent;border-color:rgba(255,255,255,.14)}
+    /* neutralize old variant backgrounds */
+    .pill[data-variant]{background:inherit}
+    .pill[data-variant="aurum"],.pill[data-variant="amethyst"],.pill[data-variant="glass"]{background:inherit;border-color:rgba(255,255,255,.14)}
+    /* header nav: link-look */
+    .actions .pill{background:transparent;border:0;padding:8px 10px;border-radius:8px}
+    .actions .pill:hover{background:rgba(255,255,255,.06);box-shadow:none}
+    .actions .ico{display:none}
+    /* cards: crisper radius */
+    .card{border-radius:12px}
   </style>
 </head>
 <body>
@@ -774,7 +790,8 @@
         cxn.fillStyle='#f7f2ff'; cxn.font=(opts.upscale?'bold 56px':'bold 28px')+' Inter, sans-serif'; cxn.fillText('Eva — DEMO', 24*(opts.upscale?2:1)/2, 48*(opts.upscale?2:1)/2);
         // prompt wrap
         cxn.font=(opts.upscale?'28px':'16px')+' Inter, sans-serif';
-        wrap(cxn, (opts.prompt||'')+(opts.negative?`\n- ${opts.negative}`:''), 24*(opts.upscale?2:1)/2, 80*(opts.upscale?2:1)/2, cn.width-48, (opts.upscale?44:22));
+        wrap(cxn, (opts.prompt||'')+(opts.negative?`
+- ${opts.negative}`:''), 24*(opts.upscale?2:1)/2, 80*(opts.upscale?2:1)/2, cn.width-48, (opts.upscale?44:22));
         // reference image thumb
         if(opts.ref){ const im=new Image(); await new Promise((res)=>{ im.onload=res; im.src=opts.ref; }); const rw=Math.min(240*(opts.upscale?2:1), im.width); const rh=im.height*(rw/im.width); cxn.globalAlpha=.85; cxn.drawImage(im, cn.width-rw-24, cn.height-rh-24, rw, rh); cxn.globalAlpha=1; }
         out.push(cn.toDataURL('image/png'));
@@ -793,7 +810,9 @@
     };
   })();
 
-  // -------- OG Generator (v2) --------) return; const ctx=c.getContext('2d'); const $=id=>document.getElementById(id); c.width=W; c.height=H;
+  // -------- OG Generator (v2) --------
+  (function(){
+    const W=1200,H=630; const c=document.getElementById('ogc'); if(!c) return; const ctx=c.getContext('2d'); const $=id=>document.getElementById(id); c.width=W; c.height=H;
     function wrapText(textStr,x,y,maxWidth,lineHeight,font){ ctx.font=font; const words=(textStr||'').split(' '); let line=''; for(let n=0;n<words.length;n++){ const test=line+words[n]+' '; if(ctx.measureText(test).width>maxWidth && n>0){ ctx.fillText(line,x,y); line=words[n]+' '; y+=lineHeight; } else line=test; } ctx.fillText(line,x,y); }
     const imgFromFile=(file)=>new Promise((res,rej)=>{const r=new FileReader(); r.onload=()=>{const i=new Image(); i.onload=()=>res(i); i.onerror=rej; i.src=r.result;}; r.onerror=rej; r.readAsDataURL(file);});
     const load=async(fi,fb=[])=>{ if(fi && fi.files && fi.files[0]) return await imgFromFile(fi.files[0]); for(const p of fb){ try{ await new Promise((r,j)=>{const i=new Image(); i.onload=()=>r(i); i.onerror=j; i.src=p;}); const im=new Image(); im.src=p; await new Promise(r=>im.onload=r); return im; }catch(e){} } return null; };
@@ -809,6 +828,11 @@
     draw();
     document.getElementById('ogCopyMeta').addEventListener('click', async ()=>{ const meta=`<meta property=\"og:image\" content=\"og-eva.jpg\" />\n<meta name=\"twitter:image\" content=\"og-eva.jpg\" />`; try{ await navigator.clipboard.writeText(meta); alert('Meta OG copiat. Urcă og-eva.jpg în root.'); }catch{ alert('Copiază manual:\n'+meta); } });
   })();
-  </script>
+    // --- Clean nav labels (remove emoji in OG link) ---
+  (function(){
+    const og=document.querySelector('nav.actions a[href="#og"]');
+    if(og) og.textContent='OG';
+  })();
+</script>
 </body>
 </html>
