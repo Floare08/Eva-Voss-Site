@@ -48,12 +48,36 @@
     .brand .t{font-weight:900;letter-spacing:.3px;font-size:18px}
 
     /* Premium buttons */
-    .pill{position:relative;display:inline-flex;align-items:center;gap:10px;padding:11px 18px;border-radius:999px;text-decoration:none;font-weight:800;letter-spacing:.2px;line-height:1;border:1px solid rgba(255,255,255,.14);overflow:hidden}
-    .pill .ico{font-size:16px;opacity:.9}
-    .pill::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg, rgba(255,255,255,.16), transparent 60%);transform:translateX(-120%);transition:transform .5s}
-    .pill:hover::after{transform:translateX(0%)}
-    .pill.primary{background:linear-gradient(120deg,var(--royal),#9b59ff);color:#fff;box-shadow:var(--shadow);border-color:transparent}
-    .pill.ghost{backdrop-filter:blur(8px);color:var(--ink)}
+    .pill{position:relative;display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:999px;text-decoration:none;font-weight:900;letter-spacing:.2px;line-height:1;border:1px solid transparent;cursor:pointer;user-select:none;transition:transform .18s ease, box-shadow .18s ease}
+.pill .ico{font-size:16px;opacity:.95}
+/* premium gradient border + glass core */
+.pill{background:
+  linear-gradient(135deg, rgba(19,10,29,.85), rgba(19,10,29,.65)) padding-box,
+  conic-gradient(from var(--rot,180deg) at 50% 50%, #d7b86f, #9b59ff, #6d22d3, #d7b86f) border-box;
+}
+.pill::after{content:"";position:absolute;inset:0;border-radius:999px;background:linear-gradient(120deg, rgba(255,255,255,.16), transparent 62%);transform:translateX(-120%);transition:transform .5s}
+.pill:hover{transform:translateY(-1px);--rot:360deg;box-shadow:0 8px 26px rgba(155,89,255,.25), 0 2px 10px rgba(215,184,111,.18)}
+.pill:hover::after{transform:translateX(0%)}
+.pill:active{transform:translateY(0)}
+
+.pill.primary{color:#fff;background:
+  linear-gradient(135deg, #5b1fb7, #8b3dff) padding-box,
+  linear-gradient(135deg, #d7b86f, #6d22d3) border-box;
+}
+.pill.ghost{color:var(--ink);background:
+  linear-gradient(135deg, rgba(19,10,29,.55), rgba(19,10,29,.35)) padding-box,
+  linear-gradient(135deg, rgba(255,255,255,.22), rgba(255,255,255,.08)) border-box;
+}
+/* variants for extra flair */
+.pill[data-variant="aurum"]{background:
+  linear-gradient(135deg,#1a1124,#2a1636) padding-box,
+  linear-gradient(135deg,#ffe6a3,#d7b86f) border-box; color:#fff}
+.pill[data-variant="amethyst"]{background:
+  linear-gradient(135deg,#2b0a3d,#3e1370) padding-box,
+  linear-gradient(135deg,#b891ff,#6d22d3) border-box; color:#fff}
+.pill[data-variant="glass"]{background:
+  linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.03)) padding-box,
+  linear-gradient(135deg, rgba(255,255,255,.16), rgba(255,255,255,.06)) border-box; color:var(--ink)}
 
     .lang{display:inline-flex;border:1px solid rgba(255,255,255,.14);border-radius:999px;overflow:hidden}
     .lang button{background:transparent;color:var(--ink);padding:8px 12px;border:0;cursor:pointer}
@@ -154,10 +178,10 @@
         <span class="t">Eva Voss</span>
       </a>
       <nav class="actions" aria-label="Primary">
-        <a class="pill ghost" href="#features" data-i18n="nav.features"><span class="ico">✨</span>Caracteristici</a>
-        <a class="pill ghost" href="#pricing" data-i18n="nav.pricing"><span class="ico">💎</span>Prețuri</a>
-        <a class="pill ghost" href="#og" title="OG Generator">🖼️ OG</a>
-        <a class="pill primary" href="#join" data-i18n="nav.cta"><span class="ico">⚡</span>Începe acum</a>
+        <a class="pill ghost" data-variant="glass" href="#features" data-i18n="nav.features"><span class="ico">✨</span>Caracteristici</a>
+        <a class="pill ghost" data-variant="glass" href="#pricing" data-i18n="nav.pricing"><span class="ico">💎</span>Prețuri</a>
+        <a class="pill ghost" data-variant="amethyst" href="#og" title="OG Generator">🖼️ OG</a>
+        <a class="pill primary" data-variant="amethyst" href="#join" data-i18n="nav.cta"><span class="ico">⚡</span>Începe acum</a>
         <span class="lang" role="group" aria-label="Language switcher">
           <button type="button" id="btnRO" aria-pressed="true">RO</button>
           <button type="button" id="btnEN" aria-pressed="false">EN</button>
@@ -190,9 +214,9 @@
       <h1 data-i18n="hero.title">Eva Voss — <span style="color:var(--gold)">AI Fantasy</span> Experience</h1>
       <p class="lead" data-i18n="hero.lead">Conversații naturale, voce seducătoare, imagini și clipuri generate instant. Elegantă, realistă, disponibilă pe telefon, PC și web.</p>
       <div class="cta" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-        <a class="pill primary" href="#pricing" data-i18n="hero.seePlans"><span class="ico">💳</span>Vezi planurile</a>
-        <button class="pill ghost" id="openDemo" type="button" data-i18n="hero.watchDemo"><span class="ico">▶️</span>Vezi demo</button>
-        <a class="pill ghost" href="#join"><span class="ico">📩</span>Înscrie-te</a>
+        <a class="pill primary" data-variant="amethyst" href="#pricing" data-i18n="hero.seePlans"><span class="ico">💳</span>Vezi planurile</a>
+        <button class="pill ghost" data-variant="glass" id="openDemo" type="button" data-i18n="hero.watchDemo"><span class="ico">▶️</span>Vezi demo</button>
+        <a class="pill" data-variant="aurum" href="#join"><span class="ico">📩</span>Înscrie-te</a>
       </div>
       <div class="badges">
         <span class="dot" aria-hidden="true"></span>
@@ -289,6 +313,25 @@
         <p style="color:var(--muted);margin-top:6px">Generează <code>og-eva.jpg</code> premium. Poți urca un fundal propriu și un logo custom. După descărcare, pune fișierul în <strong>/og-eva.jpg</strong> (root).</p>
         <div style="display:grid;gap:12px;grid-template-columns:1fr 1fr;align-items:start;margin-top:12px">
           <div style="display:grid;gap:10px">
+            <label>Dimensiune titlu
+              <input id="ogTitleSize" type="range" min="60" max="120" value="84" />
+            </label>
+            <label>Dimensiune subtitlu
+              <input id="ogSubSize" type="range" min="20" max="36" value="28" />
+            </label>
+            <label>Mărime logo
+              <input id="ogLogoSize" type="range" min="120" max="360" value="220" />
+            </label>
+            <label>Poziție logo
+              <select id="ogLogoPos">
+                <option value="right" selected>Sus-dreapta</option>
+                <option value="left">Sus-stânga</option>
+                <option value="hide">Ascuns</option>
+              </select>
+            </label>
+            <label>Accente circulare
+              <input id="ogRings" type="checkbox" checked />
+            </label>
             <label>Titlu
               <input id="ogTitle" type="text" value="Eva Voss — AI Fantasy" style="width:100%;border-radius:10px;padding:10px 12px;border:1px solid rgba(255,255,255,.16);background:rgba(0,0,0,.2);color:var(--ink)" />
             </label>
@@ -309,10 +352,11 @@
               </select>
             </label>
             <div style="display:flex;gap:10px;flex-wrap:wrap">
-              <button id="ogMake" class="pill primary" type="button">Generează</button>
-              <a id="ogDownloadJpg" class="pill ghost" href="#" download="og-eva.jpg">Descarcă JPG</a>
-              <a id="ogDownloadPng" class="pill ghost" href="#" download="og-eva.png">Descarcă PNG</a>
-              <button id="ogCopyMeta" class="pill ghost" type="button">Copiază meta OG</button>
+              <button id="ogMake" class="pill primary" data-variant="amethyst" type="button">Generează</button>
+              <a id="ogDownloadJpg" class="pill ghost" data-variant="glass" href="#" download="og-eva.jpg">Descarcă JPG</a>
+              <a id="ogDownloadPng" class="pill ghost" data-variant="glass" href="#" download="og-eva.png">Descarcă PNG</a>
+              <a id="ogDownloadWebp" class="pill ghost" data-variant="glass" href="#" download="og-eva.webp" style="display:none">Descarcă WEBP</a>
+              <button id="ogCopyMeta" class="pill" data-variant="aurum" type="button">Copiază meta OG</button>
             </div>
             <small style="color:var(--muted)">Sfat: păstrează titlul pe 1–2 rânduri. Poți folosi și emoji 😈✨</small>
           </div>
@@ -434,10 +478,18 @@
     const W=1200,H=630; const c=document.getElementById('ogc'); if(!c) return; const ctx=c.getContext('2d'); const $=id=>document.getElementById(id); c.width=W; c.height=H;
     function wrapText(textStr,x,y,maxWidth,lineHeight,font){ ctx.font=font; const words=(textStr||'').split(' '); let line=''; for(let n=0;n<words.length;n++){ const test=line+words[n]+' '; if(ctx.measureText(test).width>maxWidth && n>0){ ctx.fillText(line,x,y); line=words[n]+' '; y+=lineHeight; } else line=test; } ctx.fillText(line,x,y); }
     const imgFromFile=(file)=>new Promise((res,rej)=>{const r=new FileReader(); r.onload=()=>{const i=new Image(); i.onload=()=>res(i); i.onerror=rej; i.src=r.result;}; r.onerror=rej; r.readAsDataURL(file);});
-    const load=async(fi,fb=[])=>{ if(fi.files&&fi.files[0]) return await imgFromFile(fi.files[0]); for(const p of fb){ try{ await new Promise((r,j)=>{const i=new Image(); i.onload=()=>r(i); i.onerror=j; i.src=p;}); const im=new Image(); im.src=p; await new Promise(r=>im.onload=r); return im; }catch(e){} } return null; };
+    const load=async(fi,fb=[])=>{ if(fi && fi.files && fi.files[0]) return await imgFromFile(fi.files[0]); for(const p of fb){ try{ await new Promise((r,j)=>{const i=new Image(); i.onload=()=>r(i); i.onerror=j; i.src=p;}); const im=new Image(); im.src=p; await new Promise(r=>im.onload=r); return im; }catch(e){} } return null; };
     function paintBG(style){ const g=ctx.createLinearGradient(0,0,W,H); if(style==='royal'){ g.addColorStop(0,'#1a0826'); g.addColorStop(.55,'#6d22d3'); g.addColorStop(1,'#d7b86f'); } else if(style==='noir'){ g.addColorStop(0,'#0b0611'); g.addColorStop(1,'#2b0a3d'); } else { g.addColorStop(0,'#2b0a3d'); g.addColorStop(1,'#9b59ff'); } ctx.fillStyle=g; ctx.fillRect(0,0,W,H); ctx.globalAlpha=.20; ctx.fillStyle='#6d22d3'; ctx.beginPath(); ctx.arc(W*.8,H*.25,260,0,Math.PI*2); ctx.fill(); ctx.fillStyle='#d7b86f'; ctx.beginPath(); ctx.arc(W*.15,H*.8,200,0,Math.PI*2); ctx.fill(); ctx.globalAlpha=1; const noise=ctx.createLinearGradient(0,0,0,H); noise.addColorStop(0,'rgba(255,255,255,.03)'); noise.addColorStop(1,'rgba(0,0,0,.03)'); ctx.fillStyle=noise; ctx.fillRect(0,0,W,H); }
-    async function draw(){ const title=$('ogTitle').value||'Eva Voss — AI Fantasy'; const sub=$('ogSub').value||'Premium AI • voice · image · video'; const style=$('ogStyle').value; ctx.clearRect(0,0,W,H); paintBG(style); const bg=await load($('ogBg'),['showcase.jpg']); if(bg){ const r=Math.max(W/bg.width,H/bg.height); const bw=bg.width*r,bh=bg.height*r; const bx=(W-bw)/2,by=(H-bh)/2; ctx.globalAlpha=.28; ctx.drawImage(bg,bx,by,bw,bh); ctx.globalAlpha=1; } ctx.fillStyle='rgba(0,0,0,.25)'; ctx.fillRect(0,H-84,W,84); const logo=await load($('ogLogo'),['logo-eva.png','logo-eva.jpg']); if(logo){ const lw=220, lh=logo.height*(lw/logo.width); ctx.drawImage(logo,W-80-lw,36,lw,lh); } ctx.shadowColor='rgba(0,0,0,.35)'; ctx.shadowBlur=24; ctx.shadowOffsetY=6; ctx.fillStyle='#f7f2ff'; ctx.font='700 84px Playfair Display, serif'; wrapText(title,80,300,W-160-260,88,'700 84px Playfair Display, serif'); ctx.shadowBlur=0; ctx.shadowOffsetY=0; ctx.fillStyle='#cdbde6'; ctx.font='800 28px Inter, system-ui'; wrapText(sub,80,360,W-160,36,'800 28px Inter, system-ui'); const jpg=c.toDataURL('image/jpeg',.92); const png=c.toDataURL('image/png'); $('ogPreview').src=jpg; $('ogDownloadJpg').href=jpg; $('ogDownloadPng').href=png; }
-    document.getElementById('ogMake').addEventListener('click',draw); draw(); document.getElementById('ogCopyMeta').addEventListener('click', async ()=>{ const meta=`<meta property="og:image" content="og-eva.jpg" />\n<meta name=\"twitter:image\" content=\"og-eva.jpg\" />`; try{ await navigator.clipboard.writeText(meta); alert('Meta OG copiat. Urcă og-eva.jpg în root.'); }catch{ alert('Copiază manual:\n'+meta); } });
+    async function draw(){ const title=$('ogTitle').value||'Eva Voss — AI Fantasy'; const sub=$('ogSub').value||'Premium AI • voice · image · video'; const style=$('ogStyle').value; const tSize=parseInt(($('ogTitleSize')||{value:84}).value,10)||84; const sSize=parseInt(($('ogSubSize')||{value:28}).value,10)||28; const logoSize=parseInt(($('ogLogoSize')||{value:220}).value,10)||220; const logoPos=($('ogLogoPos')||{value:'right'}).value; const rings=$('ogRings')?.checked; ctx.clearRect(0,0,W,H); paintBG(style); const bg=await load($('ogBg'),['showcase.jpg']); if(bg){ const r=Math.max(W/bg.width,H/bg.height); const bw=bg.width*r,bh=bg.height*r; const bx=(W-bw)/2,by=(H-bh)/2; ctx.globalAlpha=.26; ctx.drawImage(bg,bx,by,bw,bh); ctx.globalAlpha=1; }
+      if(rings){ ctx.save(); ctx.globalAlpha=.35; ctx.strokeStyle='rgba(215,184,111,.45)'; ctx.lineWidth=3; for(let i=0;i<3;i++){ const rad=140+i*60; ctx.beginPath(); ctx.arc(W*0.78,H*0.24,rad,0,Math.PI*2); ctx.stroke(); } ctx.restore(); }
+      ctx.fillStyle='rgba(0,0,0,.25)'; ctx.fillRect(0,H-84,W,84);
+      let logo=await load($('ogLogo'),['logo-eva.png','logo-eva.jpg']); if(logo && logoPos!=='hide'){ const lw=logoSize; const lh=logo.height*(lw/logo.width); const x=logoPos==='right' ? (W-80-lw) : 80; const y=36; ctx.drawImage(logo,x,y,lw,lh); }
+      ctx.shadowColor='rgba(0,0,0,.35)'; ctx.shadowBlur=24; ctx.shadowOffsetY=6; ctx.fillStyle='#f7f2ff'; ctx.font=`700 ${tSize}px Playfair Display, serif`; wrapText(title,80,300,W-160-260,Math.round(tSize*1.05),`700 ${tSize}px Playfair Display, serif`); ctx.shadowBlur=0; ctx.shadowOffsetY=0; ctx.fillStyle='#cdbde6'; ctx.font=`800 ${sSize}px Inter, system-ui`; wrapText(sub,80,360,W-160,Math.round(sSize*1.3),`800 ${sSize}px Inter, system-ui`);
+      const jpg=c.toDataURL('image/jpeg',.92); const png=c.toDataURL('image/png'); const webp=c.toDataURL('image/webp'); $('ogPreview').src=jpg; $('ogDownloadJpg').href=jpg; $('ogDownloadPng').href=png; if(webp.startsWith('data:image/webp')){ const a=$('ogDownloadWebp'); if(a){ a.href=webp; a.style.display='inline-flex'; } } }
+    const inputs=['ogTitle','ogSub','ogStyle','ogTitleSize','ogSubSize','ogLogoSize','ogLogoPos','ogRings']; inputs.forEach(id=>{ const el=$(id); if(el){ el.addEventListener('input',()=>draw()); el.addEventListener('change',()=>draw()); }});
+    document.getElementById('ogMake').addEventListener('click', draw); draw(); document.getElementById('ogCopyMeta').addEventListener('click', async ()=>{ const meta=`<meta property=\"og:image\" content=\"og-eva.jpg\" />
+<meta name=\"twitter:image\" content=\"og-eva.jpg\" />`; try{ await navigator.clipboard.writeText(meta); alert('Meta OG copiat. Urcă og-eva.jpg în root.'); }catch{ alert('Copiază manual:
+'+meta); } });('click', async ()=>{ const meta=`<meta property="og:image" content="og-eva.jpg" />\n<meta name=\"twitter:image\" content=\"og-eva.jpg\" />`; try{ await navigator.clipboard.writeText(meta); alert('Meta OG copiat. Urcă og-eva.jpg în root.'); }catch{ alert('Copiază manual:\n'+meta); } });
   })();
   </script>
 </body>
