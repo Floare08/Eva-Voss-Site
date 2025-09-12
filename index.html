@@ -217,10 +217,44 @@
     .actions .ico{display:none}
     /* cards: crisper radius */
     .card{border-radius:12px}
+  /* --- Minimal Premium (2025) overrides for buttons & nav --- */
+    .pill{position:relative;display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:12px;text-decoration:none;font-weight:600;font-size:14px;letter-spacing:0;line-height:1;border:1px solid rgba(255,255,255,.14);cursor:pointer;user-select:none;background:rgba(255,255,255,.03);transition:background .18s ease,border-color .18s ease,transform .12s ease,box-shadow .18s ease}
+    .pill .ico{font-size:14px;opacity:.85}
+    .pill:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.24);box-shadow:0 6px 18px rgba(0,0,0,.22)}
+    .pill:active{transform:translateY(1px)}
+    .pill.primary{color:#fff;background:#6d22d3;border-color:transparent}
+    .pill.ghost{background:transparent;border-color:rgba(255,255,255,.14)}
+    .pill[data-variant]{background:inherit}
+    .pill[data-variant="aurum"],.pill[data-variant="amethyst"],.pill[data-variant="glass"]{background:inherit;border-color:rgba(255,255,255,.14)}
+    .actions .pill{background:transparent;border:0;padding:8px 10px;border-radius:8px}
+    .actions .pill:hover{background:rgba(255,255,255,.06);box-shadow:none}
+    .actions .ico{display:none}
+    .card{border-radius:12px}
+
+    /* --- Age gate & Safe mode --- */
+    .agegate{position:fixed;inset:0;display:none;place-items:center;background:rgba(0,0,0,.6);z-index:1000}
+    .agegate .box{width:min(560px,92vw);background:#140b1f;border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:20px;box-shadow:var(--shadow)}
+    .agegate .box h3{margin:0 0 6px}
+    .agegate .box p{margin:0 0 14px;color:var(--muted)}
+    .age-badge{border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:4px 6px;font-weight:700;font-size:12px;opacity:.9}
+    .safe{display:inline-flex;align-items:center;gap:6px;padding:6px 8px;border:1px solid rgba(255,255,255,.14);border-radius:8px;margin-left:6px}
+    .safe input{width:16px;height:16px}
+    html.locked{overflow:hidden}
   </style>
 </head>
 <body>
   <a href="#features" class="skip-link">Sari la conținut</a>
+  <!-- Age Gate (18+) overlay -->
+  <div id="ageGate" class="agegate" role="dialog" aria-modal="true" aria-label="Confirmare vârstă 18+">
+    <div class="box">
+      <h3>Conținut 18+</h3>
+      <p>Acest site și generatorul includ <strong>conținut destinat adulților</strong>, exclusiv <strong>AI generativ</strong>. Fără persoane reale. Continuând, confirmi că ai 18+ și ești de acord cu <a href="terms.html">Termenii</a> & <a href="privacy.html">Privacy</a>.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end">
+        <a id="ageNo" class="pill ghost" href="https://www.google.com" rel="nofollow">Nu am 18+</a>
+        <button id="ageYes" class="pill primary" type="button">Am 18+</button>
+      </div>
+    </div>
+  </div>
   <!-- Header -->
   <header>
     <div class="wrap nav">
@@ -228,12 +262,7 @@
         <img id="logoImg" src="logo-eva.png" alt="Eva Voss" height="36" loading="eager" decoding="async" />
         <span class="t">Eva Voss</span>
       </a>
-      <nav class="actions" aria-label="Primary">
-        <a class="pill ghost" data-variant="glass" href="#features" data-i18n="nav.features" aria-current="page"><span class="ico">✨</span>Caracteristici</a>
-        <a class="pill ghost" data-variant="glass" href="#pricing" data-i18n="nav.pricing"><span class="ico">💎</span>Prețuri</a>
-        <a class="pill ghost" data-variant="amethyst" href="#og" title="OG Generator">🖼️ OG</a>
-        <a class="pill primary" data-variant="amethyst" href="#join" data-i18n="nav.cta"><span class="ico">⚡</span>Începe acum</a>
-        <span class="lang" role="group" aria-label="Language switcher">
+      $1<span class="age-badge" title="Conținut 18+">18+</span><label class="safe" title="Safe mode"><input type="checkbox" id="safeMode" checked/> Safe</label>$2
           <button type="button" id="btnRO" aria-pressed="true">RO</button>
           <button type="button" id="btnEN" aria-pressed="false">EN</button>
         </span>
@@ -600,6 +629,33 @@
   const io = new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('in')), {threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
+  // -------- Age Gate (18+) & Safe Mode --------
+  (function(){
+    const gate=document.getElementById('ageGate');
+    const yes=document.getElementById('ageYes');
+    const no=document.getElementById('ageNo');
+    const key='eva_age_ok';
+    const ok=localStorage.getItem(key)==='1';
+    if(!ok && gate){ gate.style.display='grid'; document.documentElement.classList.add('locked'); }
+    yes && yes.addEventListener('click',()=>{ localStorage.setItem(key,'1'); gate.remove(); document.documentElement.classList.remove('locked'); track('age_ok'); });
+    no && no.addEventListener('click',()=>{ localStorage.removeItem(key); });
+
+    const sKey='eva_safe_mode';
+    const chk=document.getElementById('safeMode');
+    if(chk){ const stored=localStorage.getItem(sKey); chk.checked = stored===null ? true : stored==='1'; chk.addEventListener('change',()=> localStorage.setItem(sKey, chk.checked?'1':'0')); }
+    window.isSafeMode = ()=> (localStorage.getItem(sKey)!=='0');
+    window.validateAllowed = (prompt, negative='')=>{
+      const p=((prompt||'')+' '+(negative||'')).toLowerCase();
+      const hard=['minor','underage','child','real person','celebrity'];
+      if(hard.some(w=>p.includes(w))) return false; // always block
+      if(window.isSafeMode()){
+        const soft=['gore','blood','violence'];
+        if(soft.some(w=>p.includes(w))) return false;
+      }
+      return true;
+    };
+  })();
+
   // -------- Smooth scroll --------
   document.querySelectorAll('a[href^="#"]').forEach(a=>{
     a.addEventListener('click', e=>{
@@ -712,14 +768,14 @@
       track('generate_'+type);
       preview.textContent='Generare în curs…';
       await new Promise(r=>setTimeout(r, 350));
-      if(type==='text'){
+      if(type==='text'){ if(!window.validateAllowed(payload.prompt,'')){ preview.textContent='Prompt blocat de Safe Mode/Termeni.'; return; }
         const out=`[${payload.tone}/${payload.length}] ${payload.prompt}`;
         preview.textContent=out;
         const blob=new Blob([out],{type:'text/plain'}); document.getElementById('btnDlText').href=URL.createObjectURL(blob);
         pushHistory({type:'text', summary: out.slice(0,60)+'…'});
         return;
       }
-      if(type==='voice'){
+      if(type==='voice'){ if(!window.validateAllowed(payload.prompt,'')){ preview.textContent='Text voce blocat de Safe Mode/Termeni.'; return; }
         const ctx=new (window.AudioContext||window.webkitAudioContext)(); const o=ctx.createOscillator(); const g=ctx.createGain(); o.type='sine'; o.frequency.value=440; o.connect(g); g.connect(ctx.destination); g.gain.value=0.001; o.start(); setTimeout(()=>{o.stop();},300);
         preview.textContent='Previzualizare audio (beep demo)';
         const blob=new Blob(['VOICE DEMO '+payload.prompt],{type:'text/plain'}); document.getElementById('btnDlVoice').href=URL.createObjectURL(blob);
@@ -728,6 +784,7 @@
       }
       if(type==='image'){
         const opts={ prompt: document.getElementById('iPrompt').value, negative: document.getElementById('iNeg')?.value||'', ar: document.getElementById('iAR').value, count: parseInt(document.getElementById('iCount').value,10)||1, cfg: parseInt(document.getElementById('iCfg').value,10)||7, steps: parseInt(document.getElementById('iSteps').value,10)||30, seed: document.getElementById('iSeed').value||null, style: document.getElementById('iStyle').value, model: document.getElementById('iModel').value, upscale: document.getElementById('iUpscale').checked, face: document.getElementById('iFace').checked, bg: document.getElementById('iBG').checked, ref: window.__eva_refImage||null };
+        if(!window.validateAllowed(opts.prompt, opts.negative)){ preview.innerHTML='<div class="hint">Prompt blocat de Safe Mode/Termeni.</div>'; return; }
         preview.innerHTML = '<div class="hint">Generez '+opts.count+' imagini…</div><div class="progress"><span></span></div>';
         const res = (window.imageProvider && window.imageProvider.generate) ? await window.imageProvider.generate(opts) : await mockGenerateImages(opts);
         renderImages(res);
