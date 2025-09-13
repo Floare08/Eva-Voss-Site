@@ -112,70 +112,40 @@
       </div>
 
       <div id="gallery" class="grid" aria-live="polite">
-  <article class="card">
-    <img class="thumb" src="/images/eva1.jpg" alt="Eva Velvet Desire" />
-    <div class="meta">
-      <div class="name">Eva • Velvet Desire <span class="tag">Premium</span></div>
-      <p class="desc">Velvet lingerie, aurii, atmosferă senzuală, vibe boudoir.</p>
-      <div class="quick"><a class="btn primary" href="#chat">Chat</a><a class="btn" href="#studio">Generează</a></div>
-    </div>
-  </article>
-  <article class="card">
-    <img class="thumb" src="/images/eva2.jpg" alt="Eva Noir Seduction" />
-    <div class="meta">
-      <div class="name">Eva • Noir Seduction <span class="tag">Hot</span></div>
-      <p class="desc">Satin mov, lumini neon noir, atitudine misterioasă.</p>
-      <div class="quick"><a class="btn primary" href="#chat">Chat</a><a class="btn" href="#studio">Generează</a></div>
-    </div>
-  </article>
-  <article class="card">
-    <img class="thumb" src="/images/eva3.jpg" alt="Eva Golden Glow" />
-    <div class="meta">
-      <div class="name">Eva • Golden Glow <span class="tag">Exclusive</span></div>
-      <p class="desc">Rochie aurie, bokeh cinematic, zâmbet seducător.</p>
-      <div class="quick"><a class="btn primary" href="#chat">Chat</a><a class="btn" href="#studio">Generează</a></div>
-    </div>
-  </article>
-  <article class="card">
-    <img class="thumb" src="/images/eva4.jpg" alt="Eva Royal Temptation" />
-    <div class="meta">
-      <div class="name">Eva • Royal Temptation <span class="tag">Elite</span></div>
-      <p class="desc">Satin regal mov, accente aurii, stil boudoir premium.</p>
-      <div class="quick"><a class="btn primary" href="#chat">Chat</a><a class="btn" href="#studio">Generează</a></div>
-    </div>
-  </article>
-</div>
-            <p class="desc">Elegantă, jucăuşă, voce caldă. Iubește atmosfera de club & jazz.</p>
+        <article class="card">
+          <img class="thumb" src="/images/eva1.jpg" alt="Eva Velvet Desire" />
+          <div class="meta">
+            <div class="name">Eva • Velvet Desire <span class="tag">Premium</span></div>
+            <p class="desc">Velvet lingerie, aurii, atmosferă senzuală, vibe boudoir.</p>
             <div class="quick"><a class="btn primary" href="#chat">Chat</a><a class="btn" href="#studio">Generează</a></div>
           </div>
         </article>
         <article class="card">
-          <img class="thumb" src="https://picsum.photos/seed/eva2/600/800" alt="Eva — look 02"/>
+          <img class="thumb" src="/images/eva2.jpg" alt="Eva Noir Seduction" />
           <div class="meta">
-            <div class="name">Royal Glam <span class="tag">Hot</span></div>
-            <p class="desc">Purple & gold, studio glamour, bokeh auriu, atitudine încrezătoare.</p>
+            <div class="name">Eva • Noir Seduction <span class="tag">Hot</span></div>
+            <p class="desc">Satin mov, lumini neon noir, atitudine misterioasă.</p>
             <div class="quick"><a class="btn primary" href="#chat">Chat</a><a class="btn" href="#studio">Generează</a></div>
           </div>
         </article>
         <article class="card">
-          <img class="thumb" src="https://picsum.photos/seed/eva3/600/800" alt="Eva — look 03"/>
+          <img class="thumb" src="/images/eva3.jpg" alt="Eva Golden Glow" />
           <div class="meta">
-            <div class="name">Cinematic Noir <span class="tag">New</span></div>
-            <p class="desc">Chiaroscuro, 35mm grain, rim light — tensiune și mister.</p>
+            <div class="name">Eva • Golden Glow <span class="tag">Exclusive</span></div>
+            <p class="desc">Rochie aurie, bokeh cinematic, zâmbet seducător.</p>
             <div class="quick"><a class="btn primary" href="#chat">Chat</a><a class="btn" href="#studio">Generează</a></div>
           </div>
         </article>
         <article class="card">
-          <img class="thumb" src="https://picsum.photos/seed/eva4/600/800" alt="Eva — look 04"/>
+          <img class="thumb" src="/images/eva4.jpg" alt="Eva Royal Temptation" />
           <div class="meta">
-            <div class="name">Suspense Frame <span class="tag">9:16</span></div>
-            <p class="desc">Cadru strâns, DOF mic, lumini dramă. Intens și modern.</p>
+            <div class="name">Eva • Royal Temptation <span class="tag">Elite</span></div>
+            <p class="desc">Satin regal mov, accente aurii, stil boudoir premium.</p>
             <div class="quick"><a class="btn primary" href="#chat">Chat</a><a class="btn" href="#studio">Generează</a></div>
           </div>
         </article>
       </div>
 
-      <!-- Studio anchor (re-use din pagina noastră curentă) -->
       <section id="studio" style="margin-top:22px">
         <h2>Studio de generare</h2>
         <p style="color:var(--muted);margin-top:-4px">Alege stilul, scrie promptul și generează imagini/clipuri. Conținut 100% AI. Fără persoane reale/minori. Respectăm legile și Terms.</p>
@@ -205,11 +175,9 @@
 
   <script>
     document.getElementById('y').textContent=new Date().getFullYear();
-    // Tabs switch (demo)
     document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{
       document.querySelectorAll('.tab').forEach(x=>x.setAttribute('aria-selected','false'));
       t.setAttribute('aria-selected','true');
-      // aici poți filtra galeria după dataset; pentru demo lăsăm neschimbat
     }));
   </script>
 </body>
