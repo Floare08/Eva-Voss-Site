@@ -415,7 +415,7 @@
                   <summary>Opțiuni avansate</summary>
                   <div class="adv-grid">
                     <label>Negative prompt
-                      <input id="iNeg" type="text" placeholder="ce NU vrei să apară (blur, noise, etc.)" />
+                      <input id="iNeg" type="text" value="low quality, bad anatomy, watermark, text, logo, deformed, oversaturated" />
                     </label>
                     <label>Preset stil
                       <select id="iStyle"><option value="glamour">Glamour</option><option value="studio">Studio</option><option value="cinematic" selected>Cinematic</option><option value="noir">Noir</option><option value="vivid">Vivid</option></select>
@@ -871,6 +871,9 @@
       }
     };
 
+    // chips + wire buttons
+    (function(){ const chips=document.getElementById('promptChips'); if(!chips) return; chips.addEventListener('click',e=>{ const b=e.target.closest('.chip'); if(!b) return; const add=b.getAttribute('data-add')||''; const t=document.getElementById('iPrompt'); if(t){ t.value=(t.value.trim()+add); t.dispatchEvent(new Event('input')); } }); })();
+
     // wire buttons
     document.getElementById('btnGenText').addEventListener('click',()=>{
       onGenerate('text', { prompt: document.getElementById('txtPrompt').value, tone: document.getElementById('txtTone').value, length: document.getElementById('txtLen').value });
@@ -932,7 +935,7 @@
     window.imageProvider = window.imageProvider || {};
     // Horde adapter
     window.imageProvider.generate = async function(opts){
-      try{
+      try{ var prov=(document.getElementById('providerSel')?.value||'horde'); if(prov==='demo'){ window.setGenStatus(''); return await mockGenerateImages(opts);}
         var key = (localStorage.getItem('eva_horde_key') || '').trim();
         var keyInput = document.getElementById('iHordeKey');
         if(keyInput && keyInput.value){ key = keyInput.value.trim(); localStorage.setItem('eva_horde_key', key); }
