@@ -250,7 +250,38 @@
 .progress{height:4px;background:rgba(255,255,255,.12);border-radius:999px;overflow:hidden}
 .progress>span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),#9b59ff)}
 .toggle{display:inline-flex;align-items:center;gap:8px}
-</style>
+/* --- Minimal Premium (2025) overrides for buttons & nav --- */
+    .pill{position:relative;display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:12px;text-decoration:none;font-weight:600;font-size:14px;letter-spacing:0;line-height:1;border:1px solid rgba(255,255,255,.14);cursor:pointer;user-select:none;background:rgba(255,255,255,.03);transition:background .18s ease,border-color .18s ease,transform .12s ease,box-shadow .18s ease}
+    .pill .ico{font-size:14px;opacity:.85}
+    .pill:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.24);box-shadow:0 6px 18px rgba(0,0,0,.22)}
+    .pill:active{transform:translateY(1px)}
+    .pill.primary{color:#fff;background:#6d22d3;border-color:transparent}
+    .pill.ghost{background:transparent;border-color:rgba(255,255,255,.14)}
+    .pill[data-variant]{background:inherit}
+    .pill[data-variant="aurum"],.pill[data-variant="amethyst"],.pill[data-variant="glass"]{background:inherit;border-color:rgba(255,255,255,.14)}
+    .actions .pill{background:transparent;border:0;padding:8px 10px;border-radius:8px}
+    .actions .pill:hover{background:rgba(255,255,255,.06);box-shadow:none}
+    .actions .ico{display:none}
+    .card{border-radius:12px}
+
+    /* Chips & provider */
+    .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+    .chip{padding:6px 10px;border:1px solid rgba(255,255,255,.14);border-radius:10px;cursor:pointer;background:rgba(255,255,255,.03);font-size:13px}
+    .chip:hover{background:rgba(255,255,255,.06)}
+    .provider{margin-left:auto;display:flex;align-items:center;gap:8px}
+    .provider select{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);color:var(--ink);border-radius:8px;padding:6px 8px}
+    #genStatus{color:var(--muted);font-size:12px}
+
+    /* Style packs */
+    .stylepacks{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+    .spack{padding:6px 10px;border:1px solid rgba(255,255,255,.14);border-radius:10px;background:rgba(255,255,255,.03);cursor:pointer;font-size:13px}
+    .spack:hover{background:rgba(255,255,255,.06)}
+
+    /* Refine modal */
+    .refine-controls{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px}
+    @media (max-width:900px){.refine-controls{grid-template-columns:1fr 1fr}}
+    @media (max-width:600px){.refine-controls{grid-template-columns:1fr}}
+  </style>
 </head>
 <body>
   <a href="#features" class="skip-link">Sari la conținut</a>
@@ -335,6 +366,33 @@
     </video>
   </dialog>
 
+  <!-- Refine modal -->
+  <dialog id="refineModal" aria-label="Refinează imaginea">
+    <div style="padding:16px;max-width:min(92vw,1040px)">
+      <h3 style="margin:0 0 8px">Refinează imaginea</h3>
+      <canvas id="refineCanvas" style="width:100%;height:auto;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:#000"></canvas>
+      <div class="refine-controls">
+        <label>Contrast
+          <input id="rContrast" type="range" min="0.7" max="1.3" step="0.01" value="1" />
+        </label>
+        <label>Saturație
+          <input id="rSaturation" type="range" min="0.7" max="1.3" step="0.01" value="1" />
+        </label>
+        <label>Grain
+          <input id="rGrain" type="range" min="0" max="0.5" step="0.01" value="0.08" />
+        </label>
+        <label>Vignet
+          <input id="rVignette" type="range" min="0" max="0.8" step="0.01" value="0.25" />
+        </label>
+      </div>
+      <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:10px">
+        <button class="pill" id="rSave" type="button">Salvează PNG</button>
+        <button class="pill primary" id="rApply" type="button">Aplică pe imagine</button>
+        <button class="pill ghost" id="rClose" type="button">Închide</button>
+      </div>
+    </div>
+  </dialog>
+
   <!-- Social Proof / Highlights -->
   <section id="proof">
     <div class="wrap">
@@ -411,6 +469,14 @@
                   <label for="iPrompt">Descriere imagine</label>
                   <textarea id="iPrompt" placeholder="Ex: portret premium, lumină aurie, violet regal, bokeh">portret premium, lumină aurie, violet regal, bokeh</textarea>
                 </div>
+                <div class="stylepacks" id="stylePacks">
+                  <button type="button" class="spack" data-pack="royal">Eva Royal</button>
+                  <button type="button" class="spack" data-pack="noir">Cinematic Noir</button>
+                  <button type="button" class="spack" data-pack="glam">Studio Glam</button>
+                  <button type="button" class="spack" data-pack="vivid">Vivid Dream</button>
+                  <button type="button" class="spack" data-pack="suspense">Suspense Frame</button>
+                </div>
+
                 <details class="adv">
                   <summary>Opțiuni avansate</summary>
                   <div class="adv-grid">
@@ -455,6 +521,7 @@
                   <button class="pill primary" id="btnGenImage" data-event="generate_image">Generează</button>
                   <button class="pill" data-variant="aurum" id="btnVarImage" type="button">Variații</button>
                   <button class="pill ghost" data-variant="glass" id="btnReroll" type="button">Reroll</button>
+                  <button class="pill" id="btnSurprise" type="button">Surprinde‑mă</button>
                   <a class="pill ghost" data-variant="glass" id="btnDlImage" download="eva-image.png">Descarcă (prima)</a>
                 </div>
               </div>
@@ -875,6 +942,16 @@
     (function(){ const chips=document.getElementById('promptChips'); if(!chips) return; chips.addEventListener('click',e=>{ const b=e.target.closest('.chip'); if(!b) return; const add=b.getAttribute('data-add')||''; const t=document.getElementById('iPrompt'); if(t){ t.value=(t.value.trim()+add); t.dispatchEvent(new Event('input')); } }); })();
 
     // wire buttons
+    // --- Style packs logic ---
+    const PACKS={
+      royal:{ add:", royal glamour, soft gold rim light, glossy skin, studio portrait", ar:"3:4", cfg:7, steps:30, style:"cinematic" },
+      noir:{ add:", noir, high contrast, chiaroscuro, soft haze, 35mm film grain", ar:"4:5", cfg:8, steps:34, style:"noir" },
+      glam:{ add:", editorial fashion, beauty lighting, high-end retouch look", ar:"4:5", cfg:6.5, steps:30, style:"studio" },
+      vivid:{ add:", vivid purple & gold accents, crisp highlights, sleek bokeh", ar:"1:1", cfg:6, steps:28, style:"vivid" },
+      suspense:{ add:", cinematic, dark velvet background, rim light, shallow depth of field, suspenseful framing", ar:"9:16", cfg:7.5, steps:32, style:"cinematic" }
+    };
+    (function(){ const sp=document.getElementById('stylePacks'); if(!sp){} else { sp.addEventListener('click',e=>{ const b=e.target.closest('.spack'); if(!b) return; const id=b.getAttribute('data-pack'); const pk=PACKS[id]; if(!pk) return; const t=document.getElementById('iPrompt'); if(t && pk.add){ t.value=(t.value.trim()+pk.add); } if(pk.ar) document.getElementById('iAR').value=pk.ar; if(pk.cfg) document.getElementById('iCfg').value=pk.cfg; if(pk.steps) document.getElementById('iSteps').value=pk.steps; if(pk.style) document.getElementById('iStyle').value=pk.style; }); } })();
+
     document.getElementById('btnGenText').addEventListener('click',()=>{
       onGenerate('text', { prompt: document.getElementById('txtPrompt').value, tone: document.getElementById('txtTone').value, length: document.getElementById('txtLen').value });
     });
@@ -884,6 +961,18 @@
     document.getElementById('btnGenImage').addEventListener('click',()=>{ onGenerate('image', {}); });
     document.getElementById('btnVarImage').addEventListener('click',()=>{ onGenerate('image', {variation:true}); });
     document.getElementById('btnReroll').addEventListener('click',()=>{ document.getElementById('iSeed').value=''; onGenerate('image', {reroll:true}); });
+    document.getElementById('btnSurprise').addEventListener('click',()=>{
+      const keys=Object.keys(PACKS); const pk=PACKS[keys[Math.floor(Math.random()*keys.length)]];
+      const extras=['subtle lens flare','smoke haze','mirror highlights','pearlescent skin','negative space','Dutch angle','gold dust bokeh','soft rimlight','dramatic shadow play','silk texture backdrop'];
+      const add=', '+extras[Math.floor(Math.random()*extras.length)]+', '+extras[Math.floor(Math.random()*extras.length)];
+      const t=document.getElementById('iPrompt'); if(t && pk){ t.value=(t.value.trim()+(pk.add||'')+add); }
+      if(pk?.ar) document.getElementById('iAR').value=pk.ar;
+      if(pk?.cfg) document.getElementById('iCfg').value=pk.cfg;
+      if(pk?.steps) document.getElementById('iSteps').value=pk.steps;
+      if(pk?.style) document.getElementById('iStyle').value=pk.style;
+      document.getElementById('iSeed').value='';
+      onGenerate('image', {surprise:true});
+    }); });
 
     // reference image
     const refBtn=document.getElementById('btnRef'); const refInput=document.getElementById('iRef'); const drop=document.getElementById('iDrop');
@@ -902,10 +991,31 @@
         const card=document.createElement('div'); card.className='imgcard';
         const im=document.createElement('img'); im.src=u; im.alt='Eva image '+(i+1); im.style.width='100%'; im.loading='lazy'; im.decoding='async';
         const a=document.createElement('a'); a.className='pill ghost dl'; a.textContent='Descarcă'; a.href=u; a.download='eva-'+(i+1)+'.png';
-        card.appendChild(im); card.appendChild(a); grid.appendChild(card);
+        const rf=document.createElement('button'); rf.className='pill refine'; rf.type='button'; rf.textContent='Refinează'; rf.dataset.url=u;
+        card.appendChild(im); card.appendChild(a); card.appendChild(rf); grid.appendChild(card);
       });
       preview.innerHTML=''; preview.appendChild(grid);
     }
+
+    // refine modal & handlers
+    (function(){
+      const m=document.getElementById('refineModal'); const cv=document.getElementById('refineCanvas'); if(!m||!cv) return; const cx=cv.getContext('2d');
+      let base=null, target=null;
+      const cCon=document.getElementById('rContrast'); const cSat=document.getElementById('rSaturation'); const cGr=document.getElementById('rGrain'); const cVig=document.getElementById('rVignette');
+      function apply(){ if(!base) return; cx.clearRect(0,0,cv.width,cv.height); const contrast=parseFloat(cCon.value||'1'); const sat=parseFloat(cSat.value||'1'); const grain=parseFloat(cGr.value||'0'); const vig=parseFloat(cVig.value||'0');
+        cx.filter=`contrast(${contrast}) saturate(${sat})`; cx.drawImage(base,0,0);
+        if(grain>0){ const nC=document.createElement('canvas'); nC.width=cv.width; nC.height=cv.height; const nCtx=nC.getContext('2d'); const id=nCtx.createImageData(cv.width,cv.height); const dt=id.data; for(let i=0;i<dt.length;i+=4){ const v=(Math.random()*255)|0; dt[i]=dt[i+1]=dt[i+2]=v; dt[i+3]=Math.round(grain*255); } nCtx.putImageData(id,0,0); cx.globalCompositeOperation='overlay'; cx.drawImage(nC,0,0); cx.globalCompositeOperation='source-over'; }
+        if(vig>0){ const g=cx.createRadialGradient(cv.width/2,cv.height/2,Math.min(cv.width,cv.height)*(1-vig),cv.width/2,cv.height/2,Math.max(cv.width,cv.height)/1.1); g.addColorStop(0,'rgba(0,0,0,0)'); g.addColorStop(1,`rgba(0,0,0,${vig})`); cx.fillStyle=g; cx.fillRect(0,0,cv.width,cv.height); }
+      }
+      function load(url){ return new Promise(res=>{ const im=new Image(); im.crossOrigin='anonymous'; im.onload=()=>{ const maxW=1024; const sc=Math.min(1,maxW/im.width); cv.width=Math.floor(im.width*sc); cv.height=Math.floor(im.height*sc); base=document.createElement('canvas'); base.width=cv.width; base.height=cv.height; base.getContext('2d').drawImage(im,0,0,cv.width,cv.height); apply(); res(); }; im.src=url; }); }
+      ['input','change'].forEach(ev=>{ cCon.addEventListener(ev,apply); cSat.addEventListener(ev,apply); cGr.addEventListener(ev,apply); cVig.addEventListener(ev,apply); });
+      document.getElementById('rSave')?.addEventListener('click',()=>{ const url=cv.toDataURL('image/png'); const a=document.createElement('a'); a.href=url; a.download='eva-refined.png'; a.click(); });
+      document.getElementById('rApply')?.addEventListener('click',()=>{ if(target){ target.src=cv.toDataURL('image/png'); } m.close(); });
+      document.getElementById('rClose')?.addEventListener('click',()=>m.close());
+      window.openRefine = async (url, imgEl)=>{ target=imgEl||null; cCon.value='1'; cSat.value='1'; cGr.value='0.08'; cVig.value='0.25'; m.showModal(); await load(url); };
+      // delegate
+      try{ preview.addEventListener('click',e=>{ const b=e.target.closest('button.refine'); if(!b) return; const card=b.closest('.imgcard'); const img=card?card.querySelector('img'):null; window.openRefine(b.dataset.url, img); }); }catch{}
+    })();
 
     async function mockGenerateImages(opts){
       const n=opts.count||1; const out=[]; const seed=opts.seed||Math.random().toString(36).slice(2);
