@@ -23,6 +23,7 @@
     .brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none}
     .logo{width:28px;height:28px;border-radius:8px;background:conic-gradient(from 160deg,#9b59ff,#d7b86f,#9b59ff);box-shadow:0 4px 18px rgba(155,89,255,.35)}
     .brand span{font-weight:900;letter-spacing:.2px}
+    .brand .logo-img{width:28px;height:28px;object-fit:contain;border-radius:6px;box-shadow:0 4px 18px rgba(155,89,255,.35)}
 
     .top-actions{display:flex;gap:8px;align-items:center}
     .btn{appearance:none;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.06);color:var(--ink);padding:8px 12px;border-radius:10px;font-weight:700;font-size:14px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;cursor:pointer;transition:background .18s ease,border-color .18s ease,transform .12s ease}
@@ -61,13 +62,20 @@
     .quick{display:flex;gap:8px;margin-top:10px}
 
     footer{border-top:1px solid rgba(255,255,255,.06);padding:16px 0;margin-top:24px;color:var(--muted);font-size:13px}
+    /* Micro‑interacțiuni premium */
+    .card{transition:transform .22s ease, box-shadow .22s ease}
+    .card:hover{transform:translateY(-4px);box-shadow:0 18px 38px rgba(0,0,0,.28)}
+    .thumb{transition:transform .35s ease}
+    .card:hover .thumb{transform:scale(1.03)}
+    .btn{transition:background .18s ease,border-color .18s ease,transform .12s ease, box-shadow .18s ease}
+    .btn:hover{box-shadow:0 10px 24px rgba(155,89,255,.22)}
   </style>
 </head>
 <body>
   <div class="shell">
     <!-- Topbar -->
     <header>
-      <a class="brand" href="#"><span class="logo" aria-hidden="true"></span><span>Eva Voss</span></a>
+      <a class="brand" href="#"><img class="logo-img" src="/images/eva-logo.png" alt="Eva Voss" /><span>Eva Voss</span><span class="logo" aria-hidden="true" style="display:none"></span></a>
       <div class="top-actions">
         <span class="tag">18+ • AI Generativ</span>
         <a class="btn" href="#studio">Studio</a>
@@ -93,7 +101,7 @@
       <div class="hero">
         <div>
           <h1>Construiește-ți <span style="color:var(--gold)">companionul AI</span></h1>
-          <p>Profil complet, stil vizual, voce, personalitate. Totul într-un singur loc.</p>
+          <p>Elegantă, senzuală, jucăușă. Chat, voce șoptită și imagini care aprind imaginația — totul într-un singur loc.</p>
         </div>
         <div style="display:flex;gap:8px;align-items:center">
           <a class="btn primary" href="#create">Start</a>
@@ -116,7 +124,7 @@
           <img class="thumb" src="/images/eva1.jpg" alt="Eva Velvet Desire" />
           <div class="meta">
             <div class="name">Eva • Velvet Desire <span class="tag">Premium</span></div>
-            <p class="desc">Velvet lingerie, aurii, atmosferă senzuală, vibe boudoir.</p>
+            <p class="desc">Velvet fin cu detalii aurii, privire care te prinde, senzual fără a fi explicit.</p>
             <div class="quick"><a class="btn primary" href="#chat">Chat</a><a class="btn" href="#studio">Generează</a></div>
           </div>
         </article>
@@ -124,7 +132,7 @@
           <img class="thumb" src="/images/eva2.jpg" alt="Eva Noir Seduction" />
           <div class="meta">
             <div class="name">Eva • Noir Seduction <span class="tag">Hot</span></div>
-            <p class="desc">Satin mov, lumini neon noir, atitudine misterioasă.</p>
+            <p class="desc">Satin mov, lumini noir și un zâmbet care promite jocuri periculoase.</p>
             <div class="quick"><a class="btn primary" href="#chat">Chat</a><a class="btn" href="#studio">Generează</a></div>
           </div>
         </article>
@@ -132,7 +140,7 @@
           <img class="thumb" src="/images/eva3.jpg" alt="Eva Golden Glow" />
           <div class="meta">
             <div class="name">Eva • Golden Glow <span class="tag">Exclusive</span></div>
-            <p class="desc">Rochie aurie, bokeh cinematic, zâmbet seducător.</p>
+            <p class="desc">Auriu cald, bokeh cinematic, zâmbet care încălzește camera.</p>
             <div class="quick"><a class="btn primary" href="#chat">Chat</a><a class="btn" href="#studio">Generează</a></div>
           </div>
         </article>
@@ -140,7 +148,7 @@
           <img class="thumb" src="/images/eva4.jpg" alt="Eva Royal Temptation" />
           <div class="meta">
             <div class="name">Eva • Royal Temptation <span class="tag">Elite</span></div>
-            <p class="desc">Satin regal mov, accente aurii, stil boudoir premium.</p>
+            <p class="desc">Satin regal mov, accente aurii, boudoir elegant — ca un secret spus în șoaptă.</p>
             <div class="quick"><a class="btn primary" href="#chat">Chat</a><a class="btn" href="#studio">Generează</a></div>
           </div>
         </article>
@@ -148,7 +156,7 @@
 
       <section id="studio" style="margin-top:22px">
         <h2>Studio de generare</h2>
-        <p style="color:var(--muted);margin-top:-4px">Alege stilul, scrie promptul și generează imagini/clipuri. Conținut 100% AI. Fără persoane reale/minori. Respectăm legile și Terms.</p>
+        <p style="color:var(--muted);margin-top:-4px">Generează seturi cu vibe senzual (safe). Fără persoane reale/minori. Strict AI generativ. Respectăm legile și Terms.</p>
         <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
           <a class="btn primary" href="#">Deschide WOW Studio</a>
           <a class="btn" href="#pricing">Vezi planuri</a>
@@ -179,6 +187,15 @@
       document.querySelectorAll('.tab').forEach(x=>x.setAttribute('aria-selected','false'));
       t.setAttribute('aria-selected','true');
     }));
-  </script>
+    // Logo fallback: dacă imaginea noastră nu se încarcă, arată gradientul
+  (function(){
+    const img=document.querySelector('.brand .logo-img');
+    const fallback=document.querySelector('.brand .logo');
+    if(img){
+      function swap(){ if(fallback){ fallback.style.display='inline-block'; } img.style.display='none'; }
+      if(!img.complete || !img.naturalWidth){ img.addEventListener('error', swap, {once:true}); setTimeout(()=>{ if(!img.naturalWidth) swap(); }, 1000); }
+    }
+  })();
+</script>
 </body>
 </html>
