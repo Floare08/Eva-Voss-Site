@@ -4,721 +4,127 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Eva Voss — AI Fantasy Experience</title>
-  <meta name="description" content="Eva Voss: fată AI premium. Conversații, voce, imagini & clipuri generate instant. Elegantă, realistă, rapidă — optimizată pentru mobil şi desktop." />
-  <meta name="theme-color" content="#2b0a3d" />
-  <link rel="canonical" href="/" />
-
-  <!-- Open Graph / Twitter -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Eva Voss — AI Fantasy Experience" />
-  <meta property="og:description" content="Premium AI — voice, images & short clips. Elegant. Realistic. Fast." />
-  <meta property="og:image" content="og-eva.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Eva Voss — AI Fantasy Experience" />
-  <meta name="twitter:description" content="Premium AI — voice, images & short clips. Elegant. Realistic. Fast." />
-  <meta name="twitter:image" content="og-eva.jpg" />
-  <meta name="robots" content="index,follow" />
-  <script type="application/ld+json">{
-    "@context":"https://schema.org",
-    "@type":"SoftwareApplication",
-    "name":"Eva Voss",
-    "applicationCategory":"CreativeWorkGenerator",
-    "offers":{"@type":"Offer","priceCurrency":"EUR","price":"29"}
-  }</script>
-
-  <!-- Icons (optional) -->
-  <link rel="icon" href="favicon.ico" />
-  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-
-  <!-- Fonts -->
+  <meta name="description" content="Eva Voss: AI premium pentru conversații, voce, imagini & clipuri. Elegantă, realistă, rapidă — optimizată pentru mobil și desktop." />
+  <meta name="theme-color" content="#0b0611" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-
-  <!-- Preload critical -->
-  <link rel="preload" as="image" href="logo-eva.png" />
-  <link rel="preload" as="video" href="hero-bg.mp4" />
-
   <style>
-    :root{--bg:#0b0611;--ink:#f7f2ff;--muted:#cdbde6;--gold:#d7b86f;--royal:#6d22d3;--card:#130a1d;--ok:#6fe3a1;--shadow:0 20px 60px rgba(0,0,0,.45);--r:18px;--R:28px}
+    :root{--bg:#0b0611;--ink:#f7f2ff;--muted:#cdbde6;--gold:#d7b86f;--royal:#6d22d3;--card:#130a1d;--ok:#6fe3a1}
     html,body{height:100%}
-    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:
-      radial-gradient(1200px 600px at 80% 20%, rgba(109,34,211,.35), transparent 60%),
-      radial-gradient(800px 400px at 10% 80%, rgba(215,184,111,.18), transparent 60%),var(--bg);
-      color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    body{margin:0;background:radial-gradient(1000px 500px at 80% 20%, rgba(109,34,211,.30), transparent 50%),radial-gradient(800px 400px at 12% 82%, rgba(215,184,111,.18), transparent 58%),var(--bg);color:var(--ink);font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
     .wrap{max-width:1200px;margin:0 auto;padding:0 20px}
 
-    /* Accessibility */
-    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-    .skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
-    .skip-link:focus{left:16px;top:8px;width:auto;height:auto;padding:8px 12px;border-radius:10px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2)}
-    *:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+    /* Header curat */
+    header{position:sticky;top:0;z-index:60;backdrop-filter:blur(12px);background:linear-gradient(180deg, rgba(11,6,17,.65), rgba(11,6,17,.25));border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0}
+    .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit}
+    .brand img{height:30px;display:block;filter:drop-shadow(0 4px 14px rgba(215,184,111,.25))}
+    .brand .t{font-weight:900;letter-spacing:.2px}
+    .actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 
-    /* Header */
-    header{position:sticky;top:0;z-index:60;backdrop-filter:blur(10px)}
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}
-    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
-    .brand img{height:36px;display:block;filter:drop-shadow(0 4px 16px rgba(215,184,111,.35))}
-    .brand .t{font-weight:900;letter-spacing:.3px;font-size:18px}
-
-    /* Premium buttons */
-    .pill{position:relative;display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:999px;text-decoration:none;font-weight:900;letter-spacing:.2px;line-height:1;border:1px solid transparent;cursor:pointer;user-select:none;transition:transform .18s ease, box-shadow .18s ease}
-    .pill .ico{font-size:16px;opacity:.95}
-    .pill{background:
-      linear-gradient(135deg, rgba(19,10,29,.85), rgba(19,10,29,.65)) padding-box,
-      conic-gradient(from var(--rot,180deg) at 50% 50%, #d7b86f, #9b59ff, #6d22d3, #d7b86f) border-box;
-    }
-    .pill::after{display:none}
-    .pill:hover{transform:translateY(-1px);box-shadow:0 8px 26px rgba(155,89,255,.25), 0 2px 10px rgba(215,184,111,.18)}
-    .pill:hover::after{transform:translateX(0%)}
-    .pill:active{transform:translateY(0)}
-    .pill.primary{color:#fff;background:
-      linear-gradient(135deg, #5b1fb7, #8b3dff) padding-box,
-      linear-gradient(135deg, #d7b86f, #6d22d3) border-box;
-    }
-    .pill.ghost{color:var(--ink);background:
-      linear-gradient(135deg, rgba(19,10,29,.55), rgba(19,10,29,.35)) padding-box,
-      linear-gradient(135deg, rgba(255,255,255,.22), rgba(255,255,255,.08)) border-box;
-    }
-    .pill[data-variant="aurum"]{background:
-      linear-gradient(135deg,#1a1124,#2a1636) padding-box,
-      linear-gradient(135deg,#ffe6a3,#d7b86f) border-box; color:#fff}
-    .pill[data-variant="amethyst"]{background:
-      linear-gradient(135deg,#2b0a3d,#3e1370) padding-box,
-      linear-gradient(135deg,#b891ff,#6d22d3) border-box; color:#fff}
-    .pill[data-variant="glass"]{background:
-      linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.03)) padding-box,
-      linear-gradient(135deg, rgba(255,255,255,.16), rgba(255,255,255,.06)) border-box; color:var(--ink)}
-
-    .lang{display:inline-flex;border:1px solid rgba(255,255,255,.14);border-radius:999px;overflow:hidden}
-    .lang button{background:transparent;color:var(--ink);padding:8px 12px;border:0;cursor:pointer}
-    .lang button[aria-pressed="true"]{background:rgba(255,255,255,.08)}
+    /* Butoane moderne */
+    .btn{appearance:none;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.05);color:var(--ink);padding:8px 12px;border-radius:10px;font-weight:700;font-size:14px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;cursor:pointer;transition:background .18s ease,border-color .18s ease,transform .12s ease}
+    .btn:hover{background:rgba(255,255,255,.10);border-color:rgba(255,255,255,.24)}
+    .btn:active{transform:translateY(1px)}
+    .btn.primary{background:#6d22d3;border-color:transparent;color:#fff}
 
     /* Hero */
-    .hero{position:relative;min-height:86vh;display:grid;place-items:center;overflow:hidden;border-bottom:1px solid rgba(255,255,255,.06)}
-    .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(1.1) contrast(1.02)}
-    .overlay{position:absolute;inset:0;background:
-      radial-gradient(1000px 500px at 80% 20%, rgba(109,34,211,.45), transparent 50%),
-      linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.65) 60%, rgba(0,0,0,.85))}
+    .hero{min-height:72vh;display:grid;place-items:center;text-align:center;position:relative;overflow:hidden}
+    .hero .content{max-width:900px;padding:clamp(28px,6vw,48px) 0}
+    .eyebrow{display:inline-block;padding:6px 10px;border:1px solid rgba(255,255,255,.12);border-radius:999px;font-size:12px;color:var(--muted)}
+    h1{font-family:"Playfair Display",serif;font-weight:700;font-size:clamp(36px,6vw,80px);line-height:1.04;margin:12px 0}
+    .lead{max-width:780px;margin:0 auto 20px;color:#efe7ff;font-size:clamp(16px,1.6vw,19px)}
 
-    .hero canvas, .fx-tint, .fx-sheen, .overlay, .intro-tools{position:absolute;inset:0}
-    .fx-tint{mix-blend-mode:soft-light;opacity:.55;background:
-      radial-gradient(1000px 600px at 78% 22%, rgba(109,34,211,.45), transparent 50%),
-      radial-gradient(800px 400px at 12% 82%, rgba(215,184,111,.24), transparent 58%)}
-    .fx-sheen::before{display:none}
-    @keyframes sweep{0%{transform:translateX(-120%) skewX(-8deg)}55%{transform:translateX(20%) skewX(-8deg)}100%{transform:translateX(140%) skewX(-8deg)}}
-    #fxParticles{display:block;width:100%;height:100%;pointer-events:none}
+    /* Secțiuni */
+    section{padding:clamp(36px,6.5vw,64px) 0}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.08);border-radius:14px}
 
-    .intro-tools{pointer-events:none}
-    .intro-tools .intro-progress{position:absolute;top:0;left:0;height:3px;width:100%;background:rgba(255,255,255,.12)}
-    .intro-tools .intro-progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),#9b59ff);box-shadow:0 0 12px rgba(215,184,111,.45)}
-    .intro-tools .skip-intro{position:absolute;right:16px;bottom:16px;pointer-events:auto}
-
-    .hero .content{position:relative;z-index:2;text-align:center;padding:100px 0}
-    .hero .content.hidden{opacity:0;transform:translateY(12px);transition:opacity .7s ease, transform .7s ease}
-    .hero .content.reveal{opacity:1;transform:none}
-
-    .eyebrow{display:inline-block;padding:8px 14px;border:1px solid rgba(255,255,255,.12);border-radius:999px;font-size:12px;letter-spacing:.5px;color:var(--muted)}
-    h1{font-family:"Playfair Display",serif;font-weight:700;font-size:clamp(40px,6vw,84px);line-height:1.05;margin:18px 0}
-    .lead{max-width:780px;margin:0 auto 26px;color:#efe7ff;font-size:clamp(16px,1.5vw,20px)}
-    .badges{display:flex;gap:14px;justify-content:center;align-items:center;margin-top:22px;color:var(--muted);font-size:13px}
-    .dot{width:6px;height:6px;border-radius:50%;background:var(--ok);display:inline-block;box-shadow:0 0 0 4px rgba(111,227,161,.12)}
-
-    /* Sections */
-    section{padding:clamp(40px,7vw,72px) 0}
-    .card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.08);border-radius:var(--r);box-shadow:var(--shadow)}
-    .grid{display:grid;gap:18px}
-    .grid.cols-3{grid-template-columns:repeat(3,1fr)}
-    .grid.cols-4{grid-template-columns:repeat(4,1fr)}
-    .grid.cols-2{grid-template-columns:repeat(2,1fr)}
-    @media (max-width:1000px){.grid.cols-4{grid-template-columns:repeat(2,1fr)}}
-    @media (max-width:900px){.grid.cols-3{grid-template-columns:1fr 1fr}}
-    @media (max-width:640px){.grid.cols-3,.grid.cols-4,.cols-2{grid-template-columns:1fr}}
-
-    .feature{padding:22px;display:flex;gap:16px;align-items:flex-start}
-    .ico{flex:0 0 48px;height:48px;width:48px;border-radius:14px;display:grid;place-items:center;background:
-      radial-gradient(120px 120px at 30% 30%, rgba(215,184,111,.35), rgba(109,34,211,.35));border:1px solid rgba(255,255,255,.14)}
-    .feature h3{margin:2px 0 6px;font-size:18px}
-    .feature p{margin:0;color:var(--muted)}
-
-    .showcase{position:relative;overflow:hidden;border-radius:var(--R);border:1px solid rgba(255,255,255,.08)}
-    .showcase img{width:100%;display:block}
-
-    .pricing .card{padding:26px}
-    .price{font-size:36px;font-weight:900}
-    .price small{font-size:14px;color:var(--muted);font-weight:600}
-    .incl{margin:16px 0 0;padding:0;list-style:none}
-    .incl li{margin:10px 0;display:flex;gap:10px;align-items:flex-start;color:#efe7ff}
-    .incl li .tick{color:var(--ok);font-weight:900}
-
-    .testi .card{padding:20px}
-    .testi .who{display:flex;align-items:center;gap:12px}
-    .avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(120deg,var(--royal),#9b59ff)}
-
-    .cta-sticky{position:fixed;right:16px;bottom:16px;z-index:60}
-
-    footer{padding:40px 0 60px;color:var(--muted);font-size:14px}
-    footer a{color:var(--ink);text-decoration:none}
-
-    .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease, transform .6s ease}
-    .reveal.in{opacity:1;transform:none}
-
-    .no-video .hero{background:radial-gradient(1200px 600px at 80% 20%, rgba(109,34,211,.35), transparent 60%),var(--bg)}
-    .no-video .hero video{display:none}
-
-    dialog{border:0;border-radius:16px;padding:0;background:#140b1f;color:var(--ink);box-shadow:var(--shadow)}
-    dialog::backdrop{background:rgba(0,0,0,.6)}
-
-    /* ------ Generator v1 (tabs) ------ */
-    .gen{display:grid;gap:16px}
-    .tabs{display:flex;gap:8px;flex-wrap:wrap}
-    .tabs button{border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);color:var(--ink);padding:10px 14px;border-radius:12px;cursor:pointer}
-    .tabs button[aria-selected="true"]{background:linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.04));border-color:rgba(255,255,255,.28)}
-    .panel{display:none}
-    .panel.active{display:block}
-    .gen-grid{display:grid;gap:14px;grid-template-columns:1.2fr .8fr}
-    @media (max-width:900px){.gen-grid{grid-template-columns:1fr}}
-    .gen .control{display:grid;gap:8px}
-    .gen input[type="text"], .gen textarea, .gen select{border-radius:12px;padding:12px 14px;border:1px solid rgba(255,255,255,.16);background:rgba(0,0,0,.2);color:var(--ink)}
-    .gen textarea{min-height:120px;resize:vertical}
-    .preview-box{background:rgba(0,0,0,.2);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:12px;min-height:180px}
-    .history{display:grid;gap:8px;max-height:240px;overflow:auto}
-    .history .item{padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03)}
-    .hint{color:var(--muted);font-size:13px}
-
-  /* --- Advanced image generator styles --- */
-    .adv{border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:12px;background:rgba(255,255,255,.02)}
-    .adv summary{cursor:pointer;font-weight:700}
-    .adv-grid{display:grid;gap:10px;grid-template-columns:repeat(3,1fr)}
-    @media (max-width:900px){.adv-grid{grid-template-columns:1fr 1fr}}
-    @media (max-width:600px){.adv-grid{grid-template-columns:1fr}}
-    .switch{display:flex;align-items:center;gap:8px}
-    .progress{height:6px;background:rgba(255,255,255,.12);border-radius:999px;overflow:hidden;margin-top:8px}
-    .progress span{display:block;height:100%;width:100%;transform:translateX(-100%);animation:load 1.8s ease-in-out infinite;background:linear-gradient(90deg,var(--gold),#9b59ff)}
-    @keyframes load{0%{transform:translateX(-100%)}50%{transform:translateX(-10%)}100%{transform:translateX(100%)}}
-    .imggrid{display:grid;gap:10px;grid-template-columns:repeat(2,1fr)}
-    @media (max-width:700px){.imggrid{grid-template-columns:1fr}}
-    .imgcard{position:relative;border:1px solid rgba(255,255,255,.12);border-radius:12px;overflow:hidden;background:rgba(255,255,255,.02)}
-    .imgcard a.dl{position:absolute;right:8px;bottom:8px}
-    .adv-upload{margin-top:10px;padding:12px;border:1px dashed rgba(255,255,255,.18);border-radius:12px}
-  /* --- Minimal Premium (2025) overrides for buttons & nav --- */
-    .pill{position:relative;display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:12px;text-decoration:none;font-weight:600;font-size:14px;letter-spacing:0;line-height:1;border:1px solid rgba(255,255,255,.14);cursor:pointer;user-select:none;background:rgba(255,255,255,.03);transition:background .18s ease,border-color .18s ease,transform .12s ease,box-shadow .18s ease}
-    .pill .ico{font-size:14px;opacity:.85}
-    .pill:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.24);box-shadow:0 6px 18px rgba(0,0,0,.22)}
-    .pill:active{transform:translateY(1px)}
-    .pill.primary{color:#fff;background:#6d22d3;border-color:transparent}
-    .pill.ghost{background:transparent;border-color:rgba(255,255,255,.14)}
-    /* neutralize old variant backgrounds */
-    .pill[data-variant]{background:inherit}
-    .pill[data-variant="aurum"],.pill[data-variant="amethyst"],.pill[data-variant="glass"]{background:inherit;border-color:rgba(255,255,255,.14)}
-    /* header nav: link-look */
-    .actions .pill{background:transparent;border:0;padding:8px 10px;border-radius:8px}
-    .actions .pill:hover{background:rgba(255,255,255,.06);box-shadow:none}
-    .actions .ico{display:none}
-    /* cards: crisper radius */
-    .card{border-radius:12px}
-  /* --- Minimal Premium (2025) overrides for buttons & nav --- */
-    .pill{position:relative;display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:12px;text-decoration:none;font-weight:600;font-size:14px;letter-spacing:0;line-height:1;border:1px solid rgba(255,255,255,.14);cursor:pointer;user-select:none;background:rgba(255,255,255,.03);transition:background .18s ease,border-color .18s ease,transform .12s ease,box-shadow .18s ease}
-    .pill .ico{font-size:14px;opacity:.85}
-    .pill:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.24);box-shadow:0 6px 18px rgba(0,0,0,.22)}
-    .pill:active{transform:translateY(1px)}
-    .pill.primary{color:#fff;background:#6d22d3;border-color:transparent}
-    .pill.ghost{background:transparent;border-color:rgba(255,255,255,.14)}
-    .pill[data-variant]{background:inherit}
-    .pill[data-variant="aurum"],.pill[data-variant="amethyst"],.pill[data-variant="glass"]{background:inherit;border-color:rgba(255,255,255,.14)}
-    .actions .pill{background:transparent;border:0;padding:8px 10px;border-radius:8px}
-    .actions .pill:hover{background:rgba(255,255,255,.06);box-shadow:none}
-    .actions .ico{display:none}
-    .card{border-radius:12px}
-
-    /* --- Age gate & Safe mode --- */
-    .agegate{position:fixed;inset:0;display:none;place-items:center;background:rgba(0,0,0,.6);z-index:1000}
-    .agegate .box{width:min(560px,92vw);background:#140b1f;border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:20px;box-shadow:var(--shadow)}
-    .agegate .box h3{margin:0 0 6px}
-    .agegate .box p{margin:0 0 14px;color:var(--muted)}
-    .age-badge{border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:4px 6px;font-weight:700;font-size:12px;opacity:.9}
-    .safe{display:inline-flex;align-items:center;gap:6px;padding:6px 8px;border:1px solid rgba(255,255,255,.14);border-radius:8px;margin-left:6px}
-    .safe input{width:16px;height:16px}
-    html.locked{overflow:hidden}
-  /* -- Minimal flat controls for AI Generator -- */
-.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.06);color:var(--ink);font-weight:700;cursor:pointer;transition:transform .12s ease, background .2s}
-.btn:hover{transform:translateY(-1px);background:rgba(255,255,255,.10)}
-.btn:active{transform:none}
-.input,.select,.textarea{width:100%;border-radius:12px;padding:10px 12px;border:1px solid rgba(255,255,255,.16);background:rgba(0,0,0,.25);color:var(--ink)}
-.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px}
-.card.gen{padding:18px}
-.progress{height:4px;background:rgba(255,255,255,.12);border-radius:999px;overflow:hidden}
-.progress>span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),#9b59ff)}
-.toggle{display:inline-flex;align-items:center;gap:8px}
-/* --- Minimal Premium (2025) overrides for buttons & nav --- */
-    .pill{position:relative;display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:12px;text-decoration:none;font-weight:600;font-size:14px;letter-spacing:0;line-height:1;border:1px solid rgba(255,255,255,.14);cursor:pointer;user-select:none;background:rgba(255,255,255,.03);transition:background .18s ease,border-color .18s ease,transform .12s ease,box-shadow .18s ease}
-    .pill .ico{font-size:14px;opacity:.85}
-    .pill:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.24);box-shadow:0 6px 18px rgba(0,0,0,.22)}
-    .pill:active{transform:translateY(1px)}
-    .pill.primary{color:#fff;background:#6d22d3;border-color:transparent}
-    .pill.ghost{background:transparent;border-color:rgba(255,255,255,.14)}
-    .pill[data-variant]{background:inherit}
-    .pill[data-variant="aurum"],.pill[data-variant="amethyst"],.pill[data-variant="glass"]{background:inherit;border-color:rgba(255,255,255,.14)}
-    .actions .pill{background:transparent;border:0;padding:8px 10px;border-radius:8px}
-    .actions .pill:hover{background:rgba(255,255,255,.06);box-shadow:none}
-    .actions .ico{display:none}
-    .card{border-radius:12px}
-
-    /* Chips & provider */
-    .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
-    .chip{padding:6px 10px;border:1px solid rgba(255,255,255,.14);border-radius:10px;cursor:pointer;background:rgba(255,255,255,.03);font-size:13px}
-    .chip:hover{background:rgba(255,255,255,.06)}
-    .provider{margin-left:auto;display:flex;align-items:center;gap:8px}
-    .provider select{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);color:var(--ink);border-radius:8px;padding:6px 8px}
-    #genStatus{color:var(--muted);font-size:12px}
-
-    /* Style packs */
-    .stylepacks{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
-    .spack{padding:6px 10px;border:1px solid rgba(255,255,255,.14);border-radius:10px;background:rgba(255,255,255,.03);cursor:pointer;font-size:13px}
-    .spack:hover{background:rgba(255,255,255,.06)}
-
-    /* Refine modal */
-    .refine-controls{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px}
-    @media (max-width:900px){.refine-controls{grid-template-columns:1fr 1fr}}
-    @media (max-width:600px){.refine-controls{grid-template-columns:1fr}}
-  /* --- WOW Studio styles (v3) --- */
-    #studio .grid{display:grid;gap:16px;grid-template-columns:2fr 1fr}
-    @media (max-width:1000px){#studio .grid{grid-template-columns:1fr}}
+    /* Studio */
+    #studio .grid{display:grid;gap:14px;grid-template-columns:2fr 1fr}
+    @media (max-width:980px){#studio .grid{grid-template-columns:1fr}}
     .tmpl{display:grid;gap:12px}
-    .tmpl .row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-    @media (max-width:800px){.tmpl .row{grid-template-columns:1fr}}
-    .tcard{position:relative;border:1px solid rgba(255,255,255,.12);border-radius:14px;overflow:hidden;background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03))}
-    .tcard img{display:block;width:100%;height:220px;object-fit:cover}
-    .tcard .meta{padding:10px;display:flex;justify-content:space-between;align-items:center}
-    .tcard .meta .name{font-weight:800}
-    .tcard .meta .apply{font-size:13px}
+    .row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    @media (max-width:820px){.row{grid-template-columns:1fr}}
+    .tcard{position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.12);border-radius:12px;background:linear-gradient(160deg, rgba(109,34,211,.25), rgba(215,184,111,.15))}
+    .tcard .meta{display:flex;justify-content:space-between;align-items:center;padding:10px}
+    .tcard .name{font-weight:800}
 
     .composer{display:grid;gap:10px}
-    .composer textarea{min-height:120px;border-radius:12px;padding:12px;border:1px solid rgba(255,255,255,.16);background:rgba(0,0,0,.2);color:var(--ink)}
-    .composer .quick{display:flex;gap:8px;flex-wrap:wrap}
-    .composer .quick .chip{padding:6px 10px;border:1px solid rgba(255,255,255,.14);border-radius:10px;cursor:pointer;background:rgba(255,255,255,.03);font-size:13px}
-
+    textarea.input{min-height:120px;border-radius:12px;padding:12px;border:1px solid rgba(255,255,255,.16);background:rgba(0,0,0,.25);color:var(--ink)}
+    .quick{display:flex;gap:8px;flex-wrap:wrap}
+    .chip{padding:6px 10px;border:1px solid rgba(255,255,255,.14);border-radius:10px;background:rgba(255,255,255,.04);cursor:pointer;font-size:13px}
+    .status{color:var(--muted);font-size:13px}
     .panelR{display:grid;gap:12px}
-    .skeleton{position:relative;overflow:hidden;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:12px;height:220px}
-    .skeleton::after{content:"";position:absolute;inset:0;transform:translateX(-100%);background:linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent);animation:sk 1.6s infinite}
-    @keyframes sk{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+    .skeleton{height:220px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:linear-gradient(90deg,rgba(255,255,255,.04),rgba(255,255,255,.10),rgba(255,255,255,.04));background-size:200% 100%;animation:sk 1.6s infinite}
+    @keyframes sk{0%{background-position:200% 0}100%{background-position:-200% 0}}
+    .results{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    @media (max-width:720px){.results{grid-template-columns:1fr}}
+    .imgcard{position:relative;border:1px solid rgba(255,255,255,.12);border-radius:12px;overflow:hidden;background:rgba(255,255,255,.02)}
+    .imgcard img{width:100%;display:block}
+    .imgcard .act{position:absolute;right:8px;bottom:8px;display:flex;gap:6px}
 
-    #studio .results{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-    @media (max-width:740px){#studio .results{grid-template-columns:1fr}}
-    .results .imgcard{position:relative;border:1px solid rgba(255,255,255,.12);border-radius:12px;overflow:hidden;background:rgba(255,255,255,.02)}
-    .results .imgcard img{display:block;width:100%}
-    .results .imgcard .actions{position:absolute;right:8px;bottom:8px;display:flex;gap:6px}
+    /* Pricing compact */
+    .pricing .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    @media (max-width:860px){.pricing .plans{grid-template-columns:1fr}}
+    .price{font-size:28px;font-weight:900}
+
+    footer{padding:28px 0;color:var(--muted);font-size:14px;border-top:1px solid rgba(255,255,255,.06)}
   </style>
 </head>
 <body>
-  <a href="#features" class="skip-link">Sari la conținut</a>
-  <!-- Age Gate (18+) overlay -->
-  <div id="ageGate" class="agegate" role="dialog" aria-modal="true" aria-label="Confirmare vârstă 18+">
-    <div class="box">
-      <h3>Conținut 18+</h3>
-      <p>Acest site și generatorul includ <strong>conținut destinat adulților</strong>, exclusiv <strong>AI generativ</strong>. Fără persoane reale. Continuând, confirmi că ai 18+ și ești de acord cu <a href="terms.html">Termenii</a> & <a href="privacy.html">Privacy</a>.</p>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end">
-        <a id="ageNo" class="pill ghost" href="https://www.google.com" rel="nofollow">Nu am 18+</a>
-        <button id="ageYes" class="pill primary" type="button">Am 18+</button>
-      </div>
-    </div>
-  </div>
   <!-- Header -->
   <header>
     <div class="wrap nav">
-      <a class="brand" href="#" aria-label="Eva Voss Home">
-        <img id="logoImg" src="logo-eva.png" alt="Eva Voss" height="36" loading="eager" decoding="async" />
+      <a class="brand" href="#" aria-label="Eva Voss home">
+        <img id="logoImg" src="logo-eva.png" alt="Eva Voss" height="30" loading="eager" decoding="async" />
         <span class="t">Eva Voss</span>
       </a>
-      <nav class="actions" aria-label="Meniu principal" style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
-        <a class="pill" href="#features" data-i18n="nav.features">Caracteristici</a>
-        <a class="pill" href="#studio">Studio</a>
-        <a class="pill" href="#pricing" data-i18n="nav.pricing">Prețuri</a>
-        <a class="pill primary" href="#join" data-i18n="nav.cta">Începe acum</a>
-        <label class="safe" title="Safe mode"><input type="checkbox" id="safeMode" checked/> Safe</label>
-        <span class="lang" role="group" aria-label="Limba">
-          <button type="button" id="btnRO" aria-pressed="true">RO</button>
-          <button type="button" id="btnEN" aria-pressed="false">EN</button>
-        </span>
+      <nav class="actions" aria-label="Meniu">
+        <a class="btn" href="#features">Caracteristici</a>
+        <a class="btn" href="#studio">Studio</a>
+        <a class="btn" href="#pricing">Prețuri</a>
+        <a class="btn primary" href="#join">Începe acum</a>
       </nav>
     </div>
   </header>
 
-  <!-- Hero (non-loop intro; text appears at end) -->
-  <section class="hero" aria-label="Hero">
-    <video id="heroVideo" autoplay muted playsinline preload="auto" poster="showcase.jpg" fetchpriority="high">
-      <source id="heroSource" src="hero-bg.mp4" type="video/mp4" />
-    </video>
-
-    <!-- FX layers -->
-    <canvas id="fxParticles" aria-hidden="true"></canvas>
-    <div class="fx-tint" aria-hidden="true"></div>
-    <div class="fx-sheen" aria-hidden="true"></div>
-
-    <!-- Intro tools: progress + skip -->
-    <div class="intro-tools" aria-hidden="true">
-      <div class="intro-progress"><span></span></div>
-      <button class="pill ghost skip-intro" id="skipIntro" type="button" data-i18n="hero.skip">Sari introducerea</button>
-    </div>
-
-    <div class="overlay" aria-hidden="true"></div>
-
-    <div class="content wrap hidden">
-      <span class="eyebrow" data-i18n="hero.eyebrow">AI premium • voce + imagine + video</span>
-      <h1 data-i18n="hero.title">Eva Voss — <span style="color:var(--gold)">AI Fantasy</span> Experience</h1>
-      <p class="lead" data-i18n="hero.lead">Conversații naturale, voce seducătoare, imagini și clipuri generate instant. Elegantă, realistă, disponibilă pe telefon, PC și web.</p>
-      <div class="cta" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-        <a class="pill primary" data-variant="amethyst" href="#pricing" data-i18n="hero.seePlans" data-event="click_pricing"><span class="ico">💳</span>Vezi planurile</a>
-        <button class="pill ghost" data-variant="glass" id="openDemo" type="button" data-i18n="hero.watchDemo" data-event="open_demo"><span class="ico">▶️</span>Vezi demo</button>
-        <a class="pill" data-variant="aurum" href="#generator" data-event="go_generator"><span class="ico">🪄</span>Încearcă generatorul</a>
-      </div>
-      <div class="badges">
-        <span class="dot" aria-hidden="true"></span>
-        <span data-i18n="hero.badge1">Online acum • răspuns &lt; 1s</span>
-        <span>•</span>
-        <span data-i18n="hero.badge2">Fără NSFW real — AI generativ</span>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="content wrap">
+      <span class="eyebrow">AI premium • voce + imagine + video</span>
+      <h1>Eva Voss — <span style="color:var(--gold)">AI Fantasy</span> Experience</h1>
+      <p class="lead">Conversații naturale, voce seducătoare, imagini și clipuri generate instant. Elegantă, realistă, disponibilă pe telefon, PC și web.</p>
+      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:6px">
+        <a class="btn primary" href="#studio">Încearcă Studio</a>
+        <a class="btn" href="#pricing">Vezi planuri</a>
       </div>
     </div>
   </section>
 
-  <!-- Features -->
+  <!-- Features scurte -->
   <section id="features">
-    <div class="wrap">
-      <div class="grid cols-3 reveal">
-        <div class="feature card"><div class="ico">🎙️</div><div><h3 data-i18n="features.v">Voce realistă</h3><p data-i18n="features.vd">Răspuns audio instant, respirație subtilă și intonație umană. Perfect pentru căști.</p></div></div>
-        <div class="feature card"><div class="ico">🖼️</div><div><h3 data-i18n="features.i">Imagini & clipuri</h3><p data-i18n="features.id">Generare rapidă de imagini și scurte clipuri, cu stil premium (mov regal + auriu).</p></div></div>
-        <div class="feature card"><div class="ico">🧠</div><div><h3 data-i18n="features.p">Personalitate fină</h3><p data-i18n="features.pd">Memorie opțională, limite sigure, răspunsuri contextuale. Elegantă, jucăușă, respectuoasă.</p></div></div>
-      </div>
+    <div class="wrap" style="display:grid;gap:12px;grid-template-columns:repeat(3,1fr)">
+      <div class="card" style="padding:16px"><strong>Voce realistă</strong><div style="color:var(--muted)">Răspuns audio instant, intonație umană, respirație subtilă.</div></div>
+      <div class="card" style="padding:16px"><strong>Imagini & clipuri</strong><div style="color:var(--muted)">Generare rapidă cu stil premium (mov regal + auriu).</div></div>
+      <div class="card" style="padding:16px"><strong>Personalitate fină</strong><div style="color:var(--muted)">Memorie opțională, limite sigure, răspunsuri contextuale.</div></div>
     </div>
   </section>
 
-  <!-- Demo modal -->
-  <dialog id="demoModal" aria-label="Demo video">
-    <video controls playsinline style="width:clamp(280px,80vw,960px);height:auto;border-radius:16px;display:block">
-      <source src="hero-bg.mp4" type="video/mp4" />
-    </video>
-  </dialog>
-
-  <!-- Refine modal -->
-  <dialog id="refineModal" aria-label="Refinează imaginea">
-    <div style="padding:16px;max-width:min(92vw,1040px)">
-      <h3 style="margin:0 0 8px">Refinează imaginea</h3>
-      <canvas id="refineCanvas" style="width:100%;height:auto;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:#000"></canvas>
-      <div class="refine-controls">
-        <label>Contrast
-          <input id="rContrast" type="range" min="0.7" max="1.3" step="0.01" value="1" />
-        </label>
-        <label>Saturație
-          <input id="rSaturation" type="range" min="0.7" max="1.3" step="0.01" value="1" />
-        </label>
-        <label>Grain
-          <input id="rGrain" type="range" min="0" max="0.5" step="0.01" value="0.08" />
-        </label>
-        <label>Vignet
-          <input id="rVignette" type="range" min="0" max="0.8" step="0.01" value="0.25" />
-        </label>
-      </div>
-      <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:10px">
-        <button class="pill" id="rSave" type="button">Salvează PNG</button>
-        <button class="pill primary" id="rApply" type="button">Aplică pe imagine</button>
-        <button class="pill ghost" id="rClose" type="button">Închide</button>
-      </div>
-    </div>
-  </dialog>
-
-  <!-- Social Proof / Highlights -->
-  <section id="proof">
+  <!-- WOW Studio -->
+  <section id="studio">
     <div class="wrap">
-      <div class="grid cols-4 reveal">
-        <div class="card" style="padding:20px;text-align:center"><div style="font-size:28px;font-weight:900">1s</div><div style="color:var(--muted)" data-i18n="proof.latency">Timp mediu de răspuns</div></div>
-        <div class="card" style="padding:20px;text-align:center"><div style="font-size:28px;font-weight:900">4K</div><div style="color:var(--muted)" data-i18n="proof.images">Imagini/lună în planul Premium</div></div>
-        <div class="card" style="padding:20px;text-align:center"><div style="font-size:28px;font-weight:900">60m</div><div style="color:var(--muted)" data-i18n="proof.video">Minute video AI / lună</div></div>
-        <div class="card" style="padding:20px;text-align:center"><div style="font-size:28px;font-weight:900">24/7</div><div style="color:var(--muted)" data-i18n="proof.avail">Disponibilitate globală</div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Generator v1 -->
-  <section id="generator" aria-label="Generator">
-    <div class="wrap">
-      <div class="card" style="padding:24px">
-        <h3 style="margin-top:0" data-i18n="gen.title">Generator (Text • Voce • Imagine • Clip) — demo</h3>
-        <p class="hint" data-i18n="gen.hint">Rezultatele de aici sunt demo. În planurile plătite se deblochează modele premium și salvare în cloud.</p>
-        <div class="tabs" role="tablist" aria-label="Generator tabs">
-          <button class="pill ghost" data-variant="glass" role="tab" aria-selected="true" aria-controls="tab-text" id="tabBtnText">📝 Text</button>
-          <button class="pill ghost" data-variant="glass" role="tab" aria-selected="false" aria-controls="tab-voice" id="tabBtnVoice">🎧 Voce</button>
-          <button class="pill ghost" data-variant="glass" role="tab" aria-selected="false" aria-controls="tab-image" id="tabBtnImage">🖼️ Imagine</button>
-          <button class="pill ghost" data-variant="glass" role="tab" aria-selected="false" aria-controls="tab-video" id="tabBtnVideo">🎬 Clip</button>
-        </div>
-
-        <div class="gen-grid" style="margin-top:14px">
-          <div>
-            <!-- Panels -->
-            <div id="tab-text" class="panel active" role="tabpanel" aria-labelledby="tabBtnText">
-              <div class="gen">
-                <div class="control">
-                  <label for="txtPrompt">Prompt</label>
-                  <textarea id="txtPrompt" placeholder="Descrie scena sau mesajul...">Scrie un mesaj seducător, elegant, stil Eva, 2-3 fraze.</textarea>
-                </div>
-                <div class="control" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-                  <label>Ton
-                    <select id="txtTone"><option>Elegant</option><option>Jucăuș</option><option>Direct</option><option>Romantic</option></select>
-                  </label>
-                  <label>Lungime
-                    <select id="txtLen"><option>Scurt</option><option>Mediu</option><option>Lung</option></select>
-                  </label>
-                </div>
-                <div style="display:flex;gap:10px;flex-wrap:wrap">
-                  <button class="pill primary" id="btnGenText" data-event="generate_text">Creează</button>
-                  <a class="pill" data-variant="aurum" id="btnDlText" download="eva-text.txt">Descarcă</a>
-                </div>
-              </div>
-            </div>
-
-            <div id="tab-voice" class="panel" role="tabpanel" aria-labelledby="tabBtnVoice">
-              <div class="gen">
-                <div class="control">
-                  <label for="vPrompt">Text pentru voce</label>
-                  <textarea id="vPrompt" placeholder="Ce vrei să spună Eva?">Îți place cum sună vocea mea?</textarea>
-                </div>
-                <div class="control" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-                  <label>Timbru
-                    <select id="vTimbre"><option>Catifelată</option><option>Naturală</option><option>Jucăușă</option></select>
-                  </label>
-                  <label>Viteză
-                    <select id="vSpeed"><option>Normal</option><option>Lent</option><option>Rapid</option></select>
-                  </label>
-                </div>
-                <div style="display:flex;gap:10px;flex-wrap:wrap">
-                  <button class="pill primary" id="btnGenVoice" data-event="generate_voice">Generează voce</button>
-                  <a class="pill" data-variant="aurum" id="btnDlVoice" download="eva-voice.wav">Descarcă</a>
-                </div>
-              </div>
-            </div>
-
-            <div id="tab-image" class="panel" role="tabpanel" aria-labelledby="tabBtnImage">
-              <div class="gen">
-                <div class="control">
-                  <label for="iPrompt">Descriere imagine</label>
-                  <textarea id="iPrompt" placeholder="Ex: portret premium, lumină aurie, violet regal, bokeh">portret premium, lumină aurie, violet regal, bokeh</textarea>
-                </div>
-                <div class="stylepacks" id="stylePacks">
-                  <button type="button" class="spack" data-pack="royal">Eva Royal</button>
-                  <button type="button" class="spack" data-pack="noir">Cinematic Noir</button>
-                  <button type="button" class="spack" data-pack="glam">Studio Glam</button>
-                  <button type="button" class="spack" data-pack="vivid">Vivid Dream</button>
-                  <button type="button" class="spack" data-pack="suspense">Suspense Frame</button>
-                </div>
-
-                <details class="adv">
-                  <summary>Opțiuni avansate</summary>
-                  <div class="adv-grid">
-                    <label>Negative prompt
-                      <input id="iNeg" type="text" value="low quality, bad anatomy, watermark, text, logo, deformed, oversaturated" />
-                    </label>
-                    <label>Preset stil
-                      <select id="iStyle"><option value="glamour">Glamour</option><option value="studio">Studio</option><option value="cinematic" selected>Cinematic</option><option value="noir">Noir</option><option value="vivid">Vivid</option></select>
-                    </label>
-                    <label>Model
-                      <select id="iModel"><option value="Realistic Vision v5.1" selected>Realistic Vision v5.1</option><option value="Deliberate">Deliberate v2</option><option value="SDXL 1.0">SDXL 1.0</option></select>
-                    </label>
-                    <label>Raport
-                      <select id="iAR"><option>1:1</option><option>3:4</option><option>4:5</option><option selected>9:16</option></select>
-                    </label>
-                    <label>Număr imagini
-                      <select id="iCount"><option>1</option><option>2</option><option selected>4</option></select>
-                    </label>
-                    <label>Creativitate (CFG)
-                      <input id="iCfg" type="range" min="1" max="15" value="7" />
-                    </label>
-                    <label>Calitate (pași)
-                      <input id="iSteps" type="range" min="10" max="60" value="30" />
-                    </label>
-                    <label>Seed
-                      <input id="iSeed" type="text" placeholder="random" />
-                    </label>
-                    <label>Horde API key
-                      <input id="iHordeKey" type="password" placeholder="0000000000 (anon)" />
-                    </label>
-                    <label class="switch"><input id="iUpscale" type="checkbox" /> Upscale 2×</label>
-                    <label class="switch"><input id="iFace" type="checkbox" checked /> Corecție față</label>
-                    <label class="switch"><input id="iBG" type="checkbox" /> Remove BG</label>
-                  </div>
-                  <div class="adv-upload" id="iDrop">
-                    <input id="iRef" type="file" accept="image/*" hidden />
-                    <button class="pill ghost" type="button" id="btnRef">Încarcă imagine de referință</button>
-                    <small class="hint">Poți trage & plasa o imagine aici pentru a o folosi ca referință.</small>
-                  </div>
-                </details>
-                <div style="display:flex;gap:10px;flex-wrap:wrap">
-                  <button class="pill primary" id="btnGenImage" data-event="generate_image">Generează</button>
-                  <button class="pill" data-variant="aurum" id="btnVarImage" type="button">Variații</button>
-                  <button class="pill ghost" data-variant="glass" id="btnReroll" type="button">Reroll</button>
-                  <button class="pill" id="btnSurprise" type="button">Surprinde‑mă</button>
-                  <a class="pill ghost" data-variant="glass" id="btnDlImage" download="eva-image.png">Descarcă (prima)</a>
-                </div>
-              </div>
-            </div>
-
-            <div id="tab-video" class="panel" role="tabpanel" aria-labelledby="tabBtnVideo">
-              <div class="gen">
-                <div class="control">
-                  <label for="mvPrompt">Descriere clip</label>
-                  <textarea id="mvPrompt" placeholder="Ex: clip 5s, zâmbet, lumină moale, close-up">clip 5s, zâmbet, lumină moale, close-up</textarea>
-                </div>
-                <div class="control" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-                  <label>Durată
-                    <select id="mvDur"><option>5s</option><option>10s</option></select>
-                  </label>
-                  <label>Stil
-                    <select id="mvStyle"><option>Royal</option><option>Noir</option><option>Vivid</option></select>
-                  </label>
-                </div>
-                <div style="display:flex;gap:10px;flex-wrap:wrap">
-                  <button class="pill primary" id="btnGenVideo" data-event="generate_video">Generează clip</button>
-                  <a class="pill" data-variant="aurum" id="btnDlVideo" download="eva-clip.mp4">Descarcă</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Preview & history -->
-          <div>
-            <div class="preview-box" id="genPreview" aria-live="polite">Aici apare previzualizarea.</div>
-            <div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap">
-              <button class="pill ghost" data-variant="glass" id="btnSavePreset">Salvează preset</button>
-              <button class="pill ghost" data-variant="glass" id="btnClearHistory">Curăță istoric</button>
-              <a class="pill" data-variant="aurum" href="#pricing">Upgrade la Premium</a>
-            </div>
-            <div class="history" id="genHistory" style="margin-top:12px"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Pricing -->
-  <section id="pricing" class="pricing">
-    <div class="wrap">
-      <div style="display:flex;justify-content:flex-end;gap:10px;margin-bottom:12px"><span style="color:var(--muted)">Plată:</span><div class="lang" role="group" aria-label="Billing switch"><button type="button" id="billMo" aria-pressed="true">Lunar</button><button type="button" id="billYr" aria-pressed="false">Anual <span style="opacity:.8">(-15%)</span></button></div></div>
-      <div class="grid cols-3 reveal">
-        <div class="card"><h3 data-i18n="pricing.s">Starter</h3><div class="price"><span class="p" data-price-month="9" data-price-year="92">€9</span><small data-i18n="pricing.mo">/lună</small></div><ul class="incl"><li><span class="tick">✔</span> <span data-i18n="pricing.s1">Chat text nelimitat</span></li><li><span class="tick">✔</span> <span data-i18n="pricing.s2">50 imagini/lună</span></li><li><span class="tick">✔</span> <span data-i18n="pricing.s3">10 minute voce</span></li></ul><div style="margin-top:18px"><a class="pill primary" href="#join" data-i18n="pricing.chooseS" data-event="choose_starter">Alege Starter</a></div></div>
-        <div class="card" style="outline:2px solid rgba(215,184,111,.35)"><h3 data-i18n="pricing.p">Premium</h3><div class="price"><span class="p" data-price-month="29" data-price-year="295">€29</span><small data-i18n="pricing.mo">/lună</small></div><ul class="incl"><li><span class="tick">✔</span> <span data-i18n="pricing.p1">Chat nelimitat (text + voce)</span></li><li><span class="tick">✔</span> <span data-i18n="pricing.p2">400 imagini/lună</span></li><li><span class="tick">✔</span> <span data-i18n="pricing.p3">60 minute video AI</span></li><li><span class="tick">✔</span> <span data-i18n="pricing.p4">Prioritate la generare</span></li></ul><div style="margin-top:18px"><a class="pill primary" href="#join" data-i18n="pricing.chooseP" data-event="choose_premium">Alege Premium</a></div></div>
-        <div class="card"><h3 data-i18n="pricing.e">Elite</h3><div class="price"><span class="p" data-price-month="79" data-price-year="800">€79</span><small data-i18n="pricing.mo">/lună</small></div><ul class="incl"><li><span class="tick">✔</span> <span data-i18n="pricing.e1">Tot din Premium</span></li><li><span class="tick">✔</span> <span data-i18n="pricing.e2">1:1 scene personalizate</span></li><li><span class="tick">✔</span> <span data-i18n="pricing.e3">Modele exclusive</span></li><li><span class="tick">✔</span> <span data-i18n="pricing.e4">Suport prioritar</span></li></ul><div style="margin-top:18px"><a class="pill primary" href="#join" data-i18n="pricing.chooseE" data-event="choose_elite">Alege Elite</a></div></div>
-      </div>
-      <p class="hint" style="margin-top:10px">Plățile se fac prin Gumroad (overlay). Dacă un ad-blocker blochează overlay-ul, folosim link direct.</p>
-      <!-- Gumroad overlay (produs exemplu) -->
-      <!-- <script src="https://gumroad.com/js/gumroad-embed.js" defer></script> -->
-    </div>
-  </section>
-
-  <!-- Testimonials -->
-  <section class="testi">
-    <div class="wrap">
-      <div class="grid cols-3 reveal">
-        <div class="card"><div class="who"><div class="avatar"></div><div><strong>Alex</strong><div style="color:var(--muted)">Berlin</div></div></div><p style="margin:12px 0 0">„<span data-i18n="testi.t1">Pare reală. Vocea m-a surprins: caldă, naturală.</span>”</p></div>
-        <div class="card"><div class="who"><div class="avatar"></div><div><strong>Mara</strong><div style="color:var(--muted)">Cluj</div></div></div><p style="margin:12px 0 0">„<span data-i18n="testi.t2">Imaginile ies premium. Mi-a generat un set în 30s.</span>”</p></div>
-        <div class="card"><div class="who"><div class="avatar"></div><div><strong>Dan</strong><div style="color:var(--muted)">Timișoara</div></div></div><p style="margin:12px 0 0">„<span data-i18n="testi.t3">Răspunde politicos și ține minte preferințele mele.</span>”</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Join / Subscribe (Netlify Forms) -->
-  <section id="join">
-    <div class="wrap">
-      <div class="grid cols-2 reveal">
-        <div class="card" style="padding:24px"><h3 data-i18n="join.title">Intră pe listă & primește acces</h3><p style="color:var(--muted)" data-i18n="join.desc">Primești link-ul de acces + 5 imagini bonus la activare.</p>
-          <form name="subscribe" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-            <input type="hidden" name="form-name" value="subscribe" />
-            <p style="display:none"><label>Don’t fill this out: <input name="bot-field" /></label></p>
-            <div style="display:grid;gap:10px;grid-template-columns:1fr auto">
-              <input name="email" type="email" required placeholder="email@exemplu.com" aria-label="Email" style="border-radius:999px;padding:12px 14px;border:1px solid rgba(255,255,255,.16);background:rgba(0,0,0,.2);color:var(--ink)" />
-              <button class="pill primary" type="submit" data-i18n="join.btn" data-event="submit_waitlist"><span class="ico">🚀</span>Mă înscriu</button>
-            </div>
-            <small style="display:block;margin-top:10px;color:var(--muted)" data-i18n="join.note">Respectăm confidențialitatea. Te poți dezabona oricând.</small>
-          </form>
-        </div>
-        <div class="card" style="padding:24px">
-          <h3 data-i18n="faq.title">Întrebări rapide</h3>
-          <details><summary data-i18n="faq.q1">Este conținut real?</summary><p style="color:var(--muted)" data-i18n="faq.a1">Nu. Eva este 100% AI. Respectăm limitele de siguranță și regulile platformelor.</p></details>
-          <details><summary data-i18n="faq.q2">Pot cere scene personalizate?</summary><p style="color:var(--muted)" data-i18n="faq.a2">Da, în planurile Premium/Elite. Spui stilul, ținuta, atmosfera — Eva generează.</p></details>
-          <details><summary data-i18n="faq.q3">Cum anulez?</summary><p style="color:var(--muted)" data-i18n="faq.a3">Poți anula oricând din contul tău de pe platforma de plată.</p></details>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- AI Image Generator (AI Horde) -->
-<section id="gen" aria-label="AI Image Generator">
-  <div class="wrap">
-    <div class="card gen">
-      <h3 style="margin-top:0">Generator imagini (AI Horde)</h3>
-      <p style="color:var(--muted);margin-top:6px">Rapid demo cu AI Horde (acceptă NSFW 18+ cu limite). Pentru demo folosim cheie anonimă; după activare adaugi cheia ta pentru prioritate.</p>
-      <div class="grid cols-2" style="align-items:start">
-        <div style="display:grid;gap:10px">
-          <label>Prompt
-            <textarea id="genPrompt" class="textarea" rows="4" placeholder="Descrie scena (stil, ținută, lumină, compoziție)"></textarea>
-          </label>
-          <label>Negative (opțional)
-            <input id="genNeg" class="input" type="text" placeholder="ex: blurry, extra fingers, watermark" />
-          </label>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-            <label>Model
-              <select id="genModel" class="select">
-                <option>Deliberate v2</option>
-                <option>Realistic Vision v5.1</option>
-                <option>Kandinsky v2.2</option>
-              </select>
-            </label>
-            <label>Raport
-              <select id="genAR" class="select">
-                <option>1:1</option>
-                <option>2:3</option>
-                <option>3:2</option>
-                <option>9:16</option>
-                <option>16:9</option>
-              </select>
-            </label>
-          </div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-            <label>Pași
-              <input id="genSteps" type="number" class="input" min="10" max="60" value="30" />
-            </label>
-            <label>CFG
-              <input id="genCfg" type="number" class="input" step="0.5" min="1" max="15" value="7" />
-            </label>
-          </div>
-          <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
-            <label class="toggle"><input id="genNSFW" type="checkbox" /> NSFW (doar 18+)</label>
-            <label>Număr
-              <input id="genN" type="number" class="input" min="1" max="4" value="1" style="max-width:90px" />
-            </label>
-            <button id="genBtn" class="btn">Generează</button>
-          </div>
-          <div class="progress" id="genProg" style="display:none"><span></span></div>
-          <small style="color:var(--muted)">Conținut 100% AI generativ. Fără persoane reale / minori. Respectăm legile și Terms.</small>
-        </div>
-        <div>
-          <div id="genGallery" class="gallery"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- WOW Studio (v3) -->
-  <section id="studio" aria-label="Eva Studio">
-    <div class="wrap">
+      <h2 style="margin:0 0 12px">WOW Studio</h2>
       <div class="grid">
         <div class="tmpl">
           <div class="row">
-            <div class="tcard" data-pack="royal"><img src="showcase.jpg" alt="Eva Royal"/><div class="meta"><span class="name">Eva Royal</span><button class="pill apply" type="button">Aplică</button></div></div>
-            <div class="tcard" data-pack="noir"><img src="showcase.jpg" alt="Cinematic Noir"/><div class="meta"><span class="name">Cinematic Noir</span><button class="pill apply" type="button">Aplică</button></div></div>
-            <div class="tcard" data-pack="suspense"><img src="showcase.jpg" alt="Suspense Frame"/><div class="meta"><span class="name">Suspense Frame</span><button class="pill apply" type="button">Aplică</button></div></div>
+            <div class="tcard"><div class="meta"><span class="name">Eva Royal</span><button class="btn apply" data-pack="royal">Aplică</button></div></div>
+            <div class="tcard"><div class="meta"><span class="name">Cinematic Noir</span><button class="btn apply" data-pack="noir">Aplică</button></div></div>
+            <div class="tcard"><div class="meta"><span class="name">Suspense Frame</span><button class="btn apply" data-pack="suspense">Aplică</button></div></div>
           </div>
-          <div class="composer card" style="padding:16px">
+          <div class="card composer" style="padding:14px">
             <label>Descriere
-              <textarea id="sxPrompt" placeholder="ex: portret premium, lumină aurie, violet regal, bokeh"></textarea>
+              <textarea id="sxPrompt" class="input" placeholder="ex: portret premium, lumină aurie, violet regal, bokeh"></textarea>
             </label>
             <div class="quick" id="sxChips">
               <button class="chip" data-add=", shallow depth of field, rim light">Rim + DOF</button>
@@ -727,12 +133,15 @@
               <button class="chip" data-add=", film grain 35mm, chiaroscuro">35mm Noir</button>
             </div>
             <div style="display:flex;gap:10px;flex-wrap:wrap">
-              <button id="sxGenerate" class="pill primary">Generează</button>
-              <button id="sxSurprise" class="pill">Surprinde‑mă</button>
-              <span id="sxStatus" style="align-self:center;color:var(--muted)"></span>
+              <button id="sxGenerate" class="btn primary">Generează</button>
+              <button id="sxSurprise" class="btn">Surprinde‑mă</button>
+              <span id="sxStatus" class="status"></span>
               <span style="margin-left:auto"></span>
-              <label>Provider
-                <select id="sxProvider"><option value="horde" selected>Horde</option><option value="demo">Demo</option></select>
+              <label style="display:flex;align-items:center;gap:8px">Provider
+                <select id="sxProvider" class="btn" style="padding:6px 10px">
+                  <option value="demo" selected>Demo</option>
+                  <option value="horde">Horde</option>
+                </select>
               </label>
             </div>
           </div>
@@ -746,506 +155,96 @@
     </div>
   </section>
 
-  <!-- OG Image Generator (v2) -->
-  <section id="og" aria-label="OG Image Generator">
+  <!-- Pricing compact -->
+  <section id="pricing" class="pricing">
     <div class="wrap">
-      <div class="card" style="padding:24px">
-        <h3 style="margin-top:0">Generator imagine OG 1200×630 (v2)</h3>
-        <p style="color:var(--muted);margin-top:6px">Generează <code>og-eva.jpg</code> premium. Poți urca un fundal propriu și un logo custom. După descărcare, pune fișierul în <strong>/og-eva.jpg</strong> (root).</p>
-        <div style="display:grid;gap:12px;grid-template-columns:1fr 1fr;align-items:start;margin-top:12px">
-          <div style="display:grid;gap:10px">
-            <label>Dimensiune titlu
-              <input id="ogTitleSize" type="range" min="60" max="120" value="84" />
-            </label>
-            <label>Dimensiune subtitlu
-              <input id="ogSubSize" type="range" min="20" max="36" value="28" />
-            </label>
-            <label>Mărime logo
-              <input id="ogLogoSize" type="range" min="120" max="360" value="220" />
-            </label>
-            <label>Poziție logo
-              <select id="ogLogoPos">
-                <option value="right" selected>Sus-dreapta</option>
-                <option value="left">Sus-stânga</option>
-                <option value="hide">Ascuns</option>
-              </select>
-            </label>
-            <label>Accente circulare
-              <input id="ogRings" type="checkbox" checked />
-            </label>
-            <label>Titlu
-              <input id="ogTitle" type="text" value="Eva Voss — AI Fantasy" style="width:100%;border-radius:10px;padding:10px 12px;border:1px solid rgba(255,255,255,.16);background:rgba(0,0,0,.2);color:var(--ink)" />
-            </label>
-            <label>Subtitlu
-              <input id="ogSub" type="text" value="Premium AI • voice · image · video" style="width:100%;border-radius:10px;padding:10px 12px;border:1px solid rgba(255,255,255,.16);background:rgba(0,0,0,.2);color:var(--ink)" />
-            </label>
-            <label>Fundal (opțional)
-              <input id="ogBg" type="file" accept="image/*" />
-            </label>
-            <label>Logo (opțional)
-              <input id="ogLogo" type="file" accept="image/*" />
-            </label>
-            <label>Stil
-              <select id="ogStyle" style="width:100%;border-radius:10px;padding:10px 12px;border:1px solid rgba(255,255,255,.16);background:rgba(0,0,0,.2);color:var(--ink)">
-                <option value="royal" selected>Royal (mov + auriu)</option>
-                <option value="noir">Noir (mov închis)</option>
-                <option value="vivid">Vivid (mov saturat)</option>
-              </select>
-            </label>
-            <div style="display:flex;gap:10px;flex-wrap:wrap">
-              <button id="ogMake" class="pill primary" data-variant="amethyst" type="button">Generează</button>
-              <a id="ogDownloadJpg" class="pill ghost" data-variant="glass" href="#" download="og-eva.jpg">Descarcă JPG</a>
-              <a id="ogDownloadPng" class="pill ghost" data-variant="glass" href="#" download="og-eva.png">Descarcă PNG</a>
-              <a id="ogDownloadWebp" class="pill ghost" data-variant="glass" href="#" download="og-eva.webp" style="display:none">Descarcă WEBP</a>
-              <button id="ogCopyMeta" class="pill" data-variant="aurum" type="button">Copiază meta OG</button>
-            </div>
-            <small class="hint">Sfat: păstrează titlul pe 1–2 rânduri. Poți folosi și emoji 😈✨</small>
-          </div>
-          <div>
-            <div style="background:#0003;border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:8px">
-              <img id="ogPreview" alt="Previzualizare OG" style="width:100%;border-radius:8px;display:block" loading="lazy" decoding="async" />
-            </div>
-          </div>
-        </div>
-        <canvas id="ogc" width="1200" height="630" style="display:none"></canvas>
+      <h2 style="margin:0 0 10px">Planuri</h2>
+      <div class="plans">
+        <div class="card" style="padding:16px"><h3 style="margin:0 0 6px">Starter</h3><div class="price">€9 <small style="color:var(--muted);font-weight:600">/lună</small></div><div style="color:var(--muted)">50 imagini, 10m voce</div></div>
+        <div class="card" style="padding:16px;outline:2px solid rgba(215,184,111,.35)"><h3 style="margin:0 0 6px">Premium</h3><div class="price">€29 <small style="color:var(--muted);font-weight:600">/lună</small></div><div style="color:var(--muted)">400 imagini, 60m video, prioritate</div></div>
+        <div class="card" style="padding:16px"><h3 style="margin:0 0 6px">Elite</h3><div class="price">€79 <small style="color:var(--muted);font-weight:600">/lună</small></div><div style="color:var(--muted)">Scene 1:1, modele exclusive</div></div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- Join -->
+  <section id="join">
+    <div class="wrap card" style="padding:16px;display:grid;gap:10px">
+      <h3 style="margin:0">Intră pe listă & primește acces</h3>
+      <form name="subscribe" method="POST" data-netlify="true" netlify-honeypot="bot-field" style="display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center">
+        <input type="hidden" name="form-name" value="subscribe" />
+        <input name="email" type="email" required placeholder="email@exemplu.com" aria-label="Email" style="border-radius:999px;padding:10px 12px;border:1px solid rgba(255,255,255,.16);background:rgba(0,0,0,.2);color:var(--ink)" />
+        <button class="btn primary" type="submit">Mă înscriu</button>
+      </form>
+      <small style="color:var(--muted)">Respectăm confidențialitatea. Te poți dezabona oricând.</small>
+    </div>
+  </section>
+
   <footer>
-    <div class="wrap" style="display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap">
-      <div><strong>Eva Voss</strong> — AI Fantasy Experience<br/>© <span id="y"></span> Eva Voss. Toate drepturile rezervate.</div>
-      <div style="display:flex;gap:14px;flex-wrap:wrap">
-        <a href="privacy.html">Privacy</a>
-        <a href="terms.html">Terms</a>
-        <a href="#join" class="pill ghost" data-i18n="footer.join">Înscrie-te</a>
-      </div>
+    <div class="wrap" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
+      <div><strong>Eva Voss</strong> — AI Fantasy Experience<br/>© <span id="y"></span> Eva Voss.</div>
+      <div style="display:flex;gap:12px"><a class="btn" href="#join">Înscrie-te</a><a class="btn" href="#pricing">Prețuri</a></div>
     </div>
   </footer>
 
-  <!-- Floating CTA -->
-  <div class="cta-sticky">
-    <a class="pill primary" href="#join" aria-label="Join">✨ <span data-i18n="float.cta">Acces rapid</span></a>
-  </div>
-
   <script>
-  // -------- Helpers: analytics wrapper --------
-  window.track = (name, props={})=>{ try{ window.plausible && window.plausible(name,{props}); }catch{} try{ window.gtag && window.gtag('event', name, props); }catch{} console.log('[track]', name, props); };
+    // Year
+    document.getElementById('y').textContent=new Date().getFullYear();
 
-  // -------- Year --------
-  document.getElementById('y').textContent = new Date().getFullYear();
-
-  // -------- Reveal on scroll --------
-  const io = new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('in')), {threshold:.12});
-  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-
-  // -------- Age Gate (18+) & Safe Mode --------
-  (function(){
-    const gate=document.getElementById('ageGate');
-    const yes=document.getElementById('ageYes');
-    const no=document.getElementById('ageNo');
-    const key='eva_age_ok';
-    const ok=localStorage.getItem(key)==='1';
-    if(!ok && gate){ gate.style.display='grid'; document.documentElement.classList.add('locked'); }
-    yes && yes.addEventListener('click',()=>{ localStorage.setItem(key,'1'); gate.remove(); document.documentElement.classList.remove('locked'); track('age_ok'); });
-    no && no.addEventListener('click',()=>{ localStorage.removeItem(key); });
-
-    const sKey='eva_safe_mode';
-    const chk=document.getElementById('safeMode');
-    if(chk){ const stored=localStorage.getItem(sKey); chk.checked = stored===null ? true : stored==='1'; chk.addEventListener('change',()=> localStorage.setItem(sKey, chk.checked?'1':'0')); }
-    window.isSafeMode = ()=> (localStorage.getItem(sKey)!=='0');
-    window.validateAllowed = (prompt, negative='')=>{
-      const p=((prompt||'')+' '+(negative||'')).toLowerCase();
-      const hard=['minor','underage','child','real person','celebrity'];
-      if(hard.some(w=>p.includes(w))) return false; // always block
-      if(window.isSafeMode()){
-        const soft=['gore','blood','violence'];
-        if(soft.some(w=>p.includes(w))) return false;
-      }
-      return true;
-    };
-  })();
-
-  // -------- Smooth scroll --------
-  document.querySelectorAll('a[href^="#"]').forEach(a=>{
-    a.addEventListener('click', e=>{
-      const id = a.getAttribute('href').slice(1);
-      const el = document.getElementById(id) || document.querySelector(`[id='${id}']`) || document.querySelector(`[name='${id}']`);
-      if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); }
-    });
-  });
-
-  // -------- Click tracking --------
-  document.body.addEventListener('click', (e)=>{
-    const t = e.target.closest('[data-event]');
-    if(t){ track(t.getAttribute('data-event')); }
-  });
-
-  // -------- Non-loop intro logic (progress + reveal at end) --------
-  (function(){
-    const v=document.getElementById('heroVideo');
-    const content=document.querySelector('.hero .content');
-    const tools=document.querySelector('.intro-tools');
-    const bar=document.querySelector('.intro-progress span');
-    const skip=document.getElementById('skipIntro');
-    if(!v||!content) return;
-
-    const ensure=()=>v.play&&v.play().catch(()=>{});
-    document.addEventListener('visibilitychange',ensure,{passive:true});
-    window.addEventListener('pointerdown',ensure,{once:true,passive:true});
-    setTimeout(ensure,300);
-
-    let revealed=false;
-    const reveal=()=>{
-      if(revealed) return; revealed=true;
-      content.classList.remove('hidden');
-      content.classList.add('reveal');
-      tools && (tools.style.display='none');
-    };
-
-    v.addEventListener('timeupdate',()=>{
-      if(v.duration) bar && (bar.style.width=((v.currentTime/v.duration)*100).toFixed(2)+'%');
-      if(v.duration && v.duration - v.currentTime < 0.08){ v.pause(); reveal(); }
-    });
-    v.addEventListener('ended', reveal);
-    v.addEventListener('error',()=>{ document.body.classList.add('no-video'); reveal(); });
-    skip && skip.addEventListener('click',()=>{ if(v.duration) v.currentTime=Math.max(0,v.duration-0.05); reveal(); });
-  })();
-
-  // -------- Demo modal --------
-  (function(){
-    const m=document.getElementById('demoModal');
-    const btn=document.getElementById('openDemo');
-    if(!m||!btn) return;
-    btn.addEventListener('click',()=>{ m.showModal(); track('open_demo'); });
-    m.addEventListener('click',e=>{ const r=m.getBoundingClientRect(); if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom) m.close();});
-  })();
-
-  // -------- Billing switch (month/year) --------
-  (function(){
-    const mo=document.getElementById('billMo'); const yr=document.getElementById('billYr');
-    const set=(year)=>{ mo.setAttribute('aria-pressed',!year); yr.setAttribute('aria-pressed',year);
-      document.querySelectorAll('.price .p').forEach(el=>{ const m=el.getAttribute('data-price-month'); const y=el.getAttribute('data-price-year'); el.textContent='€'+(year?y:m); el.nextElementSibling&&(el.nextElementSibling.textContent=year?'/an':'/lună'); }); };
-    mo&&mo.addEventListener('click',()=>set(false));
-    yr&&yr.addEventListener('click',()=>set(true));
-    set(false);
-  })();
-
-  // -------- Bilingual (RO/EN) --------
-  const T = { ro:{ 'nav.features':'Caracteristici','nav.pricing':'Prețuri','nav.cta':'Începe acum', 'hero.eyebrow':'AI premium • voce + imagine + video','hero.title':'Eva Voss — <span style="color:var(--gold)">AI Fantasy</span> Experience','hero.lead':'Conversații naturale, voce seducătoare, imagini și clipuri generate instant. Elegantă, realistă, disponibilă pe telefon, PC și web.','hero.seePlans':'Vezi planurile','hero.watchDemo':'Vezi demo','hero.badge1':'Online acum • răspuns < 1s','hero.badge2':'Fără NSFW real — AI generativ','hero.skip':'Sari introducerea', 'features.v':'Voce realistă','features.vd':'Răspuns audio instant, respirație subtilă și intonație umană. Perfect pentru căști.','features.i':'Imagini & clipuri','features.id':'Generare rapidă de imagini și scurte clipuri, cu stil premium (mov regal + auriu).','features.p':'Personalitate fină','features.pd':'Memorie opțională, limite sigure, răspunsuri contextuale. Elegantă, jucăușă, respectuoasă.', 'proof.latency':'Timp mediu de răspuns','proof.images':'Imagini/lună în planul Premium','proof.video':'Minute video AI / lună','proof.avail':'Disponibilitate globală', 'pricing.s':'Starter','pricing.p':'Premium','pricing.e':'Elite','pricing.mo':'/lună','pricing.s1':'Chat text nelimitat','pricing.s2':'50 imagini/lună','pricing.s3':'10 minute voce','pricing.p1':'Chat nelimitat (text + voce)','pricing.p2':'400 imagini/lună','pricing.p3':'60 minute video AI','pricing.p4':'Prioritate la generare','pricing.e1':'Tot din Premium','pricing.e2':'1:1 scene personalizate','pricing.e3':'Modele exclusive','pricing.e4':'Suport prioritar','pricing.chooseS':'Alege Starter','pricing.chooseP':'Alege Premium','pricing.chooseE':'Alege Elite', 'testi.t1':'Pare reală. Vocea m-a surprins: caldă, naturală.','testi.t2':'Imaginile ies premium. Mi-a generat un set în 30s.','testi.t3':'Răspunde politicos și ține minte preferințele mele.', 'join.title':'Intră pe listă & primește acces','join.desc':'Primești link-ul de acces + 5 imagini bonus la activare.','join.btn':'Mă înscriu','join.note':'Respectăm confidențialitatea. Te poți dezabona oricând.', 'faq.title':'Întrebări rapide','faq.q1':'Este conținut real?','faq.a1':'Nu. Eva este 100% AI. Respectăm limitele de siguranță și regulile platformelor.','faq.q2':'Pot cere scene personalizate?','faq.a2':'Da, în planurile Premium/Elite. Spui stilul, ținuta, atmosfera — Eva generează.','faq.q3':'Cum anulez?','faq.a3':'Poți anula oricând din contul tău de pe platforma de plată.', 'footer.join':'Înscrie-te','float.cta':'Acces rapid', 'gen.title':'Generator (Text • Voce • Imagine • Clip) — demo', 'gen.hint':'Rezultatele de aici sunt demo. În planurile plătite se deblochează modele premium și salvare în cloud.' }, en:{ 'nav.features':'Features','nav.pricing':'Pricing','nav.cta':'Start now', 'hero.eyebrow':'Premium AI • voice + image + video','hero.title':'Eva Voss — <span style="color:var(--gold)">AI Fantasy</span> Experience','hero.lead':'Natural chats, alluring voice, instant images and short clips. Elegant, realistic, available on phone, PC and web.','hero.seePlans':'See plans','hero.watchDemo':'Watch demo','hero.badge1':'Online now • response < 1s','hero.badge2':'No real-person NSFW — generative AI','hero.skip':'Skip intro', 'features.v':'Realistic voice','features.vd':'Instant audio replies with subtle breaths and human-like tone. Great with headphones.','features.i':'Images & clips','features.id':'Fast image generation and short clips with a royal purple + gold premium style.','features.p':'Refined personality','features.pd':'Optional memory, safe limits, contextual responses. Elegant, playful, respectful.', 'proof.latency':'Average response time','proof.images':'Images/month in Premium','proof.video':'AI video minutes / month','proof.avail':'Global availability', 'pricing.s':'Starter','pricing.p':'Premium','pricing.e':'Elite','pricing.mo':'/mo','pricing.s1':'Unlimited text chat','pricing.s2':'50 images / month','pricing.s3':'10 minutes voice','pricing.p1':'Unlimited chat (text + voice)','pricing.p2':'400 images / month','pricing.p3':'60 minutes AI video','pricing.p4':'Priority generation','pricing.e1':'Everything in Premium','pricing.e2':'1:1 custom scenes','pricing.e3':'Exclusive models','pricing.e4':'Priority support','pricing.chooseS':'Choose Starter','pricing.chooseP':'Choose Premium','pricing.chooseE':'Choose Elite', 'testi.t1':'Feels real. The voice surprised me: warm, natural.','testi.t2':'Images look premium. Generated a set in 30s.','testi.t3':'Polite responses and it remembers my preferences.', 'join.title':'Join the list & get access','join.desc':'Get your access link + 5 bonus images on activation.','join.btn':'Join now','join.note':'We respect privacy. Unsubscribe anytime.', 'faq.title':'Quick questions','faq.q1':'Is the content real?','faq.a1':'No. Eva is 100% AI. We follow safety rules and platform policies.','faq.q2':'Can I request custom scenes?','faq.a2':'Yes, in Premium/Elite. Tell the style, outfit, mood — Eva generates.','faq.q3':'How do I cancel?','faq.a3':'Cancel anytime from your payment platform account.', 'footer.join':'Join','float.cta':'Quick access', 'gen.title':'Generator (Text • Voice • Image • Video) — demo', 'gen.hint':'Results here are demo. Paid plans unlock premium models and cloud saves.' } };
-  function setLang(lang){ const dict=T[lang]||T.ro; localStorage.setItem('eva_lang',lang); document.documentElement.lang=lang; document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n'); if(dict[k]) el.innerHTML=dict[k];}); document.getElementById('btnRO').setAttribute('aria-pressed',lang==='ro'); document.getElementById('btnEN').setAttribute('aria-pressed',lang==='en'); }
-  document.getElementById('btnRO').addEventListener('click',()=>setLang('ro'));
-  document.getElementById('btnEN').addEventListener('click',()=>setLang('en'));
-  setLang(localStorage.getItem('eva_lang')||'ro');
-
-  // -------- FX particles (gold bokeh) --------
-  (function(){
-    const c=document.getElementById('fxParticles'); if(!c) return; const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches; const dpr=Math.min(devicePixelRatio||1,1.5); const ctx=c.getContext('2d',{alpha:true}); let W=0,H=0,raf=0; const COUNT=reduce?12:26; const particles=Array.from({length:COUNT},()=>({ a:Math.random()*Math.PI*2, r:120+Math.random()*Math.max(220,innerWidth*0.18), s:0.18+Math.random()*0.65, size:10+Math.random()*22 }));
-    const resize=()=>{const r=c.getBoundingClientRect(); W=Math.max(1,(r.width*dpr)|0); H=Math.max(1,(r.height*dpr)|0); c.width=W; c.height=H;}; resize(); addEventListener('resize',resize);
-    const draw=()=>{ ctx.clearRect(0,0,W,H); ctx.save(); ctx.globalCompositeOperation='lighter'; for(const p of particles){ p.a+=0.0009*(reduce?0.4:1)+0.0006*p.s; const cx=W/2+Math.cos(p.a)*p.r; const cy=H/2+Math.sin(p.a*1.07)*p.r*0.55; const g=ctx.createRadialGradient(cx,cy,0,cx,cy,p.size*3); g.addColorStop(0,'hsla(46,85%,65%,.22)'); g.addColorStop(.6,'hsla(270,70%,70%,.10)'); g.addColorStop(1,'rgba(0,0,0,0)'); ctx.fillStyle=g; ctx.beginPath(); ctx.arc(cx,cy,p.size*2.2,0,Math.PI*2); ctx.fill(); } ctx.restore(); raf=requestAnimationFrame(draw); };
-    const start=()=>{ if(!reduce){ cancelAnimationFrame(raf); raf=requestAnimationFrame(draw);} };
-    const stop=()=>cancelAnimationFrame(raf);
-    document.addEventListener('visibilitychange',()=>document.hidden?stop():start(),{passive:true}); start();
-  })();
-
-  // -------- Generator v1 logic (mock hooks) --------
-  (function(){
-    const tabs=[
-      {btn:'tabBtnText', panel:'tab-text'},
-      {btn:'tabBtnVoice', panel:'tab-voice'},
-      {btn:'tabBtnImage', panel:'tab-image'},
-      {btn:'tabBtnVideo', panel:'tab-video'}
-    ];
-    tabs.forEach(({btn,panel})=>{
-      const b=document.getElementById(btn), p=document.getElementById(panel);
-      if(!b||!p) return;
-      b.addEventListener('click',()=>{
-        tabs.forEach(({btn:bb,panel:pp})=>{ document.getElementById(bb)?.setAttribute('aria-selected','false'); document.getElementById(pp)?.classList.remove('active'); });
-        b.setAttribute('aria-selected','true'); p.classList.add('active');
-      });
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click',e=>{const id=a.getAttribute('href').slice(1);const el=document.getElementById(id);if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});}});
     });
 
-    const preview=document.getElementById('genPreview');
-    const histEl=document.getElementById('genHistory');
-    const HIST_KEY='eva_hist_v1';
-    let history=JSON.parse(localStorage.getItem(HIST_KEY)||'[]');
+    // Logo fallback
+    (function(){const logo=document.getElementById('logoImg');const fallback='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="180" height="36"><defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="%23b891ff"/><stop offset="1" stop-color="%23d7b86f"/></linearGradient></defs><text x="0" y="26" font-family="Inter, Arial" font-size="24" font-weight="800" fill="url(%23g)">Eva Voss</text></svg>';function setFallback(){try{logo.src=fallback;}catch(_){}} if(logo && (!logo.complete||!logo.naturalWidth)){setFallback();logo.addEventListener('error',setFallback);} })();
 
-    function pushHistory(item){ history.unshift({...item, t:Date.now()}); history=history.slice(0,20); localStorage.setItem(HIST_KEY,JSON.stringify(history)); renderHist(); }
-    function renderHist(){ histEl.innerHTML=''; history.forEach(h=>{ const d=new Date(h.t).toLocaleString(); const div=document.createElement('div'); div.className='item'; div.textContent=`[${d}] ${h.type}: ${h.summary}`; histEl.appendChild(div); }); }
-    renderHist();
-
-    window.onGenerate = async (type, payload)=>{
-      track('generate_'+type);
-      preview.textContent='Generare în curs…';
-      await new Promise(r=>setTimeout(r, 350));
-      if(type==='text'){ if(!window.validateAllowed(payload.prompt,'')){ preview.textContent='Prompt blocat de Safe Mode/Termeni.'; return; }
-        const out=`[${payload.tone}/${payload.length}] ${payload.prompt}`;
-        preview.textContent=out;
-        const blob=new Blob([out],{type:'text/plain'}); document.getElementById('btnDlText').href=URL.createObjectURL(blob);
-        pushHistory({type:'text', summary: out.slice(0,60)+'…'});
-        return;
-      }
-      if(type==='voice'){ if(!window.validateAllowed(payload.prompt,'')){ preview.textContent='Text voce blocat de Safe Mode/Termeni.'; return; }
-        const ctx=new (window.AudioContext||window.webkitAudioContext)(); const o=ctx.createOscillator(); const g=ctx.createGain(); o.type='sine'; o.frequency.value=440; o.connect(g); g.connect(ctx.destination); g.gain.value=0.001; o.start(); setTimeout(()=>{o.stop();},300);
-        preview.textContent='Previzualizare audio (beep demo)';
-        const blob=new Blob(['VOICE DEMO '+payload.prompt],{type:'text/plain'}); document.getElementById('btnDlVoice').href=URL.createObjectURL(blob);
-        pushHistory({type:'voice', summary: payload.prompt.slice(0,40)+'…'});
-        return;
-      }
-      if(type==='image'){
-        const opts={ prompt: document.getElementById('iPrompt').value, negative: document.getElementById('iNeg')?.value||'', ar: document.getElementById('iAR').value, count: parseInt(document.getElementById('iCount').value,10)||1, cfg: parseInt(document.getElementById('iCfg').value,10)||7, steps: parseInt(document.getElementById('iSteps').value,10)||30, seed: document.getElementById('iSeed').value||null, style: document.getElementById('iStyle').value, model: document.getElementById('iModel').value, upscale: document.getElementById('iUpscale').checked, face: document.getElementById('iFace').checked, bg: document.getElementById('iBG').checked, ref: window.__eva_refImage||null };
-        if(!window.validateAllowed(opts.prompt, opts.negative)){ preview.innerHTML='<div class="hint">Prompt blocat de Safe Mode/Termeni.</div>'; return; }
-        preview.innerHTML = '<div class="hint">Generez '+opts.count+' imagini…</div><div class="progress"><span></span></div>';
-        const res = (window.imageProvider && window.imageProvider.generate) ? await window.imageProvider.generate(opts) : await mockGenerateImages(opts);
-        renderImages(res);
-        if(res[0]){ fetch(res[0]).then(r=>r.blob()).then(b=>{ document.getElementById('btnDlImage').href = URL.createObjectURL(b); }); }
-        pushHistory({type:'image', summary: (opts.prompt||'img').slice(0,60)+'…'});
-        return;
-      }
-      if(type==='video'){
-        preview.innerHTML = '<video src="hero-bg.mp4" playsinline controls style="width:100%;border-radius:10px"></video>';
-        const blob=new Blob(['VIDEO DEMO '+JSON.stringify(payload)],{type:'text/plain'}); document.getElementById('btnDlVideo').href=URL.createObjectURL(blob);
-        pushHistory({type:'video', summary: (payload.prompt||'clip').slice(0,40)+'…'});
-        return;
-      }
-    };
-
-    // chips + wire buttons
-    (function(){ const chips=document.getElementById('promptChips'); if(!chips) return; chips.addEventListener('click',e=>{ const b=e.target.closest('.chip'); if(!b) return; const add=b.getAttribute('data-add')||''; const t=document.getElementById('iPrompt'); if(t){ t.value=(t.value.trim()+add); t.dispatchEvent(new Event('input')); } }); })();
-
-    // wire buttons
-    // --- Style packs logic ---
-    const PACKS={
-      royal:{ add:", royal glamour, soft gold rim light, glossy skin, studio portrait", ar:"3:4", cfg:7, steps:30, style:"cinematic" },
-      noir:{ add:", noir, high contrast, chiaroscuro, soft haze, 35mm film grain", ar:"4:5", cfg:8, steps:34, style:"noir" },
-      glam:{ add:", editorial fashion, beauty lighting, high-end retouch look", ar:"4:5", cfg:6.5, steps:30, style:"studio" },
-      vivid:{ add:", vivid purple & gold accents, crisp highlights, sleek bokeh", ar:"1:1", cfg:6, steps:28, style:"vivid" },
-      suspense:{ add:", cinematic, dark velvet background, rim light, shallow depth of field, suspenseful framing", ar:"9:16", cfg:7.5, steps:32, style:"cinematic" }
-    };
-    (function(){ const sp=document.getElementById('stylePacks'); if(!sp){} else { sp.addEventListener('click',e=>{ const b=e.target.closest('.spack'); if(!b) return; const id=b.getAttribute('data-pack'); const pk=PACKS[id]; if(!pk) return; const t=document.getElementById('iPrompt'); if(t && pk.add){ t.value=(t.value.trim()+pk.add); } if(pk.ar) document.getElementById('iAR').value=pk.ar; if(pk.cfg) document.getElementById('iCfg').value=pk.cfg; if(pk.steps) document.getElementById('iSteps').value=pk.steps; if(pk.style) document.getElementById('iStyle').value=pk.style; }); } })();
-
-    document.getElementById('btnGenText').addEventListener('click',()=>{
-      onGenerate('text', { prompt: document.getElementById('txtPrompt').value, tone: document.getElementById('txtTone').value, length: document.getElementById('txtLen').value });
-    });
-    document.getElementById('btnGenVoice').addEventListener('click',()=>{
-      onGenerate('voice', { prompt: document.getElementById('vPrompt').value, timbre: document.getElementById('vTimbre').value, speed: document.getElementById('vSpeed').value });
-    });
-    document.getElementById('btnGenImage').addEventListener('click',()=>{ onGenerate('image', {}); });
-    document.getElementById('btnVarImage').addEventListener('click',()=>{ onGenerate('image', {variation:true}); });
-    document.getElementById('btnReroll').addEventListener('click',()=>{ document.getElementById('iSeed').value=''; onGenerate('image', {reroll:true}); });
-    document.getElementById('btnSurprise').addEventListener('click',()=>{
-      const keys=Object.keys(PACKS); const pk=PACKS[keys[Math.floor(Math.random()*keys.length)]];
-      const extras=['subtle lens flare','smoke haze','mirror highlights','pearlescent skin','negative space','Dutch angle','gold dust bokeh','soft rimlight','dramatic shadow play','silk texture backdrop'];
-      const add=', '+extras[Math.floor(Math.random()*extras.length)]+', '+extras[Math.floor(Math.random()*extras.length)];
-      const t=document.getElementById('iPrompt'); if(t && pk){ t.value=(t.value.trim()+(pk.add||'')+add); }
-      if(pk?.ar) document.getElementById('iAR').value=pk.ar;
-      if(pk?.cfg) document.getElementById('iCfg').value=pk.cfg;
-      if(pk?.steps) document.getElementById('iSteps').value=pk.steps;
-      if(pk?.style) document.getElementById('iStyle').value=pk.style;
-      document.getElementById('iSeed').value='';
-      onGenerate('image', {surprise:true});
-    }); });
-
-    // reference image
-    const refBtn=document.getElementById('btnRef'); const refInput=document.getElementById('iRef'); const drop=document.getElementById('iDrop');
-    function setRef(file){ if(!file) return; const r=new FileReader(); r.onload=()=>{ window.__eva_refImage=r.result; drop.style.borderColor='rgba(111,227,161,.6)'; drop.style.background='rgba(111,227,161,.06)'; }; r.readAsDataURL(file); }
-    refBtn?.addEventListener('click',()=>refInput.click());
-    refInput?.addEventListener('change',()=>setRef(refInput.files[0]));
-    drop?.addEventListener('dragover',e=>{ e.preventDefault(); drop.style.borderColor='rgba(215,184,111,.6)'; });
-    drop?.addEventListener('dragleave',()=>{ drop.style.borderColor='rgba(255,255,255,.18)'; });
-    drop?.addEventListener('drop',e=>{ e.preventDefault(); setRef(e.dataTransfer.files[0]); });
-
-    // helpers
-    function renderImages(urls){
-      if(!urls||!urls.length){ preview.textContent='Nimic generat.'; return; }
-      const grid=document.createElement('div'); grid.className='imggrid';
-      urls.forEach((u,i)=>{
-        const card=document.createElement('div'); card.className='imgcard';
-        const im=document.createElement('img'); im.src=u; im.alt='Eva image '+(i+1); im.style.width='100%'; im.loading='lazy'; im.decoding='async';
-        const a=document.createElement('a'); a.className='pill ghost dl'; a.textContent='Descarcă'; a.href=u; a.download='eva-'+(i+1)+'.png';
-        const rf=document.createElement('button'); rf.className='pill refine'; rf.type='button'; rf.textContent='Refinează'; rf.dataset.url=u;
-        card.appendChild(im); card.appendChild(a); card.appendChild(rf); grid.appendChild(card);
-      });
-      preview.innerHTML=''; preview.appendChild(grid);
-    }
-
-    // refine modal & handlers
+    // WOW Studio logic (Demo provider = imagini seed via picsum)
     (function(){
-      const m=document.getElementById('refineModal'); const cv=document.getElementById('refineCanvas'); if(!m||!cv) return; const cx=cv.getContext('2d');
-      let base=null, target=null;
-      const cCon=document.getElementById('rContrast'); const cSat=document.getElementById('rSaturation'); const cGr=document.getElementById('rGrain'); const cVig=document.getElementById('rVignette');
-      function apply(){ if(!base) return; cx.clearRect(0,0,cv.width,cv.height); const contrast=parseFloat(cCon.value||'1'); const sat=parseFloat(cSat.value||'1'); const grain=parseFloat(cGr.value||'0'); const vig=parseFloat(cVig.value||'0');
-        cx.filter=`contrast(${contrast}) saturate(${sat})`; cx.drawImage(base,0,0);
-        if(grain>0){ const nC=document.createElement('canvas'); nC.width=cv.width; nC.height=cv.height; const nCtx=nC.getContext('2d'); const id=nCtx.createImageData(cv.width,cv.height); const dt=id.data; for(let i=0;i<dt.length;i+=4){ const v=(Math.random()*255)|0; dt[i]=dt[i+1]=dt[i+2]=v; dt[i+3]=Math.round(grain*255); } nCtx.putImageData(id,0,0); cx.globalCompositeOperation='overlay'; cx.drawImage(nC,0,0); cx.globalCompositeOperation='source-over'; }
-        if(vig>0){ const g=cx.createRadialGradient(cv.width/2,cv.height/2,Math.min(cv.width,cv.height)*(1-vig),cv.width/2,cv.height/2,Math.max(cv.width,cv.height)/1.1); g.addColorStop(0,'rgba(0,0,0,0)'); g.addColorStop(1,`rgba(0,0,0,${vig})`); cx.fillStyle=g; cx.fillRect(0,0,cv.width,cv.height); }
+      const PACKS={
+        royal:{ add:", royal glamour, soft gold rim light, glossy skin, studio portrait" },
+        noir:{ add:", noir, high contrast, chiaroscuro, soft haze, 35mm film grain" },
+        suspense:{ add:", cinematic, dark velvet background, rim light, shallow depth of field, suspenseful framing" }
+      };
+      const $=s=>document.querySelector(s);
+      const prompt=$('#sxPrompt'); const status=$('#sxStatus'); const results=$('#sxResults');
+      const sk1=$('#sxSk1'), sk2=$('#sxSk2');
+      // apply packs
+      document.querySelectorAll('.apply').forEach(b=>b.addEventListener('click',()=>{const pk=PACKS[b.dataset.pack]; if(!pk) return; prompt.value=(prompt.value.trim()+pk.add); prompt.focus();}));
+      // chips
+      $('#sxChips').addEventListener('click',e=>{const c=e.target.closest('.chip'); if(!c) return; prompt.value=(prompt.value.trim()+(c.getAttribute('data-add')||''));});
+
+      function demoUrls(seedBase){
+        const w=768,h=1024; // portrait premium
+        const s1=seedBase+'1', s2=seedBase+'2';
+        return [`https://picsum.photos/seed/${encodeURIComponent(s1)}/${w}/${h}`,
+                `https://picsum.photos/seed/${encodeURIComponent(s2)}/${w}/${h}`];
       }
-      function load(url){ return new Promise(res=>{ const im=new Image(); im.crossOrigin='anonymous'; im.onload=()=>{ const maxW=1024; const sc=Math.min(1,maxW/im.width); cv.width=Math.floor(im.width*sc); cv.height=Math.floor(im.height*sc); base=document.createElement('canvas'); base.width=cv.width; base.height=cv.height; base.getContext('2d').drawImage(im,0,0,cv.width,cv.height); apply(); res(); }; im.src=url; }); }
-      ['input','change'].forEach(ev=>{ cCon.addEventListener(ev,apply); cSat.addEventListener(ev,apply); cGr.addEventListener(ev,apply); cVig.addEventListener(ev,apply); });
-      document.getElementById('rSave')?.addEventListener('click',()=>{ const url=cv.toDataURL('image/png'); const a=document.createElement('a'); a.href=url; a.download='eva-refined.png'; a.click(); });
-      document.getElementById('rApply')?.addEventListener('click',()=>{ if(target){ target.src=cv.toDataURL('image/png'); } m.close(); });
-      document.getElementById('rClose')?.addEventListener('click',()=>m.close());
-      window.openRefine = async (url, imgEl)=>{ target=imgEl||null; cCon.value='1'; cSat.value='1'; cGr.value='0.08'; cVig.value='0.25'; m.showModal(); await load(url); };
-      // delegate
-      try{ preview.addEventListener('click',e=>{ const b=e.target.closest('button.refine'); if(!b) return; const card=b.closest('.imgcard'); const img=card?card.querySelector('img'):null; window.openRefine(b.dataset.url, img); }); }catch{}
+
+      async function gen(){
+        const prov=document.getElementById('sxProvider').value;
+        const seed=(prompt.value||'eva')+Date.now();
+        results.style.display='none'; sk1.style.display=sk2.style.display='block'; status.textContent='Generez previzualizări…';
+        let urls=[];
+        if(prov==='demo'){ urls=demoUrls(seed); }
+        else { // placeholder pentru integrare provider real (Horde etc.)
+          urls=demoUrls(seed);
+        }
+        // preîncarcă
+        await Promise.all(urls.map(u=>new Promise(r=>{const i=new Image(); i.onload=r; i.onerror=r; i.src=u;})));
+        sk1.style.display=sk2.style.display='none'; results.innerHTML='';
+        urls.forEach((u,i)=>{
+          const card=document.createElement('div'); card.className='imgcard';
+          const im=document.createElement('img'); im.alt='Eva '+(i+1); im.src=u;
+          const act=document.createElement('div'); act.className='act';
+          const dl=document.createElement('a'); dl.className='btn'; dl.textContent='Descarcă'; dl.href=u; dl.download='eva-'+(i+1)+'.jpg';
+          act.appendChild(dl); card.appendChild(im); card.appendChild(act); results.appendChild(card);
+        });
+        results.style.display='grid'; status.textContent='';
+      }
+      document.getElementById('sxGenerate').addEventListener('click', gen);
+      document.getElementById('sxSurprise').addEventListener('click',()=>{const keys=Object.keys(PACKS); const pk=PACKS[keys[Math.floor(Math.random()*keys.length)]]; prompt.value=(prompt.value.trim()+(pk?.add||'')); gen();});
     })();
-
-    async function mockGenerateImages(opts){
-      const n=opts.count||1; const out=[]; const seed=opts.seed||Math.random().toString(36).slice(2);
-      const size=(()=>{ switch(opts.ar){ case '3:4': return [768,1024]; case '4:5': return [800,1000]; case '9:16': return [720,1280]; default: return [1024,1024]; } })();
-      for(let i=0;i<n;i++){
-        const [W,H]=size; const cn=document.createElement('canvas'); cn.width=W*(opts.upscale?2:1); cn.height=H*(opts.upscale?2:1); const cxn=cn.getContext('2d');
-        // bg
-        const grd=cxn.createLinearGradient(0,0,cn.width,cn.height); grd.addColorStop(0,'#2b0a3d'); grd.addColorStop(1,'#9b59ff'); cxn.fillStyle=grd; cxn.fillRect(0,0,cn.width,cn.height);
-        // rings
-        cxn.globalAlpha=.35; cxn.strokeStyle='rgba(215,184,111,.45)'; cxn.lineWidth=3; for(let r=140;r<Math.min(W,H)/1.5;r+=80){ cxn.beginPath(); cxn.arc(cn.width*0.78,cn.height*0.24,r,0,Math.PI*2); cxn.stroke(); }
-        cxn.globalAlpha=1;
-        // title
-        cxn.fillStyle='#f7f2ff'; cxn.font=(opts.upscale?'bold 56px':'bold 28px')+' Inter, sans-serif'; cxn.fillText('Eva — DEMO', 24*(opts.upscale?2:1)/2, 48*(opts.upscale?2:1)/2);
-        // prompt wrap
-        cxn.font=(opts.upscale?'28px':'16px')+' Inter, sans-serif';
-        wrap(cxn, (opts.prompt||'')+(opts.negative?`
-- ${opts.negative}`:''), 24*(opts.upscale?2:1)/2, 80*(opts.upscale?2:1)/2, cn.width-48, (opts.upscale?44:22));
-        // reference image thumb
-        if(opts.ref){ const im=new Image(); await new Promise((res)=>{ im.onload=res; im.src=opts.ref; }); const rw=Math.min(240*(opts.upscale?2:1), im.width); const rh=im.height*(rw/im.width); cxn.globalAlpha=.85; cxn.drawImage(im, cn.width-rw-24, cn.height-rh-24, rw, rh); cxn.globalAlpha=1; }
-        out.push(cn.toDataURL('image/png'));
-      }
-      return out;
-      function wrap(ctx, text, x, y, maxWidth, lh){ const words=(text||'').split(' '); let line=''; for(let n=0;n<words.length;n++){ const test=line+words[n]+' '; if(ctx.measureText(test).width>maxWidth && n>0){ ctx.fillText(line,x,y); line=words[n]+' '; y+=lh; } else line=test; } ctx.fillText(line,x,y); }
-    }
-
-    // public adapter example (plug your API)
-    window.imageProvider = window.imageProvider || {};
-    // Horde adapter
-    window.imageProvider.generate = async function(opts){
-      try{ var prov=(document.getElementById('providerSel')?.value||'horde'); if(prov==='demo'){ window.setGenStatus(''); return await mockGenerateImages(opts);}
-        var key = (localStorage.getItem('eva_horde_key') || '').trim();
-        var keyInput = document.getElementById('iHordeKey');
-        if(keyInput && keyInput.value){ key = keyInput.value.trim(); localStorage.setItem('eva_horde_key', key); }
-        if(!key) key = '0000000000';
-        var sizeMap = { '1:1':[1024,1024], '3:4':[768,1024], '4:5':[800,1000], '9:16':[720,1280] };
-        var s = sizeMap[opts.ar] || [1024,1024];
-        var w = s[0], h = s[1];
-        var n = Math.max(1, Math.min(4, Number(opts.count||1)));
-        var steps = Math.max(10, Math.min(60, Number(opts.steps||28)));
-        var cfg = Math.max(1, Math.min(15, Number(opts.cfg||7)));
-        var seedNum = null; if(opts.seed){ var t = Number(opts.seed); if(!isNaN(t)){ seedNum = Math.floor(t); } }
-        var body = {
-          prompt: String(opts.prompt||''),
-          nsfw: !window.isSafeMode(),
-          params: { n: n, width: w, height: h, steps: steps, cfg_scale: cfg, karras: true, sampler_name: 'k_euler_a' },
-          models: [ opts.model || 'Realistic Vision v5.1' ],
-          r2: true
-        };
-        if(opts.negative){ body.params.negative_prompt = String(opts.negative); }
-        if(seedNum !== null){ body.params.seed = seedNum; }
-        var submit = await fetch('https://aihorde.net/api/v2/generate/async', { method:'POST', headers:{ 'Content-Type':'application/json', 'apikey': key, 'Client-Agent':'EvaVossSite/1.0' }, body: JSON.stringify(body) });
-        if(submit.status !== 202){ var tt = await submit.text(); throw new Error('Horde submit failed: '+submit.status+' '+tt); }
-        var sj = await submit.json(); var id = sj.id;
-        var started = Date.now(); var data = null;
-        while(Date.now() - started < 120000){
-          await new Promise(function(r){ setTimeout(r, 2500); });
-          var r = await fetch('https://aihorde.net/api/v2/generate/status/' + id, { headers:{ 'apikey': key, 'Client-Agent':'EvaVossSite/1.0' } });
-          data = await r.json(); if(data && data.done){ break; }
-        }
-        var gens = (data && data.generations) ? data.generations : [];
-        var out = [];
-        for(var i=0;i<gens.length;i++){
-          var g = gens[i]; var v = g.img || ''; var mime = g.mime_type || 'image/png';
-          if(typeof v === 'string' && v.indexOf('http') === 0){ out.push(v); }
-          else if(v){ out.push('data:'+mime+';base64,'+v); }
-        }
-        return out;
-      }catch(e){ console.error(e); return []; }
-    };
-  })();
-
-  // -------- OG Generator (v2) --------
-  (function(){
-    const W=1200,H=630; const c=document.getElementById('ogc'); if(!c) return; const ctx=c.getContext('2d'); const $=id=>document.getElementById(id); c.width=W; c.height=H;
-    function wrapText(textStr,x,y,maxWidth,lineHeight,font){ ctx.font=font; const words=(textStr||'').split(' '); let line=''; for(let n=0;n<words.length;n++){ const test=line+words[n]+' '; if(ctx.measureText(test).width>maxWidth && n>0){ ctx.fillText(line,x,y); line=words[n]+' '; y+=lineHeight; } else line=test; } ctx.fillText(line,x,y); }
-    const imgFromFile=(file)=>new Promise((res,rej)=>{const r=new FileReader(); r.onload=()=>{const i=new Image(); i.onload=()=>res(i); i.onerror=rej; i.src=r.result;}; r.onerror=rej; r.readAsDataURL(file);});
-    const load=async(fi,fb=[])=>{ if(fi && fi.files && fi.files[0]) return await imgFromFile(fi.files[0]); for(const p of fb){ try{ await new Promise((r,j)=>{const i=new Image(); i.onload=()=>r(i); i.onerror=j; i.src=p;}); const im=new Image(); im.src=p; await new Promise(r=>im.onload=r); return im; }catch(e){} } return null; };
-    function paintBG(style){ const g=ctx.createLinearGradient(0,0,W,H); if(style==='royal'){ g.addColorStop(0,'#1a0826'); g.addColorStop(.55,'#6d22d3'); g.addColorStop(1,'#d7b86f'); } else if(style==='noir'){ g.addColorStop(0,'#0b0611'); g.addColorStop(1,'#2b0a3d'); } else { g.addColorStop(0,'#2b0a3d'); g.addColorStop(1,'#9b59ff'); } ctx.fillStyle=g; ctx.fillRect(0,0,W,H); ctx.globalAlpha=.20; ctx.fillStyle='#6d22d3'; ctx.beginPath(); ctx.arc(W*.8,H*.25,260,0,Math.PI*2); ctx.fill(); ctx.fillStyle='#d7b86f'; ctx.beginPath(); ctx.arc(W*.15,H*.8,200,0,Math.PI*2); ctx.fill(); ctx.globalAlpha=1; const noise=ctx.createLinearGradient(0,0,0,H); noise.addColorStop(0,'rgba(255,255,255,.03)'); noise.addColorStop(1,'rgba(0,0,0,.03)'); ctx.fillStyle=noise; ctx.fillRect(0,0,W,H); }
-    async function draw(){ const title=$('ogTitle').value||'Eva Voss — AI Fantasy'; const sub=$('ogSub').value||'Premium AI • voice · image · video'; const style=$('ogStyle').value; const tSize=parseInt(($('ogTitleSize')||{value:84}).value,10)||84; const sSize=parseInt(($('ogSubSize')||{value:28}).value,10)||28; const logoSize=parseInt(($('ogLogoSize')||{value:220}).value,10)||220; const logoPos=($('ogLogoPos')||{value:'right'}).value; const rings=$('ogRings')?.checked; ctx.clearRect(0,0,W,H); paintBG(style); const bg=await load($('ogBg'),['showcase.jpg']); if(bg){ const r=Math.max(W/bg.width,H/bg.height); const bw=bg.width*r,bh=bg.height*r; const bx=(W-bw)/2,by=(H-bh)/2; ctx.globalAlpha=.26; ctx.drawImage(bg,bx,by,bw,bh); ctx.globalAlpha=1; }
-      if(rings){ ctx.save(); ctx.globalAlpha=.35; ctx.strokeStyle='rgba(215,184,111,.45)'; ctx.lineWidth=3; for(let i=0;i<3;i++){ const rad=140+i*60; ctx.beginPath(); ctx.arc(W*0.78,H*0.24,rad,0,Math.PI*2); ctx.stroke(); } ctx.restore(); }
-      ctx.fillStyle='rgba(0,0,0,.25)'; ctx.fillRect(0,H-84,W,84);
-      let logo=await load($('ogLogo'),['logo-eva.png','logo-eva.jpg']); if(logo && logoPos!=='hide'){ const lw=logoSize; const lh=logo.height*(lw/logo.width); const x=logoPos==='right' ? (W-80-lw) : 80; const y=36; ctx.drawImage(logo,x,y,lw,lh); }
-      ctx.shadowColor='rgba(0,0,0,.35)'; ctx.shadowBlur=24; ctx.shadowOffsetY=6; ctx.fillStyle='#f7f2ff'; ctx.font=`700 ${tSize}px Playfair Display, serif`; wrapText(title,80,300,W-160-260,Math.round(tSize*1.05),`700 ${tSize}px Playfair Display, serif`); ctx.shadowBlur=0; ctx.shadowOffsetY=0; ctx.fillStyle='#cdbde6'; ctx.font=`800 ${sSize}px Inter, system-ui`; wrapText(sub,80,360,W-160,Math.round(sSize*1.3),`800 ${sSize}px Inter, system-ui`);
-      const jpg=c.toDataURL('image/jpeg',.92); const png=c.toDataURL('image/png'); const webp=c.toDataURL('image/webp'); $('ogPreview').src=jpg; $('ogDownloadJpg').href=jpg; $('ogDownloadPng').href=png; if(webp.startsWith('data:image/webp')){ const a=$('ogDownloadWebp'); if(a){ a.href=webp; a.style.display='inline-flex'; } }
-    }
-    document.getElementById('ogMake').addEventListener('click', draw);
-    draw();
-    document.getElementById('ogCopyMeta').addEventListener('click', async ()=>{ const meta=`<meta property=\"og:image\" content=\"og-eva.jpg\" />\n<meta name=\"twitter:image\" content=\"og-eva.jpg\" />`; try{ await navigator.clipboard.writeText(meta); alert('Meta OG copiat. Urcă og-eva.jpg în root.'); }catch{ alert('Copiază manual:\n'+meta); } });
-  })();
-    // --- Clean nav labels (remove emoji in OG link) ---
-  (function(){
-    const og=document.querySelector('nav.actions a[href="#og"]');
-    if(og) og.textContent='OG';
-    const hk=document.getElementById('iHordeKey');
-    if(hk){ const stored=localStorage.getItem('eva_horde_key'); if(stored) hk.value=stored; }
-  })();
-  // --- WOW Studio logic ---
-  (function(){
-    const PACKS={
-      royal:{ add:", royal glamour, soft gold rim light, glossy skin, studio portrait", ar:"3:4", cfg:7, steps:30, style:"cinematic" },
-      noir:{ add:", noir, high contrast, chiaroscuro, soft haze, 35mm film grain", ar:"4:5", cfg:8, steps:34, style:"noir" },
-      suspense:{ add:", cinematic, dark velvet background, rim light, shallow depth of field, suspenseful framing", ar:"9:16", cfg:7.5, steps:32, style:"cinematic" }
-    };
-    const $=s=>document.querySelector(s);
-    const prompt=$('#sxPrompt'); const chips=$('#sxChips'); const results=$('#sxResults');
-    const sk1=$('#sxSk1'), sk2=$('#sxSk2'); const status=$('#sxStatus');
-    function setStatus(t){ status.textContent=t||''; }
-    function takePack(id){ const p=PACKS[id]; if(!p) return; prompt.value=(prompt.value.trim()+p.add); const AR=$('#iAR'); const CFG=$('#iCfg'); const ST=$('#iSteps'); const STY=$('#iStyle'); if(AR) AR.value=p.ar; if(CFG) CFG.value=p.cfg; if(ST) ST.value=p.steps; if(STY) STY.value=p.style; }
-    document.querySelectorAll('#studio .tcard .apply').forEach(btn=>{ btn.addEventListener('click',()=>{ const card=btn.closest('.tcard'); takePack(card.getAttribute('data-pack')); }); });
-    chips.addEventListener('click',e=>{ const b=e.target.closest('.chip'); if(!b) return; const add=b.getAttribute('data-add')||''; prompt.value=(prompt.value.trim()+add); });
-
-    async function gen(){
-      const prov=$('#sxProvider').value;
-      const opts={ prompt: prompt.value, negative: ($('#iNeg')?.value)||'', ar: $('#iAR')?.value||'1:1', count: 2, cfg: parseInt($('#iCfg')?.value||'7',10), steps: parseInt($('#iSteps')?.value||'30',10), seed: '', style: $('#iStyle')?.value||'cinematic', model: $('#iModel')?.value||'Realistic Vision v5.1', upscale: false, face: true, bg: false };
-      if(!window.validateAllowed(opts.prompt, opts.negative)){ setStatus('Prompt blocat de Safe Mode/Termeni.'); return; }
-      results.style.display='none'; sk1.style.display=sk2.style.display='block'; setStatus('Pregătesc…');
-      let urls=[]; if(prov==='demo'){ urls = await (window.mockGenerateImages ? window.mockGenerateImages(opts) : []); } else { urls = await (window.imageProvider && window.imageProvider.generate ? window.imageProvider.generate(opts) : []); }
-      sk1.style.display=sk2.style.display='none'; results.innerHTML='';
-      if(!urls.length){ setStatus('Nimic generat.'); return; }
-      urls.forEach((u,i)=>{
-        const card=document.createElement('div'); card.className='imgcard';
-        const im=document.createElement('img'); im.src=u; im.alt='Eva '+(i+1);
-        const act=document.createElement('div'); act.className='actions';
-        const dl=document.createElement('a'); dl.className='pill ghost'; dl.textContent='Descarcă'; dl.href=u; dl.download='eva-'+(i+1)+'.png';
-        const rf=document.createElement('button'); rf.className='pill'; rf.textContent='Refinează'; rf.addEventListener('click',()=>{ window.openRefine && window.openRefine(u, im); });
-        act.appendChild(dl); act.appendChild(rf); card.appendChild(im); card.appendChild(act); results.appendChild(card);
-      });
-      results.style.display='grid'; setStatus('');
-    }
-    $('#sxGenerate').addEventListener('click', gen);
-    $('#sxSurprise').addEventListener('click',()=>{ const ks=Object.keys(PACKS); const k=ks[Math.floor(Math.random()*ks.length)]; takePack(k); gen(); });
-  })();
-
-  // Move hero CTA to Studio (fallback if pricing btns exist)
-  (function(){ document.querySelectorAll('a[href="#pricing"]').forEach(a=>{a.setAttribute('href','#studio'); a.textContent='Încearcă Studio';}); })();
-</script>
-<script>
-// --- Hero text reveal hard fallback & cleanup ---
-(function(){
-  var content=document.querySelector('.hero .content');
-  var v=document.getElementById('heroVideo');
-  var bar=document.querySelector('.intro-progress span');
-  var forced=false;
-  function reveal(){ if(forced) return; forced=true; if(content){ content.classList.remove('hidden'); content.classList.add('reveal'); } var tools=document.querySelector('.intro-tools'); if(tools) tools.style.display='none'; }
-  if(v){ v.addEventListener('loadeddata', function(){ setTimeout(reveal, 4500); });
-    v.addEventListener('timeupdate', function(){ if(v.duration){ if(bar) bar.style.width=((v.currentTime/v.duration)*100).toFixed(2)+'%'; if(v.duration - v.currentTime < 0.08) reveal(); } });
-    v.addEventListener('ended', reveal);
-    v.addEventListener('error', reveal);
-    setTimeout(reveal, 6000);
-  } else { setTimeout(reveal, 600); }
-  // Remove stray price chips and legacy badges
-  (function(){ var nav=document.querySelector('nav.actions'); if(!nav) return; nav.querySelectorAll('*').forEach(function(el){ var t=(el.textContent||'').trim(); var priceRe=new RegExp('^\$\d+'); if(priceRe.test(t)||t==='18+'||t==='Safe'){ el.remove(); } }); })();
-  // Ensure logo visible (fallback if missing)
-  (function(){ var logo=document.getElementById('logoImg'); if(!logo) return; var fallback='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="180" height="36"><defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="%23b891ff"/><stop offset="1" stop-color="%23d7b86f"/></linearGradient></defs><text x="0" y="26" font-family="Inter, Arial" font-size="24" font-weight="800" fill="url(%23g)">Eva Voss</text></svg>'; function setFallback(){ try{ logo.src=fallback; }catch(e){} } if(!logo.complete || !logo.naturalWidth){ setFallback(); } logo.addEventListener('error', setFallback); })();
-  // Remove legacy generators (keep only Studio)
-  (function(){ var secs=document.querySelectorAll('section'); secs.forEach(function(sec){ var txt=(sec.innerText||'').trim().toLowerCase(); if((txt.includes('—') && txt.includes('demo')) || txt.includes('generator imagini (ai horde)')){ sec.remove(); } }); })();
-})();
-</script>
+  </script>
 </body>
 </html>
