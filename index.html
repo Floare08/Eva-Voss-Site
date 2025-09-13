@@ -281,6 +281,33 @@
     .refine-controls{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px}
     @media (max-width:900px){.refine-controls{grid-template-columns:1fr 1fr}}
     @media (max-width:600px){.refine-controls{grid-template-columns:1fr}}
+  /* --- WOW Studio styles (v3) --- */
+    #studio .grid{display:grid;gap:16px;grid-template-columns:2fr 1fr}
+    @media (max-width:1000px){#studio .grid{grid-template-columns:1fr}}
+    .tmpl{display:grid;gap:12px}
+    .tmpl .row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    @media (max-width:800px){.tmpl .row{grid-template-columns:1fr}}
+    .tcard{position:relative;border:1px solid rgba(255,255,255,.12);border-radius:14px;overflow:hidden;background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03))}
+    .tcard img{display:block;width:100%;height:220px;object-fit:cover}
+    .tcard .meta{padding:10px;display:flex;justify-content:space-between;align-items:center}
+    .tcard .meta .name{font-weight:800}
+    .tcard .meta .apply{font-size:13px}
+
+    .composer{display:grid;gap:10px}
+    .composer textarea{min-height:120px;border-radius:12px;padding:12px;border:1px solid rgba(255,255,255,.16);background:rgba(0,0,0,.2);color:var(--ink)}
+    .composer .quick{display:flex;gap:8px;flex-wrap:wrap}
+    .composer .quick .chip{padding:6px 10px;border:1px solid rgba(255,255,255,.14);border-radius:10px;cursor:pointer;background:rgba(255,255,255,.03);font-size:13px}
+
+    .panelR{display:grid;gap:12px}
+    .skeleton{position:relative;overflow:hidden;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:12px;height:220px}
+    .skeleton::after{content:"";position:absolute;inset:0;transform:translateX(-100%);background:linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent);animation:sk 1.6s infinite}
+    @keyframes sk{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+
+    #studio .results{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    @media (max-width:740px){#studio .results{grid-template-columns:1fr}}
+    .results .imgcard{position:relative;border:1px solid rgba(255,255,255,.12);border-radius:12px;overflow:hidden;background:rgba(255,255,255,.02)}
+    .results .imgcard img{display:block;width:100%}
+    .results .imgcard .actions{position:absolute;right:8px;bottom:8px;display:flex;gap:6px}
   </style>
 </head>
 <body>
@@ -673,7 +700,47 @@
   </div>
 </section>
 
-<!-- OG Image Generator (v2) -->
+<!-- WOW Studio (v3) -->
+  <section id="studio" aria-label="Eva Studio">
+    <div class="wrap">
+      <div class="grid">
+        <div class="tmpl">
+          <div class="row">
+            <div class="tcard" data-pack="royal"><img src="showcase.jpg" alt="Eva Royal"/><div class="meta"><span class="name">Eva Royal</span><button class="pill apply" type="button">Aplică</button></div></div>
+            <div class="tcard" data-pack="noir"><img src="showcase.jpg" alt="Cinematic Noir"/><div class="meta"><span class="name">Cinematic Noir</span><button class="pill apply" type="button">Aplică</button></div></div>
+            <div class="tcard" data-pack="suspense"><img src="showcase.jpg" alt="Suspense Frame"/><div class="meta"><span class="name">Suspense Frame</span><button class="pill apply" type="button">Aplică</button></div></div>
+          </div>
+          <div class="composer card" style="padding:16px">
+            <label>Descriere
+              <textarea id="sxPrompt" placeholder="ex: portret premium, lumină aurie, violet regal, bokeh"></textarea>
+            </label>
+            <div class="quick" id="sxChips">
+              <button class="chip" data-add=", shallow depth of field, rim light">Rim + DOF</button>
+              <button class="chip" data-add=", glossy skin, editorial lighting">Editorial</button>
+              <button class="chip" data-add=", dark velvet background, gold dust bokeh">Velvet Gold</button>
+              <button class="chip" data-add=", film grain 35mm, chiaroscuro">35mm Noir</button>
+            </div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <button id="sxGenerate" class="pill primary">Generează</button>
+              <button id="sxSurprise" class="pill">Surprinde‑mă</button>
+              <span id="sxStatus" style="align-self:center;color:var(--muted)"></span>
+              <span style="margin-left:auto"></span>
+              <label>Provider
+                <select id="sxProvider"><option value="horde" selected>Horde</option><option value="demo">Demo</option></select>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="panelR">
+          <div class="skeleton" id="sxSk1"></div>
+          <div class="skeleton" id="sxSk2"></div>
+          <div class="results" id="sxResults" style="display:none"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OG Image Generator (v2) -->
   <section id="og" aria-label="OG Image Generator">
     <div class="wrap">
       <div class="card" style="padding:24px">
@@ -1112,6 +1179,45 @@
     const hk=document.getElementById('iHordeKey');
     if(hk){ const stored=localStorage.getItem('eva_horde_key'); if(stored) hk.value=stored; }
   })();
+  // --- WOW Studio logic ---
+  (function(){
+    const PACKS={
+      royal:{ add:", royal glamour, soft gold rim light, glossy skin, studio portrait", ar:"3:4", cfg:7, steps:30, style:"cinematic" },
+      noir:{ add:", noir, high contrast, chiaroscuro, soft haze, 35mm film grain", ar:"4:5", cfg:8, steps:34, style:"noir" },
+      suspense:{ add:", cinematic, dark velvet background, rim light, shallow depth of field, suspenseful framing", ar:"9:16", cfg:7.5, steps:32, style:"cinematic" }
+    };
+    const $=s=>document.querySelector(s);
+    const prompt=$('#sxPrompt'); const chips=$('#sxChips'); const results=$('#sxResults');
+    const sk1=$('#sxSk1'), sk2=$('#sxSk2'); const status=$('#sxStatus');
+    function setStatus(t){ status.textContent=t||''; }
+    function takePack(id){ const p=PACKS[id]; if(!p) return; prompt.value=(prompt.value.trim()+p.add); const AR=$('#iAR'); const CFG=$('#iCfg'); const ST=$('#iSteps'); const STY=$('#iStyle'); if(AR) AR.value=p.ar; if(CFG) CFG.value=p.cfg; if(ST) ST.value=p.steps; if(STY) STY.value=p.style; }
+    document.querySelectorAll('#studio .tcard .apply').forEach(btn=>{ btn.addEventListener('click',()=>{ const card=btn.closest('.tcard'); takePack(card.getAttribute('data-pack')); }); });
+    chips.addEventListener('click',e=>{ const b=e.target.closest('.chip'); if(!b) return; const add=b.getAttribute('data-add')||''; prompt.value=(prompt.value.trim()+add); });
+
+    async function gen(){
+      const prov=$('#sxProvider').value;
+      const opts={ prompt: prompt.value, negative: ($('#iNeg')?.value)||'', ar: $('#iAR')?.value||'1:1', count: 2, cfg: parseInt($('#iCfg')?.value||'7',10), steps: parseInt($('#iSteps')?.value||'30',10), seed: '', style: $('#iStyle')?.value||'cinematic', model: $('#iModel')?.value||'Realistic Vision v5.1', upscale: false, face: true, bg: false };
+      if(!window.validateAllowed(opts.prompt, opts.negative)){ setStatus('Prompt blocat de Safe Mode/Termeni.'); return; }
+      results.style.display='none'; sk1.style.display=sk2.style.display='block'; setStatus('Pregătesc…');
+      let urls=[]; if(prov==='demo'){ urls = await (window.mockGenerateImages ? window.mockGenerateImages(opts) : []); } else { urls = await (window.imageProvider && window.imageProvider.generate ? window.imageProvider.generate(opts) : []); }
+      sk1.style.display=sk2.style.display='none'; results.innerHTML='';
+      if(!urls.length){ setStatus('Nimic generat.'); return; }
+      urls.forEach((u,i)=>{
+        const card=document.createElement('div'); card.className='imgcard';
+        const im=document.createElement('img'); im.src=u; im.alt='Eva '+(i+1);
+        const act=document.createElement('div'); act.className='actions';
+        const dl=document.createElement('a'); dl.className='pill ghost'; dl.textContent='Descarcă'; dl.href=u; dl.download='eva-'+(i+1)+'.png';
+        const rf=document.createElement('button'); rf.className='pill'; rf.textContent='Refinează'; rf.addEventListener('click',()=>{ window.openRefine && window.openRefine(u, im); });
+        act.appendChild(dl); act.appendChild(rf); card.appendChild(im); card.appendChild(act); results.appendChild(card);
+      });
+      results.style.display='grid'; setStatus('');
+    }
+    $('#sxGenerate').addEventListener('click', gen);
+    $('#sxSurprise').addEventListener('click',()=>{ const ks=Object.keys(PACKS); const k=ks[Math.floor(Math.random()*ks.length)]; takePack(k); gen(); });
+  })();
+
+  // Move hero CTA to Studio (fallback if pricing btns exist)
+  (function(){ document.querySelectorAll('a[href="#pricing"]').forEach(a=>{a.setAttribute('href','#studio'); a.textContent='Încearcă Studio';}); })();
 </script>
 </body>
 </html>
