@@ -240,7 +240,17 @@
     .safe{display:inline-flex;align-items:center;gap:6px;padding:6px 8px;border:1px solid rgba(255,255,255,.14);border-radius:8px;margin-left:6px}
     .safe input{width:16px;height:16px}
     html.locked{overflow:hidden}
-  </style>
+  /* -- Minimal flat controls for AI Generator -- */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.06);color:var(--ink);font-weight:700;cursor:pointer;transition:transform .12s ease, background .2s}
+.btn:hover{transform:translateY(-1px);background:rgba(255,255,255,.10)}
+.btn:active{transform:none}
+.input,.select,.textarea{width:100%;border-radius:12px;padding:10px 12px;border:1px solid rgba(255,255,255,.16);background:rgba(0,0,0,.25);color:var(--ink)}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px}
+.card.gen{padding:18px}
+.progress{height:4px;background:rgba(255,255,255,.12);border-radius:999px;overflow:hidden}
+.progress>span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),#9b59ff)}
+.toggle{display:inline-flex;align-items:center;gap:8px}
+</style>
 </head>
 <body>
   <a href="#features" class="skip-link">Sari la conținut</a>
@@ -411,7 +421,7 @@
                       <select id="iStyle"><option value="glamour">Glamour</option><option value="studio">Studio</option><option value="cinematic" selected>Cinematic</option><option value="noir">Noir</option><option value="vivid">Vivid</option></select>
                     </label>
                     <label>Model
-                      <select id="iModel"><option value="eva-v1" selected>Eva-v1</option><option value="eva-v1-hq">Eva-v1 HQ</option><option value="custom">Custom (adapter)</option></select>
+                      <select id="iModel"><option value="Realistic Vision v5.1" selected>Realistic Vision v5.1</option><option value="Deliberate">Deliberate v2</option><option value="SDXL 1.0">SDXL 1.0</option></select>
                     </label>
                     <label>Raport
                       <select id="iAR"><option>1:1</option><option>3:4</option><option>4:5</option><option selected>9:16</option></select>
@@ -427,6 +437,9 @@
                     </label>
                     <label>Seed
                       <input id="iSeed" type="text" placeholder="random" />
+                    </label>
+                    <label>Horde API key
+                      <input id="iHordeKey" type="password" placeholder="0000000000 (anon)" />
                     </label>
                     <label class="switch"><input id="iUpscale" type="checkbox" /> Upscale 2×</label>
                     <label class="switch"><input id="iFace" type="checkbox" checked /> Corecție față</label>
@@ -535,7 +548,65 @@
     </div>
   </section>
 
-  <!-- OG Image Generator (v2) -->
+  <!-- AI Image Generator (AI Horde) -->
+<section id="gen" aria-label="AI Image Generator">
+  <div class="wrap">
+    <div class="card gen">
+      <h3 style="margin-top:0">Generator imagini (AI Horde)</h3>
+      <p style="color:var(--muted);margin-top:6px">Rapid demo cu AI Horde (acceptă NSFW 18+ cu limite). Pentru demo folosim cheie anonimă; după activare adaugi cheia ta pentru prioritate.</p>
+      <div class="grid cols-2" style="align-items:start">
+        <div style="display:grid;gap:10px">
+          <label>Prompt
+            <textarea id="genPrompt" class="textarea" rows="4" placeholder="Descrie scena (stil, ținută, lumină, compoziție)"></textarea>
+          </label>
+          <label>Negative (opțional)
+            <input id="genNeg" class="input" type="text" placeholder="ex: blurry, extra fingers, watermark" />
+          </label>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+            <label>Model
+              <select id="genModel" class="select">
+                <option>Deliberate v2</option>
+                <option>Realistic Vision v5.1</option>
+                <option>Kandinsky v2.2</option>
+              </select>
+            </label>
+            <label>Raport
+              <select id="genAR" class="select">
+                <option>1:1</option>
+                <option>2:3</option>
+                <option>3:2</option>
+                <option>9:16</option>
+                <option>16:9</option>
+              </select>
+            </label>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+            <label>Pași
+              <input id="genSteps" type="number" class="input" min="10" max="60" value="30" />
+            </label>
+            <label>CFG
+              <input id="genCfg" type="number" class="input" step="0.5" min="1" max="15" value="7" />
+            </label>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+            <label class="toggle"><input id="genNSFW" type="checkbox" /> NSFW (doar 18+)</label>
+            <label>Număr
+              <input id="genN" type="number" class="input" min="1" max="4" value="1" style="max-width:90px" />
+            </label>
+            <button id="genBtn" class="btn">Generează</button>
+          </div>
+          <div class="progress" id="genProg" style="display:none"><span></span></div>
+          <small style="color:var(--muted)">Conținut 100% AI generativ. Fără persoane reale / minori. Respectăm legile și Terms.</small>
+        </div>
+        <div>
+          <div id="genGallery" class="gallery"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OG Image Generator (v2) -->
   <section id="og" aria-label="OG Image Generator">
     <div class="wrap">
       <div class="card" style="padding:24px">
@@ -858,12 +929,48 @@
     }
 
     // public adapter example (plug your API)
-    window.imageProvider = window.imageProvider || {
-      // async generate(opts){
-      //   // TODO: call your backend / Leonardo / OpenAI images endpoint
-      //   // return array of data URLs
-      //   return await mockGenerateImages(opts);
-      // }
+    window.imageProvider = window.imageProvider || {};
+    // Horde adapter
+    window.imageProvider.generate = async function(opts){
+      try{
+        var key = (localStorage.getItem('eva_horde_key') || '').trim();
+        var keyInput = document.getElementById('iHordeKey');
+        if(keyInput && keyInput.value){ key = keyInput.value.trim(); localStorage.setItem('eva_horde_key', key); }
+        if(!key) key = '0000000000';
+        var sizeMap = { '1:1':[1024,1024], '3:4':[768,1024], '4:5':[800,1000], '9:16':[720,1280] };
+        var s = sizeMap[opts.ar] || [1024,1024];
+        var w = s[0], h = s[1];
+        var n = Math.max(1, Math.min(4, Number(opts.count||1)));
+        var steps = Math.max(10, Math.min(60, Number(opts.steps||28)));
+        var cfg = Math.max(1, Math.min(15, Number(opts.cfg||7)));
+        var seedNum = null; if(opts.seed){ var t = Number(opts.seed); if(!isNaN(t)){ seedNum = Math.floor(t); } }
+        var body = {
+          prompt: String(opts.prompt||''),
+          nsfw: !window.isSafeMode(),
+          params: { n: n, width: w, height: h, steps: steps, cfg_scale: cfg, karras: true, sampler_name: 'k_euler_a' },
+          models: [ opts.model || 'Realistic Vision v5.1' ],
+          r2: true
+        };
+        if(opts.negative){ body.params.negative_prompt = String(opts.negative); }
+        if(seedNum !== null){ body.params.seed = seedNum; }
+        var submit = await fetch('https://aihorde.net/api/v2/generate/async', { method:'POST', headers:{ 'Content-Type':'application/json', 'apikey': key, 'Client-Agent':'EvaVossSite/1.0' }, body: JSON.stringify(body) });
+        if(submit.status !== 202){ var tt = await submit.text(); throw new Error('Horde submit failed: '+submit.status+' '+tt); }
+        var sj = await submit.json(); var id = sj.id;
+        var started = Date.now(); var data = null;
+        while(Date.now() - started < 120000){
+          await new Promise(function(r){ setTimeout(r, 2500); });
+          var r = await fetch('https://aihorde.net/api/v2/generate/status/' + id, { headers:{ 'apikey': key, 'Client-Agent':'EvaVossSite/1.0' } });
+          data = await r.json(); if(data && data.done){ break; }
+        }
+        var gens = (data && data.generations) ? data.generations : [];
+        var out = [];
+        for(var i=0;i<gens.length;i++){
+          var g = gens[i]; var v = g.img || ''; var mime = g.mime_type || 'image/png';
+          if(typeof v === 'string' && v.indexOf('http') === 0){ out.push(v); }
+          else if(v){ out.push('data:'+mime+';base64,'+v); }
+        }
+        return out;
+      }catch(e){ console.error(e); return []; }
     };
   })();
 
@@ -889,6 +996,8 @@
   (function(){
     const og=document.querySelector('nav.actions a[href="#og"]');
     if(og) og.textContent='OG';
+    const hk=document.getElementById('iHordeKey');
+    if(hk){ const stored=localStorage.getItem('eva_horde_key'); if(stored) hk.value=stored; }
   })();
 </script>
 </body>
