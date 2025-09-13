@@ -95,7 +95,7 @@
     .lang button[aria-pressed="true"]{background:rgba(255,255,255,.08)}
 
     /* Hero */
-    .hero{position:relative;min-height:92vh;display:grid;place-items:center;overflow:hidden;border-bottom:1px solid rgba(255,255,255,.06)}
+    .hero{position:relative;min-height:86vh;display:grid;place-items:center;overflow:hidden;border-bottom:1px solid rgba(255,255,255,.06)}
     .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(1.1) contrast(1.02)}
     .overlay{position:absolute;inset:0;background:
       radial-gradient(1000px 500px at 80% 20%, rgba(109,34,211,.45), transparent 50%),
@@ -125,7 +125,7 @@
     .dot{width:6px;height:6px;border-radius:50%;background:var(--ok);display:inline-block;box-shadow:0 0 0 4px rgba(111,227,161,.12)}
 
     /* Sections */
-    section{padding:80px 0}
+    section{padding:clamp(40px,7vw,72px) 0}
     .card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.08);border-radius:var(--r);box-shadow:var(--shadow)}
     .grid{display:grid;gap:18px}
     .grid.cols-3{grid-template-columns:repeat(3,1fr)}
@@ -1218,6 +1218,28 @@
 
   // Move hero CTA to Studio (fallback if pricing btns exist)
   (function(){ document.querySelectorAll('a[href="#pricing"]').forEach(a=>{a.setAttribute('href','#studio'); a.textContent='Încearcă Studio';}); })();
+</script>
+<script>
+// --- Hero text reveal hard fallback & cleanup ---
+(function(){
+  var content=document.querySelector('.hero .content');
+  var v=document.getElementById('heroVideo');
+  var bar=document.querySelector('.intro-progress span');
+  var forced=false;
+  function reveal(){ if(forced) return; forced=true; if(content){ content.classList.remove('hidden'); content.classList.add('reveal'); } var tools=document.querySelector('.intro-tools'); if(tools) tools.style.display='none'; }
+  if(v){ v.addEventListener('loadeddata', function(){ setTimeout(reveal, 4500); });
+    v.addEventListener('timeupdate', function(){ if(v.duration){ if(bar) bar.style.width=((v.currentTime/v.duration)*100).toFixed(2)+'%'; if(v.duration - v.currentTime < 0.08) reveal(); } });
+    v.addEventListener('ended', reveal);
+    v.addEventListener('error', reveal);
+    setTimeout(reveal, 6000);
+  } else { setTimeout(reveal, 600); }
+  // Remove stray price chips and legacy badges
+  (function(){ var nav=document.querySelector('nav.actions'); if(!nav) return; nav.querySelectorAll('*').forEach(function(el){ var t=(el.textContent||'').trim(); var priceRe=new RegExp('^\$\d+'); if(priceRe.test(t)||t==='18+'||t==='Safe'){ el.remove(); } }); })();
+  // Ensure logo visible (fallback if missing)
+  (function(){ var logo=document.getElementById('logoImg'); if(!logo) return; var fallback='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="180" height="36"><defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="%23b891ff"/><stop offset="1" stop-color="%23d7b86f"/></linearGradient></defs><text x="0" y="26" font-family="Inter, Arial" font-size="24" font-weight="800" fill="url(%23g)">Eva Voss</text></svg>'; function setFallback(){ try{ logo.src=fallback; }catch(e){} } if(!logo.complete || !logo.naturalWidth){ setFallback(); } logo.addEventListener('error', setFallback); })();
+  // Remove legacy generators (keep only Studio)
+  (function(){ var secs=document.querySelectorAll('section'); secs.forEach(function(sec){ var txt=(sec.innerText||'').trim().toLowerCase(); if((txt.includes('—') && txt.includes('demo')) || txt.includes('generator imagini (ai horde)')){ sec.remove(); } }); })();
+})();
 </script>
 </body>
 </html>
