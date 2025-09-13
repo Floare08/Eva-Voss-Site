@@ -4,48 +4,111 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Eva Voss — AI Fantasy</title>
-  <meta name="description" content="Creează-ți companionul AI: chat, voce, imagini & clipuri. Galerie, Studio de generare și profiluri personalizabile." />
+  <meta name="description" content="Creează-ți companionul AI: chat, voce șoptită, imagini & clipuri premium. Galerie, Studio de generare și profiluri personalizabile — senzual, elegant, 100% AI." />
+  <meta name="theme-color" content="#0b0611" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
   <style>
-    :root{--bg:#0b0611;--panel:#120a1c;--panel2:#171026;--ink:#f7f2ff;--muted:#cdbde6;--brand:#9b59ff;--accent:#ff4fd8;--gold:#d7b86f;--ok:#6fe3a1}
+    :root{
+      --bg:#0b0611; --panel:#120a1c; --panel2:#171026; --ink:#f7f2ff; --muted:#cdbde6;
+      --brand:#9b59ff; --accent:#ff4fd8; --royal:#6d22d3; --gold:#d7b86f; --ok:#6fe3a1;
+      --radius:14px; --shadow:0 18px 38px rgba(0,0,0,.28);
+    }
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{margin:0;background:radial-gradient(900px 480px at 80% 20%, rgba(155,89,255,.18), transparent 55%),radial-gradient(700px 360px at 10% 80%, rgba(215,184,111,.12), transparent 60%),var(--bg);color:var(--ink);font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+    body{
+      margin:0;
+      background:
+        radial-gradient(900px 480px at 80% 20%, rgba(155,89,255,.18), transparent 55%),
+        radial-gradient(700px 360px at 10% 80%, rgba(215,184,111,.12), transparent 60%),
+        var(--bg);
+      color:var(--ink);
+      font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      line-height:1.55;
+      -webkit-font-smoothing:antialiased;
+    }
 
     /* App shell */
-    .shell{display:grid;grid-template-columns:260px 1fr;grid-template-rows:64px 1fr;grid-template-areas:'side top' 'side main';min-height:100vh}
-    header{grid-area:top;display:flex;align-items:center;justify-content:space-between;padding:0 16px;background:linear-gradient(180deg, rgba(23,16,38,.85), rgba(23,16,38,.55));border-bottom:1px solid rgba(255,255,255,.08);backdrop-filter:blur(10px)}
-    aside{grid-area:side;background:linear-gradient(180deg, rgba(23,16,38,.95), rgba(18,10,28,.95));border-right:1px solid rgba(255,255,255,.06);padding:12px 10px;position:sticky;top:0;height:100vh}
-    main{grid-area:main;padding:18px;min-width:0}
+    .shell{
+      display:grid;
+      grid-template-columns:260px 1fr;
+      grid-template-rows:64px 1fr;
+      grid-template-areas:'side top' 'side main';
+      min-height:100vh;
+    }
+    header{
+      grid-area:top;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:0 16px;
+      background:linear-gradient(180deg, rgba(23,16,38,.85), rgba(23,16,38,.55));
+      border-bottom:1px solid rgba(255,255,255,.08);
+      backdrop-filter:blur(10px);
+      position:sticky; top:0; z-index:50;
+    }
+    aside{
+      grid-area:side;
+      background:linear-gradient(180deg, rgba(23,16,38,.95), rgba(18,10,28,.95));
+      border-right:1px solid rgba(255,255,255,.06);
+      padding:12px 10px;
+      position:sticky; top:0; height:100vh;
+    }
+    main{ grid-area:main; padding:18px; min-width:0; }
 
+    /* Brand */
     .brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none}
-    .logo{width:28px;height:28px;border-radius:8px;background:conic-gradient(from 160deg,#9b59ff,#d7b86f,#9b59ff);box-shadow:0 4px 18px rgba(155,89,255,.35)}
     .brand span{font-weight:900;letter-spacing:.2px}
-    .brand .logo-img{width:28px;height:28px;object-fit:contain;border-radius:6px;box-shadow:0 4px 18px rgba(155,89,255,.35)}
+    .brand .logo-img{
+      width:28px;height:28px;object-fit:contain;border-radius:6px;
+      box-shadow:0 4px 18px rgba(155,89,255,.35)
+    }
+    .brand .logo-fallback{
+      width:28px;height:28px;border-radius:8px;
+      background:conic-gradient(from 160deg,#9b59ff,#d7b86f,#9b59ff);
+      box-shadow:0 4px 18px rgba(155,89,255,.35); display:none;
+    }
 
+    /* Buttons / tags */
     .top-actions{display:flex;gap:8px;align-items:center}
-    .btn{appearance:none;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.06);color:var(--ink);padding:8px 12px;border-radius:10px;font-weight:700;font-size:14px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;cursor:pointer;transition:background .18s ease,border-color .18s ease,transform .12s ease}
-    .btn:hover{background:rgba(255,255,255,.10);border-color:rgba(255,255,255,.24)}
+    .btn{
+      appearance:none;border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.06);color:var(--ink);
+      padding:8px 12px;border-radius:10px;font-weight:700;font-size:14px;
+      text-decoration:none;display:inline-flex;align-items:center;gap:8px;
+      cursor:pointer;transition:background .18s ease,border-color .18s ease,transform .12s ease, box-shadow .18s ease
+    }
+    .btn:hover{background:rgba(255,255,255,.10);border-color:rgba(255,255,255,.24);box-shadow:0 10px 24px rgba(155,89,255,.22)}
+    .btn:active{transform:translateY(1px)}
     .btn.primary{background:linear-gradient(135deg,var(--brand),#6d22d3);border-color:transparent}
+    .tag{
+      display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);font-size:12px;color:var(--muted)
+    }
 
     /* Sidebar */
     .menu{display:grid;gap:6px;margin-top:6px}
-    .mi{display:flex;gap:10px;align-items:center;padding:10px;border-radius:10px;color:var(--ink);text-decoration:none;border:1px solid transparent}
+    .mi{
+      display:flex;gap:10px;align-items:center;padding:10px;border-radius:10px;
+      color:var(--ink);text-decoration:none;border:1px solid transparent
+    }
     .mi:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.10)}
     .mi.active{background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));border-color:rgba(255,255,255,.14)}
 
-    .tag{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);font-size:12px;color:var(--muted)}
-
     /* Hero banner */
-    .hero{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px;border:1px solid rgba(255,255,255,.08);border-radius:14px;background:linear-gradient(135deg, rgba(155,89,255,.25), rgba(215,184,111,.15))}
+    .hero{
+      display:flex;align-items:center;justify-content:space-between;gap:16px;
+      padding:16px;border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);
+      background:linear-gradient(135deg, rgba(155,89,255,.25), rgba(215,184,111,.15))
+    }
     .hero h1{margin:0 0 6px;font-size:26px}
     .hero p{margin:0;color:var(--muted)}
 
     /* Tabs + filters */
     .tabs{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}
-    .tab{padding:8px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);cursor:pointer;font-weight:700}
+    .tab{
+      padding:8px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);cursor:pointer;font-weight:700
+    }
     .tab[aria-selected="true"]{background:rgba(155,89,255,.22);border-color:rgba(155,89,255,.45)}
     .filters{display:flex;gap:8px;flex-wrap:wrap}
 
@@ -54,28 +117,80 @@
     @media (max-width:1200px){.grid{grid-template-columns:repeat(3,1fr)}}
     @media (max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
     @media (max-width:560px){.grid{grid-template-columns:1fr}}
-    .card{overflow:hidden;border-radius:14px;border:1px solid rgba(255,255,255,.10);background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03))}
-    .thumb{aspect-ratio:3/4;object-fit:cover;width:100%;display:block}
+    .card{
+      overflow:hidden;border-radius:var(--radius);
+      border:1px solid rgba(255,255,255,.10);
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      transition:transform .22s ease, box-shadow .22s ease;
+      position:relative;
+      cursor:default;
+    }
+    .card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+    .thumb-wrap{position:relative;isolation:isolate}
+    .thumb{
+      width:100%;display:block;object-fit:cover;aspect-ratio:3/4;
+      transition:transform .35s ease
+    }
+    .card:hover .thumb{transform:scale(1.03)}
+    /* Hover gradient overlay */
+    .thumb-overlay{
+      position:absolute;inset:0;border-bottom-left-radius:0;border-bottom-right-radius:0;
+      background:linear-gradient(135deg, rgba(109,34,211,0.0), rgba(215,184,111,0.0));
+      transition:background .25s ease, opacity .25s ease; pointer-events:none; opacity:.0;
+    }
+    .card:hover .thumb-overlay{
+      background:linear-gradient(135deg, rgba(109,34,211,0.10), rgba(215,184,111,0.10));
+      opacity:1;
+    }
+    /* Story badge */
+    .badge{
+      position:absolute;left:8px;top:8px;z-index:2;
+      display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.18);background:rgba(23,16,38,.55);backdrop-filter:blur(6px);
+      font-size:12px;color:#fff;box-shadow:0 12px 24px rgba(0,0,0,.25)
+    }
+    .badge::before{
+      content:"";width:8px;height:8px;border-radius:50%;
+      background:conic-gradient(from 120deg,#9b59ff,#d7b86f,#9b59ff);
+      box-shadow:0 0 0 3px rgba(155,89,255,.18)
+    }
+
     .meta{padding:10px}
     .name{display:flex;justify-content:space-between;align-items:center;font-weight:900}
     .desc{color:var(--muted);font-size:13px;margin-top:4px}
     .quick{display:flex;gap:8px;margin-top:10px}
+    .quick .btn{cursor:pointer}
 
-    footer{border-top:1px solid rgba(255,255,255,.06);padding:16px 0;margin-top:24px;color:var(--muted);font-size:13px}
-    /* Micro‑interacțiuni premium */
-    .card{transition:transform .22s ease, box-shadow .22s ease}
-    .card:hover{transform:translateY(-4px);box-shadow:0 18px 38px rgba(0,0,0,.28)}
-    .thumb{transition:transform .35s ease}
-    .card:hover .thumb{transform:scale(1.03)}
-    .btn{transition:background .18s ease,border-color .18s ease,transform .12s ease, box-shadow .18s ease}
-    .btn:hover{box-shadow:0 10px 24px rgba(155,89,255,.22)}
+    /* Sections below */
+    section{padding:clamp(16px,3vw,22px) 0}
+    .section-title{margin:0 0 16px}
+
+    /* Studio + Pricing layouts */
+    .studio-note{color:var(--muted);margin-top:-4px}
+    .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    @media (max-width:860px){.pricing-grid{grid-template-columns:1fr}}
+    .price{font-size:28px;font-weight:900}
+
+    /* Footer */
+    footer{
+      border-top:1px solid rgba(255,255,255,.06);padding:16px 0;margin-top:24px;
+      color:var(--muted);font-size:13px
+    }
+
+    /* Small polish */
+    a{text-decoration:none}
+    .wrap{max-width:1200px;margin:0 auto}
   </style>
 </head>
 <body>
   <div class="shell">
     <!-- Topbar -->
     <header>
-      <a class="brand" href="#"><img class="logo-img" src="/images/eva-logo.png" alt="Eva Voss" /><span>Eva Voss</span><span class="logo" aria-hidden="true" style="display:none"></span></a>
+      <a class="brand" href="#">
+        <img class="logo-img" src="/images/eva-logo.png" alt="Eva Voss" />
+        <span>Eva Voss</span>
+        <span class="logo-fallback" aria-hidden="true"></span>
+      </a>
       <div class="top-actions">
         <span class="tag">18+ • AI Generativ</span>
         <a class="btn" href="#studio">Studio</a>
@@ -98,6 +213,7 @@
 
     <!-- Main -->
     <main>
+      <!-- Hero -->
       <div class="hero">
         <div>
           <h1>Construiește-ți <span style="color:var(--gold)">companionul AI</span></h1>
@@ -109,6 +225,7 @@
         </div>
       </div>
 
+      <!-- Tabs -->
       <div class="tabs">
         <button class="tab" aria-selected="true" data-tab="girls">Girls</button>
         <button class="tab" aria-selected="false" data-tab="guys">Guys</button>
@@ -119,60 +236,127 @@
         </div>
       </div>
 
-      <div id="gallery" class="grid" aria-live="polite">
-        <article class="card">
-          <img class="thumb" src="/images/eva1.jpg" alt="Eva Velvet Desire" />
-          <div class="meta">
-            <div class="name">Eva • Velvet Desire <span class="tag">Premium</span></div>
-            <p class="desc">Velvet fin cu detalii aurii, privire care te prinde, senzual fără a fi explicit.</p>
-            <div class="quick"><a class="btn primary" href="#chat">Chat</a><a class="btn" href="#studio">Generează</a></div>
-          </div>
-        </article>
-        <article class="card">
-          <img class="thumb" src="/images/eva2.jpg" alt="Eva Noir Seduction" />
-          <div class="meta">
-            <div class="name">Eva • Noir Seduction <span class="tag">Hot</span></div>
-            <p class="desc">Satin mov, lumini noir și un zâmbet care promite jocuri periculoase.</p>
-            <div class="quick"><a class="btn primary" href="#chat">Chat</a><a class="btn" href="#studio">Generează</a></div>
-          </div>
-        </article>
-        <article class="card">
-          <img class="thumb" src="/images/eva3.jpg" alt="Eva Golden Glow" />
-          <div class="meta">
-            <div class="name">Eva • Golden Glow <span class="tag">Exclusive</span></div>
-            <p class="desc">Auriu cald, bokeh cinematic, zâmbet care încălzește camera.</p>
-            <div class="quick"><a class="btn primary" href="#chat">Chat</a><a class="btn" href="#studio">Generează</a></div>
-          </div>
-        </article>
-        <article class="card">
-          <img class="thumb" src="/images/eva4.jpg" alt="Eva Royal Temptation" />
-          <div class="meta">
-            <div class="name">Eva • Royal Temptation <span class="tag">Elite</span></div>
-            <p class="desc">Satin regal mov, accente aurii, boudoir elegant — ca un secret spus în șoaptă.</p>
-            <div class="quick"><a class="btn primary" href="#chat">Chat</a><a class="btn" href="#studio">Generează</a></div>
-          </div>
-        </article>
-      </div>
+      <!-- Galerie -->
+      <section id="gallery" class="wrap">
+        <h2 class="section-title">Explore AI Girls</h2>
+        <div class="grid" aria-live="polite">
+          <!-- Card 1 -->
+          <article class="card">
+            <div class="thumb-wrap">
+              <span class="badge">Premium</span>
+              <img class="thumb" src="/images/eva1.jpg" alt="Eva Velvet Desire" loading="eager" />
+              <span class="thumb-overlay" aria-hidden="true"></span>
+            </div>
+            <div class="meta">
+              <div class="name">Eva • Velvet Desire <span class="tag">1:1</span></div>
+              <p class="desc">Velvet fin cu detalii aurii, privire care te prinde, senzual fără a fi explicit.</p>
+              <div class="quick">
+                <a class="btn primary" href="#chat">Chat</a>
+                <a class="btn" href="#studio">Generează</a>
+              </div>
+            </div>
+          </article>
+          <!-- Card 2 -->
+          <article class="card">
+            <div class="thumb-wrap">
+              <span class="badge">Hot</span>
+              <img class="thumb" src="/images/eva2.jpg" alt="Eva Noir Seduction" loading="lazy" />
+              <span class="thumb-overlay" aria-hidden="true"></span>
+            </div>
+            <div class="meta">
+              <div class="name">Eva • Noir Seduction <span class="tag">1:1</span></div>
+              <p class="desc">Satin mov, lumini noir și un zâmbet care promite jocuri periculoase.</p>
+              <div class="quick">
+                <a class="btn primary" href="#chat">Chat</a>
+                <a class="btn" href="#studio">Generează</a>
+              </div>
+            </div>
+          </article>
+          <!-- Card 3 -->
+          <article class="card">
+            <div class="thumb-wrap">
+              <span class="badge">Exclusive</span>
+              <img class="thumb" src="/images/eva3.jpg" alt="Eva Golden Glow" loading="lazy" />
+              <span class="thumb-overlay" aria-hidden="true"></span>
+            </div>
+            <div class="meta">
+              <div class="name">Eva • Golden Glow <span class="tag">1:1</span></div>
+              <p class="desc">Auriu cald, bokeh cinematic, zâmbet care încălzește camera.</p>
+              <div class="quick">
+                <a class="btn primary" href="#chat">Chat</a>
+                <a class="btn" href="#studio">Generează</a>
+              </div>
+            </div>
+          </article>
+          <!-- Card 4 -->
+          <article class="card">
+            <div class="thumb-wrap">
+              <span class="badge">Elite</span>
+              <img class="thumb" src="/images/eva4.jpg" alt="Eva Royal Temptation" loading="lazy" />
+              <span class="thumb-overlay" aria-hidden="true"></span>
+            </div>
+            <div class="meta">
+              <div class="name">Eva • Royal Temptation <span class="tag">1:1</span></div>
+              <p class="desc">Satin regal mov, accente aurii, boudoir elegant — ca un secret spus în șoaptă.</p>
+              <div class="quick">
+                <a class="btn primary" href="#chat">Chat</a>
+                <a class="btn" href="#studio">Generează</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
 
-      <section id="studio" style="margin-top:22px">
-        <h2>Studio de generare</h2>
-        <p style="color:var(--muted);margin-top:-4px">Generează seturi cu vibe senzual (safe). Fără persoane reale/minori. Strict AI generativ. Respectăm legile și Terms.</p>
+      <!-- Studio anchor -->
+      <section id="studio" class="wrap">
+        <h2 class="section-title">Studio de generare</h2>
+        <p class="studio-note">Generează seturi cu vibe senzual (safe). Fără persoane reale/minori. Strict AI generativ. Respectăm legile și Terms.</p>
         <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
           <a class="btn primary" href="#">Deschide WOW Studio</a>
           <a class="btn" href="#pricing">Vezi planuri</a>
         </div>
       </section>
 
-      <section id="pricing" style="margin-top:22px">
-        <h2>Planuri</h2>
-        <div class="grid" style="grid-template-columns:repeat(3,1fr)">
-          <div class="card" style="padding:16px"><h3 style="margin:0 0 6px">Starter</h3><div class="name">€9 <span class="tag">/lună</span></div><p class="desc">Chat nelimitat, 50 imagini, 10m voce.</p><a class="btn" href="#join">Alege</a></div>
-          <div class="card" style="padding:16px;outline:2px solid rgba(155,89,255,.35)"><h3 style="margin:0 0 6px">Premium</h3><div class="name">€29 <span class="tag">/lună</span></div><p class="desc">400 imagini, 60m video, prioritate.</p><a class="btn primary" href="#join">Alege</a></div>
-          <div class="card" style="padding:16px"><h3 style="margin:0 0 6px">Elite</h3><div class="name">€79 <span class="tag">/lună</span></div><p class="desc">Scene 1:1, modele exclusive, suport prioritar.</p><a class="btn" href="#join">Alege</a></div>
+      <!-- Pricing -->
+      <section id="pricing" class="wrap">
+        <h2 class="section-title">Planuri</h2>
+        <div class="pricing-grid">
+          <div class="card" style="padding:16px">
+            <h3 style="margin:0 0 6px">Starter</h3>
+            <div class="price">€9 <small class="tag">/lună</small></div>
+            <p class="desc">Chat nelimitat, 50 imagini, 10m voce.</p>
+            <a class="btn" href="#join">Alege</a>
+          </div>
+          <div class="card" style="padding:16px;outline:2px solid rgba(155,89,255,.35)">
+            <h3 style="margin:0 0 6px">Premium</h3>
+            <div class="price">€29 <small class="tag">/lună</small></div>
+            <p class="desc">400 imagini, 60m video, prioritate.</p>
+            <a class="btn primary" href="#join">Alege</a>
+          </div>
+          <div class="card" style="padding:16px">
+            <h3 style="margin:0 0 6px">Elite</h3>
+            <div class="price">€79 <small class="tag">/lună</small></div>
+            <p class="desc">Scene 1:1, modele exclusive, suport prioritar.</p>
+            <a class="btn" href="#join">Alege</a>
+          </div>
         </div>
       </section>
 
-      <footer>
+      <!-- Join -->
+      <section id="join" class="wrap">
+        <div class="card" style="padding:16px;display:grid;gap:10px">
+          <h3 style="margin:0">Intră pe listă & primește acces</h3>
+          <form name="subscribe" method="POST" data-netlify="true" netlify-honeypot="bot-field" style="display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center">
+            <input type="hidden" name="form-name" value="subscribe" />
+            <input name="email" type="email" required placeholder="email@exemplu.com" aria-label="Email" style="border-radius:999px;padding:10px 12px;border:1px solid rgba(255,255,255,.16);background:rgba(0,0,0,.2);color:var(--ink)" />
+            <button class="btn primary" type="submit">Mă înscriu</button>
+          </form>
+          <small style="color:var(--muted)">Respectăm confidențialitatea. Te poți dezabona oricând.</small>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="wrap">
         <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
           <span>© <span id="y"></span> Eva Voss — AI Fantasy. 18+ • AI generativ.</span>
           <div style="display:flex;gap:8px"><a class="btn" href="#">Privacy</a><a class="btn" href="#">Terms</a></div>
@@ -182,20 +366,36 @@
   </div>
 
   <script>
-    document.getElementById('y').textContent=new Date().getFullYear();
+    // Year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); }
+      });
+    });
+
+    // Tabs (demo switch)
     document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{
       document.querySelectorAll('.tab').forEach(x=>x.setAttribute('aria-selected','false'));
       t.setAttribute('aria-selected','true');
+      // aici poți filtra galeria după dataset; pentru demo lăsăm neschimbat
     }));
-    // Logo fallback: dacă imaginea noastră nu se încarcă, arată gradientul
-  (function(){
-    const img=document.querySelector('.brand .logo-img');
-    const fallback=document.querySelector('.brand .logo');
-    if(img){
-      function swap(){ if(fallback){ fallback.style.display='inline-block'; } img.style.display='none'; }
-      if(!img.complete || !img.naturalWidth){ img.addEventListener('error', swap, {once:true}); setTimeout(()=>{ if(!img.naturalWidth) swap(); }, 1000); }
-    }
-  })();
-</script>
+
+    // Logo fallback dacă /images/eva-logo.png lipsește
+    (function(){
+      const img = document.querySelector('.brand .logo-img');
+      const fb  = document.querySelector('.brand .logo-fallback');
+      if(!img) return;
+      function swap(){ if(fb){ fb.style.display='inline-block'; } img.style.display='none'; }
+      if(!img.complete || !img.naturalWidth){
+        img.addEventListener('error', swap, {once:true});
+        setTimeout(()=>{ if(!img.naturalWidth) swap(); }, 800);
+      }
+    })();
+  </script>
 </body>
 </html>
