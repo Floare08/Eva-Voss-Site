@@ -330,7 +330,13 @@
         <img id="logoImg" src="logo-eva.png" alt="Eva Voss" height="36" loading="eager" decoding="async" />
         <span class="t">Eva Voss</span>
       </a>
-      $1<span class="age-badge" title="Conținut 18+">18+</span><label class="safe" title="Safe mode"><input type="checkbox" id="safeMode" checked/> Safe</label>$2
+      <nav class="actions" aria-label="Meniu principal" style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <a class="pill" href="#features" data-i18n="nav.features">Caracteristici</a>
+        <a class="pill" href="#studio">Studio</a>
+        <a class="pill" href="#pricing" data-i18n="nav.pricing">Prețuri</a>
+        <a class="pill primary" href="#join" data-i18n="nav.cta">Începe acum</a>
+        <label class="safe" title="Safe mode"><input type="checkbox" id="safeMode" checked/> Safe</label>
+        <span class="lang" role="group" aria-label="Limba">
           <button type="button" id="btnRO" aria-pressed="true">RO</button>
           <button type="button" id="btnEN" aria-pressed="false">EN</button>
         </span>
